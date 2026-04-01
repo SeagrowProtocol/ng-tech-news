@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NG-Tech-Hub | Nigeria's #1 Tech News Portal</title>
@@ -32,7 +32,7 @@
         </div>
 
         <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <p>Loading news...</p>
+            <p id="status-text">Loading news from database...</p>
         </div>
     </main>
 
@@ -47,36 +47,64 @@
     </footer>
 
     <script>
-        Parse.initialize("XRDkwT9qsas7ZGv1J4Bt0w9ZAzu7BRf8iOg4bv6Q", "KI6AeytjIAO7449bWIFXsyG46i7MNSHdbyAD0CnO");
+        // Updated with your provided keys
+        Parse.initialize("XRDkwT9qsas7ZGv1J4Bt0w9ZAzu7BRf8iOg4bv6Q", "fiTeawHiYkdabiwMvnnqGqSy7rKm2ZwxoEv0DCw3");
         Parse.serverURL = 'https://parseapi.back4app.com/';
 
         async function loadNews(category = null, term = null) {
             const grid = document.getElementById('newsGrid');
             const Article = Parse.Object.extend("Articles");
             const query = new Parse.Query(Article);
+            
             if(category) query.equalTo("category", category);
             if(term) query.contains("title", term);
+            
             query.descending("createdAt");
+            query.limit(20); // Pull the latest 20 items
             
             try {
                 const results = await query.find();
+                console.log("Back4app Connection Successful. Objects found:", results.length);
+                
+                if (results.length === 0) {
+                    grid.innerHTML = "<p class='col-span-3 text-center text-gray-500'>No news articles found in the database. Run the fetch job in Back4app!</p>";
+                    return;
+                }
+
                 grid.innerHTML = "";
                 results.forEach(post => {
                     grid.innerHTML += `
                         <div class="news-card bg-white rounded-xl overflow-hidden shadow-sm flex flex-col">
-                            <img src="${post.get('urlToImage') || 'https://via.placeholder.com/400x200'}" class="w-full h-44 object-cover">
+                            <img src="${post.get('urlToImage') || 'https://via.placeholder.com/400x200'}" class="w-full h-44 object-cover" onerror="this.src='https://via.placeholder.com/400x200'">
                             <div class="p-5 flex-grow">
-                                <span class="text-xs font-bold text-blue-600 uppercase">${post.get('category')}</span>
+                                <span class="text-xs font-bold text-blue-600 uppercase">${post.get('category') || 'Tech'}</span>
                                 <h2 class="font-bold text-lg mt-2">${post.get('title')}</h2>
                             </div>
                             <div class="p-5 pt-0">
-                                <a href="${post.get('url')}" target="_blank" class="block text-center bg-gray-100 py-2 rounded-lg font-semibold">Read More</a>
+                                <a href="${post.get('url')}" target="_blank" class="block text-center bg-gray-100 py-2 rounded-lg font-semibold hover:bg-blue-50 transition">Read More</a>
                             </div>
                         </div>`;
                 });
-            } catch (e) { grid.innerHTML = "Error loading news."; }
+            } catch (e) { 
+                console.error("Parse Error:", e);
+                grid.innerHTML = `<p class='col-span-3 text-center text-red-500'>Error connecting to database: ${e.message}</p>`; 
+            }
         }
-        function handleSearch() { loadNews(null, document.getElementById('searchInput').value); }
+
+        // Search when clicking button
+        function handleSearch() { 
+            loadNews(null, document.getElementById('searchInput').value); 
+        }
+
+        // Search when pressing "Enter" key
+        document.getElementById('searchInput').addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                handleSearch();
+            }
+        });
+
+        // Initial load
         loadNews();
     </script>
 </body>
