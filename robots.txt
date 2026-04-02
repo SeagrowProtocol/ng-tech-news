@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://seagrowprotocol.github.io/ng-tech-news//sitemap.xml
