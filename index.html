@@ -3,164 +3,104 @@
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="elvL_fF7F4W242SXeFF2oNMdahyG_zeVJTWYwpstjRY" />
-    <title>NG-Tech-Hub | Nigerian Tech Insights, Career Resources & Data Guides</title>
-    <meta name="description" content="A curated information portal for the Nigerian tech ecosystem. Access real-time fintech updates, remote work resources, and essential digital data guides.">
-    <meta name="keywords" content="Nigeria tech news, fintech education, remote work Lagos, Naira exchange data, tech career guide Nigeria, digital literacy">
-    <meta name="author" content="NG-Tech-Hub">
-    <meta name="robots" content="index, follow">
-
-    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://SeagrowProtocol.github.io/ng-tech-news/">
-    <meta property="og:title" content="NG-Tech-Hub | Nigeria's #1 Tech & Resource Portal">
-    <meta property="og:description" content="Daily Tech News, Job Opportunities, and Currency Rates in Nigeria. Built for the community.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=1200&auto=format&fit=crop">
-
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="NG-Tech-Hub | Nigerian Tech Updates">
-    <meta property="twitter:description" content="Real-time Nigerian tech updates and job alerts.">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "NewsMediaOrganization",
-      "name": "NG-Tech-Hub",
-      "url": "https://SeagrowProtocol.github.io/ng-tech-news/",
-      "logo": "https://via.placeholder.com/200x200?text=NG",
-      "description": "Providing digital tools and real-time data for the Nigerian tech economy.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Lagos",
-        "addressCountry": "NG"
-      }
-    }
-    </script>
-
+    <title>NG-Tech-Hub | Tech News & Live Betting Odds</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
-    
     <style>
         .news-card { transition: 0.3s; border: 1px solid #eee; }
         .news-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
+        .bet-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
-    <div class="bg-blue-700 text-white text-center py-2 text-sm font-medium">
-        Trending: Remote Jobs | Naira Exchange Rates | Data Codes
+
+    <div class="bg-blue-700 text-white text-center py-2 text-xs font-medium">
+        LATEST: Chelsea vs Arsenal Odds Updated | ₦500k Tech Grant Open
     </div>
 
     <nav class="bg-white border-b sticky top-0 z-50 p-4 shadow-sm">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <a href="index.html" class="text-3xl font-extrabold text-blue-700 tracking-tighter">NG-TECH-HUB</a>
-            <div class="relative w-full md:w-96 flex gap-2">
-                <input id="searchInput" type="text" placeholder="Search news, jobs, or prices..." class="w-full border rounded-full px-5 py-2 outline-none focus:border-blue-500 bg-gray-50">
-                <button onclick="handleSearch()" class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-700 transition">Search</button>
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-black text-blue-700">NG-TECH-HUB</a>
+            <div class="hidden md:flex gap-4">
+                <input id="searchInput" type="text" placeholder="Search..." class="border rounded-full px-4 py-1 text-sm outline-none bg-gray-100">
+                <button onclick="handleSearch()" class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold">Search</button>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto p-4">
-        <div class="flex gap-2 my-6 overflow-x-auto pb-2 no-scrollbar">
-            <button onclick="loadNews()" class="whitespace-nowrap bg-blue-600 text-white px-5 py-2 rounded-full shadow-md">All</button>
-            <button onclick="loadNews('Naira Rate')" class="whitespace-nowrap bg-white border px-5 py-2 rounded-full hover:bg-blue-50">🇳🇬 Naira Rates</button>
-            <button onclick="loadNews('Remote Jobs')" class="whitespace-nowrap bg-white border px-5 py-2 rounded-full hover:bg-blue-50">💼 Tech Jobs</button>
-            <button onclick="loadNews('Fintech')" class="whitespace-nowrap bg-white border px-5 py-2 rounded-full hover:bg-blue-50">💳 Fintech</button>
-            <button onclick="loadNews('Data Plans')" class="whitespace-nowrap bg-white border px-5 py-2 rounded-full hover:bg-blue-50">📡 Data Codes</button>
-            <button onclick="loadNews('iPhone Prices')" class="whitespace-nowrap bg-white border px-5 py-2 rounded-full hover:bg-blue-50">📱 Gadgets</button>
+    <main class="max-w-6xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-4 gap-8 mt-6">
+        
+        <div class="lg:col-span-3">
+            <div class="flex gap-2 mb-6 overflow-x-auto pb-2 no-scrollbar">
+                <button onclick="displayCategory('All')" class="bg-blue-600 text-white px-4 py-2 rounded-full text-xs font-bold">LATEST NEWS</button>
+                <button onclick="displayCategory('Betting')" class="bg-green-600 text-white px-4 py-2 rounded-full text-xs font-bold">⚽ SPORTS ODDS</button>
+                <button onclick="displayCategory('Fintech')" class="bg-white border px-4 py-2 rounded-full text-xs font-bold">FINTECH</button>
+            </div>
+
+            <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                </div>
         </div>
 
-        <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6 min-h-[400px]">
-            <p class="col-span-3 text-center py-20 text-gray-400 font-medium italic">Scanning Nigerian Tech Database...</p>
+        <div class="lg:col-span-1 space-y-6">
+            
+            <div class="bet-gradient rounded-2xl p-5 text-white shadow-xl">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-bold text-sm uppercase tracking-wider">Live Match Odds</h3>
+                    <span class="animate-pulse bg-red-500 text-[8px] px-2 py-0.5 rounded-full font-bold">LIVE</span>
+                </div>
+                
+                <div id="oddsContainer" class="space-y-3">
+                    <div class="bg-white/10 p-3 rounded-lg border border-white/10">
+                        <p class="text-[10px] text-blue-200 mb-1">Premier League</p>
+                        <div class="flex justify-between text-xs font-bold">
+                            <span>Chelsea vs Arsenal</span>
+                            <span class="text-green-400">2.10 | 3.40</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="YOUR_SMART_LINK_HERE" target="_blank" class="block text-center bg-yellow-400 text-blue-900 mt-4 py-2 rounded-xl font-black text-xs hover:bg-yellow-300 transition">
+                    BET NOW & WIN ₦100K
+                </a>
+            </div>
+
+            <div class="bg-gray-200 h-[250px] rounded-xl flex items-center justify-center text-gray-400 text-xs border-2 border-dashed border-gray-300">
+                ADSTERRA BANNER 300x250
+            </div>
+
         </div>
     </main>
 
-    <footer class="bg-gray-900 text-white p-10 mt-20 text-center">
-        <p class="font-bold text-xl mb-2 text-blue-400">NG-Tech-Hub</p>
-        <p class="text-gray-400 text-sm max-w-md mx-auto italic mb-6">Providing the digital tools and real-time data Nigerians need to thrive in the global tech economy.</p>
-        
-        <div class="flex flex-wrap justify-center gap-6 text-sm mb-8">
-            <a href="index.html" class="hover:text-blue-400 underline decoration-gray-700">Home</a>
-            <a href="about.html" class="hover:text-blue-400 underline decoration-gray-700">About Us</a>
-            <a href="privacy.html" class="hover:text-blue-400 underline decoration-gray-700">Privacy Policy</a>
-            <a href="terms.html" class="hover:text-blue-400 underline decoration-gray-700">Terms of Use</a>
-            <a href="mailto:owlfitcat@sendapp.uk" class="hover:text-blue-400 underline decoration-gray-700">Contact</a>
-        </div>
-
-        <div class="border-t border-gray-800 pt-6 max-w-2xl mx-auto">
-            <p class="text-[10px] text-gray-500 leading-relaxed uppercase tracking-widest">
-                <strong>Mission:</strong> NG-Tech-Hub is an open-source educational project. We aggregate public news to empower the Nigerian tech community. All content rights belong to original publishers.
-            </p>
-        </div>
-    </footer>
-
     <script>
-        Parse.initialize("XRDkwT9qsas7ZGv1J4Bt0w9ZAzu7BRf8iOg4bv6Q", "fiTeawHiYkdabiwMvnnqGqSy7rKm2ZwxoEv0DCw3");
-        Parse.serverURL = 'https://parseapi.back4app.com/';
+        let allArticles = [];
 
-        async function loadNews(category = null, term = null) {
-            const grid = document.getElementById('newsGrid');
-            const Article = Parse.Object.extend("Articles");
-            let query;
-
-            if(term) {
-                const titleQuery = new Parse.Query(Article);
-                titleQuery.matches("title", term, "i");
-                const descQuery = new Parse.Query(Article);
-                descQuery.matches("description", term, "i");
-                query = Parse.Query.or(titleQuery, descQuery);
-            } else {
-                query = new Parse.Query(Article);
-            }
-
-            if(category) query.equalTo("category", category);
-            query.descending("createdAt");
-            query.limit(24);
-            
+        async function loadNews() {
             try {
-                const results = await query.find();
-                grid.innerHTML = "";
-                
-                if (results.length === 0) {
-                    grid.innerHTML = `<div class="col-span-3 text-center py-20">
-                        <p class="text-gray-500 text-lg">No updates found for "${term || category}".</p>
-                        <button onclick="loadNews()" class="text-blue-600 font-bold mt-2 hover:underline">Show Latest News</button>
-                    </div>`;
-                    return;
-                }
-
-                results.forEach(post => {
-                    grid.innerHTML += `
-                        <div class="news-card bg-white rounded-xl overflow-hidden shadow-sm flex flex-col border border-gray-100">
-                            <div class="relative">
-                                <img src="${post.get('urlToImage')}" class="w-full h-48 object-cover" alt="Tech News" onerror="this.src='https://via.placeholder.com/400x200?text=NG-Tech-Hub'">
-                                <span class="absolute top-2 left-2 bg-blue-600 text-white text-[10px] px-2 py-1 rounded font-bold uppercase shadow-sm">${post.get('category') || 'Tech'}</span>
-                            </div>
-                            <div class="p-5 flex-grow">
-                                <h2 class="font-bold text-lg leading-tight mb-2 hover:text-blue-700 transition cursor-pointer">${post.get('title')}</h2>
-                                <p class="text-gray-600 text-sm line-clamp-3">${post.get('description') || 'View the full article for more details on this update.'}</p>
-                            </div>
-                            <div class="p-5 pt-0">
-                                <a href="${post.get('url')}" target="_blank" rel="noopener" class="block text-center border-2 border-blue-600 text-blue-600 py-2 rounded-lg font-bold hover:bg-blue-600 hover:text-white transition-all duration-300">Read More</a>
-                            </div>
-                        </div>`;
-                });
-            } catch (e) { 
-                grid.innerHTML = `<p class="col-span-3 text-center text-red-500 py-10">Database connection error. Please refresh.</p>`; 
+                const response = await fetch('news.json');
+                allArticles = await response.json();
+                renderArticles(allArticles);
+            } catch (e) {
+                document.getElementById('newsGrid').innerHTML = "<p>Updating news database...</p>";
             }
         }
 
-        function handleSearch() { 
-            const val = document.getElementById('searchInput').value.trim();
-            if(val) loadNews(null, val); 
+        function renderArticles(articles) {
+            const grid = document.getElementById('newsGrid');
+            grid.innerHTML = articles.map(post => `
+                <div class="news-card bg-white rounded-xl overflow-hidden border border-gray-100 flex flex-col">
+                    <img src="${post.urlToImage || 'https://via.placeholder.com/400x200'}" class="h-40 w-full object-cover">
+                    <div class="p-4 flex-grow">
+                        <h2 class="font-bold text-sm mb-2">${post.title}</h2>
+                        <p class="text-gray-500 text-[10px] line-clamp-2">${post.description || ''}</p>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <a href="${post.url}" target="_blank" class="block text-center border border-blue-600 text-blue-600 py-1.5 rounded-lg text-[10px] font-bold hover:bg-blue-600 hover:text-white transition">READ MORE</a>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        document.getElementById('searchInput').addEventListener("keypress", (e) => {
-            if (e.key === "Enter") handleSearch();
-        });
-
+        // Initialize
         loadNews();
     </script>
 </body>
