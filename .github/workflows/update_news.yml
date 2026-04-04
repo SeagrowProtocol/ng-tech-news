@@ -1,14 +1,18 @@
 name: Daily Tech Update
 on:
   schedule:
-    - cron: '0 0 * * *' # Every night at midnight
-  workflow_dispatch: # Allows manual run button
+    - cron: '0 0 * * *' 
+  workflow_dispatch: 
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Important: allows GitHub to save news.json
+      contents: write
+    # This line below tells GitHub to use the newer Node version immediately
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -16,7 +20,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24' # Changed from 20 to 24
 
       - name: Fetch Latest News
         run: node scraper.js
