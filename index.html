@@ -1,107 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-tag">
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NG-Tech-Hub | Tech News & Live Betting Odds</title>
+    <title>NG-Tech-Hub | Jobs, Odds & Tech Vibe</title>
+    
+    <meta name="description" content="Nigeria's #1 tech portal for remote jobs, sports betting odds, and daily tech vibes.">
+    <meta property="og:title" content="NG-Tech-Hub: Nigeria's Tech & Jobs Portal">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=NG-Tech-Hub">
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script>
+        // DARK MODE LOGIC
+        tailwind.config = { darkMode: 'class' }
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
     <style>
-        .news-card { transition: 0.3s; border: 1px solid #eee; }
-        .news-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .bet-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); }
+        .news-card { transition: 0.3s; }
+        .dark .news-card { border-color: #1e293b; background-color: #0f172a; color: white; }
+        
+        @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .ticker-text { white-space: nowrap; display: inline-block; animation: scroll 25s linear infinite; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 flex flex-col min-h-screen">
 
-    <div class="bg-blue-700 text-white text-center py-2 text-xs font-medium">
-        LATEST: Chelsea vs Arsenal Odds Updated | ₦500k Tech Grant Open
+    <div class="bg-blue-900 text-white overflow-hidden py-1.5 ticker-wrap">
+        <div class="ticker-text text-[11px] font-bold uppercase tracking-wider">
+            🇳🇬 NAIRA: 1,455/$ • 😂 JOKE: Why did the dev stay in the office? Because PHCN took light at home! • ⚽ ODDS: Real Madrid 1.85 to win • 💼 JOB: Senior Dev needed at Moniepoint • 🔥 TREND: AI taking over Lagos startups...
+        </div>
     </div>
 
-    <nav class="bg-white border-b sticky top-0 z-50 p-4 shadow-sm">
+    <nav class="bg-white dark:bg-slate-800 shadow-md sticky top-0 z-50 px-4 py-3">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-black text-blue-700">NG-TECH-HUB</a>
-            <div class="hidden md:flex gap-4">
-                <input id="searchInput" type="text" placeholder="Search..." class="border rounded-full px-4 py-1 text-sm outline-none bg-gray-100">
-                <button onclick="handleSearch()" class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold">Search</button>
+            <a href="index.html" class="text-2xl font-black text-blue-600 italic tracking-tighter">NG-TECH-HUB</a>
+            
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex relative border rounded-full overflow-hidden dark:border-slate-700">
+                    <input id="searchInput" type="text" placeholder="Search jobs..." class="px-4 py-1.5 text-sm outline-none dark:bg-slate-700">
+                    <button onclick="handleSearch()" class="bg-blue-600 text-white px-4"><i class="fa-solid fa-magnifying-glass text-xs"></i></button>
+                </div>
+                
+                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                    <i id="theme-icon" class="fa-solid fa-moon"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-4 gap-8 mt-6">
-        
-        <div class="lg:col-span-3">
-            <div class="flex gap-2 mb-6 overflow-x-auto pb-2 no-scrollbar">
-                <button onclick="displayCategory('All')" class="bg-blue-600 text-white px-4 py-2 rounded-full text-xs font-bold">LATEST NEWS</button>
-                <button onclick="displayCategory('Betting')" class="bg-green-600 text-white px-4 py-2 rounded-full text-xs font-bold">⚽ SPORTS ODDS</button>
-                <button onclick="displayCategory('Fintech')" class="bg-white border px-4 py-2 rounded-full text-xs font-bold">FINTECH</button>
-            </div>
-
-            <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                </div>
+    <main class="max-w-6xl mx-auto p-4 flex-grow w-full">
+        <div class="md:hidden mb-4 flex border rounded-xl overflow-hidden shadow-sm">
+            <input id="mobileSearch" type="text" placeholder="Search jobs, tech, odds..." class="w-full px-4 py-2 text-sm outline-none dark:bg-slate-800">
+            <button onclick="handleSearch('mobileSearch')" class="bg-blue-600 text-white px-5"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
 
-        <div class="lg:col-span-1 space-y-6">
-            
-            <div class="bet-gradient rounded-2xl p-5 text-white shadow-xl">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="font-bold text-sm uppercase tracking-wider">Live Match Odds</h3>
-                    <span class="animate-pulse bg-red-500 text-[8px] px-2 py-0.5 rounded-full font-bold">LIVE</span>
-                </div>
-                
-                <div id="oddsContainer" class="space-y-3">
-                    <div class="bg-white/10 p-3 rounded-lg border border-white/10">
-                        <p class="text-[10px] text-blue-200 mb-1">Premier League</p>
-                        <div class="flex justify-between text-xs font-bold">
-                            <span>Chelsea vs Arsenal</span>
-                            <span class="text-green-400">2.10 | 3.40</span>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="YOUR_SMART_LINK_HERE" target="_blank" class="block text-center bg-yellow-400 text-blue-900 mt-4 py-2 rounded-xl font-black text-xs hover:bg-yellow-300 transition">
-                    BET NOW & WIN ₦100K
-                </a>
-            </div>
-
-            <div class="bg-gray-200 h-[250px] rounded-xl flex items-center justify-center text-gray-400 text-xs border-2 border-dashed border-gray-300">
-                ADSTERRA BANNER 300x250
-            </div>
-
+        <div class="flex gap-2 my-4 overflow-x-auto pb-2 no-scrollbar">
+            <button onclick="filterType('All')" class="bg-blue-600 text-white px-5 py-1.5 rounded-full text-[10px] font-black uppercase shrink-0">Show All</button>
+            <button onclick="filterType('Job')" class="bg-white dark:bg-slate-800 border dark:border-slate-700 px-5 py-1.5 rounded-full text-[10px] font-bold shrink-0">💼 Remote Jobs</button>
+            <button onclick="filterType('Betting')" class="bg-white dark:bg-slate-800 border dark:border-slate-700 px-5 py-1.5 rounded-full text-[10px] font-bold shrink-0">⚽ Sports Odds</button>
         </div>
+
+        <div id="contentGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
     </main>
 
-    <script>
-        let allArticles = [];
+    <a href="https://wa.me/?text=Check out the latest Tech Jobs and Odds on NG-Tech-Hub: https://SeagrowProtocol.github.io/ng-tech-news/" 
+       class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition z-50">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
 
-        async function loadNews() {
+    <footer class="bg-slate-950 text-white py-12 px-4 text-center mt-auto">
+        <p class="text-blue-500 font-black text-xl mb-6">NG-TECH-HUB</p>
+        <div class="flex justify-center gap-8 text-xs text-slate-500 mb-8 uppercase font-bold">
+            <a href="privacy.html" class="hover:text-white">Privacy</a>
+            <a href="terms.html" class="hover:text-white">Terms</a>
+            <a href="mailto:owlfitcat@sendapp.uk" class="hover:text-white">Contact</a>
+        </div>
+        <div class="max-w-md mx-auto bg-slate-900 p-6 rounded-2xl border border-slate-800">
+            <p class="text-[10px] text-slate-400 mb-4 uppercase tracking-widest">Sponsored Resource</p>
+            <a href="YOUR_SMART_LINK_HERE" class="bg-yellow-500 text-black px-6 py-2 rounded-full font-black text-xs inline-block">FREE TECH TOOLS ACCESS</a>
+        </div>
+    </footer>
+
+    <script>
+        let items = [];
+
+        async function init() {
             try {
-                const response = await fetch('news.json');
-                allArticles = await response.json();
-                renderArticles(allArticles);
+                const res = await fetch('news.json');
+                const rawData = await res.json();
+                items = rawData.map(item => ({
+                    ...item,
+                    id: Math.random().toString(36).substr(2, 9),
+                    type: item.title.toLowerCase().includes('job') ? 'Job' : 'Tech',
+                    liked: localStorage.getItem(`liked-${item.title}`) === 'true'
+                }));
+                render(items);
             } catch (e) {
-                document.getElementById('newsGrid').innerHTML = "<p>Updating news database...</p>";
+                console.log("Loading error...");
             }
         }
 
-        function renderArticles(articles) {
-            const grid = document.getElementById('newsGrid');
-            grid.innerHTML = articles.map(post => `
-                <div class="news-card bg-white rounded-xl overflow-hidden border border-gray-100 flex flex-col">
-                    <img src="${post.urlToImage || 'https://via.placeholder.com/400x200'}" class="h-40 w-full object-cover">
-                    <div class="p-4 flex-grow">
-                        <h2 class="font-bold text-sm mb-2">${post.title}</h2>
-                        <p class="text-gray-500 text-[10px] line-clamp-2">${post.description || ''}</p>
+        function render(data) {
+            const grid = document.getElementById('contentGrid');
+            grid.innerHTML = data.map(item => `
+                <div class="news-card bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-700 flex flex-col">
+                    <img src="${item.urlToImage || 'https://via.placeholder.com/400x200'}" class="h-44 w-full object-cover">
+                    <div class="p-5 flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200 text-[8px] px-2 py-0.5 rounded-md font-black uppercase italic">${item.type}</span>
+                            <button onclick="toggleLike('${item.title}')" class="${item.liked ? 'text-red-500' : 'text-slate-300 dark:text-slate-600'} transition">
+                                <i class="fa-solid fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-sm leading-tight mb-3">${item.title}</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-[11px] line-clamp-2">${item.description || 'Details inside...'}</p>
                     </div>
-                    <div class="p-4 pt-0">
-                        <a href="${post.url}" target="_blank" class="block text-center border border-blue-600 text-blue-600 py-1.5 rounded-lg text-[10px] font-bold hover:bg-blue-600 hover:text-white transition">READ MORE</a>
+                    <div class="p-5 pt-0 flex gap-2">
+                        <a href="${item.url}" target="_blank" class="flex-grow bg-blue-600 text-white text-center py-2 rounded-xl text-[10px] font-black uppercase">Read Full</a>
+                        <a href="https://wa.me/?text=Check this out on NG-Tech-Hub: ${item.title} - ${item.url}" target="_blank" class="bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 px-3 py-2 rounded-xl text-xs"><i class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
             `).join('');
         }
 
-        // Initialize
-        loadNews();
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            document.getElementById('theme-icon').className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        }
+
+        function toggleLike(title) {
+            const isLiked = localStorage.getItem(`liked-${title}`) === 'true';
+            localStorage.setItem(`liked-${title}`, !isLiked);
+            init(); // Re-render to show updated heart
+        }
+
+        function handleSearch(id = 'searchInput') {
+            const term = document.getElementById(id).value.toLowerCase();
+            const filtered = items.filter(i => i.title.toLowerCase().includes(term) || (i.description && i.description.toLowerCase().includes(term)));
+            render(filtered);
+        }
+
+        function filterType(type) {
+            if(type === 'All') return render(items);
+            render(items.filter(i => i.type === type));
+        }
+
+        init();
     </script>
 </body>
 </html>
