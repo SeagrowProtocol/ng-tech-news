@@ -1,0 +1,30 @@
+name: Daily Tech Update
+on:
+  schedule:
+    - cron: '0 0 * * *' # Every night at midnight
+  workflow_dispatch: # Allows manual run button
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Important: allows GitHub to save news.json
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Latest News
+        run: node scraper.js
+
+      - name: Save to Repo
+        run: |
+          git config --global user.name "NG-Tech-Bot"
+          git config --global user.email "bot@ngtechhub.com"
+          git add news.json
+          git commit -m "Auto-update: $(date)" || exit 0
+          git push
