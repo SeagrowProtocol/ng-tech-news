@@ -3,16 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NG Tech Hub | Remote Jobs & Tech Gist</title>
     
-    <title>NG Tech Hub | Remote Jobs, Tech News & Live Odds</title>
-    <meta name="description" content="Nigeria's #1 portal for Remote Tech Jobs, Latest Tech News, and Live Betting Odds. Earn points while you browse!">
-    <meta name="keywords" content="Remote Jobs Nigeria, Tech News Africa, Live Odds, Make Money Online Nigeria, NG Tech Hub">
-    
-    <meta property="og:title" content="NG Tech Hub - Work & Tech Center">
-    <meta property="og:description" content="Find Remote Jobs and the latest Tech Gist in Nigeria.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop">
-    <meta property="og:url" content="https://yourusername.github.io">
-
+    <meta name="description" content="Nigeria's premium hub for Remote Jobs and Tech Gist.">
     <script src="https://kit.fontawesome.com/c34a2dfd31.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -20,224 +13,162 @@
 
     <style>
         :root { 
-            --primary: #00ff88; 
-            --glass: rgba(255, 255, 255, 0.1);
-            --dark-bg: #0f172a;
-            --card-bg: #1e293b;
+            --primary: #00D16E; /* Fresh Green */
+            --bg: #F8FAFC; /* Light Background */
+            --white: #FFFFFF;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
         }
 
-        * { box-sizing: border-box; transition: all 0.3s ease; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: 'Outfit', sans-serif; 
-            margin: 0; 
-            background: var(--dark-bg); 
-            color: #f1f5f9; 
-            line-height: 1.6;
+            background: var(--bg); 
+            color: var(--text-main); 
+            overflow-x: hidden; 
         }
 
-        /* GLASS NAVIGATION */
+        /* HEADER */
         header { 
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--glass);
+            padding: 15px 20px; 
+            background: var(--white); 
+            position: sticky; top: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
+        .logo { font-weight: 800; color: var(--text-main); font-size: 20px; letter-spacing: -1px; }
+        .logo span { color: var(--primary); }
 
-        .logo { font-weight: 800; font-size: 24px; letter-spacing: -1px; color: var(--primary); text-transform: uppercase; }
-        .stats-bar { font-size: 13px; color: #94a3b8; margin-top: 5px; }
-
-        /* SEARCH HUB */
-        .search-area { 
-            max-width: 800px; 
-            margin: 40px auto; 
-            padding: 0 20px;
-            text-align: center;
+        /* HERO SECTION */
+        .hero { 
+            text-align: center; 
+            padding: 50px 20px; 
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
         }
-
-        .search-bar-wrap {
-            position: relative;
-            display: flex;
-            align-items: center;
-            background: var(--card-bg);
-            border-radius: 50px;
-            padding: 5px 10px;
-            border: 2px solid var(--glass);
-        }
+        .hero h1 { font-size: 32px; margin-bottom: 10px; font-weight: 800; }
         
-        .search-bar-wrap:focus-within { border-color: var(--primary); box-shadow: 0 0 20px rgba(0, 255, 136, 0.2); }
-
-        .search-bar-wrap input {
-            width: 100%;
-            background: none;
-            border: none;
-            padding: 15px 20px;
-            color: white;
-            font-size: 16px;
-            outline: none;
+        .search-box { 
+            display: flex; 
+            background: #F1F5F9; 
+            border-radius: 12px; 
+            padding: 5px; 
+            border: 1px solid var(--border); 
+            margin: 25px auto 0;
+            max-width: 600px;
         }
-
-        .search-btn {
-            background: var(--primary);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 40px;
-            color: #000;
-            font-weight: 700;
-            cursor: pointer;
+        .search-box input { 
+            flex: 1; background: none; border: none; padding: 12px 15px; 
+            color: var(--text-main); outline: none; font-size: 16px;
+        }
+        .search-box button { 
+            background: var(--primary); color: white; border: none; 
+            padding: 10px 25px; border-radius: 10px; font-weight: 700; cursor: pointer; 
         }
 
         /* TABS */
-        .tabs { display: flex; justify-content: center; gap: 15px; margin-top: 25px; overflow-x: auto; padding-bottom: 10px; }
-        .tab-btn {
-            background: var(--glass);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            white-space: nowrap;
-            font-weight: 600;
+        .tabs { display: flex; gap: 8px; justify-content: center; margin: 25px 0; overflow-x: auto; padding: 0 10px 10px; }
+        .tab-btn { 
+            padding: 10px 20px; border: 1px solid var(--border); border-radius: 50px; 
+            background: var(--white); color: var(--text-muted); cursor: pointer; 
+            white-space: nowrap; font-weight: 600; font-size: 14px;
+            transition: 0.2s;
         }
-        .tab-btn.active { background: var(--primary); color: #000; }
-
-        /* CONTENT GRID */
-        .main-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-            padding: 20px;
-            max-width: 1300px;
-            margin: 0 auto;
+        .tab-btn.active { 
+            background: var(--primary); border-color: var(--primary); color: white; 
+            box-shadow: 0 4px 12px rgba(0, 209, 110, 0.3);
         }
 
-        .card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--glass);
-            position: relative;
+        /* GRID */
+        .grid { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 25px; padding: 30px 20px; max-width: 1200px; margin: 0 auto; 
+        }
+        .card { 
+            background: var(--white); border-radius: 16px; overflow: hidden; 
+            border: 1px solid var(--border); transition: 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        
+        .card-img { width: 100%; height: 190px; object-fit: cover; background: #eee; }
+        .card-body { padding: 20px; }
+        .card-body h3 { font-size: 18px; margin-bottom: 8px; line-height: 1.4; }
+        
+        .card-footer { 
+            padding: 15px 20px; background: #FAFAFA; 
+            display: flex; justify-content: space-between; align-items: center; 
+            border-top: 1px solid var(--border);
         }
 
-        .card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        /* LIKE BUTTON */
+        .like-btn { 
+            background: none; border: none; color: #CBD5E1; 
+            font-size: 22px; cursor: pointer; transition: 0.2s; 
+        }
+        .like-btn.active { color: #FF4757; }
 
-        .card-img { width: 100%; height: 200px; object-fit: cover; }
-        .card-content { padding: 20px; }
-        .tag { font-size: 10px; background: var(--primary); color: #000; padding: 2px 8px; border-radius: 5px; font-weight: 800; margin-bottom: 10px; display: inline-block; }
-
-        /* ADSTERRA NATIVE PLACEHOLDER */
-        .ad-slot { 
-            background: #000; 
-            min-height: 100px; 
-            margin: 20px 0; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            border-radius: 15px;
-            border: 1px dashed #444;
+        /* ACTION BUTTON */
+        .btn-action {
+            background: var(--primary); color: white; text-decoration: none;
+            padding: 8px 18px; border-radius: 8px; font-weight: 700; font-size: 13px;
         }
 
-        /* JOKE BOX */
-        .joke-container {
-            background: linear-gradient(45deg, #1e293b, #0f172a);
-            padding: 30px;
-            margin: 40px auto;
-            max-width: 800px;
-            border-radius: 20px;
-            text-align: center;
-            border-left: 5px solid var(--primary);
+        /* JOKE SECTION */
+        .joke-bar { 
+            background: #F1F5F9; padding: 30px; border-radius: 20px; 
+            max-width: 800px; margin: 40px auto; text-align: center;
+            border: 1px solid var(--border);
         }
+        .joke-bar p { font-size: 18px; color: var(--text-main); font-style: italic; }
 
         /* FLOATING SOCIAL */
-        .social-dock {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 9999;
-        }
+        .social-dock { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
+        .dock-item { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
 
-        .dock-item {
-            width: 50px; height: 50px;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 20px; text-decoration: none;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-
-        footer { padding: 60px 20px; text-align: center; color: #64748b; font-size: 14px; }
-        
-        @media (max-width: 600px) {
-            .main-grid { grid-template-columns: 1fr; }
-            .logo { font-size: 20px; }
+        @media (max-width: 600px) { 
+            .grid { grid-template-columns: 1fr; } 
+            .hero h1 { font-size: 26px; }
         }
     </style>
 </head>
 <body>
 
-<script type='text/javascript' src='//pl29057773.profitablecpmratenetwork.com/e0/43/be/e043bec3a6648ab81ae3b9e75fa6e639.js'></script>
-
 <header>
-    <div class="logo">NG Tech Hub</div>
-    <div class="stats-bar">
-        <i class="fa-solid fa-bolt" style="color:var(--primary)"></i> 
-        Active Users: <span id="userCount">1,402</span> | 
-        Your Points: <span id="points" style="color:var(--primary); font-weight:bold;">0</span>
-    </div>
+    <div class="logo">NG<span>TECH</span>HUB</div>
+    <div style="font-weight: 600; font-size: 14px;">⭐ <span id="points">0</span></div>
 </header>
 
-<div class="search-area">
-    <h1>Your Gateway to Global <span style="color:var(--primary)">Remote</span> Tech</h1>
-    <p style="color:#94a3b8">Search the latest high-paying remote jobs and tech trends in Nigeria.</p>
+<div class="hero">
+    <h1>Discover Remote <span style="color:var(--primary)">Tech Jobs</span></h1>
+    <p style="color:var(--text-muted)">The #1 portal for Nigerian developers and tech enthusiasts.</p>
     
-    <div class="search-bar-wrap">
-        <i class="fa-solid fa-magnifying-glass" style="margin-left: 15px; color:#64748b"></i>
-        <input type="text" id="searchInput" placeholder="Try 'Frontend Developer' or 'Crypto'..." onkeyup="if(event.key==='Enter') executeSearch()">
-        <button class="search-btn" onclick="executeSearch()">SEARCH</button>
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search Remote Jobs, AI, Crypto..." onkeyup="if(event.key==='Enter') executeSearch()">
+        <button onclick="executeSearch()">SEARCH</button>
     </div>
 
     <div class="tabs">
-        <button class="tab-btn active" onclick="changeTab('tech', this)">LATEST TECH</button>
-        <button class="tab-btn" onclick="changeTab('jobs', this)">REMOTE JOBS</button>
-        <button class="tab-btn" onclick="changeTab('odds', this)">LIVE ODDS</button>
-        <button class="tab-btn" onclick="changeTab('music', this)">NAIJA MUSIC</button>
+        <button class="tab-btn active" onclick="changeTab('tech', this)">💻 Tech Gist</button>
+        <button class="tab-btn" onclick="changeTab('jobs', this)">💼 Remote Jobs</button>
+        <button class="tab-btn" onclick="changeTab('odds', this)">⚽ Live Odds</button>
+        <button class="tab-btn" onclick="changeTab('music', this)">🎵 Music</button>
     </div>
 </div>
 
-<div class="ad-slot">
-    <script type="text/javascript">
-        atOptions = { 'key' : 'e043bec3a6648ab81ae3b9e75fa6e639', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/e043bec3a6648ab81ae3b9e75fa6e639/invoke.js"></script>
-</div>
-
-<div id="results" class="main-grid">
+<div id="results" class="grid">
     </div>
 
-<div class="joke-container">
-    <h3 style="margin-top:0"><i class="fa-solid fa-face-laugh-beam"></i> Daily Naija Gist</h3>
-    <p id="jokeDisplay" style="font-size: 18px; font-style: italic;">"Fetching the freshest gist from Lagos..."</p>
-    <button onclick="getJoke()" style="background:none; border:1px solid var(--primary); color:var(--primary); padding:8px 20px; border-radius:10px; cursor:pointer;">New Joke</button>
+<div class="joke-bar">
+    <p id="jokeDisplay">"Fetching Naija laughter..."</p>
+    <button onclick="getJoke()" style="background:none; border:none; color:var(--primary); cursor:pointer; font-weight:700; margin-top:15px; font-size:14px;">Next Gist →</button>
 </div>
 
 <div class="social-dock">
     <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" class="dock-item" style="background:#25D366"><i class="fa-brands fa-whatsapp"></i></a>
     <a href="https://t.me/latest_ng" class="dock-item" style="background:#0088cc"><i class="fa-brands fa-telegram"></i></a>
-    <a href="#" onclick="copyInvite()" class="dock-item" style="background:var(--primary); color:#000"><i class="fa-solid fa-share-nodes"></i></a>
 </div>
-
-<footer>
-    <p>Powered by NG Tech Hub API Engine &copy; 2026</p>
-    <p style="margin-top:10px;">
-        <a href="legal.html" style="color:var(--primary); text-decoration:none">Privacy Policy</a> | 
-        <a href="legal.html" style="color:var(--primary); text-decoration:none">Terms of Service</a>
-    </p>
-</footer>
 
 <script>
     const KEYS = {
@@ -248,14 +179,9 @@
     };
 
     let activeTab = 'tech';
+    let likes = JSON.parse(localStorage.getItem('ng_likes')) || [];
     let pts = localStorage.getItem('ng_pts') || 0;
     document.getElementById('points').innerText = pts;
-
-    function addPts(n) {
-        pts = parseInt(pts) + n;
-        localStorage.setItem('ng_pts', pts);
-        document.getElementById('points').innerText = pts;
-    }
 
     function changeTab(t, btn) {
         activeTab = t;
@@ -267,106 +193,102 @@
     async function executeSearch() {
         const q = document.getElementById('searchInput').value || 'latest';
         const grid = document.getElementById('results');
-        grid.innerHTML = '<div style="grid-column:1/-1; text-align:center;"><i class="fa-solid fa-spinner fa-spin"></i> Loading Data...</div>';
+        grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:50px; color:#64748B;">Updating feed...</div>';
 
-        let apiURL = "";
+        let url = "";
         if (activeTab === 'tech' || activeTab === 'music') {
-            apiURL = `https://newsapi.org/v2/everything?q=${activeTab}+${q}&apiKey=${KEYS.news}`;
+            url = `https://newsapi.org/v2/everything?q=${activeTab}+${q}&apiKey=${KEYS.news}`;
         } else if (activeTab === 'jobs') {
-            apiURL = `https://api.adzuna.com/v1/api/jobs/ng/search/1?app_id=${KEYS.adz_id}&app_key=${KEYS.adz_key}&results_per_page=12&what=${encodeURIComponent(q + ' remote')}`;
+            url = `https://api.adzuna.com/v1/api/jobs/ng/search/1?app_id=${KEYS.adz_id}&app_key=${KEYS.adz_key}&results_per_page=12&what=${encodeURIComponent(q + ' remote')}`;
         } else if (activeTab === 'odds') {
-            apiURL = `https://api.the-odds-api.com/v4/sports/upcoming/odds/?regions=eu&apiKey=${KEYS.odds}`;
+            url = `https://api.the-odds-api.com/v4/sports/upcoming/odds/?regions=eu&apiKey=${KEYS.odds}`;
         }
 
-        const proxies = ["https://corsproxy.io/?", "https://api.allorigins.win/raw?url="];
-
-        for (let proxy of proxies) {
-            try {
-                const response = await fetch(proxy + encodeURIComponent(apiURL));
-                if (!response.ok) continue;
-                const data = await response.json();
-                let items = data.articles || data.results || (Array.isArray(data) ? data : []);
-                
-                if (items.length > 0) {
-                    render(items);
-                    return;
-                }
-            } catch (e) { console.log("Trying next proxy..."); }
-        }
-
-        // Global Job Fallback
-        if (activeTab === 'jobs') {
-            const fallback = `https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=${KEYS.adz_id}&app_key=${KEYS.adz_key}&results_per_page=12&what=${encodeURIComponent(q + ' remote')}`;
-            try {
-                const res = await fetch(proxies[0] + encodeURIComponent(fallback));
-                const d = await res.json();
-                render(d.results);
-            } catch (e) { grid.innerHTML = "<p>Connection error. Please try again.</p>"; }
+        try {
+            const proxy = "https://corsproxy.io/?";
+            const response = await fetch(proxy + encodeURIComponent(url));
+            const data = await response.json();
+            let items = data.articles || data.results || (Array.isArray(data) ? data : []);
+            
+            if (activeTab === 'jobs' && items.length === 0) {
+                const altRes = await fetch("https://www.arbeitnow.com/api/job-board-api");
+                const altData = await altRes.json();
+                items = altData.data.filter(j => j.remote === true);
+            }
+            render(items);
+        } catch (e) {
+            grid.innerHTML = "Server busy. Please refresh.";
         }
     }
 
     function render(items) {
         const grid = document.getElementById('results');
         grid.innerHTML = '';
-        items.slice(0, 12).forEach((item, index) => {
+        items.slice(0, 12).forEach(item => {
+            const id = item.url || item.redirect_url;
+            const isLiked = likes.includes(id);
             const div = document.createElement('div');
             div.className = 'card';
             
             if (activeTab === 'jobs') {
                 div.innerHTML = `
-                    <div class="card-content">
-                        <span class="tag">REMOTE VACANCY</span>
-                        <h3 style="margin:10px 0">${item.title}</h3>
-                        <p style="color:#94a3b8">${item.company.display_name}</p>
-                        <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
-                            <span style="color:var(--primary); font-weight:bold">NGN High Pay</span>
-                            <a href="${item.redirect_url}" target="_blank" class="search-btn" style="text-decoration:none; font-size:12px;" onclick="addPts(10)">APPLY NOW</a>
-                        </div>
+                    <div class="card-body">
+                        <span style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase;">Remote Opportunity</span>
+                        <h3 style="margin:10px 0">${item.title || item.job_title}</h3>
+                        <p style="color:var(--text-muted); font-size:14px;">${item.company?.display_name || item.company_name}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="like-btn ${isLiked ? 'active' : ''}" onclick="toggleLike('${id}', this)"><i class="fa-solid fa-heart"></i></button>
+                        <a href="${item.redirect_url || item.url}" target="_blank" class="btn-action" onclick="addPts(10)">APPLY</a>
                     </div>`;
             } else if (activeTab === 'odds') {
                 div.innerHTML = `
-                    <div class="card-content">
-                        <span class="tag">LIVE BETTING</span>
-                        <h3>${item.home_team} vs ${item.away_team}</h3>
-                        <p>${item.sport_title}</p>
-                        <button class="search-btn" style="width:100%; margin-top:15px;" onclick="window.open('https://www.profitablecpmratenetwork.com/vcmv2e97bh?key=6f31d584592651da1bf92e0579ecf9e1')">BET NOW</button>
+                    <div class="card-body">
+                        <h3 style="text-align:center">${item.home_team} <br> vs <br> ${item.away_team}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://www.profitablecpmratenetwork.com/vcmv2e97bh?key=6f31d584592651da1bf92e0579ecf9e1" target="_blank" class="btn-action" style="width:100%; text-align:center">BET NOW</a>
                     </div>`;
             } else {
                 div.innerHTML = `
-                    <img src="${item.urlToImage || 'https://images.unsplash.com/photo-1519389950473-47ba0277781c'}" class="card-img">
-                    <div class="card-content">
-                        <span class="tag">${activeTab} GIST</span>
-                        <h3 style="font-size:16px">${item.title}</h3>
-                        <a href="${item.url}" target="_blank" class="search-btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;" onclick="addPts(5)">READ MORE</a>
+                    <img src="${item.urlToImage || 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400'}" class="card-img">
+                    <div class="card-body"><h3>${item.title}</h3></div>
+                    <div class="card-footer">
+                        <button class="like-btn ${isLiked ? 'active' : ''}" onclick="toggleLike('${id}', this)"><i class="fa-solid fa-heart"></i></button>
+                        <a href="${item.url}" target="_blank" class="btn-action" onclick="addPts(5)">READ</a>
                     </div>`;
             }
             grid.appendChild(div);
         });
     }
 
+    function toggleLike(id, btn) {
+        if (likes.includes(id)) {
+            likes = likes.filter(l => l !== id);
+            btn.classList.remove('active');
+        } else {
+            likes.push(id);
+            btn.classList.add('active');
+        }
+        localStorage.setItem('ng_likes', JSON.stringify(likes));
+    }
+
+    function addPts(n) {
+        pts = parseInt(pts) + n;
+        localStorage.setItem('ng_pts', pts);
+        document.getElementById('points').innerText = pts;
+    }
+
     async function getJoke() {
-        const jokeDisplay = document.getElementById('jokeDisplay');
         try {
             const r = await fetch('https://official-joke-api.appspot.com/random_joke');
             const d = await r.json();
-            jokeDisplay.innerText = `${d.setup} ... ${d.punchline}`;
-        } catch(e) { jokeDisplay.innerText = "Why did the Nigerian dev cross the road? To find 5G signal!"; }
+            document.getElementById('jokeDisplay').innerText = `"${d.setup} - ${d.punchline}"`;
+        } catch(e) {}
     }
-
-    function copyInvite() {
-        navigator.clipboard.writeText(window.location.href);
-        alert("Referral link copied! Share with friends to earn bonus points.");
-    }
-
-    // Auto-update user count for "Active" feel
-    setInterval(() => {
-        const current = parseInt(document.getElementById('userCount').innerText.replace(',',''));
-        document.getElementById('userCount').innerText = (current + Math.floor(Math.random() * 5)).toLocaleString();
-    }, 5000);
 
     executeSearch();
     getJoke();
 </script>
-
 </body>
 </html>
