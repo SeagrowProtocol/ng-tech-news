@@ -5,172 +5,189 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NG Tech News | Jobs, Tech & Live Odds</title>
     
-    <meta name="description" content="Latest Tech News, Job Vacancies in Nigeria, and Live Betting Odds. Search and apply today!">
-    <meta property="og:title" content="NG Tech News Hub">
+    <meta name="description" content="Nigeria's Hub for Tech, Jobs, and Live Odds. Search, Apply, and Earn points daily.">
+    <meta property="og:title" content="NG Tech News - Your Daily Hub">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1504711432869-5d39a330f9a7?q=80&w=500">
 
     <script src="https://kit.fontawesome.com/c34a2dfd31.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <script src="https://fixesconsessionconsession.com/3f/64/cb/3f64cb6bd6b52e1f9613efd8f200761c.js"></script>
     <script src="https://pl29057773.profitablecpmratenetwork.com/e0/43/be/e043bec3a6648ab81ae3b9e75fa6e639.js"></script>
+    <script src="https://pl29057774.profitablecpmratenetwork.com/3f/64/cb/3f64cb6bd6b52e1f9613efd8f200761c.js"></script>
 
     <style>
         :root { --primary: #2ecc71; --dark: #121212; --accent: #f39c12; }
-        body { font-family: 'Poppins', sans-serif; margin: 0; background: #f4f7f6; color: #333; }
-        header { background: var(--dark); color: white; padding: 15px; text-align: center; sticky: top; z-index: 1000; }
-        .stats-bar { background: #fff; padding: 10px; text-align: center; border-bottom: 2px solid var(--primary); font-weight: bold; }
-        
-        .search-section { max-width: 800px; margin: 20px auto; padding: 0 15px; }
-        .tabs { display: flex; gap: 10px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; }
-        .tab-btn { padding: 8px 20px; border: none; border-radius: 20px; cursor: pointer; background: #ddd; white-space: nowrap; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; background: #f0f2f5; color: #333; overflow-x: hidden; }
+        header { background: var(--dark); color: white; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 100; border-bottom: 3px solid var(--primary); }
+        .stats { font-size: 14px; margin-top: 5px; color: var(--primary); font-weight: 600; }
+        .search-container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
+        .tabs { display: flex; overflow-x: auto; gap: 10px; margin-bottom: 15px; padding-bottom: 5px; scrollbar-width: none; }
+        .tab-btn { white-space: nowrap; padding: 10px 22px; border: none; border-radius: 25px; cursor: pointer; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-weight: 600; transition: 0.3s; }
         .tab-btn.active { background: var(--primary); color: white; }
-        .search-bar { width: 100%; padding: 15px; border-radius: 30px; border: 1px solid #ccc; outline: none; font-size: 16px; }
-
+        .search-bar { width: 100%; padding: 15px 25px; border-radius: 50px; border: 1px solid #ddd; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); outline: none; box-sizing: border-box; }
         .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: auto; }
-        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
-        .card img { width: 100%; height: 180px; object-fit: cover; }
-        .card-content { padding: 15px; flex-grow: 1; }
-        .card-footer { padding: 10px 15px; border-top: 1px solid #eee; display: flex; justify-content: space-between; }
-
-        .floating-social { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 999; }
-        .s-link { width: 50px; height: 50px; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-
-        footer { background: var(--dark); color: #999; padding: 40px 20px; text-align: center; }
-        .joke-container { background: #1e1e1e; padding: 20px; border-radius: 10px; margin-bottom: 20px; color: #ddd; }
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; flex-direction: column; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; height: 180px; object-fit: cover; background: #eee; }
+        .card-body { padding: 15px; flex-grow: 1; }
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; background: #f1f1f1; margin-bottom: 10px; text-transform: uppercase; color: #666; }
+        .card-footer { padding: 15px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .apply-btn { background: var(--primary); color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 14px; font-weight: bold; }
+        .promo-banner { background: linear-gradient(135deg, var(--dark), #2c3e50); color: white; padding: 30px; border-radius: 15px; text-align: center; margin: 20px auto; max-width: 870px; border-left: 5px solid var(--primary); }
+        .social-float { position: fixed; bottom: 25px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
+        .s-btn { width: 55px; height: 55px; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        footer { background: var(--dark); color: #888; padding: 50px 20px; text-align: center; }
+        .joke-section { background: #1e1e1e; color: #ddd; padding: 20px; border-radius: 10px; max-width: 600px; margin: 0 auto 30px auto; border: 1px dashed #444; }
     </style>
 </head>
 <body>
 
 <header>
-    <h2 style="margin:0;">NG TECH NEWS</h2>
+    <h2 style="margin:0; letter-spacing: 1px;">NG TECH NEWS</h2>
+    <div class="stats">
+        <i class="fa-solid fa-star"></i> Points: <span id="points">0</span> | 
+        <span onclick="copyInvite()" style="cursor:pointer; text-decoration:underline; color: white;">Invite & Earn 🔗</span>
+    </div>
 </header>
 
-<div class="stats-bar">
-    ⭐ My Points: <span id="user-points">0</span> | 
-    <span onclick="copyRef()" style="color:var(--primary); cursor:pointer;">Invite Friends 🔗</span>
-</div>
-
-<div class="search-section">
+<div class="search-container">
     <div class="tabs">
-        <button class="tab-btn active" onclick="setTab('tech', this)">💻 Tech</button>
-        <button class="tab-btn" onclick="setTab('jobs', this)">💼 Jobs</button>
-        <button class="tab-btn" onclick="setTab('odds', this)">⚽ Odds</button>
-        <button class="tab-btn" onclick="setTab('music', this)">🎵 Music</button>
+        <button class="tab-btn active" onclick="changeTab('tech', this)">💻 Tech</button>
+        <button class="tab-btn" onclick="changeTab('jobs', this)">💼 Jobs</button>
+        <button class="tab-btn" onclick="changeTab('odds', this)">⚽ Odds</button>
+        <button class="tab-btn" onclick="changeTab('music', this)">🎵 Music</button>
     </div>
-    <input type="text" id="searchInput" class="search-bar" placeholder="Search for news or jobs..." onkeyup="if(event.key==='Enter') doSearch()">
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search for jobs, news or topics..." onkeyup="if(event.key==='Enter') executeSearch()">
 </div>
 
-<div style="text-align:center; margin-bottom:20px;">
+<div style="text-align:center; margin:10px auto; max-width: 100%;">
     <script type="text/javascript">
         atOptions = { 'key' : 'ec04f7134728239d00b82b9ffbb92e38', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
     </script>
     <script type="text/javascript" src="https://www.highperformanceformat.com/ec04f7134728239d00b82b9ffbb92e38/invoke.js"></script>
 </div>
 
-<div id="results-grid" class="content-grid"></div>
+<div id="results" class="content-grid">
+    <p style="text-align:center; grid-column: 1/-1;">Loading daily updates...</p>
+</div>
 
-<div class="floating-social">
-    <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" class="s-link" style="background:#25D366;"><i class="fa-brands fa-whatsapp"></i></a>
-    <a href="https://t.me/latest_ng" class="s-link" style="background:#0088cc;"><i class="fa-brands fa-telegram"></i></a>
+<div class="promo-banner">
+    <h3>Earn Extra Points ⭐</h3>
+    <p>Complete this quick task to unlock 100 bonus points!</p>
+    <button onclick="openSmartLink()" style="background:var(--primary); color:white; padding:12px 25px; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">CLAIM NOW</button>
+</div>
+
+<div class="social-float">
+    <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" class="s-btn" style="background:#25D366;"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://t.me/latest_ng" class="s-btn" style="background:#0088cc;"><i class="fa-brands fa-telegram"></i></a>
 </div>
 
 <footer>
-    <div class="joke-container">
-        <strong>Daily Joke:</strong>
-        <p id="jokeText">Loading laugh...</p>
-        <button onclick="fetchJoke()" style="background:none; border:1px solid #555; color:#aaa; cursor:pointer; border-radius:5px;">New Joke</button>
+    <div class="joke-section">
+        <p id="jokeDisplay">"Loading a fresh joke..."</p>
+        <button onclick="getJoke()" style="background:none; border:1px solid #444; color:#888; cursor:pointer; padding:5px 10px; border-radius:5px; font-size: 12px;">Get New Joke</button>
     </div>
-    <p>&copy; 2026 NG Tech News Hub | <a href="legal.html" style="color:var(--primary)">Privacy & Terms</a></p>
+    <p>&copy; 2026 NG Tech News Hub | <a href="legal.html" style="color:var(--primary); text-decoration: none;">Privacy & Terms</a></p>
 </footer>
 
 <script>
-    // API CONFIG
-    const CONFIG = {
+    const KEYS = {
         news: '3f8b592a6a9444d48a48114dc2e6328c',
         odds: '83c4173b194e9aef16318df0e08dd055',
         adz_id: 'ef02ca59',
-        adz_key: '64df082acf621ff8ba9e989e97ed6793',
-        smart: 'https://www.profitablecpmratenetwork.com/vcmv2e97bh?key=6f31d584592651da1bf92e0579ecf9e1'
+        adz_key: '64df082acf621ff8ba9e989e97ed6793'
     };
+    const PROXY = "https://api.allorigins.win/raw?url=";
+    let activeTab = 'tech';
 
-    let currentTab = 'tech';
-    let points = localStorage.getItem('ng_user_points') || 0;
-    document.getElementById('user-points').innerText = points;
+    // Points
+    let pts = localStorage.getItem('ng_pts') || 0;
+    document.getElementById('points').innerText = pts;
 
-    function addPoints(amt) {
-        points = parseInt(points) + amt;
-        localStorage.setItem('ng_user_points', points);
-        document.getElementById('user-points').innerText = points;
+    function addPts(n) {
+        pts = parseInt(pts) + n;
+        localStorage.setItem('ng_pts', pts);
+        document.getElementById('points').innerText = pts;
     }
 
-    function setTab(tab, btn) {
-        currentTab = tab;
+    function changeTab(t, btn) {
+        activeTab = t;
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        doSearch();
+        executeSearch();
     }
 
-    async function doSearch() {
-        const query = document.getElementById('searchInput').value || 'latest';
-        const grid = document.getElementById('results-grid');
-        grid.innerHTML = "Fetching updates...";
+    async function executeSearch() {
+        const q = document.getElementById('searchInput').value || 'latest';
+        const grid = document.getElementById('results');
+        grid.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">Searching live database...</p>';
 
         try {
-            if (currentTab === 'tech' || currentTab === 'music') {
-                const res = await fetch(`https://newsapi.org/v2/everything?q=${currentTab}+${query}&apiKey=${CONFIG.news}`);
-                const data = await res.json();
-                renderNews(data.articles.slice(0, 12));
-            } else if (currentTab === 'jobs') {
-                const res = await fetch(`https://api.adzuna.com/v1/api/jobs/ng/search/1?app_id=${CONFIG.adz_id}&app_key=${CONFIG.adz_key}&what=${query}`);
-                const data = await res.json();
-                renderJobs(data.results);
-            } else if (currentTab === 'odds') {
-                const res = await fetch(`https://api.the-odds-api.com/v4/sports/upcoming/odds/?regions=eu&apiKey=${CONFIG.odds}`);
-                const data = await res.json();
-                renderOdds(data);
+            let apiURL = "";
+            if (activeTab === 'tech' || activeTab === 'music') {
+                apiURL = `https://newsapi.org/v2/everything?q=${activeTab}+${q}&apiKey=${KEYS.news}`;
+            } else if (activeTab === 'jobs') {
+                apiURL = `https://api.adzuna.com/v1/api/jobs/ng/search/1?app_id=${KEYS.adz_id}&app_key=${KEYS.adz_key}&what=${q}`;
+            } else if (activeTab === 'odds') {
+                apiURL = `https://api.the-odds-api.com/v4/sports/upcoming/odds/?regions=eu&apiKey=${KEYS.odds}`;
             }
-        } catch (e) { grid.innerHTML = "Error loading data."; }
+
+            const response = await fetch(PROXY + encodeURIComponent(apiURL));
+            const data = await response.json();
+            
+            let finalItems = data.articles || data.results || data || [];
+            render(finalItems);
+        } catch (e) {
+            grid.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color:red;">Connection busy. Try again in 5 seconds.</p>';
+        }
     }
 
-    function renderNews(articles) {
-        let h = '';
-        articles.forEach(a => {
-            h += `<div class="card"><img src="${a.urlToImage || 'https://via.placeholder.com/300'}"><div class="card-content"><h4>${a.title}</h4></div><div class="card-footer"><i class="fa-solid fa-heart" onclick="this.style.color='red'; addPoints(1)"></i><a href="${a.url}" target="_blank" onclick="addPoints(5)">Read More</a></div></div>`;
+    function render(items) {
+        const grid = document.getElementById('results');
+        grid.innerHTML = '';
+        if(!items || items.length === 0) { grid.innerHTML = "No results found."; return; }
+
+        items.slice(0, 12).forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'card';
+            
+            if (activeTab === 'jobs') {
+                div.innerHTML = `<div class="card-body"><span class="badge">JOB</span><h3>${item.title}</h3><p>${item.company.display_name} - ${item.location.display_name}</p></div>
+                <div class="card-footer"><a href="${item.redirect_url}" class="apply-btn" onclick="addPts(10)" target="_blank">APPLY NOW</a></div>`;
+            } else if (activeTab === 'odds') {
+                div.innerHTML = `<div class="card-body"><span class="badge">BETTING</span><h3>${item.home_team} vs ${item.away_team}</h3><p>${item.sport_title}</p></div>
+                <div class="card-footer"><button onclick="openSmartLink()" class="apply-btn" style="border:none; cursor:pointer;">VIEW ODDS</button></div>`;
+            } else {
+                div.innerHTML = `<img src="${item.urlToImage || 'https://via.placeholder.com/400x200'}"><div class="card-body"><span class="badge">${activeTab}</span><h3>${item.title}</h3></div>
+                <div class="card-footer"><i class="fa-solid fa-heart" onclick="this.style.color='red'; addPts(1)"></i> <a href="${item.url}" target="_blank" onclick="addPts(5)" style="color:var(--primary); font-weight:bold; text-decoration:none;">READ</a></div>`;
+            }
+            grid.appendChild(div);
         });
-        document.getElementById('results-grid').innerHTML = h;
     }
 
-    function renderJobs(jobs) {
-        let h = '';
-        jobs.forEach(j => {
-            h += `<div class="card"><div class="card-content"><h3>${j.title}</h3><p>${j.company.display_name}</p></div><div class="card-footer"><button onclick="window.open('${j.redirect_url}'); addPoints(10);">Apply Now</button></div></div>`;
-        });
-        document.getElementById('results-grid').innerHTML = h;
+    function openSmartLink() {
+        window.open('https://www.profitablecpmratenetwork.com/vcmv2e97bh?key=6f31d584592651da1bf92e0579ecf9e1', '_blank');
+        addPts(100);
     }
 
-    function renderOdds(odds) {
-        let h = '';
-        odds.slice(0,10).forEach(o => {
-            h += `<div class="card"><div class="card-content"><h4>${o.home_team} vs ${o.away_team}</h4><p>Live Odds Available</p></div><div class="card-footer"><button onclick="window.open('${CONFIG.smart}'); addPoints(20);">View Odds</button></div></div>`;
-        });
-        document.getElementById('results-grid').innerHTML = h;
+    function copyInvite() {
+        const link = window.location.href + "?ref=" + Math.floor(Math.random()*1000);
+        navigator.clipboard.writeText(link);
+        alert("Referral Link Copied! Share and earn points.");
     }
 
-    async function fetchJoke() {
-        const res = await fetch('https://official-joke-api.appspot.com/random_joke');
-        const d = await res.json();
-        document.getElementById('jokeText').innerText = `${d.setup} - ${d.punchline}`;
+    async function getJoke() {
+        try {
+            const r = await fetch('https://official-joke-api.appspot.com/random_joke');
+            const d = await r.json();
+            document.getElementById('jokeDisplay').innerText = `"${d.setup} - ${d.punchline}"`;
+        } catch(e) {}
     }
 
-    function copyRef() {
-        navigator.clipboard.writeText(window.location.href + "?ref=" + Math.floor(Math.random()*999));
-        alert("Referral link copied!");
-    }
-
-    doSearch();
-    fetchJoke();
+    executeSearch();
+    getJoke();
 </script>
 </body>
 </html>
