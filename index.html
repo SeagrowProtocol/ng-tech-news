@@ -110,56 +110,56 @@
     async function executeSearch() {
         const q = document.getElementById('searchInput').value || 'latest';
         const grid = document.getElementById('results');
-        grid.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">Searching live database...</p>';
+        grid.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">Connecting to live database...</p>';
 
         let apiURL = "";
         if (activeTab === 'tech' || activeTab === 'music') {
             apiURL = `https://newsapi.org/v2/everything?q=${activeTab}+${q}&apiKey=${KEYS.news}`;
         } else if (activeTab === 'jobs') {
-            apiURL = `https://api.adzuna.com/v1/api/jobs/ng/search/1?app_id=${KEYS.adz_id}&app_key=${KEYS.adz_key}&what=${q}`;
+            apiURL = `https://api.adzuna.com/v1/api/jobs/ng/search/1?app_id=${KEYS.adz_id}&app_key=${KEYS.adz_key}&results_per_page=12&what=${q}`;
         } else if (activeTab === 'odds') {
             apiURL = `https://api.the-odds-api.com/v4/sports/upcoming/odds/?regions=eu&apiKey=${KEYS.odds}`;
         }
 
         try {
-            // DUAL-LAYER FETCH: Direct first, then Proxy
-            let response;
-            try {
-                response = await fetch(apiURL);
-                if (!response.ok) throw new Error();
-            } catch (err) {
-                const proxy = "https://api.allorigins.win/raw?url=";
-                response = await fetch(proxy + encodeURIComponent(apiURL));
-            }
+            // Using CorsProxy.io as it handles Job boards better than AllOrigins
+            const proxy = "https://corsproxy.io/?";
+            const response = await fetch(proxy + encodeURIComponent(apiURL));
+            
+            if (!response.ok) throw new Error();
             
             const data = await response.json();
             let items = data.articles || data.results || (Array.isArray(data) ? data : []);
-            render(items);
+            
+            if (items.length === 0) {
+                grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1;">No results found for "${q}". Try another keyword.</p>`;
+            } else {
+                render(items);
+            }
         } catch (e) {
-            grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color:red;">Connection busy. Click the '${activeTab}' tab again to retry.</p>`;
+            grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color:orange;">
+                ${activeTab.toUpperCase()} server is currently verifying requests. <br>
+                Please refresh the tab in a moment or check your API key status.
+            </p>`;
         }
     }
 
     function render(items) {
         const grid = document.getElementById('results');
         grid.innerHTML = '';
-        if (!items || items.length === 0) {
-            grid.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">No results found at the moment.</p>';
-            return;
-        }
 
         items.slice(0, 12).forEach(item => {
             const div = document.createElement('div');
             div.className = 'card';
             
             if (activeTab === 'jobs') {
-                div.innerHTML = `<div class="card-body"><span class="badge">VACANCY</span><h3>${item.title}</h3><p>${item.company.display_name}</p></div>
+                div.innerHTML = `<div class="card-body"><span class="badge">VACANCY</span><h3>${item.title}</h3><p>${item.company.display_name} - ${item.location.display_name}</p></div>
                 <div class="card-footer"><a href="${item.redirect_url}" class="btn-action" onclick="addPts(10)" target="_blank">APPLY</a></div>`;
             } else if (activeTab === 'odds') {
                 div.innerHTML = `<div class="card-body"><span class="badge">LIVE ODDS</span><h3>${item.home_team} vs ${item.away_team}</h3><p>${item.sport_title}</p></div>
                 <div class="card-footer"><button onclick="openSmartLink()" class="btn-action">BET NOW</button></div>`;
             } else {
-                div.innerHTML = `<img src="${item.urlToImage || 'https://via.placeholder.com/400x200'}"><div class="card-body"><span class="badge">${activeTab}</span><h3>${item.title}</h3></div>
+                div.innerHTML = `<img src="${item.urlToImage || 'https://via.placeholder.com/400x200?text=NG+Tech+News'}"><div class="card-body"><span class="badge">${activeTab}</span><h3>${item.title}</h3></div>
                 <div class="card-footer"><i class="fa-solid fa-heart" onclick="this.style.color='red'; addPts(1)"></i> <a href="${item.url}" target="_blank" onclick="addPts(5)" class="btn-action">READ</a></div>`;
             }
             grid.appendChild(div);
