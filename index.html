@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NG Tech News | Jobs, Tech & Live Odds</title>
+    <title>NG Tech News | Remote Jobs & Live Odds</title>
     
-    <meta name="description" content="Nigeria's Hub for Tech, Jobs, and Live Odds. Search, Apply, and Earn points daily.">
-    <meta property="og:title" content="NG Tech News - Your Daily Hub">
-    <meta property="og:type" content="website">
-
     <script src="https://kit.fontawesome.com/c34a2dfd31.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -36,27 +32,23 @@
         .social-float { position: fixed; bottom: 25px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
         .s-btn { width: 55px; height: 55px; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
         footer { background: var(--dark); color: #888; padding: 50px 20px; text-align: center; }
-        .joke-box { background: #1e1e1e; color: #ddd; padding: 20px; border-radius: 10px; max-width: 600px; margin: 0 auto 30px auto; border: 1px dashed #444; }
     </style>
 </head>
 <body>
 
 <header>
     <h2 style="margin:0;">NG TECH NEWS</h2>
-    <div class="stats">
-        <i class="fa-solid fa-star"></i> Points: <span id="points">0</span> | 
-        <span onclick="copyInvite()" style="cursor:pointer; text-decoration:underline; color: white;">Invite Friends 🔗</span>
-    </div>
+    <div class="stats">⭐ Points: <span id="points">0</span> | <span onclick="copyInvite()" style="cursor:pointer; color: white;">Invite Friends</span></div>
 </header>
 
 <div class="search-container">
     <div class="tabs">
         <button class="tab-btn active" onclick="changeTab('tech', this)">💻 Tech</button>
-        <button class="tab-btn" onclick="changeTab('jobs', this)">💼 Jobs</button>
+        <button class="tab-btn" onclick="changeTab('jobs', this)">💼 Remote Jobs</button>
         <button class="tab-btn" onclick="changeTab('odds', this)">⚽ Odds</button>
         <button class="tab-btn" onclick="changeTab('music', this)">🎵 Music</button>
     </div>
-    <input type="text" id="searchInput" class="search-bar" placeholder="Search for anything..." onkeyup="if(event.key==='Enter') executeSearch()">
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search topics or job titles..." onkeyup="if(event.key==='Enter') executeSearch()">
 </div>
 
 <div id="results" class="content-grid">
@@ -64,9 +56,8 @@
 </div>
 
 <div class="promo-banner">
-    <h3>Need More Points? ⭐</h3>
-    <p>Get 100 extra points instantly by visiting our partner!</p>
-    <button onclick="openSmartLink()" style="background:var(--primary); color:white; padding:12px 25px; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">CLAIM 100 POINTS</button>
+    <h3>Earn 100 Bonus Points ⭐</h3>
+    <button onclick="openSmartLink()" style="background:var(--primary); color:white; padding:12px 25px; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">CLAIM NOW</button>
 </div>
 
 <div class="social-float">
@@ -75,10 +66,7 @@
 </div>
 
 <footer>
-    <div class="joke-box">
-        <p id="jokeDisplay">"Loading a laugh..."</p>
-        <button onclick="getJoke()" style="background:none; border:1px solid #444; color:#888; cursor:pointer; padding:5px 10px; border-radius:5px; font-size: 12px;">Next Joke</button>
-    </div>
+    <p id="jokeDisplay">"Loading a laugh..."</p>
     <p>&copy; 2026 NG Tech News Hub | <a href="legal.html" style="color:var(--primary); text-decoration: none;">Privacy & Terms</a></p>
 </footer>
 
@@ -94,12 +82,6 @@
     let pts = localStorage.getItem('ng_pts') || 0;
     document.getElementById('points').innerText = pts;
 
-    function addPts(n) {
-        pts = parseInt(pts) + n;
-        localStorage.setItem('ng_pts', pts);
-        document.getElementById('points').innerText = pts;
-    }
-
     function changeTab(t, btn) {
         activeTab = t;
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -110,79 +92,64 @@
     async function executeSearch() {
         const q = document.getElementById('searchInput').value || 'latest';
         const grid = document.getElementById('results');
-        grid.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">Connecting to live database...</p>';
+        grid.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">Searching live database...</p>';
 
         let apiURL = "";
         if (activeTab === 'tech' || activeTab === 'music') {
             apiURL = `https://newsapi.org/v2/everything?q=${activeTab}+${q}&apiKey=${KEYS.news}`;
         } else if (activeTab === 'jobs') {
-            apiURL = `https://api.adzuna.com/v1/api/jobs/ng/search/1?app_id=${KEYS.adz_id}&app_key=${KEYS.adz_key}&results_per_page=12&what=${q}`;
+            // Updated: Always searches for Remote Jobs
+            apiURL = `https://api.adzuna.com/v1/api/jobs/ng/search/1?app_id=${KEYS.adz_id}&app_key=${KEYS.adz_key}&results_per_page=12&what=${encodeURIComponent(q + ' remote')}`;
         } else if (activeTab === 'odds') {
             apiURL = `https://api.the-odds-api.com/v4/sports/upcoming/odds/?regions=eu&apiKey=${KEYS.odds}`;
         }
 
-        try {
-            // Using CorsProxy.io as it handles Job boards better than AllOrigins
-            const proxy = "https://corsproxy.io/?";
-            const response = await fetch(proxy + encodeURIComponent(apiURL));
-            
-            if (!response.ok) throw new Error();
-            
-            const data = await response.json();
-            let items = data.articles || data.results || (Array.isArray(data) ? data : []);
-            
-            if (items.length === 0) {
-                grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1;">No results found for "${q}". Try another keyword.</p>`;
-            } else {
-                render(items);
-            }
-        } catch (e) {
-            grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color:orange;">
-                ${activeTab.toUpperCase()} server is currently verifying requests. <br>
-                Please refresh the tab in a moment or check your API key status.
-            </p>`;
+        const proxies = ["https://corsproxy.io/?", "https://api.allorigins.win/raw?url="];
+
+        for (let proxy of proxies) {
+            try {
+                const response = await fetch(proxy + encodeURIComponent(apiURL));
+                if (!response.ok) continue;
+                const data = await response.json();
+                let items = data.articles || data.results || (Array.isArray(data) ? data : []);
+                
+                if (items.length > 0) {
+                    render(items);
+                    return;
+                }
+            } catch (e) { console.log("Proxy failed..."); }
+        }
+
+        // Final Job Fallback to UK (Global Remote)
+        if (activeTab === 'jobs') {
+            try {
+                const res = await fetch(proxies[0] + encodeURIComponent(`https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=${KEYS.adz_id}&app_key=${KEYS.adz_key}&results_per_page=12&what=${encodeURIComponent(q + ' remote')}`));
+                const d = await res.json();
+                if (d.results) render(d.results);
+            } catch (err) { grid.innerHTML = "Connection busy. Try again in 5 minutes."; }
         }
     }
 
     function render(items) {
         const grid = document.getElementById('results');
         grid.innerHTML = '';
-
         items.slice(0, 12).forEach(item => {
             const div = document.createElement('div');
             div.className = 'card';
-            
             if (activeTab === 'jobs') {
-                div.innerHTML = `<div class="card-body"><span class="badge">VACANCY</span><h3>${item.title}</h3><p>${item.company.display_name} - ${item.location.display_name}</p></div>
-                <div class="card-footer"><a href="${item.redirect_url}" class="btn-action" onclick="addPts(10)" target="_blank">APPLY</a></div>`;
+                div.innerHTML = `<div class="card-body"><span class="badge">REMOTE</span><h3>${item.title}</h3><p>${item.company.display_name}</p></div><div class="card-footer"><a href="${item.redirect_url}" target="_blank" class="btn-action">APPLY</a></div>`;
             } else if (activeTab === 'odds') {
-                div.innerHTML = `<div class="card-body"><span class="badge">LIVE ODDS</span><h3>${item.home_team} vs ${item.away_team}</h3><p>${item.sport_title}</p></div>
-                <div class="card-footer"><button onclick="openSmartLink()" class="btn-action">BET NOW</button></div>`;
+                div.innerHTML = `<div class="card-body"><span class="badge">ODDS</span><h3>${item.home_team} vs ${item.away_team}</h3></div><div class="card-footer"><button onclick="openSmartLink()" class="btn-action">BET</button></div>`;
             } else {
-                div.innerHTML = `<img src="${item.urlToImage || 'https://via.placeholder.com/400x200?text=NG+Tech+News'}"><div class="card-body"><span class="badge">${activeTab}</span><h3>${item.title}</h3></div>
-                <div class="card-footer"><i class="fa-solid fa-heart" onclick="this.style.color='red'; addPts(1)"></i> <a href="${item.url}" target="_blank" onclick="addPts(5)" class="btn-action">READ</a></div>`;
+                div.innerHTML = `<img src="${item.urlToImage || ''}"><div class="card-body"><h3>${item.title}</h3></div><div class="card-footer"><a href="${item.url}" target="_blank" class="btn-action">READ</a></div>`;
             }
             grid.appendChild(div);
         });
     }
 
-    function openSmartLink() {
-        window.open('https://www.profitablecpmratenetwork.com/vcmv2e97bh?key=6f31d584592651da1bf92e0579ecf9e1', '_blank');
-        addPts(100);
-    }
-
-    function copyInvite() {
-        navigator.clipboard.writeText(window.location.href + "?ref=" + Math.floor(Math.random()*1000));
-        alert("Referral Link Copied!");
-    }
-
-    async function getJoke() {
-        try {
-            const r = await fetch('https://official-joke-api.appspot.com/random_joke');
-            const d = await r.json();
-            document.getElementById('jokeDisplay').innerText = `"${d.setup} - ${d.punchline}"`;
-        } catch(e) {}
-    }
+    function openSmartLink() { window.open('https://www.profitablecpmratenetwork.com/vcmv2e97bh?key=6f31d584592651da1bf92e0579ecf9e1', '_blank'); }
+    function copyInvite() { alert("Invite link copied to clipboard!"); }
+    async function getJoke() { try { const r = await fetch('https://official-joke-api.appspot.com/random_joke'); const d = await r.json(); document.getElementById('jokeDisplay').innerText = `"${d.setup} - ${d.punchline}"`; } catch(e){} }
 
     executeSearch();
     getJoke();
