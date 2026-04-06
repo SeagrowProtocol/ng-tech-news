@@ -1,34 +1,30 @@
-name: Daily Tech Update
+name: NG-Tech-Auto-Deploy
+
 on:
+  push:
+    branches: ["main"]
   schedule:
-    - cron: '0 0 * * *' 
-  workflow_dispatch: 
+    - cron: '0 0 * * *' # Updates daily
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    # This line below tells GitHub to use the newer Node version immediately
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-      
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node
+      - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: '24' # Changed from 20 to 24
-
-      - name: Fetch Latest News
-        run: node scraper.js
-
-      - name: Save to Repo
-        run: |
-          git config --global user.name "NG-Tech-Bot"
-          git config --global user.email "bot@ngtechhub.com"
-          git add news.json
-          git commit -m "Auto-update: $(date)" || exit 0
-          git push
+          node-version: '20'
+      - name: Upload Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - name: Deploy
+        uses: actions/deploy-pages@v4
