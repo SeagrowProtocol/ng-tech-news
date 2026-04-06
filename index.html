@@ -1,160 +1,176 @@
 <!DOCTYPE html>
-<html lang="en" id="html-tag">
-<head> 
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NG-Tech-Hub | Jobs, Odds & Tech Vibe</title>
+    <title>NG Tech News | Jobs, Tech & Live Odds</title>
     
-    <meta name="description" content="Nigeria's #1 tech portal for remote jobs, sports betting odds, and daily tech vibes.">
-    <meta property="og:title" content="NG-Tech-Hub: Nigeria's Tech & Jobs Portal">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=NG-Tech-Hub">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <script>
-        // DARK MODE LOGIC
-        tailwind.config = { darkMode: 'class' }
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
+    <meta name="description" content="Latest Tech News, Job Vacancies in Nigeria, and Live Betting Odds. Search and apply today!">
+    <meta property="og:title" content="NG Tech News Hub">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500">
+
+    <script src="https://kit.fontawesome.com/c34a2dfd31.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <script src="https://fixesconsessionconsession.com/3f/64/cb/3f64cb6bd6b52e1f9613efd8f200761c.js"></script>
+    <script src="https://pl29057773.profitablecpmratenetwork.com/e0/43/be/e043bec3a6648ab81ae3b9e75fa6e639.js"></script>
 
     <style>
-        .news-card { transition: 0.3s; }
-        .dark .news-card { border-color: #1e293b; background-color: #0f172a; color: white; }
+        :root { --primary: #2ecc71; --dark: #121212; --accent: #f39c12; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; background: #f4f7f6; color: #333; }
+        header { background: var(--dark); color: white; padding: 15px; text-align: center; sticky: top; z-index: 1000; }
+        .stats-bar { background: #fff; padding: 10px; text-align: center; border-bottom: 2px solid var(--primary); font-weight: bold; }
         
-        @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-        .ticker-text { white-space: nowrap; display: inline-block; animation: scroll 25s linear infinite; }
+        .search-section { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        .tabs { display: flex; gap: 10px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; }
+        .tab-btn { padding: 8px 20px; border: none; border-radius: 20px; cursor: pointer; background: #ddd; white-space: nowrap; }
+        .tab-btn.active { background: var(--primary); color: white; }
+        .search-bar { width: 100%; padding: 15px; border-radius: 30px; border: 1px solid #ccc; outline: none; font-size: 16px; }
+
+        .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: auto; }
+        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
+        .card img { width: 100%; height: 180px; object-fit: cover; }
+        .card-content { padding: 15px; flex-grow: 1; }
+        .card-footer { padding: 10px 15px; border-top: 1px solid #eee; display: flex; justify-content: space-between; }
+
+        .floating-social { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 999; }
+        .s-link { width: 50px; height: 50px; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+        footer { background: var(--dark); color: #999; padding: 40px 20px; text-align: center; }
+        .joke-container { background: #1e1e1e; padding: 20px; border-radius: 10px; margin-bottom: 20px; color: #ddd; }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 flex flex-col min-h-screen">
+<body>
 
-    <div class="bg-blue-900 text-white overflow-hidden py-1.5 ticker-wrap">
-        <div class="ticker-text text-[11px] font-bold uppercase tracking-wider">
-            🇳🇬 NAIRA: 1,455/$ • 😂 JOKE: Why did the dev stay in the office? Because PHCN took light at home! • ⚽ ODDS: Real Madrid 1.85 to win • 💼 JOB: Senior Dev needed at Moniepoint • 🔥 TREND: AI taking over Lagos startups...
-        </div>
+<header>
+    <h2 style="margin:0;">NG TECH NEWS</h2>
+</header>
+
+<div class="stats-bar">
+    ⭐ My Points: <span id="user-points">0</span> | 
+    <span onclick="copyRef()" style="color:var(--primary); cursor:pointer;">Invite Friends 🔗</span>
+</div>
+
+<div class="search-section">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="setTab('tech', this)">💻 Tech</button>
+        <button class="tab-btn" onclick="setTab('jobs', this)">💼 Jobs</button>
+        <button class="tab-btn" onclick="setTab('odds', this)">⚽ Odds</button>
+        <button class="tab-btn" onclick="setTab('music', this)">🎵 Music</button>
     </div>
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search for news or jobs..." onkeyup="if(event.key==='Enter') doSearch()">
+</div>
 
-    <nav class="bg-white dark:bg-slate-800 shadow-md sticky top-0 z-50 px-4 py-3">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-black text-blue-600 italic tracking-tighter">NG-TECH-HUB</a>
-            
-            <div class="flex items-center gap-4">
-                <div class="hidden md:flex relative border rounded-full overflow-hidden dark:border-slate-700">
-                    <input id="searchInput" type="text" placeholder="Search jobs..." class="px-4 py-1.5 text-sm outline-none dark:bg-slate-700">
-                    <button onclick="handleSearch()" class="bg-blue-600 text-white px-4"><i class="fa-solid fa-magnifying-glass text-xs"></i></button>
-                </div>
-                
-                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition">
-                    <i id="theme-icon" class="fa-solid fa-moon"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <main class="max-w-6xl mx-auto p-4 flex-grow w-full">
-        <div class="md:hidden mb-4 flex border rounded-xl overflow-hidden shadow-sm">
-            <input id="mobileSearch" type="text" placeholder="Search jobs, tech, odds..." class="w-full px-4 py-2 text-sm outline-none dark:bg-slate-800">
-            <button onclick="handleSearch('mobileSearch')" class="bg-blue-600 text-white px-5"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
-
-        <div class="flex gap-2 my-4 overflow-x-auto pb-2 no-scrollbar">
-            <button onclick="filterType('All')" class="bg-blue-600 text-white px-5 py-1.5 rounded-full text-[10px] font-black uppercase shrink-0">Show All</button>
-            <button onclick="filterType('Job')" class="bg-white dark:bg-slate-800 border dark:border-slate-700 px-5 py-1.5 rounded-full text-[10px] font-bold shrink-0">💼 Remote Jobs</button>
-            <button onclick="filterType('Betting')" class="bg-white dark:bg-slate-800 border dark:border-slate-700 px-5 py-1.5 rounded-full text-[10px] font-bold shrink-0">⚽ Sports Odds</button>
-        </div>
-
-        <div id="contentGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            </div>
-    </main>
-
-    <a href="https://wa.me/?text=Check out the latest Tech Jobs and Odds on NG-Tech-Hub: https://SeagrowProtocol.github.io/ng-tech-news/" 
-       class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition z-50">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
-    </a>
-
-    <footer class="bg-slate-950 text-white py-12 px-4 text-center mt-auto">
-        <p class="text-blue-500 font-black text-xl mb-6">NG-TECH-HUB</p>
-        <div class="flex justify-center gap-8 text-xs text-slate-500 mb-8 uppercase font-bold">
-            <a href="privacy.html" class="hover:text-white">Privacy</a>
-            <a href="terms.html" class="hover:text-white">Terms</a>
-            <a href="mailto:owlfitcat@sendapp.uk" class="hover:text-white">Contact</a>
-        </div>
-        <div class="max-w-md mx-auto bg-slate-900 p-6 rounded-2xl border border-slate-800">
-            <p class="text-[10px] text-slate-400 mb-4 uppercase tracking-widest">Sponsored Resource</p>
-            <a href="YOUR_SMART_LINK_HERE" class="bg-yellow-500 text-black px-6 py-2 rounded-full font-black text-xs inline-block">FREE TECH TOOLS ACCESS</a>
-        </div>
-    </footer>
-
-    <script>
-        let items = [];
-
-        async function init() {
-            try {
-                const res = await fetch('news.json');
-                const rawData = await res.json();
-                items = rawData.map(item => ({
-                    ...item,
-                    id: Math.random().toString(36).substr(2, 9),
-                    type: item.title.toLowerCase().includes('job') ? 'Job' : 'Tech',
-                    liked: localStorage.getItem(`liked-${item.title}`) === 'true'
-                }));
-                render(items);
-            } catch (e) {
-                console.log("Loading error...");
-            }
-        }
-
-        function render(data) {
-            const grid = document.getElementById('contentGrid');
-            grid.innerHTML = data.map(item => `
-                <div class="news-card bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-700 flex flex-col">
-                    <img src="${item.urlToImage || 'https://via.placeholder.com/400x200'}" class="h-44 w-full object-cover">
-                    <div class="p-5 flex-grow">
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200 text-[8px] px-2 py-0.5 rounded-md font-black uppercase italic">${item.type}</span>
-                            <button onclick="toggleLike('${item.title}')" class="${item.liked ? 'text-red-500' : 'text-slate-300 dark:text-slate-600'} transition">
-                                <i class="fa-solid fa-heart text-sm"></i>
-                            </button>
-                        </div>
-                        <h3 class="font-bold text-sm leading-tight mb-3">${item.title}</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-[11px] line-clamp-2">${item.description || 'Details inside...'}</p>
-                    </div>
-                    <div class="p-5 pt-0 flex gap-2">
-                        <a href="${item.url}" target="_blank" class="flex-grow bg-blue-600 text-white text-center py-2 rounded-xl text-[10px] font-black uppercase">Read Full</a>
-                        <a href="https://wa.me/?text=Check this out on NG-Tech-Hub: ${item.title} - ${item.url}" target="_blank" class="bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 px-3 py-2 rounded-xl text-xs"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function toggleTheme() {
-            const isDark = document.documentElement.classList.toggle('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            document.getElementById('theme-icon').className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-        }
-
-        function toggleLike(title) {
-            const isLiked = localStorage.getItem(`liked-${title}`) === 'true';
-            localStorage.setItem(`liked-${title}`, !isLiked);
-            init(); // Re-render to show updated heart
-        }
-
-        function handleSearch(id = 'searchInput') {
-            const term = document.getElementById(id).value.toLowerCase();
-            const filtered = items.filter(i => i.title.toLowerCase().includes(term) || (i.description && i.description.toLowerCase().includes(term)));
-            render(filtered);
-        }
-
-        function filterType(type) {
-            if(type === 'All') return render(items);
-            render(items.filter(i => i.type === type));
-        }
-
-        init();
+<div style="text-align:center; margin-bottom:20px;">
+    <script type="text/javascript">
+        atOptions = { 'key' : 'ec04f7134728239d00b82b9ffbb92e38', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
     </script>
+    <script type="text/javascript" src="https://www.highperformanceformat.com/ec04f7134728239d00b82b9ffbb92e38/invoke.js"></script>
+</div>
+
+<div id="results-grid" class="content-grid"></div>
+
+<div class="floating-social">
+    <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" class="s-link" style="background:#25D366;"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://t.me/latest_ng" class="s-link" style="background:#0088cc;"><i class="fa-brands fa-telegram"></i></a>
+</div>
+
+<footer>
+    <div class="joke-container">
+        <strong>Daily Joke:</strong>
+        <p id="jokeText">Loading laugh...</p>
+        <button onclick="fetchJoke()" style="background:none; border:1px solid #555; color:#aaa; cursor:pointer; border-radius:5px;">New Joke</button>
+    </div>
+    <p>&copy; 2026 NG Tech News Hub | <a href="legal.html" style="color:var(--primary)">Privacy & Terms</a></p>
+</footer>
+
+<script>
+    // API CONFIG
+    const CONFIG = {
+        news: '3f8b592a6a9444d48a48114dc2e6328c',
+        odds: '83c4173b194e9aef16318df0e08dd055',
+        adz_id: 'ef02ca59',
+        adz_key: '64df082acf621ff8ba9e989e97ed6793',
+        smart: 'https://www.profitablecpmratenetwork.com/vcmv2e97bh?key=6f31d584592651da1bf92e0579ecf9e1'
+    };
+
+    let currentTab = 'tech';
+    let points = localStorage.getItem('ng_user_points') || 0;
+    document.getElementById('user-points').innerText = points;
+
+    function addPoints(amt) {
+        points = parseInt(points) + amt;
+        localStorage.setItem('ng_user_points', points);
+        document.getElementById('user-points').innerText = points;
+    }
+
+    function setTab(tab, btn) {
+        currentTab = tab;
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        doSearch();
+    }
+
+    async function doSearch() {
+        const query = document.getElementById('searchInput').value || 'latest';
+        const grid = document.getElementById('results-grid');
+        grid.innerHTML = "Fetching updates...";
+
+        try {
+            if (currentTab === 'tech' || currentTab === 'music') {
+                const res = await fetch(`https://newsapi.org/v2/everything?q=${currentTab}+${query}&apiKey=${CONFIG.news}`);
+                const data = await res.json();
+                renderNews(data.articles.slice(0, 12));
+            } else if (currentTab === 'jobs') {
+                const res = await fetch(`https://api.adzuna.com/v1/api/jobs/ng/search/1?app_id=${CONFIG.adz_id}&app_key=${CONFIG.adz_key}&what=${query}`);
+                const data = await res.json();
+                renderJobs(data.results);
+            } else if (currentTab === 'odds') {
+                const res = await fetch(`https://api.the-odds-api.com/v4/sports/upcoming/odds/?regions=eu&apiKey=${CONFIG.odds}`);
+                const data = await res.json();
+                renderOdds(data);
+            }
+        } catch (e) { grid.innerHTML = "Error loading data."; }
+    }
+
+    function renderNews(articles) {
+        let h = '';
+        articles.forEach(a => {
+            h += `<div class="card"><img src="${a.urlToImage || 'https://via.placeholder.com/300'}"><div class="card-content"><h4>${a.title}</h4></div><div class="card-footer"><i class="fa-solid fa-heart" onclick="this.style.color='red'; addPoints(1)"></i><a href="${a.url}" target="_blank" onclick="addPoints(5)">Read More</a></div></div>`;
+        });
+        document.getElementById('results-grid').innerHTML = h;
+    }
+
+    function renderJobs(jobs) {
+        let h = '';
+        jobs.forEach(j => {
+            h += `<div class="card"><div class="card-content"><h3>${j.title}</h3><p>${j.company.display_name}</p></div><div class="card-footer"><button onclick="window.open('${j.redirect_url}'); addPoints(10);">Apply Now</button></div></div>`;
+        });
+        document.getElementById('results-grid').innerHTML = h;
+    }
+
+    function renderOdds(odds) {
+        let h = '';
+        odds.slice(0,10).forEach(o => {
+            h += `<div class="card"><div class="card-content"><h4>${o.home_team} vs ${o.away_team}</h4><p>Live Odds Available</p></div><div class="card-footer"><button onclick="window.open('${CONFIG.smart}'); addPoints(20);">View Odds</button></div></div>`;
+        });
+        document.getElementById('results-grid').innerHTML = h;
+    }
+
+    async function fetchJoke() {
+        const res = await fetch('https://official-joke-api.appspot.com/random_joke');
+        const d = await res.json();
+        document.getElementById('jokeText').innerText = `${d.setup} - ${d.punchline}`;
+    }
+
+    function copyRef() {
+        navigator.clipboard.writeText(window.location.href + "?ref=" + Math.floor(Math.random()*999));
+        alert("Referral link copied!");
+    }
+
+    doSearch();
+    fetchJoke();
+</script>
 </body>
 </html>
