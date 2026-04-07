@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NG Tech Hub | Remote Jobs & Tech Gist</title>
     
-    <meta name="description" content="Nigeria's premium hub for Remote Jobs and Tech Gist.">
+    <title>NG Tech Hub | Remote Jobs & Tech Gist</title>
+    <meta name="description" content="Nigeria's premium hub for Remote Tech Jobs, Latest Tech Gist, and Live Betting Odds. Join thousands of Nigerian pros today.">
+    <meta name="keywords" content="Remote Jobs Nigeria, Tech News, Live Odds, NG Tech Hub, Work from home Lagos">
+    <meta name="author" content="NG Tech Hub">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/"> <meta property="og:title" content="NG Tech Hub - Your Gateway to Remote Work">
+    <meta property="og:description" content="Find high-paying remote jobs and the latest tech news in Nigeria.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
+
     <script src="https://kit.fontawesome.com/c34a2dfd31.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -13,124 +21,45 @@
 
     <style>
         :root { 
-            --primary: #00D16E; /* Fresh Green */
-            --bg: #F8FAFC; /* Light Background */
-            --white: #FFFFFF;
-            --text-main: #1E293B;
-            --text-muted: #64748B;
-            --border: #E2E8F0;
+            --primary: #00D16E; --bg: #F8FAFC; --white: #FFFFFF;
+            --text-main: #1E293B; --text-muted: #64748B; --border: #E2E8F0;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: 'Outfit', sans-serif; 
-            background: var(--bg); 
-            color: var(--text-main); 
-            overflow-x: hidden; 
-        }
-
-        /* HEADER */
+        body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text-main); overflow-x: hidden; }
         header { 
-            padding: 15px 20px; 
-            background: var(--white); 
-            position: sticky; top: 0; z-index: 100;
+            padding: 15px 20px; background: var(--white); position: sticky; top: 0; z-index: 100;
             display: flex; justify-content: space-between; align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .logo { font-weight: 800; color: var(--text-main); font-size: 20px; letter-spacing: -1px; }
         .logo span { color: var(--primary); }
-
-        /* HERO SECTION */
-        .hero { 
-            text-align: center; 
-            padding: 50px 20px; 
-            background: var(--white);
-            border-bottom: 1px solid var(--border);
-        }
+        .hero { text-align: center; padding: 50px 20px; background: var(--white); border-bottom: 1px solid var(--border); }
         .hero h1 { font-size: 32px; margin-bottom: 10px; font-weight: 800; }
-        
         .search-box { 
-            display: flex; 
-            background: #F1F5F9; 
-            border-radius: 12px; 
-            padding: 5px; 
-            border: 1px solid var(--border); 
-            margin: 25px auto 0;
-            max-width: 600px;
+            display: flex; background: #F1F5F9; border-radius: 12px; padding: 5px; 
+            border: 1px solid var(--border); margin: 25px auto 0; max-width: 600px;
         }
-        .search-box input { 
-            flex: 1; background: none; border: none; padding: 12px 15px; 
-            color: var(--text-main); outline: none; font-size: 16px;
-        }
-        .search-box button { 
-            background: var(--primary); color: white; border: none; 
-            padding: 10px 25px; border-radius: 10px; font-weight: 700; cursor: pointer; 
-        }
-
-        /* TABS */
+        .search-box input { flex: 1; background: none; border: none; padding: 12px 15px; color: var(--text-main); outline: none; font-size: 16px; }
+        .search-box button { background: var(--primary); color: white; border: none; padding: 10px 25px; border-radius: 10px; font-weight: 700; cursor: pointer; }
         .tabs { display: flex; gap: 8px; justify-content: center; margin: 25px 0; overflow-x: auto; padding: 0 10px 10px; }
-        .tab-btn { 
-            padding: 10px 20px; border: 1px solid var(--border); border-radius: 50px; 
-            background: var(--white); color: var(--text-muted); cursor: pointer; 
-            white-space: nowrap; font-weight: 600; font-size: 14px;
-            transition: 0.2s;
-        }
-        .tab-btn.active { 
-            background: var(--primary); border-color: var(--primary); color: white; 
-            box-shadow: 0 4px 12px rgba(0, 209, 110, 0.3);
-        }
-
-        /* GRID */
-        .grid { 
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-            gap: 25px; padding: 30px 20px; max-width: 1200px; margin: 0 auto; 
-        }
-        .card { 
-            background: var(--white); border-radius: 16px; overflow: hidden; 
-            border: 1px solid var(--border); transition: 0.3s;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
+        .tab-btn { padding: 10px 20px; border: 1px solid var(--border); border-radius: 50px; background: var(--white); color: var(--text-muted); cursor: pointer; white-space: nowrap; font-weight: 600; font-size: 14px; transition: 0.2s; }
+        .tab-btn.active { background: var(--primary); border-color: var(--primary); color: white; box-shadow: 0 4px 12px rgba(0, 209, 110, 0.3); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; padding: 30px 20px; max-width: 1200px; margin: 0 auto; }
+        .card { background: var(--white); border-radius: 16px; overflow: hidden; border: 1px solid var(--border); transition: 0.3s; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        
         .card-img { width: 100%; height: 190px; object-fit: cover; background: #eee; }
         .card-body { padding: 20px; }
         .card-body h3 { font-size: 18px; margin-bottom: 8px; line-height: 1.4; }
-        
-        .card-footer { 
-            padding: 15px 20px; background: #FAFAFA; 
-            display: flex; justify-content: space-between; align-items: center; 
-            border-top: 1px solid var(--border);
-        }
-
-        /* LIKE BUTTON */
-        .like-btn { 
-            background: none; border: none; color: #CBD5E1; 
-            font-size: 22px; cursor: pointer; transition: 0.2s; 
-        }
+        .card-footer { padding: 15px 20px; background: #FAFAFA; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
+        .like-btn { background: none; border: none; color: #CBD5E1; font-size: 22px; cursor: pointer; transition: 0.2s; }
         .like-btn.active { color: #FF4757; }
-
-        /* ACTION BUTTON */
-        .btn-action {
-            background: var(--primary); color: white; text-decoration: none;
-            padding: 8px 18px; border-radius: 8px; font-weight: 700; font-size: 13px;
-        }
-
-        /* JOKE SECTION */
-        .joke-bar { 
-            background: #F1F5F9; padding: 30px; border-radius: 20px; 
-            max-width: 800px; margin: 40px auto; text-align: center;
-            border: 1px solid var(--border);
-        }
-        .joke-bar p { font-size: 18px; color: var(--text-main); font-style: italic; }
-
-        /* FLOATING SOCIAL */
+        .btn-action { background: var(--primary); color: white; text-decoration: none; padding: 8px 18px; border-radius: 8px; font-weight: 700; font-size: 13px; }
+        .joke-bar { background: #F1F5F9; padding: 30px; border-radius: 20px; max-width: 800px; margin: 40px auto; text-align: center; border: 1px solid var(--border); }
         .social-dock { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
         .dock-item { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
-
-        @media (max-width: 600px) { 
-            .grid { grid-template-columns: 1fr; } 
-            .hero h1 { font-size: 26px; }
-        }
+        .ad-container { text-align: center; padding: 20px 0; background: var(--white); }
+        footer { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 14px; }
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .hero h1 { font-size: 26px; } }
     </style>
 </head>
 <body>
@@ -140,15 +69,20 @@
     <div style="font-weight: 600; font-size: 14px;">⭐ <span id="points">0</span></div>
 </header>
 
+<div class="ad-container">
+    <script type="text/javascript">
+        atOptions = { 'key' : 'e043bec3a6648ab81ae3b9e75fa6e639', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/e043bec3a6648ab81ae3b9e75fa6e639/invoke.js"></script>
+</div>
+
 <div class="hero">
     <h1>Discover Remote <span style="color:var(--primary)">Tech Jobs</span></h1>
-    <p style="color:var(--text-muted)">The #1 portal for Nigerian developers and tech enthusiasts.</p>
-    
+    <p style="color:var(--text-muted)">Connecting Nigerian talent to global opportunities.</p>
     <div class="search-box">
         <input type="text" id="searchInput" placeholder="Search Remote Jobs, AI, Crypto..." onkeyup="if(event.key==='Enter') executeSearch()">
         <button onclick="executeSearch()">SEARCH</button>
     </div>
-
     <div class="tabs">
         <button class="tab-btn active" onclick="changeTab('tech', this)">💻 Tech Gist</button>
         <button class="tab-btn" onclick="changeTab('jobs', this)">💼 Remote Jobs</button>
@@ -157,13 +91,23 @@
     </div>
 </div>
 
-<div id="results" class="grid">
-    </div>
+<div id="results" class="grid"></div>
 
 <div class="joke-bar">
     <p id="jokeDisplay">"Fetching Naija laughter..."</p>
     <button onclick="getJoke()" style="background:none; border:none; color:var(--primary); cursor:pointer; font-weight:700; margin-top:15px; font-size:14px;">Next Gist →</button>
 </div>
+
+<div class="ad-container">
+    <script type="text/javascript">
+        atOptions = { 'key' : 'e043bec3a6648ab81ae3b9e75fa6e639', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/e043bec3a6648ab81ae3b9e75fa6e639/invoke.js"></script>
+</div>
+
+<footer>
+    <p>&copy; 2026 NG Tech Hub | <a href="legal.html" style="color:var(--primary); text-decoration:none;">Privacy & Terms</a></p>
+</footer>
 
 <div class="social-dock">
     <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" class="dock-item" style="background:#25D366"><i class="fa-brands fa-whatsapp"></i></a>
@@ -194,7 +138,6 @@
         const q = document.getElementById('searchInput').value || 'latest';
         const grid = document.getElementById('results');
         grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:50px; color:#64748B;">Updating feed...</div>';
-
         let url = "";
         if (activeTab === 'tech' || activeTab === 'music') {
             url = `https://newsapi.org/v2/everything?q=${activeTab}+${q}&apiKey=${KEYS.news}`;
@@ -209,16 +152,13 @@
             const response = await fetch(proxy + encodeURIComponent(url));
             const data = await response.json();
             let items = data.articles || data.results || (Array.isArray(data) ? data : []);
-            
             if (activeTab === 'jobs' && items.length === 0) {
                 const altRes = await fetch("https://www.arbeitnow.com/api/job-board-api");
                 const altData = await altRes.json();
                 items = altData.data.filter(j => j.remote === true);
             }
             render(items);
-        } catch (e) {
-            grid.innerHTML = "Server busy. Please refresh.";
-        }
+        } catch (e) { grid.innerHTML = "Syncing with servers..."; }
     }
 
     function render(items) {
@@ -229,55 +169,24 @@
             const isLiked = likes.includes(id);
             const div = document.createElement('div');
             div.className = 'card';
-            
             if (activeTab === 'jobs') {
-                div.innerHTML = `
-                    <div class="card-body">
-                        <span style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase;">Remote Opportunity</span>
-                        <h3 style="margin:10px 0">${item.title || item.job_title}</h3>
-                        <p style="color:var(--text-muted); font-size:14px;">${item.company?.display_name || item.company_name}</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="like-btn ${isLiked ? 'active' : ''}" onclick="toggleLike('${id}', this)"><i class="fa-solid fa-heart"></i></button>
-                        <a href="${item.redirect_url || item.url}" target="_blank" class="btn-action" onclick="addPts(10)">APPLY</a>
-                    </div>`;
+                div.innerHTML = `<div class="card-body"><span style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase;">Remote Opportunity</span><h3 style="margin:10px 0">${item.title || item.job_title}</h3><p style="color:var(--text-muted); font-size:14px;">${item.company?.display_name || item.company_name}</p></div><div class="card-footer"><button class="like-btn ${isLiked ? 'active' : ''}" onclick="toggleLike('${id}', this)"><i class="fa-solid fa-heart"></i></button><a href="${item.redirect_url || item.url}" target="_blank" class="btn-action" onclick="addPts(10)">APPLY</a></div>`;
             } else if (activeTab === 'odds') {
-                div.innerHTML = `
-                    <div class="card-body">
-                        <h3 style="text-align:center">${item.home_team} <br> vs <br> ${item.away_team}</h3>
-                    </div>
-                    <div class="card-footer">
-                        <a href="https://www.profitablecpmratenetwork.com/vcmv2e97bh?key=6f31d584592651da1bf92e0579ecf9e1" target="_blank" class="btn-action" style="width:100%; text-align:center">BET NOW</a>
-                    </div>`;
+                div.innerHTML = `<div class="card-body"><h3 style="text-align:center">${item.home_team} <br> vs <br> ${item.away_team}</h3></div><div class="card-footer"><a href="https://www.profitablecpmratenetwork.com/vcmv2e97bh?key=6f31d584592651da1bf92e0579ecf9e1" target="_blank" class="btn-action" style="width:100%; text-align:center">BET NOW</a></div>`;
             } else {
-                div.innerHTML = `
-                    <img src="${item.urlToImage || 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400'}" class="card-img">
-                    <div class="card-body"><h3>${item.title}</h3></div>
-                    <div class="card-footer">
-                        <button class="like-btn ${isLiked ? 'active' : ''}" onclick="toggleLike('${id}', this)"><i class="fa-solid fa-heart"></i></button>
-                        <a href="${item.url}" target="_blank" class="btn-action" onclick="addPts(5)">READ</a>
-                    </div>`;
+                div.innerHTML = `<img src="${item.urlToImage || 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400'}" class="card-img"><div class="card-body"><h3>${item.title}</h3></div><div class="card-footer"><button class="like-btn ${isLiked ? 'active' : ''}" onclick="toggleLike('${id}', this)"><i class="fa-solid fa-heart"></i></button><a href="${item.url}" target="_blank" class="btn-action" onclick="addPts(5)">READ</a></div>`;
             }
             grid.appendChild(div);
         });
     }
 
     function toggleLike(id, btn) {
-        if (likes.includes(id)) {
-            likes = likes.filter(l => l !== id);
-            btn.classList.remove('active');
-        } else {
-            likes.push(id);
-            btn.classList.add('active');
-        }
+        if (likes.includes(id)) { likes = likes.filter(l => l !== id); btn.classList.remove('active'); }
+        else { likes.push(id); btn.classList.add('active'); }
         localStorage.setItem('ng_likes', JSON.stringify(likes));
     }
 
-    function addPts(n) {
-        pts = parseInt(pts) + n;
-        localStorage.setItem('ng_pts', pts);
-        document.getElementById('points').innerText = pts;
-    }
+    function addPts(n) { pts = parseInt(pts) + n; localStorage.setItem('ng_pts', pts); document.getElementById('points').innerText = pts; }
 
     async function getJoke() {
         try {
