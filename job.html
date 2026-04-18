@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Remote Jobs Worldwide | Remoteng</title>
+  <meta name="description" content="Find remote jobs worldwide. Filter by USD, EUR, ₦300k+. VIP members get jobs 24hrs early. Updated daily.">
+  <link rel="canonical" href="https://remoteng.com.ng/jobs.html">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0d6efd">
+  <link rel="icon" href="/assets/img/favicon.ico">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Remote Jobs Worldwide | Remoteng">
+  <meta property="og:description" content="1000+ remote jobs. Filter by salary & currency. VIP 24hr early access.">
+  <meta property="og:url" content="https://remoteng.com.ng/jobs.html">
+  <meta property="og:type" content="website">
+  
+  <!-- JSON-LD for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Remote Jobs",
+    "description": "Curated remote jobs worldwide updated daily",
+    "url": "https://remoteng.com.ng/jobs.html"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a href="/" class="logo">Remoteng</a>
+      <div class="nav-links">
+        <a href="/jobs.html" class="active">Jobs</a>
+        <a href="/news.html">News</a>
+        <a href="/services.html">Services</a>
+        <a href="/vip.html" class="btn-vip">VIP ₦1k</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- TOP AD 320x50 -->
+    <div class="ad-slot" style="min-height:50px;text-align:center;margin:16px 0">
+      <small>Advertisement</small>
+      <!-- PASTE YOUR 320x50 ADSTERRA CODE HERE -->
+      YOUR_320x50_CODE
+    </div>
+
+    <h1>Remote Jobs Worldwide</h1>
+    <p class="subtitle">Updated 3x daily. VIP members get jobs 24hrs early. <a href="/vip.html">Join VIP ₦1k/mo</a></p>
+
+    <!-- SEARCH BAR -->
+    <div class="search-wrap">
+      <input type="search" id="jobSearch" placeholder="Search title, company, skill..." aria-label="Search jobs">
+      <button id="searchBtn">Search</button>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-filter="all">All Jobs</button>
+      <button class="filter-btn" data-filter="non-tech">Non-Tech</button>
+      <button class="filter-btn" data-filter="usd">USD Jobs</button>
+      <button class="filter-btn" data-filter="eur">EUR Jobs</button>
+      <button class="filter-btn" data-filter="300k">₦300k+</button>
+      <button class="filter-btn" data-filter="500k">₦500k+</button>
+      <button class="filter-btn" data-filter="3kusd">$3k+</button>
+      <select id="sortSelect" aria-label="Sort jobs">
+        <option value="newest">Sort: Newest</option>
+        <option value="salary">Sort: Highest Salary</option>
+      </select>
+    </div>
+
+    <!-- FEATURED JOBS - Injected by JS if any -->
+    <div id="featuredJobs" class="featured-wrap"></div>
+
+    <!-- JOB COUNT -->
+    <p class="job-count">Showing <span id="jobCount">0</span> jobs</p>
+
+    <!-- JOB LIST - Injected by JS -->
+    <div id="jobList" class="job-list"></div>
+
+    <!-- MIDDLE AD 300x250 - Shows after job 6 via JS -->
+    <div class="ad-slot" id="middleAd" style="min-height:250px;text-align:center;margin:24px 0;display:none">
+      <small>Advertisement</small>
+      <!-- PASTE YOUR 300x250 ADSTERRA CODE HERE -->
+      YOUR_300x250_CODE
+    </div>
+
+    <!-- LOAD MORE -->
+    <div class="load-more-wrap">
+      <button id="loadMoreBtn" class="btn-load" style="display:none">Load 20 More</button>
+      <p id="noMoreJobs" style="display:none">You’ve reached the end. <a href="/vip.html">VIPs get new jobs first</a></p>
+    </div>
+
+    <!-- BOTTOM AD 320x50 -->
+    <div class="ad-slot" style="min-height:50px;text-align:center;margin:24px 0">
+      <small>Advertisement</small>
+      <!-- PASTE YOUR 320x50 ADSTERRA CODE HERE -->
+      YOUR_320x50_CODE
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Remoteng</h4>
+        <p>24/7 Online. Live chat 9am-9pm WAT GMT+1</p>
+        <p><a href="https://wa.me/2349125651147">WhatsApp: 2349125651147</a></p>
+        <p><a href="mailto:support@remoteng.com.ng">support@remoteng.com.ng</a></p>
+      </div>
+      <div>
+        <h4>Links</h4>
+        <a href="/jobs.html">Jobs</a>
+        <a href="/news.html">News</a>
+        <a href="/vip.html">VIP</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <a href="https://www.instagram.com/remoteng_official">Instagram</a>
+        <a href="https://t.me/latest_ng">Telegram</a>
+        <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10">WhatsApp Channel</a>
+      </div>
+    </div>
+    <p class="copy">© 2026 Remoteng. All rights reserved.</p>
+  </footer>
+
+  <!-- CHATBOT -->
+  <div id="chatbot" class="chatbot"></div>
+
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/chatbot.js"></script>
+</body>
+</html>
