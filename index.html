@@ -1,254 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-    <meta name="google-site-verification" content="na08mYBWPkxRgjwYcZQ5FL6suZRQWavvS2kYQijnZnI" />
-    <!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa-BhzeV0kGGmLMcJebVjw8E.js"></script>
-<script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>NG Tech Hub | Remote Jobs & Tech Gist</title>
-    <meta name="description" content="Nigeria's premium hub for Remote Tech Jobs, Latest Tech Gist, and Live Betting Odds. Join thousands of Nigerian pros today.">
-    <meta name="keywords" content="Remote Jobs Nigeria, Tech News, Live Odds, NG Tech Hub, Work from home Lagos">
-    <meta name="author" content="NG Tech Hub">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://seagrowprotocl.github.io/"> 
-    <meta property="og:title" content="NG Tech Hub - Your Gateway to Remote Work">
-    <meta property="og:description" content="Find high-paying remote jobs and the latest tech news in Nigeria.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
-
-    <script src="https://kit.fontawesome.com/c34a2dfd31.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-    <script src="https://fixesconsessionconsession.com/3f/64/cb/3f64cb6bd6b52e1f9613efd8f200761c.js"></script>
-
-    <style>
-        :root { 
-            --primary: #00D16E; --bg: #F8FAFC; --white: #FFFFFF;
-            --text-main: #1E293B; --text-muted: #64748B; --border: #E2E8F0;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text-main); overflow-x: hidden; }
-        header { 
-            padding: 15px 20px; background: var(--white); position: sticky; top: 0; z-index: 100;
-            display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .logo { font-weight: 800; color: var(--text-main); font-size: 20px; letter-spacing: -1px; }
-        .logo span { color: var(--primary); }
-        .hero { text-align: center; padding: 50px 20px; background: var(--white); border-bottom: 1px solid var(--border); }
-        .hero h1 { font-size: 32px; margin-bottom: 10px; font-weight: 800; }
-        .search-box { 
-            display: flex; background: #F1F5F9; border-radius: 12px; padding: 5px; 
-            border: 1px solid var(--border); margin: 25px auto 0; max-width: 600px;
-        }
-        .search-box input { flex: 1; background: none; border: none; padding: 12px 15px; color: var(--text-main); outline: none; font-size: 16px; }
-        .search-box button { background: var(--primary); color: white; border: none; padding: 10px 25px; border-radius: 10px; font-weight: 700; cursor: pointer; }
-        .tabs { display: flex; gap: 8px; justify-content: center; margin: 25px 0; overflow-x: auto; padding: 0 10px 10px; }
-        .tab-btn { padding: 10px 20px; border: 1px solid var(--border); border-radius: 50px; background: var(--white); color: var(--text-muted); cursor: pointer; white-space: nowrap; font-weight: 600; font-size: 14px; transition: 0.2s; }
-        .tab-btn.active { background: var(--primary); border-color: var(--primary); color: white; box-shadow: 0 4px 12px rgba(0, 209, 110, 0.3); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; padding: 30px 20px; max-width: 1200px; margin: 0 auto; }
-        .card { background: var(--white); border-radius: 16px; overflow: hidden; border: 1px solid var(--border); transition: 0.3s; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .card-img { width: 100%; height: 190px; object-fit: cover; background: #eee; }
-        .card-body { padding: 20px; }
-        .card-body h3 { font-size: 18px; margin-bottom: 8px; line-height: 1.4; }
-        .card-footer { padding: 15px 20px; background: #FAFAFA; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
-        .like-btn { background: none; border: none; color: #CBD5E1; font-size: 22px; cursor: pointer; transition: 0.2s; }
-        .like-btn.active { color: #FF4757; }
-        .btn-action { background: var(--primary); color: white; text-decoration: none; padding: 8px 18px; border-radius: 8px; font-weight: 700; font-size: 13px; }
-        .joke-bar { background: #F1F5F9; padding: 30px; border-radius: 20px; max-width: 800px; margin: 40px auto; text-align: center; border: 1px solid var(--border); }
-        .social-dock { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
-        .dock-item { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
-        .ad-container { text-align: center; padding: 15px 0; background: transparent; display: flex; justify-content: center; align-items: center; width: 100%; }
-        footer { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 14px; }
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .hero h1 { font-size: 26px; } }
-    </style>
+    <title>Remote Jobs Nigeria + Tech News | Remoteng</title>
+    <meta name="description" content="Find the best remote jobs in Nigeria, daily tech news, and professional CV writing services. Work from home and grow your tech career.">
+    <link rel="stylesheet" href="assets/style.css">
+    <script type="text/javascript">
+	atOptions = { 'key' : '8f03f73691bf093a8d076af0d6d62212', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+    </script>
+    <script type="text/javascript" src="//fixesconsessionconsession.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Remote<span>ng</span></a>
+            <div class="menu">
+                <a href="jobs.html">Jobs</a>
+                <a href="news.html">News</a>
+                <a href="vip.html" class="v-btn">VIP Alerts</a>
+            </div>
+        </nav>
+    </header>
 
-<header>
-    <div class="logo">NG<span>TECH</span>HUB</div>
-    <div style="font-weight: 600; font-size: 14px;">⭐ <span id="points">0</span></div>
-</header>
+    <main>
+        <section class="hero">
+            <h1>Nigeria's #1 Remote Work Hub</h1>
+            <p>High-paying remote roles for developers, writers, and virtual assistants.</p>
+            <form action="jobs.html" method="GET" class="search-box">
+                <input type="text" name="q" placeholder="Search jobs (e.g. Node.js, Admin)...">
+                <button type="submit">Search</button>
+            </form>
+        </section>
 
-<div class="ad-container">
-    <script type="text/javascript">
-        atOptions = { 'key' : 'e043bec3a6648ab81ae3b9e75fa6e639', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/e043bec3a6648ab81ae3b9e75fa6e639/invoke.js"></script>
-</div>
-<div style="text-align: center; margin: 20px 0;">
-    <a href="https://omg10.com/4/10856028" target="_blank" style="
-        display: inline-block;
-        padding: 15px 30px;
-        background-color: #25d366; /* WhatsApp Green to build trust in Nigeria */
-        color: white;
-        font-size: 18px;
-        font-weight: bold;
-        text-decoration: none;
-        border-radius: 50px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        transition: transform 0.2s;
-        animation: pulse 2s infinite;
-    ">
-        🚀 CLAIM YOUR TECH BONUS HERE 🌱
-    </a>
-</div>
+        <div id="container-bf115e1d3ba1dc0e7eed25d4b595c194"></div>
+        <script async="async" data-cfasync="false" src="//fixesconsessionconsession.com/bf115e1d3ba1dc0e7eed25d4b595c194/invoke.js"></script>
 
-<style>
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
-    }
-</style>
-<div class="hero">
-    <h1>Discover Remote <span style="color:var(--primary)">Tech Jobs</span></h1>
-    <p style="color:var(--text-muted)">Connecting Nigerian talent to global opportunities.</p>
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search Remote Jobs, AI, Crypto..." onkeyup="if(event.key==='Enter') executeSearch()">
-        <button onclick="executeSearch()">SEARCH</button>
+        <section class="services-preview">
+            <h2>Our Professional Services</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>CV Writing</h3>
+                    <p>₦3,000 / $3</p>
+                    <a href="cv-writing.html" class="btn">Get Started</a>
+                </div>
+                <div class="card">
+                    <h3>VIP Alerts</h3>
+                    <p>₦1,000 / $1 per month</p>
+                    <a href="vip.html" class="btn">Join Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="chatbot-icon" onclick="toggleChat()">💬</div>
+    <div id="chat-window" class="hidden">
+        <div class="chat-header">Remoteng Assistant (UK English)</div>
+        <div id="chat-body">
+            <p>Good day! How can I assist you with your remote career today?</p>
+        </div>
+        <button onclick="window.open('https://wa.me/2349125651147')">Chat on WhatsApp</button>
     </div>
 
-    <div class="ad-container">
-        <script type="text/javascript">
-            atOptions = { 'key' : '8f03f73691bf093a8d076af0d6d62212', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
-        </script>
-        <script type="text/javascript" src="https://fixesconsessionconsession.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
-    </div>
-
-    <div class="tabs">
-        <button class="tab-btn active" onclick="changeTab('tech', this)">💻 Tech Gist</button>
-        <button class="tab-btn" onclick="changeTab('jobs', this)">💼 Remote Jobs</button>
-        <button class="tab-btn" onclick="changeTab('odds', this)">⚽ Live Odds</button>
-        <button class="tab-btn" onclick="changeTab('music', this)">🎵 Music</button>
-    </div>
-</div>
-
-<div id="results" class="grid"></div>
-
-<div class="joke-bar">
-    <p id="jokeDisplay">"Fetching Naija laughter..."</p>
-    <button onclick="getJoke()" style="background:none; border:none; color:var(--primary); cursor:pointer; font-weight:700; margin-top:15px; font-size:14px;">Next Gist →</button>
-</div>
-
-<div class="ad-container">
-    <script type="text/javascript">
-        atOptions = { 'key' : '8f03f73691bf093a8d076af0d6d62212', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
-    </script>
-    <script type="text/javascript" src="https://fixesconsessionconsession.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
-</div>
-
-<div class="ad-container">
-    <script type="text/javascript">
-        atOptions = { 'key' : 'e043bec3a6648ab81ae3b9e75fa6e639', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/e043bec3a6648ab81ae3b9e75fa6e639/invoke.js"></script>
-</div>
-
-<footer>
-    <p>&copy; 2026 NG Tech Hub | <a href="legal.html" style="color:var(--primary); text-decoration:none;">Privacy & Terms</a></p>
-</footer>
-
-<div class="social-dock">
-    <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" class="dock-item" style="background:#25D366"><i class="fa-brands fa-whatsapp"></i></a>
-    <a href="https://t.me/latest_ng" class="dock-item" style="background:#0088cc"><i class="fa-brands fa-telegram"></i></a>
-</div>
-
-<script>
-    const KEYS = {
-        news: '3f8b592a6a9444d48a48114dc2e6328c',
-        odds: '83c4173b194e9aef16318df0e08dd055',
-        adz_id: 'ef02ca59',
-        adz_key: '64df082acf621ff8ba9e989e97ed6793'
-    };
-
-    let activeTab = 'tech';
-    let likes = JSON.parse(localStorage.getItem('ng_likes')) || [];
-    let pts = parseInt(localStorage.getItem('ng_pts')) || 0;
-    document.getElementById('points').innerText = pts;
-
-    function changeTab(t, btn) {
-        activeTab = t;
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        executeSearch();
-    }
-
-    async function executeSearch() {
-        const q = document.getElementById('searchInput').value || 'latest';
-        const grid = document.getElementById('results');
-        grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:50px; color:#64748B;">Updating feed...</div>';
-        let url = "";
-        if (activeTab === 'tech' || activeTab === 'music') {
-            url = `https://newsapi.org/v2/everything?q=${activeTab}+${q}&apiKey=${KEYS.news}`;
-        } else if (activeTab === 'jobs') {
-            url = `https://api.adzuna.com/v1/api/jobs/ng/search/1?app_id=${KEYS.adz_id}&app_key=${KEYS.adz_key}&results_per_page=12&what=${encodeURIComponent(q + ' remote')}`;
-        } else if (activeTab === 'odds') {
-            url = `https://api.the-odds-api.com/v4/sports/upcoming/odds/?regions=eu&apiKey=${KEYS.odds}`;
-        }
-
-        try {
-            const proxy = "https://corsproxy.io/?";
-            const response = await fetch(proxy + encodeURIComponent(url));
-            const data = await response.json();
-            let items = data.articles || data.results || (Array.isArray(data) ? data : []);
-            if (activeTab === 'jobs' && items.length === 0) {
-                const altRes = await fetch("https://www.arbeitnow.com/api/job-board-api");
-                const altData = await altRes.json();
-                items = altData.data.filter(j => j.remote === true);
-            }
-            render(items);
-        } catch (e) { grid.innerHTML = "Syncing with servers..."; }
-    }
-
-    function render(items) {
-        const grid = document.getElementById('results');
-        grid.innerHTML = '';
-        items.slice(0, 12).forEach(item => {
-            const id = item.url || item.redirect_url;
-            const isLiked = likes.includes(id);
-            const div = document.createElement('div');
-            div.className = 'card';
-            if (activeTab === 'jobs') {
-                div.innerHTML = `<div class="card-body"><span style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase;">Remote Opportunity</span><h3 style="margin:10px 0">${item.title || item.job_title}</h3><p style="color:var(--text-muted); font-size:14px;">${item.company?.display_name || item.company_name}</p></div><div class="card-footer"><button class="like-btn ${isLiked ? 'active' : ''}" onclick="toggleLike('${id}', this)"><i class="fa-solid fa-heart"></i></button><a href="${item.redirect_url || item.url}" target="_blank" class="btn-action" onclick="addPts(10)">APPLY</a></div>`;
-            } else if (activeTab === 'odds') {
-                div.innerHTML = `<div class="card-body"><h3 style="text-align:center">${item.home_team} <br> vs <br> ${item.away_team}</h3></div><div class="card-footer"><a href="https://www.profitablecpmratenetwork.com/vcmv2e97bh?key=6f31d584592651da1bf92e0579ecf9e1" target="_blank" class="btn-action" style="width:100%; text-align:center">BET NOW</a></div>`;
-            } else {
-                div.innerHTML = `<img src="${item.urlToImage || 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400'}" class="card-img"><div class="card-body"><h3>${item.title}</h3></div><div class="card-footer"><button class="like-btn ${isLiked ? 'active' : ''}" onclick="toggleLike('${id}', this)"><i class="fa-solid fa-heart"></i></button><a href="${item.url}" target="_blank" class="btn-action" onclick="addPts(5)">READ</a></div>`;
-            }
-            grid.appendChild(div);
-        });
-    }
-
-    function toggleLike(id, btn) {
-        if (likes.includes(id)) { likes = likes.filter(l => l !== id); btn.classList.remove('active'); }
-        else { likes.push(id); btn.classList.add('active'); }
-        localStorage.setItem('ng_likes', JSON.stringify(likes));
-    }
-
-    function addPts(n) { 
-        pts = pts + n; 
-        localStorage.setItem('ng_pts', pts); 
-        document.getElementById('points').innerText = pts; 
-    }
-
-    async function getJoke() {
-        try {
-            const r = await fetch('https://official-joke-api.appspot.com/random_joke');
-            const d = await r.json();
-            document.getElementById('jokeDisplay').innerText = `"${d.setup} - ${d.punchline}"`;
-        } catch(e) {}
-    }
-
-    executeSearch();
-    getJoke();
-</script>
+    <footer>
+        <p>&copy; 2026 Remoteng. Support: <a href="mailto:remoteng@macr2.com">remoteng@macr2.com</a></p>
+        <div class="socials">
+            <a href="https://t.me/latest_ng">Telegram</a> | 
+            <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10">WhatsApp Channel</a>
+        </div>
+    </footer>
+    <script src="assets/app.js"></script>
 </body>
 </html>
