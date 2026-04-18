@@ -3,72 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Remote Jobs Nigeria + Tech News | Remoteng</title>
-    <meta name="description" content="Find the best remote jobs in Nigeria, daily tech news, and professional CV writing services. Work from home and grow your tech career.">
-    <link rel="stylesheet" href="assets/style.css">
-    <script type="text/javascript">
-	atOptions = { 'key' : '8f03f73691bf093a8d076af0d6d62212', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
-    </script>
-    <script type="text/javascript" src="//fixesconsessionconsession.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
+    <meta name="description" content="Find the best remote jobs in Nigeria and globally. Stay updated with tech news Nigeria and work from home opportunities. Professional CV writing services available.">
+    <meta name="keywords" content="remote jobs Nigeria, work from home Nigeria, CV writing service Nigeria, tech news Nigeria, global remote work, VIP job alerts">
+    <link rel="canonical" href="https://remoteng.com.ng">
+
+    <meta property="og:title" content="Remoteng | Global Remote Jobs & Tech News Hub">
+    <meta property="og:description" content="Connecting elite talent to global remote opportunities. 80% of our CV clients get interviews.">
+    <meta property="og:url" content="https://remoteng.com.ng">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0a192f; --accent: #ff851b; --glass: rgba(255, 255, 255, 0.95);
+            --dark: #111; --light: #f4f7f6; --gray: #666;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--light); color: var(--dark); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        
+        /* NAVIGATION */
+        .glass-nav {
+            background: var(--glass); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
+            padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.8rem; font-weight: 900; color: var(--primary); text-transform: uppercase; letter-spacing: -1px; }
+        .logo span { color: var(--accent); }
+        .menu a { margin-left: 20px; font-weight: 700; font-size: 0.85rem; color: var(--primary); text-transform: uppercase; }
+        .menu a:hover { color: var(--accent); }
+
+        /* SECTIONS */
+        section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+        .hero { background: var(--primary); color: #fff; text-align: center; padding: 120px 5%; max-width: 100%; }
+        .hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); margin-bottom: 20px; }
+        .search-box { display: flex; max-width: 600px; margin: 30px auto; background: #fff; border-radius: 50px; padding: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .search-box input { flex: 1; border: none; padding: 15px 25px; border-radius: 50px; outline: none; }
+        .search-box button { background: var(--accent); border: none; color: #fff; padding: 0 30px; border-radius: 50px; cursor: pointer; font-weight: 900; }
+
+        /* LEGAL & ABOUT CONTENT */
+        .legal-box { background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .legal-box h2 { color: var(--primary); margin-bottom: 20px; border-bottom: 2px solid var(--accent); display: inline-block; }
+        .legal-box p, .legal-box li { color: var(--gray); margin-bottom: 15px; font-size: 0.95rem; }
+
+        /* CARDS */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: #fff; padding: 30px; border-radius: 15px; border: 1px solid #eee; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .price { font-size: 1.5rem; font-weight: 900; color: var(--accent); margin: 10px 0; }
+        .btn { width: 100%; padding: 12px; background: var(--accent); border: none; color: #fff; font-weight: 900; border-radius: 8px; cursor: pointer; display: block; text-align: center; }
+
+        /* MODAL */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); overflow-y: auto; }
+        .modal-content { background: #fff; margin: 5% auto; padding: 30px; width: 90%; max-width: 500px; border-radius: 20px; position: relative; }
+        .close { position: absolute; right: 20px; top: 15px; font-size: 24px; cursor: pointer; }
+
+        /* CHATBOT */
+        #bot-ui { position: fixed; bottom: 25px; right: 25px; z-index: 1500; }
+        .bot-bubble { background: var(--accent); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 28px; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        #bot-panel { display: none; width: 300px; background: #fff; position: absolute; bottom: 80px; right: 0; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); overflow: hidden; }
+        .bot-header { background: var(--primary); color: #fff; padding: 15px; font-weight: bold; }
+        .bot-body { padding: 15px; font-size: 0.85rem; }
+
+        footer { background: var(--primary); color: #fff; padding: 60px 5% 20px; text-align: center; }
+        .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1200px; margin: 0 auto; text-align: left; }
+        .footer-col { flex: 1; min-width: 200px; margin-bottom: 30px; }
+        .social-icons a { margin-right: 15px; font-size: 1.2rem; color: var(--accent); }
+
+        .hidden { display: none; }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html" class="logo">Remote<span>ng</span></a>
-            <div class="menu">
-                <a href="jobs.html">Jobs</a>
-                <a href="news.html">News</a>
-                <a href="vip.html" class="v-btn">VIP Alerts</a>
-            </div>
+
+    <div style="text-align:center; padding: 10px 0;">
+        <script type="text/javascript">
+            atOptions = { 'key' : '8f03f73691bf093a8d076af0d6d62212', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+        </script>
+        <script type="text/javascript" src="//fixesconsessionconsession.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
+    </div>
+
+    <header class="glass-nav">
+        <a href="#" class="logo" onclick="showPage('home')">Remote<span>ng</span></a>
+        <nav class="menu">
+            <a href="#jobs" onclick="showPage('home')">Jobs</a>
+            <a href="#news" onclick="showPage('home')">News</a>
+            <a href="#services" onclick="showPage('home')">Services</a>
+            <a href="#" onclick="showPage('about')">About</a>
+            <a href="#" onclick="showPage('contact')">Contact</a>
         </nav>
     </header>
 
-    <main>
+    <div id="page-home">
         <section class="hero">
-            <h1>Nigeria's #1 Remote Work Hub</h1>
-            <p>High-paying remote roles for developers, writers, and virtual assistants.</p>
-            <form action="jobs.html" method="GET" class="search-box">
-                <input type="text" name="q" placeholder="Search jobs (e.g. Node.js, Admin)...">
-                <button type="submit">Search</button>
-            </form>
+            <h1>Global Remote Work Hub</h1>
+            <p>Access high-paying global remote jobs and daily tech insights.</p>
+            <div class="search-box">
+                <input type="text" id="jobSearch" placeholder="Search remote jobs...">
+                <button onclick="alert('Search synced with Repo 2 database')">Search</button>
+            </div>
         </section>
 
-        <div id="container-bf115e1d3ba1dc0e7eed25d4b595c194"></div>
-        <script async="async" data-cfasync="false" src="//fixesconsessionconsession.com/bf115e1d3ba1dc0e7eed25d4b595c194/invoke.js"></script>
-
-        <section class="services-preview">
-            <h2>Our Professional Services</h2>
+        <section id="services">
+            <h2 style="margin-bottom: 30px; text-align: center;">Our Services & VIP Access</h2>
             <div class="grid">
                 <div class="card">
                     <h3>CV Writing</h3>
-                    <p>₦3,000 / $3</p>
-                    <a href="cv-writing.html" class="btn">Get Started</a>
+                    <p>Professional ATS-optimized resume. Delivery in 24hrs.</p>
+                    <p class="price">₦3,000 | $3</p>
+                    <button class="btn" onclick="openModal('CV Writing', 3000, 3)">Order Now</button>
+                </div>
+                <div class="card" style="background: var(--primary); color: #fff;">
+                    <h3>VIP Job Alerts</h3>
+                    <p>Get full job details at 7 AM daily. Verified leads only.</p>
+                    <p class="price">₦1,000 | $1 <small>/mo</small></p>
+                    <button class="btn" style="background: #fff; color: var(--primary);" onclick="openModal('VIP Alerts', 1000, 1)">Join VIP</button>
                 </div>
                 <div class="card">
-                    <h3>VIP Alerts</h3>
-                    <p>₦1,000 / $1 per month</p>
-                    <a href="vip.html" class="btn">Join Now</a>
+                    <h3>CV + Cover Letter</h3>
+                    <p>The ultimate job search package. Save ₦500 / $0.50.</p>
+                    <p class="price">₦5,000 | $5</p>
+                    <button class="btn" onclick="openModal('CV + Cover Letter', 5000, 5)">Order Now</button>
                 </div>
             </div>
         </section>
-    </main>
+    </div>
 
-    <div id="chatbot-icon" onclick="toggleChat()">💬</div>
-    <div id="chat-window" class="hidden">
-        <div class="chat-header">Remoteng Assistant (UK English)</div>
-        <div id="chat-body">
-            <p>Good day! How can I assist you with your remote career today?</p>
+    <div id="page-about" class="hidden">
+        <section>
+            <div class="legal-box">
+                <h2>About Remoteng</h2>
+                <p>Remoteng is the premier destination for Nigerian and global talent looking to secure high-paying remote roles in technology, administration, and creative fields.</p>
+                <p>Our mission is to bridge the gap between skilled professionals and the world's most innovative remote-first companies. We don't just list jobs; we provide the tools—like our elite CV writing service—to ensure you get hired.</p>
+                <p><strong>Tagline:</strong> Eighty per cent of clients get interviews in two weeks or we revise it for free.</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="page-contact" class="hidden">
+        <section>
+            <div class="legal-box" style="text-align: center;">
+                <h2>Contact Us</h2>
+                <p>We are available <strong>24/7</strong> to assist you.</p>
+                <p>Email: <strong>remoteng@macr2.com</strong></p>
+                <p>WhatsApp Support: <strong>+2349125651147</strong></p>
+                <div style="margin-top: 20px;" class="social-icons">
+                    <a href="https://t.me/latest_ng">Telegram</a>
+                    <a href="https://www.instagram.com/remoteng_official">Instagram</a>
+                    <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10">WhatsApp Channel</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="page-legal" class="hidden">
+        <section>
+            <div class="legal-box">
+                <h2>Privacy Policy</h2>
+                <p>We respect your privacy. All user data is handled via secure Supabase integration. We do not sell your personal information to third parties.</p>
+                <h2>Terms of Service</h2>
+                <p>By using Remoteng, you agree that our CV services are final once confirmed. VIP subscriptions are billed monthly. Job listings are provided via 3rd party APIs (Adzuna, RemoteOK) and we are not responsible for the hiring decisions of external companies.</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Order Service</h2>
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; margin: 20px 0; font-size: 0.9rem;">
+                <p><strong>Opay:</strong> 8087977838 (ADULSELIM Opeyemi Bello)</p>
+                <p style="margin-top: 10px;"><strong>USDT (TRC20):</strong> TCTjhiCeYGZK72xVxotrV4oBe9oQcKKJhS</p>
+            </div>
+            <input type="text" id="userName" placeholder="Full Name">
+            <input type="email" id="userEmail" placeholder="Email Address">
+            <button class="btn" style="background: #25D366;" onclick="confirmWhatsApp()">Confirm on WhatsApp</button>
         </div>
-        <button onclick="window.open('https://wa.me/2349125651147')">Chat on WhatsApp</button>
+    </div>
+
+    <div id="bot-ui">
+        <div id="bot-panel">
+            <div class="bot-header">Remoteng Support (UK)</div>
+            <div class="bot-body" id="botMsgs">
+                <p>Good day. How can I assist your global career today?</p>
+                <button onclick="botReply('VIP')" style="display:block; width:100%; margin-top:10px; padding:5px; border-radius:5px; border:1px solid #ddd; cursor:pointer;">What is VIP?</button>
+            </div>
+        </div>
+        <div class="bot-bubble" onclick="toggleBot()">🤖</div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Remoteng. Support: <a href="mailto:remoteng@macr2.com">remoteng@macr2.com</a></p>
-        <div class="socials">
-            <a href="https://t.me/latest_ng">Telegram</a> | 
-            <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10">WhatsApp Channel</a>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 style="color: #fff;">Remoteng</h4>
+                <p style="font-size: 0.8rem; opacity: 0.7;">Global Remote Career Platform. Powered by ITUNU OLUWA BREAD Technology.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="#" onclick="showPage('legal')">Privacy & Terms</a><br>
+                <a href="#" onclick="showPage('contact')">Support</a>
+            </div>
         </div>
+        <p style="margin-top: 30px; font-size: 0.7rem; opacity: 0.5;">© 2026 Remoteng Global Hub. All Rights Reserved.</p>
     </footer>
-    <script src="assets/app.js"></script>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            ['home', 'about', 'contact', 'legal'].forEach(p => {
+                document.getElementById('page-' + p).classList.add('hidden');
+            });
+            document.getElementById('page-' + pageId).classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        // Modal Logic
+        let currentSvc = "", currentPrice = "";
+        function openModal(svc, ngn, usd) {
+            currentSvc = svc; currentPrice = "₦" + ngn + " / $" + usd;
+            document.getElementById('modalTitle').innerText = svc;
+            document.getElementById('paymentModal').style.display = "block";
+        }
+        function closeModal() { document.getElementById('paymentModal').style.display = "none"; }
+        function confirmWhatsApp() {
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            if(!name || !email) return alert("Details required");
+            const msg = `Hello! I want to pay for ${currentSvc}. \nName: ${name} \nEmail: ${email} \nPrice: ${currentPrice}`;
+            window.open(`https://wa.me/2349125651147?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // Bot Logic
+        function toggleBot() { 
+            const p = document.getElementById('bot-panel');
+            p.style.display = p.style.display === 'block' ? 'none' : 'block';
+        }
+        function botReply(type) {
+            const m = document.getElementById('botMsgs');
+            if(type==='VIP') m.innerHTML += `<p style="margin-top:10px; color:var(--accent)"><strong>Bot:</strong> The VIP service is one thousand naira per month. Would you like me to open the VIP page for you?</p>`;
+        }
+    </script>
 </body>
 </html>
