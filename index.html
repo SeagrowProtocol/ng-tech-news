@@ -3,319 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remoteng | Global Remote Career Hub</title>
     
-    <title>Remoteng | Global Remote Work</title>
-    <meta name="description" content="Access verified global remote jobs and breaking tech news. Professional CV writing and featured job listings for the modern workforce.">
-    <meta name="keywords" content="remote jobs, work from home, CV writing, tech news, global work, VIP job alerts, feature job">
-    <link rel="canonical" href="https://remoteng.com.ng">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #0a192f; --accent: #ff851b; --glass: rgba(255, 255, 255, 0.95);
-            --dark: #111; --light: #f4f7f6; --gray: #666;
+            --primary: #0a192f; 
+            --accent: #ffb800; /* Gold/Yellow for the M */
+            --bg: #f0f4f8;
+            --white: #ffffff;
+            --grad: linear-gradient(135deg, #0a192f 0%, #112240 100%);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        body { background: var(--light); color: var(--dark); line-height: 1.6; }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg); color: var(--primary); overflow-x: hidden; }
+
+        /* % STYLE LOGO DESIGN */
+        .logo-wrap { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        .logo-box { 
+            position: relative; 
+            width: 45px; 
+            height: 45px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
+        }
+        .logo-r { 
+            font-size: 22px; font-weight: 900; color: var(--primary); 
+            line-height: 1; transform: translate(-8px, -5px); 
+        }
+        .logo-slash { 
+            position: absolute; width: 100%; height: 3px; 
+            background: var(--accent); transform: rotate(-45deg); 
+        }
+        .logo-m { 
+            font-size: 18px; font-weight: 900; color: var(--accent); 
+            line-height: 1; transform: translate(8px, 5px); 
+        }
+        .logo-text { font-weight: 800; font-size: 1.4rem; letter-spacing: -1px; text-transform: uppercase; }
+
         /* NAVIGATION */
-        .glass-nav {
-            background: var(--glass); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
-            padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center;
+        nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .logo { font-size: 1.8rem; font-weight: 900; color: var(--primary); text-transform: uppercase; letter-spacing: -1px; }
-        .logo span { color: var(--accent); }
-        .menu a { margin-left: 20px; font-weight: 700; font-size: 0.85rem; color: var(--primary); text-transform: uppercase; }
-        .menu a:hover { color: var(--accent); }
+        .nav-links a { 
+            margin-left: 25px; font-weight: 700; color: var(--primary); 
+            text-decoration: none; font-size: 0.9rem; transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent); }
 
-        /* HERO & DUAL SEARCH */
-        section { padding: 60px 5%; max-width: 1200px; margin: 0 auto; }
-        .hero { background: var(--primary); color: #fff; text-align: center; padding: 100px 5%; max-width: 100%; }
-        .hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 15px; }
-        
-        .search-container { max-width: 700px; margin: 0 auto; background: #fff; border-radius: 15px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); color: var(--dark); }
-        .search-type { display: flex; gap: 10px; margin-bottom: 15px; justify-content: center; }
-        .type-btn { padding: 8px 20px; border-radius: 20px; border: 1px solid #ddd; cursor: pointer; font-weight: bold; font-size: 0.8rem; }
-        .type-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-        
-        .search-box { display: flex; background: #f0f0f0; border-radius: 50px; padding: 5px; }
-        .search-box input { flex: 1; border: none; padding: 12px 20px; background: transparent; outline: none; width: 100%; }
-        .search-box button { background: var(--primary); border: none; color: #fff; padding: 0 25px; border-radius: 50px; cursor: pointer; font-weight: bold; }
+        /* HERO SECTION - THE WELCOME VIBE */
+        .hero {
+            padding: 100px 5%;
+            background: var(--grad);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; margin-bottom: 20px; line-height: 1.1; }
+        .hero h1 span { color: var(--accent); }
+        .hero p { font-size: 1.2rem; opacity: 0.8; max-width: 600px; margin: 0 auto 40px; }
 
-        /* EMAIL ALERTS */
-        .alert-box { background: var(--accent); color: #fff; padding: 30px; border-radius: 15px; margin-top: 40px; text-align: center; }
-        .alert-box h3 { margin-bottom: 5px; }
-        .alert-box input { padding: 12px; border-radius: 8px; border: none; width: 250px; margin: 10px; }
-        .alert-btn { background: var(--primary); color: #fff; padding: 12px 25px; border: none; border-radius: 8px; font-weight: 900; cursor: pointer; }
+        /* WELCOME BUTTONS */
+        .btn-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .main-btn { 
+            padding: 18px 35px; border-radius: 50px; border: none; font-weight: 800; 
+            font-size: 1rem; cursor: pointer; transition: 0.3s; text-transform: uppercase;
+        }
+        .btn-jobs { background: var(--accent); color: var(--primary); box-shadow: 0 10px 20px rgba(255,184,0,0.3); }
+        .btn-jobs:hover { transform: scale(1.05); background: #fff; }
+        .btn-news { background: transparent; border: 2px solid #fff; color: #fff; }
+        .btn-news:hover { background: #fff; color: var(--primary); }
 
-        /* SERVICE CARDS */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
-        .card { background: #fff; padding: 30px; border-radius: 15px; border: 1px solid #eee; position: relative; display: flex; flex-direction: column; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .card.featured { border: 2px solid var(--accent); }
-        .card.featured::before { content: "FEATURED"; position: absolute; top: -12px; right: 20px; background: var(--accent); color: #fff; padding: 2px 10px; font-size: 10px; font-weight: 900; border-radius: 5px; }
-        .price { font-size: 1.5rem; font-weight: 900; color: var(--accent); margin: 15px 0; }
-        .btn { width: 100%; padding: 12px; background: var(--accent); border: none; color: #fff; font-weight: 900; border-radius: 8px; cursor: pointer; margin-top: auto; }
+        /* ADS PLACEHOLDERS */
+        .ad-banner { padding: 20px 0; text-align: center; }
 
-        /* CONTACT SECTION */
-        .contact-card { text-align: center; transition: 0.3s transform; }
-        .contact-card:hover { transform: scale(1.1); }
-        .contact-card i { font-size: 4.5rem; margin-bottom: 10px; }
-
-        /* ADS */
-        .ad-slot { text-align: center; padding: 20px 0; min-height: 60px; }
+        /* INTERFACE CARDS (Quick Access) */
+        .info-grid { padding: 80px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .info-card { 
+            background: var(--white); padding: 40px; border-radius: 24px; 
+            text-align: left; transition: 0.4s; position: relative; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+        .info-card:hover { transform: translateY(-10px); }
+        .info-card i { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
+        .info-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .info-card p { color: #64748b; margin-bottom: 20px; }
 
         /* CHATBOT */
-        #bot-ui { position: fixed; bottom: 25px; right: 25px; z-index: 1500; }
-        .bot-bubble { background: var(--accent); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 28px; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        #bot-panel { width: 320px; background: #fff; position: absolute; bottom: 80px; right: 0; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); overflow: hidden; display: none; flex-direction: column; }
-        .bot-header { background: var(--primary); color: #fff; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; }
-        .bot-body { padding: 15px; height: 300px; overflow-y: auto; background: #f9f9f9; display: flex; flex-direction: column; gap: 10px; }
-        .msg { padding: 10px; border-radius: 10px; font-size: 0.85rem; max-width: 85%; }
-        .msg.bot { background: #eee; align-self: flex-start; }
-        .msg.user { background: var(--accent); color: #fff; align-self: flex-end; }
-        .bot-footer { padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px; }
-        .bot-footer input { flex: 1; border: 1px solid #ddd; padding: 8px; border-radius: 5px; outline: none; }
-        .bot-footer button { background: var(--primary); color: #fff; border: none; padding: 0 10px; border-radius: 5px; cursor: pointer; }
+        #bot-trigger { 
+            position: fixed; bottom: 30px; right: 30px; 
+            width: 70px; height: 70px; background: var(--accent); 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 30px; cursor: pointer; z-index: 2000; box-shadow: 0 10px 30px rgba(255,184,0,0.4);
+        }
 
-        /* FOOTER */
-        footer { background: var(--primary); color: #fff; padding: 60px 5% 20px; text-align: center; }
-        .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1200px; margin: 0 auto; text-align: left; }
-        .footer-col { flex: 1; min-width: 250px; margin-bottom: 30px; }
-        
-        .hidden { display: none; }
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); overflow-y: auto; }
-        .modal-content { background: #fff; margin: 5% auto; padding: 30px; width: 95%; max-width: 500px; border-radius: 20px; position: relative; }
+        footer { background: var(--primary); color: #fff; padding: 60px 5%; text-align: center; }
+        .social-link { font-size: 1.5rem; margin: 0 10px; color: var(--accent); }
     </style>
 </head>
 <body>
 
-    <div class="ad-slot">
-        <script type="text/javascript">
-            atOptions = { 'key' : '8f03f73691bf093a8d076af0d6d62212', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
-        </script>
-        <script type="text/javascript" src="//fixesconsessionconsession.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
-    </div>
+    <nav>
+        <div class="logo-wrap" onclick="location.href='index.html'">
+            <div class="logo-box">
+                <div class="logo-r">R</div>
+                <div class="logo-slash"></div>
+                <div class="logo-m">M</div>
+            </div>
+            <div class="logo-text">Remote<span>ng</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="jobs.html">Jobs</a>
+            <a href="news.html">News</a>
+            <a href="services.html">Services</a>
+            <a href="saved.html"><i class="fas fa-bookmark"></i> Saved</a>
+        </div>
+    </nav>
 
-    <header class="glass-nav">
-        <a href="#" class="logo" onclick="showPage('home')">Remote<span>ng</span></a>
-        <nav class="menu">
-            <a href="#jobs" onclick="showPage('home')">Jobs</a>
-            <a href="#news" onclick="showPage('home')">News</a>
-            <a href="#services" onclick="showPage('home')">Services</a>
-            <a href="#" onclick="showPage('contact')">Contact</a>
-        </nav>
+    <header class="hero">
+        <div class="ad-banner">
+            <script type="text/javascript">
+                atOptions = { 'key' : '8f03f73691bf093a8d076af0d6d62212', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="//fixesconsessionconsession.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
+        </div>
+        
+        <h1>The World is <span>Remote.</span><br>Are You Ready?</h1>
+        <p>Your portal to high-paying international roles, breaking tech news, and professional career acceleration.</p>
+        
+        <div class="btn-group">
+            <button class="main-btn btn-jobs" onclick="location.href='jobs.html'">Browse Jobs</button>
+            <button class="main-btn btn-news" onclick="location.href='news.html'">Tech Trends</button>
+        </div>
     </header>
 
-    <div id="page-home">
-        <section class="hero">
-            <h1>Global Remote Work</h1>
-            <p>Directly connecting elite talent with verified international opportunities.</p>
-            
-            <div class="search-container">
-                <div class="search-type">
-                    <span id="type-jobs" class="type-btn active" onclick="setSearchType('jobs')">Jobs</span>
-                    <span id="type-news" class="type-btn" onclick="setSearchType('news')">News</span>
-                </div>
-                <div class="search-box">
-                    <input type="text" id="mainSearch" placeholder="Role, company, or tech topic...">
-                    <button onclick="executeSearch()">Search</button>
-                </div>
-            </div>
-
-            <div class="alert-box">
-                <h3>Smart Job Alerts</h3>
-                <p>Save your search and get notified immediately when matching roles drop.</p>
-                <input type="email" id="alertEmail" placeholder="yourname@email.com">
-                <button class="alert-btn" onclick="saveAlert()">Save Alert</button>
-            </div>
-        </section>
-
-        <div class="ad-slot">
-            <div id="container-bf115e1d3ba1dc0e7eed25d4b595c194"></div>
-            <script async="async" data-cfasync="false" src="//fixesconsessionconsession.com/bf115e1d3ba1dc0e7eed25d4b595c194/invoke.js"></script>
+    <section class="info-grid">
+        <div class="info-card">
+            <i class="fas fa-globe-americas"></i>
+            <h3>Verified Jobs</h3>
+            <p>Our AI-powered engine scrapes the best remote roles from the USA, Europe, and Asia. Updated every 6 hours.</p>
+            <a href="jobs.html" style="color: var(--accent); font-weight: 800;">Get Started →</a>
+        </div>
+        
+        <div class="info-card" style="background: var(--primary); color: #fff;">
+            <i class="fas fa-bolt"></i>
+            <h3>Career Suite</h3>
+            <p>From ATS-optimized CVs to VIP job alerts. We don't just list jobs; we get you hired.</p>
+            <a href="services.html" style="color: var(--accent); font-weight: 800;">View Services →</a>
         </div>
 
-        <section id="services">
-            <h2 style="text-align: center; margin-bottom: 40px;">Professional Career Services</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>CV Writing</h3>
-                    <p>ATS-compliant resume designed for global remote standards.</p>
-                    <p class="price">₦3,000 | $3</p>
-                    <button class="btn" onclick="openModal('CV Writing', 3000, 3)">Order Now</button>
-                </div>
-                <div class="card" style="background: var(--primary); color: #fff;">
-                    <h3>VIP Alerts</h3>
-                    <p>Full job leads delivered to your inbox at 7 AM daily.</p>
-                    <p class="price" style="color:#fff">₦1,000 | $1</p>
-                    <button class="btn" style="background: #fff; color: var(--primary);" onclick="openModal('VIP Subscription', 1000, 1)">Join VIP</button>
-                </div>
-                <div class="card featured">
-                    <h3>Feature Job</h3>
-                    <p>Pin your job listing to the top of our site for 30 days.</p>
-                    <p class="price">₦5,000 | $5</p>
-                    <button class="btn" onclick="openModal('Featured Job Posting', 5000, 5)">Pin Job</button>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div id="page-contact" class="hidden">
-        <section>
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Connect With Us</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
-                
-                <a href="https://wa.me/2349125651147" target="_blank" class="contact-card">
-                    <i class="fab fa-whatsapp" style="color: #25D366;"></i>
-                    <h4>WhatsApp</h4>
-                    <p style="color:var(--gray)">Live Support</p>
-                </a>
-
-                <a href="https://t.me/latest_ng" target="_blank" class="contact-card">
-                    <i class="fab fa-telegram" style="color: #0088cc;"></i>
-                    <h4>Telegram</h4>
-                    <p style="color:var(--gray)">Community Channel</p>
-                </a>
-
-                <a href="https://instagram.com/remoteng_official" target="_blank" class="contact-card">
-                    <i class="fab fa-instagram" style="color: #E1306C;"></i>
-                    <h4>Instagram</h4>
-                    <p style="color:var(--gray)">Daily Insights</p>
-                </a>
-
-                <a href="mailto:remoteng@macr2.com" class="contact-card">
-                    <i class="fas fa-envelope-open-text" style="color: var(--accent);"></i>
-                    <h4>Email</h4>
-                    <p style="color:var(--gray)">Support Desk</p>
-                </a>
-
-            </div>
-        </section>
-    </div>
-
-    <div id="payModal" class="modal">
-        <div class="modal-content">
-            <h2 id="modalTitle">Secure Order</h2>
-            <div style="background: #f4f4f4; padding: 20px; margin: 20px 0; border-radius: 10px; font-size: 0.9rem;">
-                <p><strong>Option 1: Opay</strong><br>8087977838 | ADULSELIM Opeyemi Bello</p>
-                <p style="margin-top: 10px;"><strong>Option 2: Crypto (USDT TRC20)</strong><br>TCTjhiCeYGZK72xVxotrV4oBe9oQcKKJhS</p>
-            </div>
-            <input type="text" id="uName" placeholder="Full Name" style="width:100%; padding:12px; margin-bottom:15px; border: 1px solid #ddd; border-radius: 8px;">
-            <button class="btn" style="background: #25D366;" onclick="confirmPayment()">Confirm on WhatsApp</button>
-            <p style="text-align:center; margin-top:15px; cursor:pointer; font-size: 0.8rem;" onclick="closeModal()">Cancel</p>
+        <div class="info-card">
+            <i class="fas fa-newspaper"></i>
+            <h3>Industry Intel</h3>
+            <p>Stay ahead with deep-dives into tech news, startup funding, and the Nigerian tech ecosystem.</p>
+            <a href="news.html" style="color: var(--accent); font-weight: 800;">Read News →</a>
         </div>
-    </div>
+    </section>
 
-    <div id="bot-ui">
-        <div id="bot-panel">
-            <div class="bot-header">Remoteng Assistant <span onclick="toggleBot()" style="cursor:pointer">&times;</span></div>
-            <div class="bot-body" id="chatBody">
-                <div class="msg bot">Hi! I'm the Remoteng guide. How can I help with your global career today?</div>
-            </div>
-            <div class="bot-footer">
-                <input type="text" id="botInput" placeholder="Ask about jobs, CVs, VIP...">
-                <button onclick="handleBotMsg()">Send</button>
-            </div>
-        </div>
-        <div class="bot-bubble" onclick="toggleBot()">🤖</div>
+    <div class="ad-banner">
+        <div id="container-bf115e1d3ba1dc0e7eed25d4b595c194"></div>
+        <script async="async" data-cfasync="false" src="//fixesconsessionconsession.com/bf115e1d3ba1dc0e7eed25d4b595c194/invoke.js"></script>
     </div>
 
     <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <a href="#" class="logo" style="color:#fff">Remote<span>ng</span></a>
-                <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.7;">Global Remote Career Platform. No borders, just opportunities.</p>
-            </div>
-            <div class="footer-col">
-                <h4 style="margin-bottom: 15px;">Legal & Policies</h4>
-                <a href="legal.html" style="font-size: 0.9rem; opacity: 0.8;">Privacy Policy</a><br>
-                <a href="legal.html" style="font-size: 0.9rem; opacity: 0.8;">Terms of Service</a><br>
-                <a href="legal.html" style="font-size: 0.9rem; opacity: 0.8;">Refund Policy</a>
-            </div>
-            <div class="footer-col">
-                <h4 style="margin-bottom: 15px;">Socials</h4>
-                <a href="https://t.me/latest_ng" style="margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-telegram"></i></a>
-                <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" style="margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" style="font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+        <div class="logo-wrap" style="justify-content: center; margin-bottom: 20px;">
+            <div class="logo-box" style="border: 1px solid #fff; border-radius: 5px;">
+                <div class="logo-r" style="color:#fff">R</div>
+                <div class="logo-slash" style="background:#fff"></div>
+                <div class="logo-m">M</div>
             </div>
         </div>
-        <p style="margin-top: 40px; font-size: 0.75rem; opacity: 0.4; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-            © 2026 Remoteng Global Operations. All Rights Reserved.
-        </p>
+        <p style="margin-bottom: 20px;">Remoteng Global Hub. Connecting elite talent to the future of work.</p>
+        <div style="margin-bottom: 20px;">
+            <a href="https://t.me/latest_ng" class="social-link"><i class="fab fa-telegram"></i></a>
+            <a href="https://wa.me/2349125651147" class="social-link"><i class="fab fa-whatsapp"></i></a>
+            <a href="legal.html" style="color: #fff; display: block; margin-top: 15px; font-size: 0.8rem; opacity: 0.6;">Privacy & Terms</a>
+        </div>
+        <p style="font-size: 0.7rem; opacity: 0.4;">© 2026 Remoteng Hub. Automated by Render Engine.</p>
     </footer>
 
+    <div id="bot-trigger">🤖</div>
+
     <script>
-        // Page Toggling
-        function showPage(id) {
-            ['home', 'contact'].forEach(p => document.getElementById('page-'+p).classList.add('hidden'));
-            document.getElementById('page-'+id).classList.remove('hidden');
-            window.scrollTo(0,0);
-        }
-
-        // Search Toggling
-        let currentSearchType = 'jobs';
-        function setSearchType(type) {
-            currentSearchType = type;
-            document.getElementById('type-jobs').classList.toggle('active', type === 'jobs');
-            document.getElementById('type-news').classList.toggle('active', type === 'news');
-        }
-
-        function executeSearch() {
-            const query = document.getElementById('mainSearch').value;
-            if(!query) return alert("Please enter a search term.");
-            alert(`Initiating ${currentSearchType} search for "${query}". API sync via Repo 2 will process this request.`);
-        }
-
-        function saveAlert() {
-            const email = document.getElementById('alertEmail').value;
-            if(email.includes('@')) alert("Alert preference saved! We will notify you of matching global roles.");
-            else alert("Please enter a valid email address.");
-        }
-
-        // Service & Payment Logic
-        let selectedService = "";
-        function openModal(svc, n, u) { 
-            selectedService = svc; 
-            document.getElementById('modalTitle').innerText = svc; 
-            document.getElementById('payModal').style.display='block'; 
-        }
-        function closeModal() { document.getElementById('payModal').style.display='none'; }
-        function confirmPayment() {
-            const name = document.getElementById('uName').value;
-            if(!name) return alert("Please enter your name.");
-            window.open(`https://wa.me/2349125651147?text=Hello Remoteng! I've made payment for ${selectedService}. My name is ${name}.`);
-        }
-
-        // Bot Logic
-        function toggleBot() {
-            const p = document.getElementById('bot-panel');
-            p.style.display = (p.style.display === 'flex') ? 'none' : 'flex';
-        }
-
-        function handleBotMsg() {
-            const input = document.getElementById('botInput');
-            const chatBody = document.getElementById('chatBody');
-            if(!input.value) return;
-
-            chatBody.innerHTML += `<div class="msg user">${input.value}</div>`;
-            const text = input.value.toLowerCase();
-            input.value = "";
-
-            setTimeout(() => {
-                let reply = "I'm still learning! Please ask about 'jobs', 'CV writing', or 'VIP alerts'.";
-                if(text.includes("hi") || text.includes("hello")) reply = "Welcome! I can help you find remote work or explain our career services.";
-                if(text.includes("job")) reply = "We source verified remote jobs from the US, UK, and Europe. Use the search bar to find your next role!";
-                if(text.includes("cv")) reply = "Our CV service costs ₦3,000. It's optimized for international ATS systems to get you hired.";
-                if(text.includes("vip")) reply = "VIP alerts deliver high-paying job links directly to you every morning at 7 AM.";
-                
-                chatBody.innerHTML += `<div class="msg bot">${reply}</div>`;
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }, 600);
-        }
+        // Welcome Alert
+        window.onload = () => {
+            console.log("Remoteng Home Interface Loaded.");
+        };
     </script>
 </body>
 </html>
