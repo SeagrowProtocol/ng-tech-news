@@ -1,129 +1,434 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal Center | Remoteng Global Policies</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root { --primary: #0a192f; --accent: #ff851b; --text: #334155; --light-bg: #f8fafc; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.8; color: var(--text); background: var(--light-bg); padding: 40px 5%; }
-        
-        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 60px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
-        
-        /* Navigation Helper */
-        .back-nav { margin-bottom: 40px; display: flex; align-items: center; gap: 10px; }
-        .back-nav a { text-decoration: none; color: var(--accent); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal - Privacy Policy, Terms of Service, About | RemotENG</title>
+<meta name="description" content="RemotENG legal information: Privacy Policy, Terms of Service, About Us, Contact, Refund Policy. GDPR compliant.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
 
-        /* Typography */
-        h1 { color: var(--primary); font-size: 3rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; }
-        .last-updated { color: #94a3b8; font-size: 0.85rem; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 1px; }
-        h2 { color: var(--primary); font-size: 1.8rem; margin-top: 50px; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
-        h3 { color: var(--primary); font-size: 1.2rem; margin-top: 25px; margin-bottom: 10px; }
-        p { margin-bottom: 20px; text-align: justify; }
-        ul { margin-bottom: 20px; padding-left: 20px; }
-        li { margin-bottom: 10px; }
+<style>
+:root {
+  --blue-dark: #1e3a8a; --blue: #2563eb; --blue-light: #3b82f6; --green: #84cc16;
+  --gray-900: #111827; --gray-700: #374151; --gray-500: #6b7280; --gray-100: #f3f4f6; --white: #ffffff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--white); line-height: 1.7; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
 
-        /* Highlights */
-        .highlight-box { background: #fff7ed; border-left: 4px solid var(--accent); padding: 20px; margin: 30px 0; border-radius: 0 12px 12px 0; }
-        
-        footer { margin-top: 80px; padding-top: 30px; border-top: 1px solid #e2e8f0; text-align: center; color: #94a3b8; font-size: 0.85rem; }
+/* Header */
+header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo svg { width: 40px; height: 40px; }
+.logo-text { font-size: 24px; font-weight: 700; }
+.logo-text .dark { color: var(--blue-dark); }
+.logo-text .light { color: var(--blue); }
+.logo-text .green { color: var(--green); font-size: 14px; display: block; margin-top: -4px; }
+nav { display: flex; gap: 24px; align-items: center; }
+nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; }
+nav a:hover, nav a.active { color: var(--blue); }
+.btn { background: var(--blue); color: var(--white); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; }
+.btn:hover { background: var(--blue-dark); }
 
-        @media (max-width: 768px) {
-            .container { padding: 30px; }
-            h1 { font-size: 2rem; }
-        }
-    </style>
+/* Hero */
+.hero { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); color: var(--white); padding: 60px 0; text-align: center; }
+.hero h1 { font-size: 40px; margin-bottom: 16px; }
+.hero p { font-size: 18px; opacity: 0.95; }
+
+/* TOC */
+.toc { background: var(--gray-100); padding: 32px; border-radius: 12px; margin: 40px 0; }
+.toc h3 { margin-bottom: 16px; color: var(--blue-dark); }
+.toc ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.toc a { color: var(--blue); text-decoration: none; font-weight: 500; }
+.toc a:hover { text-decoration: underline; }
+
+/* Content */
+.content { padding: 60px 0; }
+.content section { margin-bottom: 60px; scroll-margin-top: 100px; }
+.content h2 { font-size: 32px; margin-bottom: 24px; color: var(--blue-dark); border-bottom: 3px solid var(--green); padding-bottom: 12px; }
+.content h3 { font-size: 22px; margin: 32px 0 16px; color: var(--gray-900); }
+.content h4 { font-size: 18px; margin: 24px 0 12px; color: var(--gray-700); }
+.content p { margin-bottom: 16px; color: var(--gray-700); }
+.content ul, .content ol { margin: 16px 0 16px 24px; color: var(--gray-700); }
+.content li { margin-bottom: 8px; }
+.content a { color: var(--blue); }
+.content strong { color: var(--gray-900); }
+.updated { background: var(--gray-100); padding: 16px; border-radius: 8px; font-size: 14px; color: var(--gray-500); margin-bottom: 32px; }
+
+/* Contact Box */
+.contact-box { background: var(--blue-light); color: var(--white); padding: 32px; border-radius: 12px; margin: 32px 0; }
+.contact-box h3 { color: var(--white); margin-top: 0; }
+.contact-box a { color: var(--white); font-weight: 600; }
+
+/* Footer */
+footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 20px; margin-top: 80px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+footer h4 { color: var(--white); margin-bottom: 16px; }
+footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 8px; }
+footer a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 20px; text-align: center; color: var(--gray-500); }
+
+@media (max-width: 768px) {
+  nav { display: none; }
+  .hero h1 { font-size: 28px; }
+  .toc ul { grid-template-columns: 1fr; }
+  .content h2 { font-size: 26px; }
+}
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <nav class="back-nav">
-            <i class="fas fa-arrow-left" style="color: var(--accent);"></i>
-            <a href="index.html">Back to Home</a>
-        </nav>
-
-        <h1>Legal & Transparency</h1>
-        <p class="last-updated">Effective Date: April 18, 2026</p>
-
-        <div class="highlight-box">
-            <strong>Disclaimer:</strong> Remoteng is a global career resource platform. We are not an employer. We facilitate connections between talent and remote-first organizations worldwide.
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M25 55 Q15 55 15 45 Q15 35 25 35 Q25 25 35 25 Q50 25 50 35 Q65 35 65 45 Q75 45 75 55 Q75 65 65 L25 65 Q15 65 15 55 Z" fill="#3b82f6"/>
+          <circle cx="70" cy="50" r="15" fill="none" stroke="#84cc16" stroke-width="3"/>
+          <path d="M70 35 Q75 42 70 50 Q65 58 70 65" fill="none" stroke="#84cc16" stroke-width="2"/>
+          <path d="M55 50 L85 50" fill="none" stroke="#84cc16" stroke-width="2"/>
+          <ellipse cx="70" cy="50" rx="8" ry="15" fill="none" stroke="#84cc16" stroke-width="2"/>
+          <path d="M45 45 L45 60 L50 55 L55 60 L55 45 Z" fill="#84cc16"/>
+          <path d="M55 50 L60 55 L55 55 Z" fill="#84cc16"/>
+          <path d="M40 20 Q50 10 60 20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+          <path d="M43 25 Q50 18 57 25" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+          <path d="M46 30 Q50 26 54 30" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="logo-text">
+          <span class="dark">Remot</span><span class="light">eng</span>
+          <span class="green">.com.ng</span>
         </div>
-
-        <section id="about">
-            <h2>1. About Remoteng Global</h2>
-            <p>Remoteng is designed to empower the modern workforce by providing a centralized hub for high-quality, verified remote work opportunities. We recognize that the future of work is decentralized, and our mission is to ensure that talent from Nigeria and across the globe can access international roles without geographical bias.</p>
-            <p>Our platform utilizes advanced API integrations to curate listings from the world’s most reputable job boards and tech companies. Beyond job listings, we provide professional development services including ATS-optimized CV restructuring and VIP career coaching.</p>
-        </section>
-
-        <section id="privacy">
-            <h2>2. Comprehensive Privacy Policy</h2>
-            <p>Your data privacy is our core priority. This section outlines how we handle your information:</p>
-            
-            <h3>2.1 Data Collection</h3>
-            <p>We collect information only when it is voluntarily provided. This includes:</p>
-            <ul>
-                <li><strong>Identity Data:</strong> Names and email addresses for newsletter and job alert subscriptions.</li>
-                <li><strong>Professional Data:</strong> Resumes and career histories provided during CV writing orders.</li>
-                <li><strong>Technical Data:</strong> IP addresses and browser types collected via cookies to optimize site performance and security.</li>
-            </ul>
-
-            <h3>2.2 Use of Data</h3>
-            <p>Your data is strictly used to fulfill your requests (e.g., delivering a CV or sending a job alert). We <strong>never</strong> sell, rent, or trade your personal information to third-party marketing firms. Technical data is used solely for traffic analysis and to prevent fraudulent bot activity.</p>
-            
-            <h3>2.3 Third-Party Links & Ads</h3>
-            <p>Our site displays advertisements via Adsterra and links to external job boards. Please note that once you leave Remoteng, we do not have control over the privacy practices of external sites. We encourage you to read the privacy statements of every website you visit.</p>
-        </section>
-
-        <section id="terms">
-            <h2>3. Terms of Service</h2>
-            <p>By accessing and using Remoteng, you agree to the following terms:</p>
-            
-            <h3>3.1 User Conduct</h3>
-            <p>You agree to use this site for legitimate career-seeking or hiring purposes. You may not use any automated system (crawlers, spiders, or bots) to extract data from our job feeds for commercial gain without explicit written permission.</p>
-
-            <h3>3.2 Accuracy of Information</h3>
-            <p>While we strive to verify every listing, Remoteng does not guarantee the 100% accuracy of job postings provided by third-party APIs. Users are responsible for performing their own due diligence before sharing sensitive personal information with an employer.</p>
-
-            <h3>3.3 Intellectual Property</h3>
-            <p>The Remoteng brand, logo, site design, and curated content are the intellectual property of Remoteng Global. Unauthorized reproduction of our site’s code or content is strictly prohibited.</p>
-        </section>
-
-        <section id="refunds">
-            <h2>4. Service Level Agreements (SLA)</h2>
-            
-            <h3>4.1 CV Writing Services</h3>
-            <p>Our CV writers are trained in international recruitment standards. Upon purchase, you will receive your first draft within 24-48 hours. 
-                <strong>Refund Policy:</strong> Because CV writing is a custom digital service, we do not offer monetary refunds. However, we offer <strong>unlimited revisions</strong> for 7 days to ensure you are 100% satisfied with the outcome.</p>
-
-            <h3>4.2 VIP Subscriptions</h3>
-            <p>VIP Job Alerts are billed monthly. You may cancel your subscription at any time through our support channels. Access will continue until the end of the paid billing cycle, after which no further charges will be applied.</p>
-
-            <h3>4.3 Featured Jobs</h3>
-            <p>Featured jobs remain pinned to the top of the search results for exactly 30 days. Remoteng reserves the right to remove any job posting that is found to be fraudulent, scam-related, or discriminatory, without a refund.</p>
-        </section>
-
-        <section id="contact">
-            <h2>5. Contact Information</h2>
-            <p>For legal inquiries, data deletion requests, or partnership proposals, please contact us through our official channels:</p>
-            <ul>
-                <li><strong>Email:</strong> remoteng@macr2.com</li>
-                <li><strong>WhatsApp:</strong> +234 912 565 1147</li>
-                <li><strong>Mailing Address:</strong> Global Operations Hub, Remote Hub Nigeria</li>
-            </ul>
-        </section>
-        <button onclick="location.href='legal.html'">View Legal</button>
-
-<nav>
-  <a href="legal.html">Legal</a>
-</nav>
-
-        <footer>
-            © 2026 Remoteng Global. All rights reserved.Technology Group and Digital Operations.
-        </footer>
+      </a>
+      <nav>
+        <a href="remote-jobs.html">Jobs</a>
+        <a href="tech-news.html">News</a>
+        <a href="service.html">Services</a>
+        <a href="vip.html">VIP Alerts</a>
+        <a href="post-job.html">Post Job</a>
+        <a href="vip.html" class="btn">Get VIP</a>
+      </nav>
     </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Legal Information</h1>
+    <p>Privacy Policy, Terms of Service, About Us, and Contact Details</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="toc">
+    <h3>Quick Navigation</h3>
+    <ul>
+      <li><a href="#about">About RemotENG</a></li>
+      <li><a href="#privacy">Privacy Policy</a></li>
+      <li><a href="#terms">Terms of Service</a></li>
+      <li><a href="#disclaimer">Disclaimer</a></li>
+      <li><a href="#refund">Refund Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <div class="updated">
+      <strong>Last Updated:</strong> April 24, 2026 | <strong>Effective Date:</strong> April 24, 2026
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>About RemotENG</h2>
+      <p><strong>RemotENG</strong> is a global remote job board and career services platform connecting professionals worldwide with remote work opportunities.</p>
+      
+      <h3>Our Mission</h3>
+      <p>To democratize access to remote work by aggregating the best remote jobs from around the world and providing career services that help professionals land those jobs. We believe talent is global, but opportunity shouldn't be limited by geography.</p>
+
+      <h3>What We Do</h3>
+      <ul>
+        <li><strong>Job Aggregation:</strong> We scan 50+ job boards daily to bring you remote jobs in tech, marketing, design, customer support, and more</li>
+        <li><strong>Career Services:</strong> Professional CV writing, cover letters, and resume reviews to help you stand out</li>
+        <li><strong>VIP Job Alerts:</strong> Daily email alerts with curated jobs, early access, and VIP-only listings</li>
+        <li><strong>Employer Services:</strong> Featured job postings to help companies hire faster</li>
+      </ul>
+
+      <h3>Our Values</h3>
+      <ul>
+        <li><strong>Transparency:</strong> Clear pricing, no hidden fees, honest job descriptions</li>
+        <li><strong>Quality:</strong> Hand-curated jobs, not spam. Every listing reviewed</li>
+        <li><strong>Speed:</strong> Jobs posted within 1 hour. Alerts delivered daily at 9AM</li>
+        <li><strong>Global:</strong> Opportunities from US, UK, EU, and worldwide. Work from anywhere</li>
+      </ul>
+    </section>
+
+    <!-- Privacy Policy -->
+    <section id="privacy">
+      <h2>Privacy Policy</h2>
+      <p>RemotENG ("we", "us", "our") respects your privacy. This policy explains what data we collect, how we use it, and your rights.</p>
+
+      <h3>1. Information We Collect</h3>
+      <h4>Information You Provide:</h4>
+      <ul>
+        <li><strong>Email address:</strong> When you subscribe to job alerts or VIP</li>
+        <li><strong>Contact details:</strong> Name, phone when ordering services or posting jobs</li>
+        <li><strong>Payment info:</strong> Processed securely by Selar. We don't store card details</li>
+        <li><strong>CV/Resume files:</strong> When you use our writing or review services</li>
+        <li><strong>Job application data:</strong> When you save jobs or click Apply</li>
+      </ul>
+
+      <h4>Information Collected Automatically:</h4>
+      <ul>
+        <li><strong>Usage data:</strong> Pages visited, jobs clicked, time on site via cookies</li>
+        <li><strong>Device data:</strong> IP address, browser type, device type for analytics</li>
+        <li><strong>Location:</strong> Country-level only for currency and job filtering</li>
+      </ul>
+
+      <h3>2. How We Use Your Information</h3>
+      <ul>
+        <li>Send job alerts and newsletters you subscribed to</li>
+        <li>Process service orders and payments</li>
+        <li>Improve our website and job recommendations</li>
+        <li>Track job application clicks for analytics</li>
+        <li>Comply with legal obligations</li>
+        <li>Prevent fraud and abuse</li>
+      </ul>
+
+      <h3>3. Third-Party Services</h3>
+      <p>We use these trusted services:</p>
+      <ul>
+        <li><strong>Supabase:</strong> Database and authentication. GDPR compliant</li>
+        <li><strong>Brevo:</strong> Email delivery. Your email is stored securely</li>
+        <li><strong>Selar:</strong> Payment processing. PCI-DSS compliant</li>
+        <li><strong>Adsterra:</strong> Advertisements. May use cookies for ad targeting</li>
+        <li><strong>Vercel/Render:</strong> Website hosting</li>
+      </ul>
+
+      <h3>4. Cookies</h3>
+      <p>We use essential cookies for site functionality and analytics cookies to understand usage. You can disable cookies in your browser, but some features may not work.</p>
+
+      <h3>5. Data Retention</h3>
+      <ul>
+        <li>Email subscribers: Until you unsubscribe</li>
+        <li>Service orders: 7 years for accounting/legal</li>
+        <li>Job click data: 2 years for analytics</li>
+        <li>CV files: Deleted 30 days after delivery</li>
+      </ul>
+
+      <h3>6. Your Rights (GDPR & CCPA)</h3>
+      <p>You have the right to:</p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of your data</li>
+        <li><strong>Delete:</strong> Request deletion of your data</li>
+        <li><strong>Correct:</strong> Update inaccurate information</li>
+        <li><strong>Opt-out:</strong> Unsubscribe from emails anytime</li>
+        <li><strong>Portability:</strong> Receive your data in machine-readable format</li>
+      </ul>
+      <p>To exercise these rights, email <a href="mailto:support@remoteng.com.ng">support@remoteng.com.ng</a></p>
+
+      <h3>7. Data Security</h3>
+      <p>We use SSL encryption, secure databases, and access controls. However, no internet transmission is 100% secure. Use strong passwords and be cautious with sensitive data.</p>
+
+      <h3>8. Children's Privacy</h3>
+      <p>RemotENG is not intended for users under 16. We do not knowingly collect data from children.</p>
+
+      <h3>9. Changes to Policy</h3>
+      <p>We may update this policy. Changes will be posted here with a new "Last Updated" date. Continued use means acceptance.</p>
+    </section>
+
+    <!-- Terms of Service -->
+    <section id="terms">
+      <h2>Terms of Service</h2>
+      <p>By using RemotENG, you agree to these terms. If you don't agree, don't use our services.</p>
+
+      <h3>1. Use of Service</h3>
+      <p>You may use RemotENG to:</p>
+      <ul>
+        <li>Browse and apply to remote jobs</li>
+        <li>Subscribe to job alerts</li>
+        <li>Purchase career services</li>
+        <li>Post jobs as an employer</li>
+      </ul>
+      <p>You may NOT:</p>
+      <ul>
+        <li>Scrape or copy our job listings</li>
+        <li>Post fake jobs or spam</li>
+        <li>Use our service for illegal purposes</li>
+        <li>Attempt to hack or disrupt our servers</li>
+        <li>Impersonate others</li>
+      </ul>
+
+      <h3>2. Job Listings</h3>
+      <p>We aggregate jobs from third-party sources and employers. We don't guarantee:</p>
+      <ul>
+        <li>Job availability or accuracy of listings</li>
+        <li>That you'll be hired</li>
+        <li>Employer responses</li>
+        <li>Salary or benefits listed</li>
+      </ul>
+      <p>Always verify job details directly with employers. Apply at your own discretion.</p>
+
+      <h3>3. Career Services</h3>
+      <ul>
+        <li><strong>Delivery:</strong> CV/Resume within 48hrs, Cover Letter 24hrs, Review 24hrs</li>
+        <li><strong>Revisions:</strong> 2 free revisions within 7 days of delivery</li>
+        <li><strong>Ownership:</strong> You own the final documents we create for you</li>
+        <li><strong>No Guarantee:</strong> We don't guarantee interviews or job offers</li>
+      </ul>
+
+      <h3>4. VIP Subscription</h3>
+      <ul>
+        <li><strong>Billing:</strong> Monthly recurring via Selar. Cancel anytime</li>
+        <li><strong>Access:</strong> Immediate upon payment</li>
+        <li><strong>Cancellation:</strong> Access continues until end of billing period</li>
+        <li><strong>No Refunds:</strong> For partial months already delivered</li>
+      </ul>
+
+      <h3>5. Employer Job Posting</h3>
+      <ul>
+        <li><strong>Free Posts:</strong> Reviewed within 1 hour. We may reject spam/low-quality posts</li>
+        <li><strong>Featured Posts:</strong> Pinned for 30 days after payment. Non-refundable once live</li>
+        <li><strong>Content:</strong> You must have rights to post the job. No discrimination allowed</li>
+        <li><strong>Removal:</strong> We may remove jobs that violate our terms</li>
+      </ul>
+
+      <h3>6. Intellectual Property</h3>
+      <p>RemotENG logo, design, and content are owned by us. You may not copy or reuse without permission. Job listings belong to respective employers.</p>
+
+      <h3>7. Limitation of Liability</h3>
+      <p>RemotENG is provided "as is". We're not liable for:</p>
+      <ul>
+        <li>Job application outcomes</li>
+        <li>Employer actions or misrepresentations</li>
+        <li>Service interruptions or data loss</li>
+        <li>Indirect or consequential damages</li>
+      </ul>
+      <p>Our total liability is limited to the amount you paid us in the last 12 months.</p>
+
+      <h3>8. Termination</h3>
+      <p>We may suspend or terminate your account if you violate these terms. You may delete your account anytime by emailing support.</p>
+
+      <h3>9. Governing Law</h3>
+      <p>These terms are governed by the laws of the Federal Republic of Nigeria. Disputes will be resolved in Lagos, Nigeria courts.</p>
+    </section>
+
+    <!-- Disclaimer -->
+    <section id="disclaimer">
+      <h2>Disclaimer</h2>
+      <p><strong>Job Board Disclaimer:</strong> RemotENG is a job aggregator and career services platform. We are NOT an employer, recruiter, or staffing agency. We don't hire, interview, or make hiring decisions.</p>
+      <p><strong>No Employment Guarantee:</strong> Using our services doesn't guarantee employment. Hiring decisions are made solely by employers.</p>
+      <p><strong>Third-Party Links:</strong> Job listings link to external sites. We're not responsible for their content, privacy practices, or hiring processes.</p>
+      <p><strong>Career Advice:</strong> Our CV writing and career tips are general advice, not professional career counseling. Results vary by individual.</p>
+    </section>
+
+    <!-- Refund Policy -->
+    <section id="refund">
+      <h2>Refund Policy</h2>
+      
+      <h3>CV/Resume/Cover Letter Services</h3>
+      <ul>
+        <li><strong>Before Work Starts:</strong> 100% refund if you cancel before we start</li>
+        <li><strong>After Delivery:</strong> 2 free revisions within 7 days. No refund after delivery if work matches order specs</li>
+        <li><strong>Quality Issues:</strong> If work is unusable or doesn't match order, full refund</li>
+      </ul>
+
+      <h3>VIP Subscription</h3>
+      <ul>
+        <li><strong>7-Day Guarantee:</strong> Full refund if you cancel within 7 days of first payment</li>
+        <li><strong>After 7 Days:</strong> Cancel anytime. No refund for current month, but access continues until period ends</li>
+      </ul>
+
+      <h3>Featured Job Posts</h3>
+      <ul>
+        <li><strong>Before Live:</strong> 100% refund if you cancel before job goes live</li>
+        <li><strong>After Live:</strong> No refunds. Service is considered delivered once posted</li>
+      </ul>
+
+      <h3>How to Request Refund</h3>
+      <p>Email <a href="mailto:support@remoteng.com.ng">support@remoteng.com.ng</a> with your order email and reason. We respond within 24 hours. Approved refunds processed in 5-7 business days.</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>Questions about our services, privacy, or terms? We're here to help.</p>
+
+      <div class="contact-box">
+        <h3>Get in Touch</h3>
+        <p><strong>Email:</strong> <a href="mailto:support@remoteng.com.ng">support@remoteng.com.ng</a></p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/2349125651147">+234 912 565 1147</a></p>
+        <p><strong>Business Hours:</strong> 24/7 Online. Live chat 6am-9pm GMT+1 (WAT)</p>
+        <p><strong>Response Time:</strong> Within 24 hours, usually 2-4 hours</p>
+      </div>
+
+      <h3>Other Ways to Reach Us</h3>
+      <ul>
+        <li><strong>Instagram:</strong> <a href="https://www.instagram.com/remoteng_official" target="_blank">@remoteng_official</a></li>
+        <li><strong>Telegram:</strong> <a href="https://t.me/latest_ng" target="_blank">t.me/latest_ng</a></li>
+        <li><strong>WhatsApp Channel:</strong> <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">Join our channel</a></li>
+      </ul>
+
+      <h3>Mailing Address</h3>
+      <p>
+        RemotENG<br>
+        Lagos, Nigeria<br>
+        <em>Note: We're a remote-first company. No physical office visits.</em>
+      </p>
+
+      <h3>Data Protection Officer</h3>
+      <p>For privacy-related requests: <a href="mailto:support@remoteng.com.ng">support@remoteng.com.ng</a> (Subject: Privacy Request)</p>
+    </section>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>RemotENG</h4>
+        <p style="color:var(--gray-500); margin-bottom:16px;">Remote jobs worldwide. Work from anywhere.</p>
+        <p>Email: support@remoteng.com.ng</p>
+        <p>WhatsApp: +234 912 565 1147</p>
+        <p>Hours: 24/7 Online. Live chat 6am-9pm GMT+1</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="remote-jobs.html">Browse Jobs</a>
+        <a href="tech-news.html">Tech News</a>
+        <a href="service.html">Services</a>
+        <a href="post-job.html">Post a Job</a>
+        <a href="save-job.html">Saved Jobs</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="legal.html">About Us</a>
+        <a href="legal.html#privacy">Privacy Policy</a>
+        <a href="legal.html#terms">Terms of Service</a>
+        <a href="legal.html#refund">Refund Policy</a>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
+        <a href="https://t.me/latest_ng" target="_blank">Telegram</a>
+        <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 RemotENG. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Smooth scroll for TOC links
+document.querySelectorAll('.toc a').forEach(link => {
+  link.onclick = (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+});
+</script>
 
 </body>
 </html>
