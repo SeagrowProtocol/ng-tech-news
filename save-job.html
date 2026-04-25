@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saved Jobs - Your Dashboard | RemotENG</title>
+<meta name="description" content="View and manage your saved remote jobs. Apply to jobs you bookmarked. Track your applications.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+
+<style>
+:root {
+  --blue-dark: #1e3a8a; --blue: #2563eb; --blue-light: #3b82f6; --green: #84cc16;
+  --gray-900: #111827; --gray-700: #374151; --gray-500: #6b7280; --gray-100: #f3f4f6; --white: #ffffff;
+  --red: #ef4444;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--gray-100); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo svg { width: 40px; height: 40px; }
+.logo-text { font-size: 24px; font-weight: 700; }
+.logo-text.dark { color: var(--blue-dark); }
+.logo-text.light { color: var(--blue); }
+.logo-text.green { color: var(--green); font-size: 14px; display: block; margin-top: -4px; }
+nav { display: flex; gap: 24px; align-items: center; }
+nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; }
+nav a:hover, nav a.active { color: var(--blue); }
+.btn { background: var(--blue); color: var(--white); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; }
+.btn:hover { background: var(--blue-dark); }
+
+/* Dashboard Header */
+.dashboard-header { background: var(--white); padding: 40px 0; border-bottom: 1px solid #e5e7eb; }
+.dashboard-title { font-size: 32px; margin-bottom: 8px; }
+.dashboard-sub { color: var(--gray-500); margin-bottom: 24px; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 24px; }
+.stat-card { background: var(--gray-100); padding: 20px; border-radius: 12px; text-align: center; }
+.stat-number { font-size: 36px; font-weight: 700; color: var(--blue); }
+.stat-label { color: var(--gray-500); font-size: 14px; margin-top: 4px; }
+
+/* Saved Jobs Section */
+.saved-section { padding: 40px 0; }
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.section-header h2 { font-size: 24px; }
+.clear-btn { background: var(--white); color: var(--red); border: 1px solid var(--red); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 500; }
+.clear-btn:hover { background: #fef2f2; }
+
+/* Job Cards */
+.grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.job-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 12px; padding: 24px; position: relative; }
+.job-card.featured { border: 2px solid var(--green); }
+.job-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.job-top { display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px; }
+.job-title { font-size: 20px; font-weight: 700; color: var(--blue-dark); margin-bottom: 4px; }
+.job-company { color: var(--gray-500); font-size: 15px; }
+.remove-btn { background: none; border: none; cursor: pointer; font-size: 24px; color: var(--red); }
+.remove-btn:hover { transform: scale(1.1); }
+.job-meta { display: flex; gap: 16px; margin: 12px 0; flex-wrap: wrap; }
+.job-salary { color: var(--green); font-weight: 700; font-size: 18px; }
+.tag { display: inline-block; background: var(--gray-100); padding: 4px 12px; border-radius: 20px; font-size: 12px; }
+.tag.featured { background: var(--green); color: var(--gray-900); font-weight: 600; }
+.job-desc { color: var(--gray-700); margin: 12px 0; line-height: 1.6; }
+.job-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
+.job-date { color: var(--gray-500); font-size: 13px; }
+
+/* Empty State */
+.empty-state { background: var(--white); border-radius: 16px; padding: 60px 40px; text-align: center; }
+.empty-icon { font-size: 64px; margin-bottom: 20px; }
+.empty-state h3 { font-size: 24px; margin-bottom: 12px; }
+.empty-state p { color: var(--gray-500); margin-bottom: 24px; }
+
+/* Email Signup Prompt */
+.signup-prompt { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 32px; border-radius: 16px; margin: 40px 0; text-align: center; }
+.signup-prompt h3 { font-size: 24px; margin-bottom: 12px; }
+.signup-prompt p { opacity: 0.9; margin-bottom: 20px; }
+.signup-form { max-width: 400px; margin: 0 auto; display: flex; gap: 12px; }
+.signup-form input { flex: 1; padding: 12px 16px; border: none; border-radius: 8px; font-size: 16px; }
+.signup-form button { background: var(--green); color: var(--gray-900); padding: 12px 24px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+
+/* Footer */
+footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 20px; margin-top: 80px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+footer h4 { color: var(--white); margin-bottom: 16px; }
+footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 8px; }
+footer a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 20px; text-align: center; color: var(--gray-500); }
+
+/* Ads */
+.ad-wrap { min-height: 50px; margin: 24px 0; text-align: center; }
+.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 4px; }
+
+@media (max-width: 768px) {
+  nav { display: none; }
+ .dashboard-title { font-size: 24px; }
+ .job-footer { flex-direction: column; gap: 12px; align-items: start; }
+ .signup-form { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M25 55 Q15 55 15 45 Q15 35 25 35 Q25 25 35 25 Q50 25 50 35 Q65 35 65 45 Q75 45 75 55 Q75 65 65 L25 65 Q15 65 15 55 Z" fill="#3b82f6"/>
+          <circle cx="70" cy="50" r="15" fill="none" stroke="#84cc16" stroke-width="3"/>
+          <path d="M70 35 Q75 42 70 50 Q65 58 70 65" fill="none" stroke="#84cc16" stroke-width="2"/>
+          <path d="M55 50 L85 50" fill="none" stroke="#84cc16" stroke-width="2"/>
+          <ellipse cx="70" cy="50" rx="8" ry="15" fill="none" stroke="#84cc16" stroke-width="2"/>
+          <path d="M45 45 L45 60 L50 55 L55 60 L55 45 Z" fill="#84cc16"/>
+          <path d="M55 50 L60 55 L55 55 Z" fill="#84cc16"/>
+          <path d="M40 20 Q50 10 60 20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+          <path d="M43 25 Q50 18 57 25" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+          <path d="M46 30 Q50 26 54 30" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="logo-text">
+          <span class="dark">Remot</span><span class="light">eng</span>
+          <span class="green">.com.ng</span>
+        </div>
+      </a>
+      <nav>
+        <a href="remote-jobs.html">Jobs</a>
+        <a href="tech-news.html">News</a>
+        <a href="service.html">Services</a>
+        <a href="vip.html">VIP Alerts</a>
+        <a href="post-job.html">Post Job</a>
+        <a href="vip.html" class="btn">Get VIP</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="dashboard-header">
+  <div class="container">
+    <h1 class="dashboard-title">Your Saved Jobs</h1>
+    <p class="dashboard-sub">Track and apply to jobs you bookmarked</p>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number" id="saved-count">0</div>
+        <div class="stat-label">Saved Jobs</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="applied-count">0</div>
+        <div class="stat-label">Applied</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="featured-count">0</div>
+        <div class="stat-label">Featured Jobs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ad-wrap">
+  <small>Advertisement</small>
+  <script type="text/javascript">
+    atOptions = {'key':'8f03f73691bf093a8d076af0d6d62212','format':'iframe','height':250,'width':300,'params':{}};
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
+</div>
+
+<section class="saved-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Saved Jobs</h2>
+      <button class="clear-btn" onclick="clearAllSaved()" id="clear-btn" style="display:none;">Clear All</button>
+    </div>
+    
+    <div id="saved-jobs-grid" class="grid"></div>
+    
+    <div id="empty-state" class="empty-state" style="display:none;">
+      <div class="empty-icon">💼</div>
+      <h3>No Saved Jobs Yet</h3>
+      <p>Start browsing jobs and click the ❤️ icon to save them here</p>
+      <a href="remote-jobs.html" class="btn">Browse Jobs</a>
+    </div>
+
+    <div id="email-prompt" class="signup-prompt" style="display:none;">
+      <h3>Never Miss a Job Alert</h3>
+      <p>Get daily emails when new jobs matching your saved jobs are posted</p>
+      <form class="signup-form" id="subscribe-form">
+        <input type="email" id="subscribe-email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe Free</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="ad-wrap">
+  <small>Advertisement</small>
+  <script type="text/javascript">
+    atOptions = {'key':'8f03f73691bf093a8d076af0d6d62212','format':'iframe','height':250,'width':300,'params':{}};
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>RemotENG</h4>
+        <p style="color:var(--gray-500); margin-bottom:16px;">Remote jobs worldwide. Work from anywhere.</p>
+        <p>Email: support@remoteng.com.ng</p>
+        <p>WhatsApp: +234 912 565 1147</p>
+        <p>Hours: 24/7 Online. Live chat 6am-9pm GMT+1</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="remote-jobs.html">Browse Jobs</a>
+        <a href="tech-news.html">Tech News</a>
+        <a href="service.html">Services</a>
+        <a href="post-job.html">Post a Job</a>
+        <a href="save-job.html" class="active">Saved Jobs</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="legal.html">About Us</a>
+        <a href="legal.html#privacy">Privacy Policy</a>
+        <a href="legal.html#terms">Terms of Service</a>
+        <a href="legal.html#disclaimer">Disclaimer</a>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
+        <a href="https://t.me/latest_ng" target="_blank">Telegram</a>
+        <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 RemotENG. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = 'https://rjftctmdtutqippjzaqf.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqZnRjdG1kdHV0cWlwcGp6YXFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcwNTUyNzUsImV4cCI6MjA5MjYzMTI3NX0.L1kI8MUuOjQss3HijiJRDrCMzTY5GUc32v3se41DJiI';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let savedJobIds = JSON.parse(localStorage.getItem('savedJobs') || '[]');
+let appliedJobIds = JSON.parse(localStorage.getItem('appliedJobs') || '[]');
+
+// Update stats
+function updateStats(jobs) {
+  document.getElementById('saved-count').textContent = jobs.length;
+  document.getElementById('applied-count').textContent = appliedJobIds.length;
+  document.getElementById('featured-count').textContent = jobs.filter(j => j.featured).length;
+  document.getElementById('clear-btn').style.display = jobs.length > 0? 'block' : 'none';
+}
+
+// Load saved jobs
+async function loadSavedJobs() {
+  if (savedJobIds.length === 0) {
+    document.getElementById('empty-state').style.display = 'block';
+    document.getElementById('saved-jobs-grid').innerHTML = '';
+    updateStats([]);
+    return;
+  }
+
+  document.getElementById('empty-state').style.display = 'none';
+  
+  const { data: jobs, error } = await supabase
+   .from('jobs')
+   .select('*')
+   .in('id', savedJobIds)
+   .order('created_at', { ascending: false });
+
+  if (error ||!jobs) {
+    console.error('Error loading saved jobs:', error);
+    return;
+  }
+
+  updateStats(jobs);
+  renderSavedJobs(jobs);
+  
+  // Show email prompt if not subscribed
+  const isSubscribed = localStorage.getItem('email_subscribed');
+  if (!isSubscribed) {
+    document.getElementById('email-prompt').style.display = 'block';
+  }
+}
+
+function renderSavedJobs(jobs) {
+  const grid = document.getElementById('saved-jobs-grid');
+  const now = new Date();
+  
+  grid.innerHTML = jobs.map(job => {
+    const isApplied = appliedJobIds.includes(job.id);
+    const isFeatured = job.featured && new Date(job.featured_until) > now;
+    const salary = job.salary || 'Competitive';
+    const desc = job.description?.substring(0, 180) + '...' || '';
+    
+    return `
+      <div class="job-card ${isFeatured? 'featured' : ''}">
+        <div class="job-top">
+          <div>
+            ${isFeatured? '<span class="tag featured">Featured</span>' : ''}
+            ${isApplied? '<span class="tag" style="background:#dcfce7; color:#166534;">Applied</span>' : ''}
+            <div class="job-title">${job.title}</div>
+            <div class="job-company">${job.company}</div>
+          </div>
+          <button class="remove-btn" onclick="removeSavedJob(${job.id})" title="Remove from saved">✕</button>
+        </div>
+        <div class="job-meta">
+          <span class="job-salary">${salary}</span>
+          <span class="tag">${job.location || 'Remote'}</span>
+          <span class="tag">${job.type || 'Full-time'}</span>
+        </div>
+        <div class="job-desc">${desc}</div>
+        <div class="job-footer">
+          <span class="job-date">Saved ${timeAgo(job.created_at)}</span>
+          <a href="go.html?url=${encodeURIComponent(job.apply_url)}&job_id=${job.id}" class="btn" onclick="markAsApplied(${job.id})">Apply Now</a>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function timeAgo(date) {
+  const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+  const intervals = { year: 31536000, month: 2592000, week: 604800, day: 86400, hour: 3600, minute: 60 };
+  for (let i in intervals) {
+    const c = Math.floor(seconds / intervals[i]);
+    if (c > 0) return c + i[0] + ' ago';
+  }
+  return 'just now';
+}
+
+function removeSavedJob(jobId) {
+  savedJobIds = savedJobIds.filter(id => id!== jobId);
+  localStorage.setItem('savedJobs', JSON.stringify(savedJobIds));
+  loadSavedJobs();
+}
+
+function clearAllSaved() {
+  if (confirm('Remove all saved jobs? This cannot be undone.')) {
+    savedJobIds = [];
+    localStorage.setItem('savedJobs', JSON.stringify(savedJobIds));
+    loadSavedJobs();
+  }
+}
+
+function markAsApplied(jobId) {
+  if (!appliedJobIds.includes(jobId)) {
+    appliedJobIds.push(jobId);
+    localStorage.setItem('appliedJobs', JSON.stringify(appliedJobIds));
+  }
+}
+
+// Email subscribe
+document.getElementById('subscribe-form')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('subscribe-email').value;
+  
+  try {
+    const { error } = await supabase.from('subscribers').insert({ email, list: 'free' });
+    if (!error) {
+      localStorage.setItem('email_subscribed', 'true');
+      document.getElementById('email-prompt').style.display = 'none';
+      alert('Success! Check your email to confirm subscription.');
+    } else {
+      alert('You may already be subscribed or there was an error.');
+    }
+  } catch (err) {
+    alert('Error: ' + err.message);
+  }
+});
+
+// Load on page load
+loadSavedJobs();
+</script>
+
+</body>
+</html>
