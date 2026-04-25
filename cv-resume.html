@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Writing, Cover Letter, Resume Review | RemotENG</title>
+<meta name="description" content="Professional CV writing, cover letter, and resume review services. ATS-optimized. 48hr delivery. Trusted by professionals worldwide.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+
+<style>
+:root {
+  --blue-dark: #1e3a8a; --blue: #2563eb; --blue-light: #3b82f6; --green: #84cc16;
+  --gray-900: #111827; --gray-700: #374151; --gray-500: #6b7280; --gray-100: #f3f4f6; --white: #ffffff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--gray-100); }
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo svg { width: 40px; height: 40px; }
+.logo-text { font-size: 24px; font-weight: 700; }
+.logo-text.dark { color: var(--blue-dark); }
+.logo-text.light { color: var(--blue); }
+.logo-text.green { color: var(--green); font-size: 14px; display: block; margin-top: -4px; }
+nav { display: flex; gap: 24px; align-items: center; }
+nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; }
+nav a:hover, nav a.active { color: var(--blue); }
+.btn { background: var(--blue); color: var(--white); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; }
+.btn:hover { background: var(--blue-dark); }
+.btn-green { background: var(--green); color: var(--gray-900); }
+.btn-green:hover { background: #65a30d; }
+
+/* Hero */
+.hero { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); color: var(--white); padding: 60px 0; text-align: center; }
+.hero h1 { font-size: 40px; margin-bottom: 16px; }
+.hero p { font-size: 18px; opacity: 0.95; max-width: 700px; margin: 0 auto; }
+
+/* Form Section */
+.form-section { padding: 60px 0; }
+.form-card { background: var(--white); border-radius: 16px; padding: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.form-title { font-size: 28px; margin-bottom: 8px; color: var(--blue-dark); }
+.form-sub { color: var(--gray-500); margin-bottom: 32px; }
+
+/* Service Selector */
+.service-selector { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+.service-option { border: 2px solid var(--gray-100); border-radius: 12px; padding: 20px; cursor: pointer; text-align: center; transition: all 0.2s; }
+.service-option:hover { border-color: var(--blue); }
+.service-option.selected { border-color: var(--blue); background: #eff6ff; }
+.service-option h4 { font-size: 16px; margin-bottom: 8px; }
+.service-price { font-size: 24px; font-weight: 700; color: var(--blue); }
+.service-price span { font-size: 12px; color: var(--gray-500); }
+
+.form-group { margin-bottom: 24px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--gray-700); }
+.form-group input,.form-group textarea,.form-group select { width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 16px; font-family: inherit; }
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+.form-group textarea { min-height: 120px; resize: vertical; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.required { color: #ef4444; }
+.help-text { font-size: 13px; color: var(--gray-500); margin-top: 4px; }
+
+/* File Upload */
+.file-upload { border: 2px dashed #d1d5db; border-radius: 12px; padding: 32px; text-align: center; cursor: pointer; transition: all 0.2s; }
+.file-upload:hover { border-color: var(--blue); background: #f9fafb; }
+.file-upload input { display: none; }
+.file-upload-icon { font-size: 48px; margin-bottom: 12px; }
+.file-list { margin-top: 16px; text-align: left; }
+.file-item { background: var(--gray-100); padding: 12px 16px; border-radius: 8px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+.file-remove { color: #ef4444; cursor: pointer; font-weight: 700; }
+
+/* Submit */
+.submit-section { text-align: center; margin-top: 40px; }
+.submit-section.btn { font-size: 18px; padding: 16px 48px; }
+.terms { font-size: 13px; color: var(--gray-500); margin-top: 16px; }
+.terms a { color: var(--blue); }
+
+/* Success */
+.success-card { background: var(--white); border-radius: 16px; padding: 60px 40px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.success-icon { width: 80px; height: 80px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 24px; }
+.hide { display: none; }
+
+/* Footer */
+footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 20px; margin-top: 80px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+footer h4 { color: var(--white); margin-bottom: 16px; }
+footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 8px; }
+footer a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 20px; text-align: center; color: var(--gray-500); }
+
+@media (max-width: 768px) {
+  nav { display: none; }
+ .hero h1 { font-size: 28px; }
+ .form-row,.service-selector { grid-template-columns: 1fr; }
+ .form-card { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M25 55 Q15 55 15 45 Q15 35 25 35 Q25 25 35 25 Q50 25 50 35 Q65 35 65 45 Q75 45 75 55 Q75 65 65 65 L25 65 Q15 65 15 55 Z" fill="#3b82f6"/>
+          <circle cx="70" cy="50" r="15" fill="none" stroke="#84cc16" stroke-width="3"/>
+          <path d="M70 35 Q75 42 70 50 Q65 58 70 65" fill="none" stroke="#84cc16" stroke-width="2"/>
+          <path d="M55 50 L85 50" fill="none" stroke="#84cc16" stroke-width="2"/>
+          <ellipse cx="70" cy="50" rx="8" ry="15" fill="none" stroke="#84cc16" stroke-width="2"/>
+          <path d="M45 45 L45 60 L50 55 L55 60 L55 45 Z" fill="#84cc16"/>
+          <path d="M55 50 L60 55 L55 55 Z" fill="#84cc16"/>
+          <path d="M40 20 Q50 10 60 20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+          <path d="M43 25 Q50 18 57 25" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+          <path d="M46 30 Q50 26 54 30" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="logo-text">
+          <span class="dark">Remot</span><span class="light">eng</span>
+          <span class="green">.com.ng</span>
+        </div>
+      </a>
+      <nav>
+        <a href="remote-jobs.html">Jobs</a>
+        <a href="tech-news.html">News</a>
+        <a href="service.html" class="active">Services</a>
+        <a href="vip.html">VIP Alerts</a>
+        <a href="post-job.html">Post Job</a>
+        <a href="vip.html" class="btn">Get VIP</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Professional CV & Cover Letter Writing</h1>
+    <p>ATS-optimized documents by hiring experts. Land 3x more interviews. 48hr delivery guaranteed.</p>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="container">
+    <div class="form-card" id="order-form">
+      <h2 class="form-title">Order Your Service</h2>
+      <p class="form-sub">Fill in your details. We'll contact you within 2 hours to start.</p>
+      
+      <form id="cv-order-form">
+        <h3 style="margin-bottom: 20px; font-size: 20px;">1. Select Service</h3>
+        <div class="service-selector">
+          <div class="service-option" data-service="cv" onclick="selectService('cv')">
+            <h4>CV / Resume Writing</h4>
+            <div class="service-price" id="price-cv">₦3,000 <span>/$3</span></div>
+          </div>
+          <div class="service-option" data-service="cover" onclick="selectService('cover')">
+            <h4>Cover Letter</h4>
+            <div class="service-price" id="price-cover">₦2,500 <span>/$2.5</span></div>
+          </div>
+          <div class="service-option" data-service="review" onclick="selectService('review')">
+            <h4>CV Review</h4>
+            <div class="service-price" id="price-review">₦1,500 <span>/$1.5</span></div>
+          </div>
+        </div>
+        <input type="hidden" id="service_type" value="cv">
+
+        <h3 style="margin: 40px 0 20px; font-size: 20px;">2. Your Details</h3>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name <span class="required">*</span></label>
+            <input type="text" id="full_name" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address <span class="required">*</span></label>
+            <input type="email" id="email" placeholder="john@email.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone / WhatsApp <span class="required">*</span></label>
+            <input type="tel" id="phone" placeholder="+1 234 567 8900" required>
+          </div>
+          <div class="form-group">
+            <label>Current Role / Title</label>
+            <input type="text" id="current_role" placeholder="e.g. Software Engineer">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Target Job Title / Industry <span class="required">*</span></label>
+          <input type="text" id="target_role" placeholder="e.g. Senior React Developer at Tech Company" required>
+          <p class="help-text">What job are you applying for? This helps us tailor your CV.</p>
+        </div>
+
+        <div class="form-group">
+          <label>Years of Experience</label>
+          <select id="experience">
+            <option value="">Select experience</option>
+            <option value="0-1">0-1 years (Entry Level)</option>
+            <option value="1-3">1-3 years (Junior)</option>
+            <option value="3-5">3-5 years (Mid-Level)</option>
+            <option value="5-10">5-10 years (Senior)</option>
+            <option value="10+">10+ years (Expert/Lead)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Key Skills / Technologies</label>
+          <textarea id="skills" placeholder="List your top skills, technologies, tools, certifications..."></textarea>
+          <p class="help-text">e.g. React, Node.js, AWS, Python, Project Management, PMP Certified</p>
+        </div>
+
+        <div class="form-group">
+          <label>Work Experience Summary</label>
+          <textarea id="experience_summary" placeholder="Briefly describe your last 2-3 roles, achievements, and responsibilities..."></textarea>
+          <p class="help-text">Don't worry about formatting. We'll make it professional.</p>
+        </div>
+
+        <div class="form-group">
+          <label>Education / Certifications</label>
+          <textarea id="education" placeholder="Degrees, certifications, courses, bootcamps..."></textarea>
+        </div>
+
+        <h3 style="margin: 40px 0 20px; font-size: 20px;">3. Upload Files (Optional)</h3>
+        
+        <div class="form-group">
+          <label>Upload Current CV, Certificates, or Portfolio</label>
+          <div class="file-upload" onclick="document.getElementById('file_input').click()">
+            <input type="file" id="file_input" multiple accept=".pdf,.doc,.docx,.jpg,.png">
+            <div class="file-upload-icon">📁</div>
+            <p><strong>Click to upload</strong> or drag and drop</p>
+            <p class="help-text">PDF, DOC, DOCX, JPG, PNG (Max 10MB each)</p>
+          </div>
+          <div class="file-list" id="file-list"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Additional Notes / Special Requests</label>
+          <textarea id="notes" placeholder="Anything specific you want us to highlight? Target companies? Deadlines?"></textarea>
+        </div>
+
+        <div class="submit-section">
+          <button type="submit" class="btn btn-green" id="submit-btn">Continue to Payment</button>
+          <p class="terms">By ordering, you agree to our <a href="legal.html#terms">Terms of Service</a>. Delivery in 24-48hrs. 2 revisions included.</p>
+        </div>
+      </form>
+    </div>
+
+    <!-- Success State -->
+    <div class="success-card hide" id="success-state">
+      <div class="success-icon">✓</div>
+      <h1>Order Submitted Successfully!</h1>
+      <p>Thank you for your order. We've received your details.</p>
+      <p><strong>What happens next:</strong></p>
+      <p style="text-align:left; max-width:500px; margin:20px auto;">
+        1. Complete payment on the next page<br>
+        2. Our team will contact you via WhatsApp/Email within 2 hours<br>
+        3. We'll ask any clarifying questions<br>
+        4. Delivery in 24-48 hours<br>
+        5. 2 free revisions included
+      </p>
+      <a href="https://wa.me/2349125651147?text=Hi,%20I%20just%20ordered%20CV%20service" class="btn btn-green">Chat on WhatsApp</a>
+      <a href="index.html" class="btn">Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>RemotENG</h4>
+        <p style="color:var(--gray-500); margin-bottom:16px;">Remote jobs worldwide. Work from anywhere.</p>
+        <p>Email: support@remoteng.com.ng</p>
+        <p>WhatsApp: +234 912 565 1147</p>
+        <p>Hours: 24/7 Online. Live chat 6am-9pm GMT+1</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="remote-jobs.html">Browse Jobs</a>
+        <a href="tech-news.html">Tech News</a>
+        <a href="service.html">Services</a>
+        <a href="post-job.html">Post a Job</a>
+        <a href="save-job.html">Saved Jobs</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="legal.html">About Us</a>
+        <a href="legal.html#privacy">Privacy Policy</a>
+        <a href="legal.html#terms">Terms of Service</a>
+        <a href="legal.html#refund">Refund Policy</a>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
+        <a href="https://t.me/latest_ng" target="_blank">Telegram</a>
+        <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 RemotENG. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = 'https://rjftctmdtutqippjzaqf.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqZnRjdG1kdHV0cWlwcGp6YXFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcwNTUyNzUsImV4cCI6MjA5MjYzMTI3NX0.L1kI8MUuOjQss3HijiJRDrCMzTY5GUc32v3se41DJiI';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let selectedService = 'cv';
+let uploadedFiles = [];
+
+// Multi-currency detect
+fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{
+  let cvPrice = '₦3,000', coverPrice = '₦2,500', reviewPrice = '₦1,500';
+  if(d.country_code === 'GB'){ cvPrice = '£3'; coverPrice = '£2.5'; reviewPrice = '£1.5'; }
+  else if(['DE','FR','ES','IT','NL'].includes(d.country_code)){ cvPrice = '€3'; coverPrice = '€2.5'; reviewPrice = '€1.5'; }
+  else if(d.country_code!== 'NG'){ cvPrice = '$3'; coverPrice = '$2.5'; reviewPrice = '$1.5'; }
+  
+  document.getElementById('price-cv').innerHTML = `${cvPrice} <span>/${d.country_code === 'NG'? '$3' : cvPrice}</span>`;
+  document.getElementById('price-cover').innerHTML = `${coverPrice} <span>/${d.country_code === 'NG'? '$2.5' : coverPrice}</span>`;
+  document.getElementById('price-review').innerHTML = `${reviewPrice} <span>/${d.country_code === 'NG'? '$1.5' : reviewPrice}</span>`;
+}).catch(()=>{});
+
+function selectService(service) {
+  selectedService = service;
+  document.getElementById('service_type').value = service;
+  document.querySelectorAll('.service-option').forEach(o => o.classList.remove('selected'));
+  document.querySelector(`[data-service="${service}"]`).classList.add('selected');
+}
+
+// Check URL param
+const urlParams = new URLSearchParams(window.location.search);
+const typeParam = urlParams.get('type');
+if (typeParam && ['cv','cover','review'].includes(typeParam)) {
+  selectService(typeParam);
+} else {
+  selectService('cv');
+}
+
+// File upload
+document.getElementById('file_input').onchange = (e) => {
+  const files = Array.from(e.target.files);
+  files.forEach(file => {
+    if (file.size > 10 * 1024 * 1024) {
+      alert(`File ${file.name} is too large. Max 10MB.`);
+      return;
+    }
+    uploadedFiles.push(file);
+    renderFileList();
+  });
+};
+
+function renderFileList() {
+  const list = document.getElementById('file-list');
+  list.innerHTML = uploadedFiles.map((f, i) => `
+    <div class="file-item">
+      <span>📄 ${f.name} (${(f.size/1024).toFixed(1)}KB)</span>
+      <span class="file-remove" onclick="removeFile(${i})">✕</span>
+    </div>
+  `).join('');
+}
+
+function removeFile(idx) {
+  uploadedFiles.splice(idx, 1);
+  renderFileList();
+}
+
+// Form submit
+document.getElementById('cv-order-form').onsubmit = async (e) => {
+  e.preventDefault();
+  
+  const orderData = {
+    service_type: selectedService,
+    full_name: document.getElementById('full_name').value,
+    email: document.getElementById('email').value,
+    phone: document.getElementById('phone').value,
+    current_role: document.getElementById('current_role').value,
+    target_role: document.getElementById('target_role').value,
+    experience: document.getElementById('experience').value,
+    skills: document.getElementById('skills').value,
+    experience_summary: document.getElementById('experience_summary').value,
+    education: document.getElementById('education').value,
+    notes: document.getElementById('notes').value,
+    status: 'pending_payment',
+    created_at: new Date().toISOString()
+  };
+
+  try {
+    // 1. Insert order to Supabase
+    const { data, error } = await supabase.from('service_orders').insert([orderData]).select();
+    if (error) throw error;
+
+    // 2. Upload files to Supabase Storage if any
+    if (uploadedFiles.length > 0) {
+      for (let file of uploadedFiles) {
+        const filePath = `cv-orders/${data[0].id}/${file.name}`;
+        await supabase.storage.from('uploads').upload(filePath, file);
+      }
+    }
+
+    // 3. Redirect to Selar for payment
+    const selarLinks = {
+      cv: 'https://selar.co/REMOTENG_CV',
+      cover: 'https://selar.co/REMOTENG_COVER',
+      review: 'https://selar.co/REMOTENG_REVIEW'
+    };
+    const selarUrl = `${selarLinks[selectedService]}?order_id=${data[0].id}&email=${orderData.email}`;
+    
+    // Show success then redirect
+    document.getElementById('order-form').classList.add('hide');
+    document.getElementById('success-state').classList.remove('hide');
+    window.scrollTo(0, 0);
+    
+    setTimeout(() => {
+      window.location.href = selarUrl;
+    }, 2000);
+    
+  } catch (err) {
+    alert('Error submitting order: ' + err.message);
+  }
+};
+</script>
+
+</body>
+</html>
