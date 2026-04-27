@@ -54,8 +54,8 @@ p { color: var(--gray-700); line-height: 1.7; margin-bottom: 24px; }
 
 <div id="loading" class="card">
 <div class="spinner"></div>
-<h1>Redirecting...</h1>
-<p>Please wait while we redirect you to your destination.</p>
+<h1>Processing...</h1>
+<p>Please wait while we confirm your payment.</p>
 </div>
 
 <div id="vip-success" class="card hide">
@@ -102,6 +102,36 @@ p { color: var(--gray-700); line-height: 1.7; margin-bottom: 24px; }
 <a href="index.html" class="btn">Back to Home</a>
 </div>
 
+<div id="cover-success" class="card hide">
+<div class="success-icon">✓</div>
+<h1>Order Received!</h1>
+<p>Your Cover Letter service payment was successful.</p>
+<p><strong>What happens next:</strong></p>
+<p style="text-align:left; max-width:400px; margin:20px auto;">
+1. Check your email for order confirmation<br>
+2. Send us the job link + your CV on WhatsApp<br>
+3. Delivery in 24 hours<br>
+4. 1 revision included
+</p>
+<a href="https://wa.me/2349125651147?text=Hi,%20I%20just%20paid%20for%20Cover%20Letter" class="btn btn-green">Chat on WhatsApp</a>
+<a href="index.html" class="btn">Back to Home</a>
+</div>
+
+<div id="review-success" class="card hide">
+<div class="success-icon">✓</div>
+<h1>Order Received!</h1>
+<p>Your CV Review payment was successful.</p>
+<p><strong>What happens next:</strong></p>
+<p style="text-align:left; max-width:400px; margin:20px auto;">
+1. WhatsApp your current CV to +234 912 565 1147<br>
+2. Our experts will review within 2 hours<br>
+3. Get detailed feedback in 24 hours<br>
+4. Optional video walkthrough included
+</p>
+<a href="https://wa.me/2349125651147?text=Hi,%20I%20just%20paid%20for%20CV%20Review" class="btn btn-green">Send CV on WhatsApp</a>
+<a href="index.html" class="btn">Back to Home</a>
+</div>
+
 <div id="error" class="card hide">
 <div class="error-icon">✗</div>
 <h1>Oops! Something went wrong</h1>
@@ -114,9 +144,15 @@ p { color: var(--gray-700); line-height: 1.7; margin-bottom: 24px; }
 <script>
 const API_URL = 'https://remoteng-api.onrender.com';
 const params = new URLSearchParams(window.location.search);
+
+// Get all Selar params
 const url = params.get('url');
 const jobId = params.get('job_id');
 const success = params.get('success');
+const email = params.get('email');
+const name = params.get('name');
+const tx_ref = params.get('tx_ref');
+const amount = params.get('amount');
 const error = params.get('error');
 
 function show(id) {
@@ -125,37 +161,52 @@ function show(id) {
 }
 
 async function handleRedirect() {
-  // 1. Handle job apply redirect with click tracking to Render
+  // 1. Job apply redirect with click tracking
   if (url && jobId) {
     try {
-      // Track click via Render API
       await fetch(`${API_URL}/api/click`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ 
-          job_id: parseInt(jobId), 
-          url: decodeURIComponent(url) 
-        })
+        body: JSON.stringify({ job_id: parseInt(jobId), url: decodeURIComponent(url) })
       });
     } catch (e) {
       console.error('Click tracking failed:', e);
     }
-    // Redirect immediately to actual job URL
     window.location.href = decodeURIComponent(url);
     return;
   }
 
-  // 2. Handle Selar payment success
-  if (success === 'vip') {
-    show('vip-success');
-    return;
-  }
-  if (success === 'featured') {
-    show('featured-success');
-    return;
-  }
-  if (success === 'cv' || success === 'cover' || success === 'review') {
-    show('cv-success');
+  // 2. Selar payment success - save to Neon + trigger Brevo
+  if (success && email && tx_ref) {
+    // Get form data saved before Selar redirect
+    const formData = JSON.parse(localStorage.getItem('remoteng_order') || '{}');
+
+    try {
+      await fetch(`${API_URL}/api/service-order`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          email: decodeURIComponent(email),
+          name: name? decodeURIComponent(name) : '',
+          tx_ref: tx_ref,
+          amount: amount,
+          service: success,
+          status: 'completed',
+         ...formData
+        })
+      });
+      localStorage.removeItem('remoteng_order');
+    } catch (e) {
+      console.error('Failed to save order:', e);
+    }
+
+    // Show correct success page
+    if (success === 'vip') show('vip-success');
+    else if (success === 'featured') show('featured-success');
+    else if (success === 'cv') show('cv-success');
+    else if (success === 'cover') show('cover-success');
+    else if (success === 'cv_review') show('review-success');
+    else show('error');
     return;
   }
 
@@ -166,11 +217,10 @@ async function handleRedirect() {
     return;
   }
 
-  // 4. No params - show error
+  // 4. No valid params
   show('error');
 }
 
-// Run immediately
 handleRedirect();
 </script>
 </body>
