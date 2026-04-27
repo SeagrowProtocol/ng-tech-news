@@ -3,76 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RemotENG - Remote Jobs for Nigerians | Work From Anywhere</title>
-<meta name="description" content="Find remote jobs worldwide. USD, EUR, GBP salaries. Tech & non-tech roles. Updated daily. Join 1000+ Nigerians working remotely.">
-<meta property="og:title" content="RemotENG - Remote Jobs for Nigerians">
-<meta property="og:description" content="Find remote jobs worldwide. USD, EUR, GBP salaries. Updated daily.">
+<title>RemotENG - Global Remote Jobs | USD, EUR, GBP Salaries | Work From Anywhere</title>
+<meta name="description" content="Discover global remote jobs with USD, EUR, GBP salaries. Tech & non-tech roles for professionals. Updated daily. Apply to verified opportunities worldwide.">
+<meta property="og:title" content="RemotENG - Global Remote Jobs">
+<meta property="og:description" content="Discover global remote jobs with USD, EUR, GBP salaries. Updated daily for professionals.">
 <meta property="og:url" content="https://remoteng.com.ng">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+<meta property="og:image" content="https://remoteng.com.ng/logo.png">
+<link rel="icon" href="https://remoteng.com.ng/logo.png">
 <style>
 :root { --blue-dark: #1e3a8a; --blue: #2563eb; --blue-light: #3b82f6; --green: #84cc16; --gray-900: #111827; --gray-700: #374151; --gray-500: #6b7280; --gray-100: #f3f4f6; --white: #ffffff; --red: #ef4444; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--white); }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
-.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.95); }
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo svg { width: 40px; height: 40px; }
+.logo img { width: 45px; height: 45px; }
 .logo-text { font-size: 24px; font-weight: 700; }
 .logo-text.dark { color: var(--blue-dark); }
 .logo-text.light { color: var(--blue); }
 .logo-text.green { color: var(--green); font-size: 14px; display: block; margin-top: -4px; }
-nav { display: flex; gap: 24px; align-items: center; }
-nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; }
+nav { display: flex; gap: 28px; align-items: center; }
+nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; transition: color 0.2s; }
 nav a:hover, nav a.active { color: var(--blue); }
-.btn { background: var(--blue); color: var(--white); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; }
-.btn:hover { background: var(--blue-dark); }
+.btn { background: var(--blue); color: var(--white); padding: 10px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; transition: all 0.2s; }
+.btn:hover { background: var(--blue-dark); transform: translateY(-1px); }
 .btn-green { background: var(--green); color: var(--gray-900); }
 .btn-green:hover { background: #65a30d; }
-.hero { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); color: var(--white); padding: 80px 0; text-align: center; }
-.hero h1 { font-size: 48px; margin-bottom: 16px; }
-.hero p { font-size: 20px; margin-bottom: 32px; opacity: 0.9; }
-.search-box { max-width: 600px; margin: 0 auto; display: flex; gap: 12px; }
-.search-box input { flex: 1; padding: 16px 20px; border: none; border-radius: 8px; font-size: 16px; }
-.search-box.btn { padding: 16px 32px; }
-.section { padding: 60px 0; }
-.section-title { font-size: 32px; margin-bottom: 32px; text-align: center; color: var(--blue-dark); }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
-.job-card,.news-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 12px; padding: 24px; position: relative; transition: box-shadow 0.2s; }
-.job-card:hover,.news-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-.job-card.featured { border: 2px solid var(--green); }
-.tag { display: inline-block; background: var(--gray-100); padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-bottom: 8px; }
-.tag.featured { background: var(--green); color: var(--gray-900); font-weight: 600; }
-.job-title { font-size: 20px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
-.job-company { color: var(--gray-500); margin-bottom: 12px; }
-.job-salary { color: var(--green); font-weight: 700; font-size: 18px; margin: 12px 0; }
-.job-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
+.hero { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-light) 100%); color: var(--white); padding: 100px 0 80px; text-align: center; }
+.hero h1 { font-size: 52px; margin-bottom: 16px; font-weight: 800; line-height: 1.1; }
+.hero p { font-size: 20px; margin-bottom: 36px; opacity: 0.95; max-width: 600px; margin-left: auto; margin-right: auto; }
+.search-box { max-width: 650px; margin: 0 auto; display: flex; gap: 12px; background: var(--white); padding: 6px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+.search-box input { flex: 1; padding: 16px 20px; border: none; border-radius: 8px; font-size: 16px; outline: none; }
+.search-box.btn { padding: 16px 32px; border-radius: 8px; }
+.section { padding: 80px 0; }
+.section-title { font-size: 36px; margin-bottom: 40px; text-align: center; color: var(--blue-dark); font-weight: 800; }
+.section-subtitle { text-align: center; color: var(--gray-700); font-size: 18px; margin: -20px auto 40px; max-width: 600px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; }
+.job-card,.news-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; position: relative; transition: all 0.3s; }
+.job-card:hover,.news-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+.job-card.featured { border: 2px solid var(--green); background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
+.tag { display: inline-block; background: var(--gray-100); padding: 6px 14px; border-radius: 20px; font-size: 12px; margin-bottom: 12px; font-weight: 600; }
+.tag.featured { background: var(--green); color: var(--gray-900); }
+.job-title { font-size: 21px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; line-height: 1.3; }
+.job-company { color: var(--gray-500); margin-bottom: 14px; font-weight: 500; }
+.job-salary { color: var(--green); font-weight: 700; font-size: 20px; margin: 14px 0; }
+.job-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
 .job-date { color: var(--gray-500); font-size: 13px; }
-.news-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; }
-.news-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--blue-dark); }
-.news-source { color: var(--gray-500); font-size: 13px; }
-.email-section { background: var(--gray-100); padding: 60px 0; text-align: center; }
-.email-box { max-width: 500px; margin: 0 auto; display: flex; gap: 12px; }
-.email-box input { flex: 1; padding: 14px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 16px; }
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-.service-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 12px; padding: 32px; text-align: center; }
+.news-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 16px; }
+.news-title { font-size: 19px; font-weight: 700; margin-bottom: 8px; color: var(--blue-dark); line-height: 1.3; }
+.news-source { color: var(--gray-500); font-size: 13px; font-weight: 500; }
+.email-section { background: linear-gradient(135deg, var(--gray-100) 0%, #e0f2fe 100%); padding: 80px 0; text-align: center; }
+.email-box { max-width: 520px; margin: 0 auto; display: flex; gap: 12px; background: var(--white); padding: 6px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.email-box input { flex: 1; padding: 14px 18px; border: none; border-radius: 8px; font-size: 16px; outline: none; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+.service-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 16px; padding: 36px; text-align: center; transition: all 0.3s; }
+.service-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
 .service-card h3 { font-size: 24px; margin-bottom: 12px; color: var(--blue-dark); }
-.service-price { font-size: 32px; font-weight: 700; color: var(--green); margin: 16px 0; }
-.service-price span { font-size: 16px; color: var(--gray-500); font-weight: 400; }
-footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 20px; margin-top: 60px; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
-footer h4 { color: var(--white); margin-bottom: 16px; }
-footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 8px; }
+.service-price { font-size: 36px; font-weight: 800; color: var(--green); margin: 20px 0; }
+.service-price span { font-size: 16px; color: var(--gray-500); font-weight: 500; }
+footer { background: var(--gray-900); color: var(--gray-100); padding: 80px 0 30px; margin-top: 80px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; margin-bottom: 50px; }
+footer h4 { color: var(--white); margin-bottom: 18px; font-size: 18px; }
+footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 10px; transition: color 0.2s; }
 footer a:hover { color: var(--white); }
-.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 20px; text-align: center; color: var(--gray-500); }
-.ad-wrap { min-height: 250px; margin: 32px 0; text-align: center; }
-.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 4px; }
+.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 30px; text-align: center; color: var(--gray-500); }
+.ad-wrap { min-height: 250px; margin: 40px 0; text-align: center; }
+.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 6px; }
 @media (max-width: 768px) {
   nav { display: none; }
- .hero h1 { font-size: 32px; }
- .search-box,.email-box { flex-direction: column; }
- .grid { grid-template-columns: 1fr; }
+.hero h1 { font-size: 36px; }
+.hero { padding: 60px 0; }
+.search-box,.email-box { flex-direction: column; background: transparent; padding: 0; box-shadow: none; }
+.search-box input,.email-box input { background: var(--white); }
+.grid { grid-template-columns: 1fr; }
+.section { padding: 60px 0; }
 }
 </style>
 <script type="application/ld+json">
@@ -94,18 +100,7 @@ footer a:hover { color: var(--white); }
 <div class="container">
 <div class="header-inner">
 <a href="index.html" class="logo">
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-<path d="M25 55 Q15 55 15 45 Q15 35 25 35 Q25 25 35 25 Q50 25 50 35 Q65 35 65 45 Q75 45 75 55 Q75 65 65 65 L25 65 Q15 65 15 55 Z" fill="#3b82f6"/>
-<circle cx="70" cy="50" r="15" fill="none" stroke="#84cc16" stroke-width="3"/>
-<path d="M70 35 Q75 42 70 50 Q65 58 70 65" fill="none" stroke="#84cc16" stroke-width="2"/>
-<path d="M55 50 L85 50" fill="none" stroke="#84cc16" stroke-width="2"/>
-<ellipse cx="70" cy="50" rx="8" ry="15" fill="none" stroke="#84cc16" stroke-width="2"/>
-<path d="M45 45 L45 60 L50 55 L55 60 L55 45 Z" fill="#84cc16"/>
-<path d="M55 50 L60 55 L55 55 Z" fill="#84cc16"/>
-<path d="M40 20 Q50 10 60 20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
-<path d="M43 25 Q50 18 57 25" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-<path d="M46 30 Q50 26 54 30" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-</svg>
+<img src="https://remoteng.com.ng/logo.png" alt="RemotENG Logo">
 <div class="logo-text">
 <span class="dark">Remot</span><span class="light">eng</span>
 <span class="green">.com.ng</span>
@@ -125,10 +120,10 @@ footer a:hover { color: var(--white); }
 
 <section class="hero">
 <div class="container">
-<h1>Remote Jobs for Nigerians</h1>
-<p>Find USD, EUR, GBP paying jobs. Work from anywhere. Updated daily.</p>
+<h1>Global Remote Jobs for Professionals</h1>
+<p>Access verified USD, EUR, and GBP opportunities from top companies worldwide. Updated daily.</p>
 <div class="search-box">
-<input type="text" id="hero-search" placeholder="Search by title, skill, or company...">
+<input type="text" id="hero-search" placeholder="Search by role, skill, or company...">
 <button class="btn" onclick="searchJobs()">Search Jobs</button>
 </div>
 </div>
@@ -142,9 +137,10 @@ footer a:hover { color: var(--white); }
 
 <section class="section">
 <div class="container">
-<h2 class="section-title">Featured Remote Jobs</h2>
+<h2 class="section-title">Featured Remote Opportunities</h2>
+<p class="section-subtitle">Hand-picked roles with competitive global compensation</p>
 <div class="grid" id="jobs-grid"></div>
-<div style="text-align:center; margin-top:32px;">
+<div style="text-align:center; margin-top:40px;">
 <a href="remote-jobs.html" class="btn">Browse All Jobs</a>
 </div>
 </div>
@@ -158,9 +154,10 @@ footer a:hover { color: var(--white); }
 
 <section class="section" style="background:var(--gray-100);">
 <div class="container">
-<h2 class="section-title">Latest Tech & Career News</h2>
+<h2 class="section-title">Career Insights & Tech News</h2>
+<p class="section-subtitle">Stay ahead with industry trends and remote work strategies</p>
 <div class="grid" id="news-grid"></div>
-<div style="text-align:center; margin-top:32px;">
+<div style="text-align:center; margin-top:40px;">
 <a href="tech-news.html" class="btn">Read More News</a>
 </div>
 </div>
@@ -168,37 +165,38 @@ footer a:hover { color: var(--white); }
 
 <section class="email-section">
 <div class="container">
-<h2 class="section-title">Get Free Job Alerts</h2>
-<p style="margin-bottom:24px; color:var(--gray-700);">Join 1000+ Nigerians. Daily remote jobs sent to your inbox.</p>
+<h2 class="section-title">VIP Job Alerts</h2>
+<p style="margin-bottom:28px; color:var(--gray-700); font-size:18px;">Get daily curated remote opportunities sent directly to your inbox. Join 2,000+ professionals.</p>
 <div class="email-box">
-<input type="email" id="email-input" placeholder="Enter your email">
-<button class="btn btn-green" onclick="subscribeEmail()">Join Free</button>
+<input type="email" id="email-input" placeholder="Enter your email address">
+<button class="btn btn-green" onclick="subscribeEmail()">Join Free List</button>
 </div>
-<p id="email-msg" style="margin-top:12px; color:var(--gray-500);"></p>
+<p id="email-msg" style="margin-top:14px; color:var(--gray-500); font-size:14px;"></p>
 </div>
 </section>
 
 <section class="section">
 <div class="container">
-<h2 class="section-title">Land Your Remote Job Faster</h2>
+<h2 class="section-title">Accelerate Your Remote Career</h2>
+<p class="section-subtitle">Professional services to help you land global opportunities</p>
 <div class="services-grid">
 <div class="service-card">
 <h3>CV/Resume Writing</h3>
-<p>ATS-optimized CV by hiring experts</p>
+<p>ATS-optimized CV crafted by hiring experts for global standards</p>
 <div class="service-price">₦3,000 <span>/ $3</span></div>
 <a href="cv-resume.html" class="btn">Order Now</a>
 </div>
 <div class="service-card">
 <h3>Cover Letter</h3>
-<p>Tailored for each job application</p>
+<p>Tailored for each application to maximize interview chances</p>
 <div class="service-price">₦2,500 <span>/ $2.5</span></div>
 <a href="cv-resume.html" class="btn">Order Now</a>
 </div>
 <div class="service-card">
 <h3>VIP Job Alerts</h3>
-<p>Daily alerts + Early access + VIP-only jobs</p>
+<p>Daily curated alerts + Early access + Exclusive opportunities</p>
 <div class="service-price">₦2,000<span>/mo</span></div>
-<a href="https://selar.co/YOUR_VIP_LINK" class="btn btn-green">Get VIP</a>
+<a href="https://selar.co/YOUR_VIP_LINK" class="btn btn-green">Get VIP Access</a>
 </div>
 </div>
 </div>
@@ -215,7 +213,7 @@ footer a:hover { color: var(--white); }
 <div class="footer-grid">
 <div>
 <h4>RemotENG</h4>
-<p style="color:var(--gray-500); margin-bottom:16px;">Remote jobs worldwide. Work from anywhere.</p>
+<p style="color:var(--gray-500); margin-bottom:18px;">Connecting professionals with global remote opportunities.</p>
 <p>Email: support@remoteng.com.ng</p>
 <p>WhatsApp: +234 912 565 1147</p>
 <p>Hours: 24/7 Online. Live chat 6am-9pm GMT+1</p>
@@ -236,14 +234,14 @@ footer a:hover { color: var(--white); }
 <a href="legal.html#disclaimer">Disclaimer</a>
 </div>
 <div>
-<h4>Follow Us</h4>
+<h4>Connect</h4>
 <a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
 <a href="https://t.me/latest_ng" target="_blank">Telegram</a>
 <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
 </div>
 </div>
 <div class="footer-bottom">
-<p>&copy; 2026 RemotENG. All rights reserved.</p>
+<p>&copy; 2026 RemotENG. All rights reserved. Remote opportunities worldwide.</p>
 </div>
 </div>
 </footer>
@@ -265,6 +263,10 @@ async function loadFeaturedJobs() {
     const res = await fetch(`${API_URL}/api/jobs?pinned=true&limit=6`);
     const jobs = await res.json();
     const grid = document.getElementById('jobs-grid');
+    if (jobs.length === 0) {
+      grid.innerHTML = '<p style="text-align:center; color:var(--gray-500); grid-column:1/-1;">No featured jobs yet. Check back soon.</p>';
+      return;
+    }
     jobs.forEach(job => {
       const card = document.createElement('div');
       card.className = `job-card ${job.pinned? 'featured' : ''}`;
@@ -272,16 +274,17 @@ async function loadFeaturedJobs() {
         ${job.pinned? '<span class="tag featured">Featured</span>' : ''}
         <div class="job-title">${job.title}</div>
         <div class="job-company">${job.company}</div>
-        <div class="job-salary">${job.salary || 'Competitive'}</div>
+        <div class="job-salary">${job.salary || 'Competitive Package'}</div>
         <div class="job-footer">
           <span class="job-date">${timeAgo(job.posted_at)}</span>
-          <a href="go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}" class="btn">Apply</a>
+          <a href="go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}" class="btn">Apply Now</a>
         </div>
       `;
       grid.appendChild(card);
     });
   } catch (err) {
     console.error('Failed to load jobs:', err);
+    document.getElementById('jobs-grid').innerHTML = '<p style="text-align:center; color:var(--gray-500); grid-column:1/-1;">Unable to load jobs. Please refresh.</p>';
   }
 }
 
@@ -290,15 +293,19 @@ async function loadNews() {
     const res = await fetch(`${API_URL}/api/news?limit=6`);
     const news = await res.json();
     const grid = document.getElementById('news-grid');
+    if (news.length === 0) {
+      grid.innerHTML = '<p style="text-align:center; color:var(--gray-500); grid-column:1/-1;">No news available yet.</p>';
+      return;
+    }
     news.forEach(item => {
       const card = document.createElement('div');
       card.className = 'news-card';
       card.innerHTML = `
-        <img src="${item.image_url || 'https://via.placeholder.com/400x200'}" alt="${item.title}">
+        <img src="${item.image_url || 'https://via.placeholder.com/400x200?text=RemotENG'}" alt="${item.title}" loading="lazy">
         <div class="news-title">${item.title}</div>
         <div class="news-source">${item.source} · ${timeAgo(item.published_at)}</div>
-        <p style="margin:12px 0; color:var(--gray-700);">${item.summary?.substring(0,120)}...</p>
-        <a href="${item.url}" target="_blank" class="btn">Read More</a>
+        <p style="margin:14px 0; color:var(--gray-700); line-height:1.6;">${item.summary?.substring(0,130)}...</p>
+        <a href="${item.url}" target="_blank" rel="noopener" class="btn">Read Article</a>
       `;
       grid.appendChild(card);
     });
@@ -308,13 +315,15 @@ async function loadNews() {
 }
 
 async function subscribeEmail() {
-  const email = document.getElementById('email-input').value;
+  const email = document.getElementById('email-input').value.trim();
   const msg = document.getElementById('email-msg');
-  if (!email) {
-    msg.textContent = 'Please enter your email';
+  if (!email ||!email.includes('@')) {
+    msg.textContent = 'Please enter a valid email address';
     msg.style.color = 'var(--red)';
     return;
   }
+  msg.textContent = 'Processing...';
+  msg.style.color = 'var(--gray-500)';
   try {
     const res = await fetch(`${API_URL}/api/subscribe`, {
       method: 'POST',
@@ -322,14 +331,14 @@ async function subscribeEmail() {
       body: JSON.stringify({ email })
     });
     if (res.ok) {
-      msg.textContent = 'Success! Check your email to confirm.';
+      msg.textContent = 'Success! Check your email to confirm subscription.';
       msg.style.color = 'var(--green)';
       document.getElementById('email-input').value = '';
     } else {
       throw new Error();
     }
   } catch (err) {
-    msg.textContent = 'Error. Try again or WhatsApp us.';
+    msg.textContent = 'Error. Please try again or contact us via WhatsApp.';
     msg.style.color = 'var(--red)';
   }
 }
@@ -339,9 +348,9 @@ function timeAgo(date) {
   const intervals = {year: 31536000, month: 2592000, week: 604800, day: 86400, hour: 3600, minute: 60};
   for (let i in intervals) {
     const c = Math.floor(seconds / intervals[i]);
-    if (c > 0) return c + i[0] + ' ago';
+    if (c > 0) return c + ' ' + i + (c > 1? 's' : '') + ' ago';
   }
-  return 'just now';
+  return 'Just now';
 }
 
 loadFeaturedJobs();
