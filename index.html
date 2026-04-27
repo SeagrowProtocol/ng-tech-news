@@ -3,17 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RemotENG - Remote Jobs Worldwide | Work From Anywhere</title>
-<meta name="description" content="Find remote jobs worldwide. Tech, non-tech, USD, EUR roles. Get daily job alerts. CV writing services. Work from anywhere.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
-
-<!-- Open Graph -->
-<meta property="og:title" content="RemotENG - Remote Jobs Worldwide">
-<meta property="og:description" content="Find remote jobs. Get hired. Work from anywhere.">
-<meta property="og:type" content="website">
+<title>RemotENG - Remote Jobs for Nigerians | Work From Anywhere</title>
+<meta name="description" content="Find remote jobs worldwide. USD, EUR, GBP salaries. Tech & non-tech roles. Updated daily. Join 1000+ Nigerians working remotely.">
+<meta property="og:title" content="RemotENG - Remote Jobs for Nigerians">
+<meta property="og:description" content="Find remote jobs worldwide. USD, EUR, GBP salaries. Updated daily.">
 <meta property="og:url" content="https://remoteng.com.ng">
-
-<!-- Schema.org -->
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+<style>
+:root { --blue-dark: #1e3a8a; --blue: #2563eb; --blue-light: #3b82f6; --green: #84cc16; --gray-900: #111827; --gray-700: #374151; --gray-500: #6b7280; --gray-100: #f3f4f6; --white: #ffffff; --red: #ef4444; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--white); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo svg { width: 40px; height: 40px; }
+.logo-text { font-size: 24px; font-weight: 700; }
+.logo-text.dark { color: var(--blue-dark); }
+.logo-text.light { color: var(--blue); }
+.logo-text.green { color: var(--green); font-size: 14px; display: block; margin-top: -4px; }
+nav { display: flex; gap: 24px; align-items: center; }
+nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; }
+nav a:hover, nav a.active { color: var(--blue); }
+.btn { background: var(--blue); color: var(--white); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; }
+.btn:hover { background: var(--blue-dark); }
+.btn-green { background: var(--green); color: var(--gray-900); }
+.btn-green:hover { background: #65a30d; }
+.hero { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); color: var(--white); padding: 80px 0; text-align: center; }
+.hero h1 { font-size: 48px; margin-bottom: 16px; }
+.hero p { font-size: 20px; margin-bottom: 32px; opacity: 0.9; }
+.search-box { max-width: 600px; margin: 0 auto; display: flex; gap: 12px; }
+.search-box input { flex: 1; padding: 16px 20px; border: none; border-radius: 8px; font-size: 16px; }
+.search-box.btn { padding: 16px 32px; }
+.section { padding: 60px 0; }
+.section-title { font-size: 32px; margin-bottom: 32px; text-align: center; color: var(--blue-dark); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+.job-card,.news-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 12px; padding: 24px; position: relative; transition: box-shadow 0.2s; }
+.job-card:hover,.news-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.job-card.featured { border: 2px solid var(--green); }
+.tag { display: inline-block; background: var(--gray-100); padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-bottom: 8px; }
+.tag.featured { background: var(--green); color: var(--gray-900); font-weight: 600; }
+.job-title { font-size: 20px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
+.job-company { color: var(--gray-500); margin-bottom: 12px; }
+.job-salary { color: var(--green); font-weight: 700; font-size: 18px; margin: 12px 0; }
+.job-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
+.job-date { color: var(--gray-500); font-size: 13px; }
+.news-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; }
+.news-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--blue-dark); }
+.news-source { color: var(--gray-500); font-size: 13px; }
+.email-section { background: var(--gray-100); padding: 60px 0; text-align: center; }
+.email-box { max-width: 500px; margin: 0 auto; display: flex; gap: 12px; }
+.email-box input { flex: 1; padding: 14px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 16px; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.service-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 12px; padding: 32px; text-align: center; }
+.service-card h3 { font-size: 24px; margin-bottom: 12px; color: var(--blue-dark); }
+.service-price { font-size: 32px; font-weight: 700; color: var(--green); margin: 16px 0; }
+.service-price span { font-size: 16px; color: var(--gray-500); font-weight: 400; }
+footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 20px; margin-top: 60px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+footer h4 { color: var(--white); margin-bottom: 16px; }
+footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 8px; }
+footer a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 20px; text-align: center; color: var(--gray-500); }
+.ad-wrap { min-height: 250px; margin: 32px 0; text-align: center; }
+.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 4px; }
+@media (max-width: 768px) {
+  nav { display: none; }
+ .hero h1 { font-size: 32px; }
+ .search-box,.email-box { flex-direction: column; }
+ .grid { grid-template-columns: 1fr; }
+}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -27,350 +88,264 @@
   }
 }
 </script>
-
-<style>
-:root {
-  --blue-dark: #1e3a8a;
-  --blue: #2563eb;
-  --blue-light: #3b82f6;
-  --green: #84cc16;
-  --gray-900: #111827;
-  --gray-700: #374151;
-  --gray-500: #6b7280;
-  --gray-100: #f3f4f6;
-  --white: #ffffff;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); line-height: 1.6; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-/* Header */
-header { background: var(--white); border-bottom: 1px solid var(--gray-100); position: sticky; top: 0; z-index: 100; }
-.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
-.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo svg { width: 40px; height: 40px; }
-.logo-text { font-size: 24px; font-weight: 700; }
-.logo-text .dark { color: var(--blue-dark); }
-.logo-text .light { color: var(--blue); }
-.logo-text .green { color: var(--green); font-size: 14px; display: block; margin-top: -4px; }
-nav { display: flex; gap: 24px; align-items: center; }
-nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; }
-nav a:hover { color: var(--blue); }
-.btn { background: var(--blue); color: var(--white); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; }
-.btn:hover { background: var(--blue-dark); }
-
-/* Hero */
-.hero { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); color: var(--white); padding: 80px 0; text-align: center; }
-.hero h1 { font-size: 48px; margin-bottom: 16px; }
-.hero p { font-size: 20px; margin-bottom: 32px; opacity: 0.9; }
-.search-box { max-width: 600px; margin: 0 auto; display: flex; gap: 12px; }
-.search-box input { flex: 1; padding: 16px; border: none; border-radius: 8px; font-size: 16px; }
-.search-box button { background: var(--green); color: var(--gray-900); }
-
-/* Sections */
-section { padding: 60px 0; }
-.section-title { font-size: 32px; text-align: center; margin-bottom: 40px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
-.card { background: var(--white); border: 1px solid var(--gray-100); border-radius: 12px; padding: 24px; transition: all 0.2s; }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-2px); }
-.card h3 { font-size: 20px; margin-bottom: 8px; color: var(--blue-dark); }
-.card .meta { color: var(--gray-500); font-size: 14px; margin-bottom: 12px; }
-.card .salary { color: var(--green); font-weight: 700; font-size: 18px; }
-.tag { display: inline-block; background: var(--gray-100); padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-right: 8px; }
-.tag.featured { background: var(--green); color: var(--gray-900); font-weight: 600; }
-
-/* Email Signup */
-.signup { background: var(--gray-100); text-align: center; }
-.signup form { max-width: 500px; margin: 0 auto; display: flex; gap: 12px; margin-top: 24px; }
-.signup input { flex: 1; padding: 14px; border: 1px solid #d1d5db; border-radius: 8px; }
-
-/* Services */
-.service-card { text-align: center; }
-.service-card .price { font-size: 32px; font-weight: 700; color: var(--blue); margin: 16px 0; }
-.service-card .price span { font-size: 16px; color: var(--gray-500); }
-
-/* Footer */
-footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 20px; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
-footer h4 { color: var(--white); margin-bottom: 16px; }
-footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 8px; }
-footer a:hover { color: var(--white); }
-.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 20px; text-align: center; color: var(--gray-500); }
-
-/* Ads */
-.ad-wrap { min-height: 50px; margin: 24px 0; text-align: center; }
-.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 4px; }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero h1 { font-size: 32px; }
-  nav { display: none; }
-  .search-box, .signup form { flex-direction: column; }
-  .grid { grid-template-columns: 1fr; }
-}
-</style>
 </head>
 <body>
-
 <header>
-  <div class="container">
-    <div class="header-inner">
-      <a href="index.html" class="logo">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <!-- Cloud -->
-          <path d="M25 55 Q15 55 15 45 Q15 35 25 35 Q25 25 35 25 Q50 25 50 35 Q65 35 65 45 Q75 45 75 55 Q75 65 65 65 L25 65 Q15 65 15 55 Z" fill="#3b82f6"/>
-          <!-- Globe -->
-          <circle cx="70" cy="50" r="15" fill="none" stroke="#84cc16" stroke-width="3"/>
-          <path d="M70 35 Q75 42 70 50 Q65 58 70 65" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <path d="M55 50 L85 50" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <ellipse cx="70" cy="50" rx="8" ry="15" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <!-- R Arrow -->
-          <path d="M45 45 L45 60 L50 55 L55 60 L55 45 Z" fill="#84cc16"/>
-          <path d="M55 50 L60 50 L60 55 L55 55 Z" fill="#84cc16"/>
-          <!-- WiFi -->
-          <path d="M40 20 Q50 10 60 20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
-          <path d="M43 25 Q50 18 57 25" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-          <path d="M46 30 Q50 26 54 30" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-        <div class="logo-text">
-          <span class="dark">Remot</span><span class="light">eng</span>
-          <span class="green">.com.ng</span>
-        </div>
-      </a>
-      <nav>
-        <a href="remote-jobs.html">Jobs</a>
-        <a href="tech-news.html">News</a>
-        <a href="service.html">Services</a>
-        <a href="vip.html">VIP Alerts</a>
-        <a href="post-job.html">Post Job</a>
-        <a href="vip.html" class="btn">Get VIP</a>
-      </nav>
-    </div>
-  </div>
+<div class="container">
+<div class="header-inner">
+<a href="index.html" class="logo">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M25 55 Q15 55 15 45 Q15 35 25 35 Q25 25 35 25 Q50 25 50 35 Q65 35 65 45 Q75 45 75 55 Q75 65 65 65 L25 65 Q15 65 15 55 Z" fill="#3b82f6"/>
+<circle cx="70" cy="50" r="15" fill="none" stroke="#84cc16" stroke-width="3"/>
+<path d="M70 35 Q75 42 70 50 Q65 58 70 65" fill="none" stroke="#84cc16" stroke-width="2"/>
+<path d="M55 50 L85 50" fill="none" stroke="#84cc16" stroke-width="2"/>
+<ellipse cx="70" cy="50" rx="8" ry="15" fill="none" stroke="#84cc16" stroke-width="2"/>
+<path d="M45 45 L45 60 L50 55 L55 60 L55 45 Z" fill="#84cc16"/>
+<path d="M55 50 L60 55 L55 55 Z" fill="#84cc16"/>
+<path d="M40 20 Q50 10 60 20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+<path d="M43 25 Q50 18 57 25" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+<path d="M46 30 Q50 26 54 30" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+</svg>
+<div class="logo-text">
+<span class="dark">Remot</span><span class="light">eng</span>
+<span class="green">.com.ng</span>
+</div>
+</a>
+<nav>
+<a href="remote-jobs.html">Jobs</a>
+<a href="tech-news.html">News</a>
+<a href="service.html">Services</a>
+<a href="vip.html">VIP Alerts</a>
+<a href="post-job.html">Post Job</a>
+<a href="https://selar.co/YOUR_VIP_LINK" class="btn">Get VIP</a>
+</nav>
+</div>
+</div>
 </header>
 
 <section class="hero">
-  <div class="container">
-    <h1>Remote Jobs Worldwide. Work From Anywhere.</h1>
-    <p>Thousands of tech and non-tech remote jobs. USD, EUR, GBP salaries. Daily alerts.</p>
-    <form class="search-box" onsubmit="event.preventDefault(); window.location='remote-jobs.html?q='+this.q.value">
-      <input type="text" name="q" placeholder="Search job title, skill, or company...">
-      <button type="submit" class="btn">Search Jobs</button>
-    </form>
-  </div>
+<div class="container">
+<h1>Remote Jobs for Nigerians</h1>
+<p>Find USD, EUR, GBP paying jobs. Work from anywhere. Updated daily.</p>
+<div class="search-box">
+<input type="text" id="hero-search" placeholder="Search by title, skill, or company...">
+<button class="btn" onclick="searchJobs()">Search Jobs</button>
+</div>
+</div>
 </section>
 
 <div class="ad-wrap">
-  <small>Advertisement</small>
-  <script type="text/javascript">
-    atOptions = {'key':'8f03f73691bf093a8d076af0d6d62212','format':'iframe','height':250,'width':300,'params':{}};
-  </script>
-  <script type="text/javascript" src="//www.highperformanceformat.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
+<small>Advertisement</small>
+<script type="text/javascript">atOptions = {'key':'YOUR_KEY_HERE','format':'iframe','height':250,'width':300,'params':{}};</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY_HERE/invoke.js"></script>
 </div>
 
-<section>
-  <div class="container">
-    <h2 class="section-title">Featured Remote Jobs</h2>
-    <div class="grid" id="featured-jobs">
-      <!-- Jobs load here from Supabase -->
-    </div>
-    <div style="text-align:center; margin-top:40px;">
-      <a href="remote-jobs.html" class="btn">View All Jobs</a>
-    </div>
-  </div>
+<section class="section">
+<div class="container">
+<h2 class="section-title">Featured Remote Jobs</h2>
+<div class="grid" id="jobs-grid"></div>
+<div style="text-align:center; margin-top:32px;">
+<a href="remote-jobs.html" class="btn">Browse All Jobs</a>
+</div>
+</div>
 </section>
 
 <div class="ad-wrap">
-  <small>Advertisement</small>
-  <script type="text/javascript" src="//pl27439006.profitableratecpm.com/bf115e1d3ba1dc0e7eed25d4b595c194/invoke.js"></script>
+<small>Advertisement</small>
+<script type="text/javascript">atOptions = {'key':'YOUR_KEY_HERE','format':'iframe','height':250,'width':300,'params':{}};</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY_HERE/invoke.js"></script>
 </div>
 
-<section>
-  <div class="container">
-    <h2 class="section-title">Latest Tech News</h2>
-    <div class="grid" id="latest-news">
-      <!-- News loads here from Supabase -->
-    </div>
-    <div style="text-align:center; margin-top:40px;">
-      <a href="tech-news.html" class="btn">Read All News</a>
-    </div>
-  </div>
+<section class="section" style="background:var(--gray-100);">
+<div class="container">
+<h2 class="section-title">Latest Tech & Career News</h2>
+<div class="grid" id="news-grid"></div>
+<div style="text-align:center; margin-top:32px;">
+<a href="tech-news.html" class="btn">Read More News</a>
+</div>
+</div>
 </section>
 
-<section class="signup">
-  <div class="container">
-    <h2 class="section-title">Get Free Remote Job Alerts</h2>
-    <p>Join 10,000+ professionals. Weekly digest of best remote jobs. No spam.</p>
-    <form id="subscribe-form">
-      <input type="email" id="email" placeholder="Enter your email" required>
-      <button type="submit" class="btn">Subscribe Free</button>
-    </form>
-    <p style="margin-top:16px; font-size:14px; color:var(--gray-500);">Want daily alerts? <a href="vip.html" style="color:var(--blue);">Upgrade to VIP</a></p>
-  </div>
+<section class="email-section">
+<div class="container">
+<h2 class="section-title">Get Free Job Alerts</h2>
+<p style="margin-bottom:24px; color:var(--gray-700);">Join 1000+ Nigerians. Daily remote jobs sent to your inbox.</p>
+<div class="email-box">
+<input type="email" id="email-input" placeholder="Enter your email">
+<button class="btn btn-green" onclick="subscribeEmail()">Join Free</button>
+</div>
+<p id="email-msg" style="margin-top:12px; color:var(--gray-500);"></p>
+</div>
 </section>
 
-<section>
-  <div class="container">
-    <h2 class="section-title">Career Services</h2>
-    <div class="grid">
-      <div class="card service-card">
-        <h3>CV / Resume Writing</h3>
-        <p>ATS-optimized CV that gets interviews</p>
-        <div class="price">₦3,000 <span>/ $3</span></div>
-        <a href="cv-resume.html" class="btn">Order Now</a>
-      </div>
-      <div class="card service-card">
-        <h3>Cover Letter</h3>
-        <p>Tailored letter for each application</p>
-        <div class="price">₦2,500 <span>/ $2.5</span></div>
-        <a href="cv-resume.html" class="btn">Order Now</a>
-      </div>
-      <div class="card service-card">
-        <h3>VIP Job Alerts</h3>
-        <p>Daily alerts. Early access. VIP-only jobs</p>
-        <div class="price">₦2,000 <span>/ $2 mo</span></div>
-        <a href="vip.html" class="btn">Get VIP</a>
-      </div>
-    </div>
-  </div>
+<section class="section">
+<div class="container">
+<h2 class="section-title">Land Your Remote Job Faster</h2>
+<div class="services-grid">
+<div class="service-card">
+<h3>CV/Resume Writing</h3>
+<p>ATS-optimized CV by hiring experts</p>
+<div class="service-price">₦3,000 <span>/ $3</span></div>
+<a href="cv-resume.html" class="btn">Order Now</a>
+</div>
+<div class="service-card">
+<h3>Cover Letter</h3>
+<p>Tailored for each job application</p>
+<div class="service-price">₦2,500 <span>/ $2.5</span></div>
+<a href="cv-resume.html" class="btn">Order Now</a>
+</div>
+<div class="service-card">
+<h3>VIP Job Alerts</h3>
+<p>Daily alerts + Early access + VIP-only jobs</p>
+<div class="service-price">₦2,000<span>/mo</span></div>
+<a href="https://selar.co/YOUR_VIP_LINK" class="btn btn-green">Get VIP</a>
+</div>
+</div>
+</div>
 </section>
 
 <div class="ad-wrap">
-  <small>Advertisement</small>
-  <script type="text/javascript">
-    atOptions = {'key':'8f03f73691bf093a8d076af0d6d62212','format':'iframe','height':250,'width':300,'params':{}};
-  </script>
-  <script type="text/javascript" src="//www.highperformanceformat.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
+<small>Advertisement</small>
+<script type="text/javascript">atOptions = {'key':'YOUR_KEY_HERE','format':'iframe','height':250,'width':300,'params':{}};</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY_HERE/invoke.js"></script>
 </div>
 
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4>RemotENG</h4>
-        <p style="color:var(--gray-500); margin-bottom:16px;">Remote jobs worldwide. Work from anywhere.</p>
-        <p>Email: support@remoteng.com.ng</p>
-        <p>WhatsApp: +234 912 565 1147</p>
-        <p>Hours: 24/7 Online. Live chat 6am-9pm GMT+1</p>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <a href="remote-jobs.html">Browse Jobs</a>
-        <a href="tech-news.html">Tech News</a>
-        <a href="service.html">Services</a>
-        <a href="post-job.html">Post a Job</a>
-        <a href="vip.html">VIP Alerts</a>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <a href="legal.html">About Us</a>
-        <a href="legal.html#privacy">Privacy Policy</a>
-        <a href="legal.html#terms">Terms of Service</a>
-        <a href="legal.html#disclaimer">Disclaimer</a>
-      </div>
-      <div>
-        <h4>Follow Us</h4>
-        <a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
-        <a href="https://t.me/latest_ng" target="_blank">Telegram</a>
-        <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 RemotENG. All rights reserved.</p>
-    </div>
-  </div>
+<div class="container">
+<div class="footer-grid">
+<div>
+<h4>RemotENG</h4>
+<p style="color:var(--gray-500); margin-bottom:16px;">Remote jobs worldwide. Work from anywhere.</p>
+<p>Email: support@remoteng.com.ng</p>
+<p>WhatsApp: +234 912 565 1147</p>
+<p>Hours: 24/7 Online. Live chat 6am-9pm GMT+1</p>
+</div>
+<div>
+<h4>Quick Links</h4>
+<a href="remote-jobs.html">Browse Jobs</a>
+<a href="tech-news.html">Tech News</a>
+<a href="service.html">Services</a>
+<a href="post-job.html">Post a Job</a>
+<a href="save-job.html">Saved Jobs</a>
+</div>
+<div>
+<h4>Legal</h4>
+<a href="legal.html">About Us</a>
+<a href="legal.html#privacy">Privacy Policy</a>
+<a href="legal.html#terms">Terms of Service</a>
+<a href="legal.html#disclaimer">Disclaimer</a>
+</div>
+<div>
+<h4>Follow Us</h4>
+<a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
+<a href="https://t.me/latest_ng" target="_blank">Telegram</a>
+<a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 RemotENG. All rights reserved.</p>
+</div>
+</div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const SUPABASE_URL = 'https://rjftctmdtutqippjzaqf.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqZnRjdG1kdHV0cWlwcGp6YXFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcwNTUyNzUsImV4cCI6MjA5MjYzMTI3NX0.L1kI8MUuOjQss3HijiJRDrCMzTY5GUc32v3se41DJiI';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const API_URL = 'https://remoteng-api.onrender.com';
 
-// Multi-currency detect
-let userCurrency = 'USD';
-let currencySymbol = '$';
-fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{
-  if(d.country_code === 'NG'){ userCurrency='NGN'; currencySymbol='₦'; }
-  if(d.country_code === 'GB'){ userCurrency='GBP'; currencySymbol='£'; }
-  if(['DE','FR','ES','IT','NL'].includes(d.country_code)){ userCurrency='EUR'; currencySymbol='€'; }
-  document.querySelectorAll('.price').forEach(el=>{
-    if(userCurrency==='NGN') el.innerHTML = el.innerHTML.replace('$','₦').replace('2.5','2,500').replace('3','3,000').replace('2','2,000');
-  });
-}).catch(()=>{});
+function searchJobs() {
+  const q = document.getElementById('hero-search').value;
+  window.location.href = `remote-jobs.html?q=${encodeURIComponent(q)}`;
+}
 
-// Load Featured Jobs
-async function loadJobs(){
-  const { data, error } = await supabase
-    .from('jobs')
-    .select('*')
-    .eq('featured', true)
-    .gt('featured_until', new Date().toISOString())
-    .order('created_at', { ascending: false })
-    .limit(6);
-  
-  if(data){
-    document.getElementById('featured-jobs').innerHTML = data.map(job=>`
-      <div class="card">
-        <span class="tag featured">Featured</span>
-        <h3>${job.title}</h3>
-        <div class="meta">${job.company} • ${job.location || 'Remote'}</div>
-        <div class="salary">${job.salary || 'Competitive'}</div>
-        <div style="margin-top:16px;">
-          <a href="go.html?url=${encodeURIComponent(job.apply_url)}&job_id=${job.id}" class="btn">Apply Now</a>
+document.getElementById('hero-search').addEventListener('keypress', e => {
+  if (e.key === 'Enter') searchJobs();
+});
+
+async function loadFeaturedJobs() {
+  try {
+    const res = await fetch(`${API_URL}/api/jobs?pinned=true&limit=6`);
+    const jobs = await res.json();
+    const grid = document.getElementById('jobs-grid');
+    jobs.forEach(job => {
+      const card = document.createElement('div');
+      card.className = `job-card ${job.pinned? 'featured' : ''}`;
+      card.innerHTML = `
+        ${job.pinned? '<span class="tag featured">Featured</span>' : ''}
+        <div class="job-title">${job.title}</div>
+        <div class="job-company">${job.company}</div>
+        <div class="job-salary">${job.salary || 'Competitive'}</div>
+        <div class="job-footer">
+          <span class="job-date">${timeAgo(job.posted_at)}</span>
+          <a href="go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}" class="btn">Apply</a>
         </div>
-      </div>
-    `).join('');
+      `;
+      grid.appendChild(card);
+    });
+  } catch (err) {
+    console.error('Failed to load jobs:', err);
   }
 }
 
-// Load News
-async function loadNews(){
-  const { data } = await supabase
-    .from('news')
-    .select('*')
-    .order('published_at', { ascending: false })
-    .limit(6);
-  
-  if(data){
-    document.getElementById('latest-news').innerHTML = data.map(news=>`
-      <div class="card">
-        <h3>${news.title}</h3>
-        <div class="meta">${news.source} • ${new Date(news.published_at).toLocaleDateString()}</div>
-        <p style="color:var(--gray-500); margin:12px 0;">${news.summary?.substring(0,120)}...</p>
-        <a href="${news.url}" target="_blank" style="color:var(--blue); font-weight:600;">Read More →</a>
-      </div>
-    `).join('');
+async function loadNews() {
+  try {
+    const res = await fetch(`${API_URL}/api/news?limit=6`);
+    const news = await res.json();
+    const grid = document.getElementById('news-grid');
+    news.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'news-card';
+      card.innerHTML = `
+        <img src="${item.image_url || 'https://via.placeholder.com/400x200'}" alt="${item.title}">
+        <div class="news-title">${item.title}</div>
+        <div class="news-source">${item.source} · ${timeAgo(item.published_at)}</div>
+        <p style="margin:12px 0; color:var(--gray-700);">${item.summary?.substring(0,120)}...</p>
+        <a href="${item.url}" target="_blank" class="btn">Read More</a>
+      `;
+      grid.appendChild(card);
+    });
+  } catch (err) {
+    console.error('Failed to load news:', err);
   }
 }
 
-// Email Subscribe
-document.getElementById('subscribe-form').onsubmit = async (e)=>{
-  e.preventDefault();
-  const email = document.getElementById('email').value;
-  const { error } = await supabase.from('subscribers').insert({email, list: 'free'});
-  if(!error){ 
-    alert('Success! Check your email to confirm.'); 
-    e.target.reset();
-  } else {
-    alert('Error. You may already be subscribed.');
+async function subscribeEmail() {
+  const email = document.getElementById('email-input').value;
+  const msg = document.getElementById('email-msg');
+  if (!email) {
+    msg.textContent = 'Please enter your email';
+    msg.style.color = 'var(--red)';
+    return;
   }
-};
+  try {
+    const res = await fetch(`${API_URL}/api/subscribe`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ email })
+    });
+    if (res.ok) {
+      msg.textContent = 'Success! Check your email to confirm.';
+      msg.style.color = 'var(--green)';
+      document.getElementById('email-input').value = '';
+    } else {
+      throw new Error();
+    }
+  } catch (err) {
+    msg.textContent = 'Error. Try again or WhatsApp us.';
+    msg.style.color = 'var(--red)';
+  }
+}
 
-loadJobs();
+function timeAgo(date) {
+  const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+  const intervals = {year: 31536000, month: 2592000, week: 604800, day: 86400, hour: 3600, minute: 60};
+  for (let i in intervals) {
+    const c = Math.floor(seconds / intervals[i]);
+    if (c > 0) return c + i[0] + ' ago';
+  }
+  return 'just now';
+}
+
+loadFeaturedJobs();
 loadNews();
 </script>
-
-<!-- ItemList Schema -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"ItemList",
-  "name":"Featured Remote Jobs",
-  "url":"https://remoteng.com.ng",
-  "itemListElement":[]
-}
-</script>
-
 </body>
 </html>
