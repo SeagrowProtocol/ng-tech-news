@@ -6,33 +6,24 @@
 <title>Remote Jobs Worldwide - Browse 1000+ Jobs | RemotENG</title>
 <meta name="description" content="Browse remote jobs worldwide. Filter by tech, non-tech, USD, EUR, GBP salary. Save jobs. Apply directly. Updated daily.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
-
 <style>
-:root {
-  --blue-dark: #1e3a8a; --blue: #2563eb; --blue-light: #3b82f6; --green: #84cc16;
-  --gray-900: #111827; --gray-700: #374151; --gray-500: #6b7280; --gray-100: #f3f4f6; --white: #ffffff;
-  --red: #ef4444;
-}
+:root { --blue-dark: #1e3a8a; --blue: #2563eb; --blue-light: #3b82f6; --green: #84cc16; --gray-900: #111827; --gray-700: #374151; --gray-500: #6b7280; --gray-100: #f3f4f6; --white: #ffffff; --red: #ef4444; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--gray-100); }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-/* Header */
 header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
 .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .logo svg { width: 40px; height: 40px; }
 .logo-text { font-size: 24px; font-weight: 700; }
-.logo-text .dark { color: var(--blue-dark); }
-.logo-text .light { color: var(--blue); }
-.logo-text .green { color: var(--green); font-size: 14px; display: block; margin-top: -4px; }
+.logo-text.dark { color: var(--blue-dark); }
+.logo-text.light { color: var(--blue); }
+.logo-text.green { color: var(--green); font-size: 14px; display: block; margin-top: -4px; }
 nav { display: flex; gap: 24px; align-items: center; }
 nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; }
 nav a:hover, nav a.active { color: var(--blue); }
 .btn { background: var(--blue); color: var(--white); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; }
 .btn:hover { background: var(--blue-dark); }
-
-/* Search Bar */
 .search-section { background: var(--white); padding: 32px 0; border-bottom: 1px solid #e5e7eb; }
 .search-wrap { display: flex; gap: 12px; margin-bottom: 20px; }
 .search-wrap input { flex: 1; padding: 14px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 16px; }
@@ -40,8 +31,6 @@ nav a:hover, nav a.active { color: var(--blue); }
 .filter-btn { padding: 8px 16px; border: 1px solid #d1d5db; background: var(--white); border-radius: 20px; cursor: pointer; font-size: 14px; }
 .filter-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
 .sort-select { padding: 8px 16px; border: 1px solid #d1d5db; border-radius: 8px; background: var(--white); }
-
-/* Jobs Grid */
 .jobs-section { padding: 40px 0; }
 .jobs-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
 .jobs-count { color: var(--gray-500); }
@@ -61,159 +50,133 @@ nav a:hover, nav a.active { color: var(--blue); }
 .job-desc { color: var(--gray-700); margin: 12px 0; line-height: 1.6; }
 .job-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
 .job-date { color: var(--gray-500); font-size: 13px; }
-
-/* Load More */
 .load-more { text-align: center; margin: 40px 0; }
-
-/* Footer */
 footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 20px; margin-top: 60px; }
 .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
 footer h4 { color: var(--white); margin-bottom: 16px; }
 footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 8px; }
 footer a:hover { color: var(--white); }
 .footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 20px; text-align: center; color: var(--gray-500); }
-
-/* Ads */
 .ad-wrap { min-height: 50px; margin: 24px 0; text-align: center; }
 .ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 4px; }
-
-@media (max-width: 768px) {
-  nav { display: none; }
-  .search-wrap { flex-direction: column; }
-  .job-footer { flex-direction: column; gap: 12px; align-items: start; }
-}
+@media (max-width: 768px) { nav { display: none; }.search-wrap { flex-direction: column; }.job-footer { flex-direction: column; gap: 12px; align-items: start; } }
 </style>
 </head>
 <body>
-
 <header>
-  <div class="container">
-    <div class="header-inner">
-      <a href="index.html" class="logo">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <path d="M25 55 Q15 55 15 45 Q15 35 25 35 Q25 25 35 25 Q50 25 50 35 Q65 35 65 45 Q75 45 75 55 Q75 65 65 65 L25 65 Q15 65 15 55 Z" fill="#3b82f6"/>
-          <circle cx="70" cy="50" r="15" fill="none" stroke="#84cc16" stroke-width="3"/>
-          <path d="M70 35 Q75 42 70 50 Q65 58 70 65" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <path d="M55 50 L85 50" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <ellipse cx="70" cy="50" rx="8" ry="15" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <path d="M45 45 L45 60 L50 55 L55 60 L55 45 Z" fill="#84cc16"/>
-          <path d="M55 50 L60 50 L60 55 L55 55 Z" fill="#84cc16"/>
-          <path d="M40 20 Q50 10 60 20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
-          <path d="M43 25 Q50 18 57 25" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-          <path d="M46 30 Q50 26 54 30" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-        <div class="logo-text">
-          <span class="dark">Remot</span><span class="light">eng</span>
-          <span class="green">.com.ng</span>
-        </div>
-      </a>
-      <nav>
-        <a href="remote-jobs.html" class="active">Jobs</a>
-        <a href="tech-news.html">News</a>
-        <a href="service.html">Services</a>
-        <a href="vip.html">VIP Alerts</a>
-        <a href="post-job.html">Post Job</a>
-        <a href="vip.html" class="btn">Get VIP</a>
-      </nav>
-    </div>
-  </div>
+<div class="container">
+<div class="header-inner">
+<a href="index.html" class="logo">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M25 55 Q15 55 15 45 Q15 35 25 35 Q25 25 35 25 Q50 25 50 35 Q65 35 65 45 Q75 45 75 55 Q75 65 65 65 L25 65 Q15 65 15 55 Z" fill="#3b82f6"/>
+<circle cx="70" cy="50" r="15" fill="none" stroke="#84cc16" stroke-width="3"/>
+<path d="M70 35 Q75 42 70 50 Q65 58 70 65" fill="none" stroke="#84cc16" stroke-width="2"/>
+<path d="M55 50 L85 50" fill="none" stroke="#84cc16" stroke-width="2"/>
+<ellipse cx="70" cy="50" rx="8" ry="15" fill="none" stroke="#84cc16" stroke-width="2"/>
+<path d="M45 45 L45 60 L50 55 L55 60 L55 45 Z" fill="#84cc16"/>
+<path d="M55 50 L60 55 L55 55 Z" fill="#84cc16"/>
+<path d="M40 20 Q50 10 60 20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+<path d="M43 25 Q50 18 57 25" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+<path d="M46 30 Q50 26 54 30" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+</svg>
+<div class="logo-text">
+<span class="dark">Remot</span><span class="light">eng</span>
+<span class="green">.com.ng</span>
+</div>
+</a>
+<nav>
+<a href="remote-jobs.html" class="active">Jobs</a>
+<a href="tech-news.html">News</a>
+<a href="service.html">Services</a>
+<a href="vip.html">VIP Alerts</a>
+<a href="post-job.html">Post Job</a>
+<a href="vip.html" class="btn">Get VIP</a>
+</nav>
+</div>
+</div>
 </header>
-
 <section class="search-section">
-  <div class="container">
-    <div class="search-wrap">
-      <input type="text" id="search-input" placeholder="Search by title, skill, or company...">
-      <select id="sort-select" class="sort-select">
-        <option value="newest">Newest First</option>
-        <option value="salary">Highest Salary</option>
-      </select>
-    </div>
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">All Jobs</button>
-      <button class="filter-btn" data-filter="non-tech">Non-Tech</button>
-      <button class="filter-btn" data-filter="usd">USD Jobs</button>
-      <button class="filter-btn" data-filter="eur">EUR Jobs</button>
-      <button class="filter-btn" data-filter="gbp">GBP Jobs</button>
-      <button class="filter-btn" data-filter="300k">₦300k+</button>
-      <button class="filter-btn" data-filter="500k">₦500k+</button>
-      <button class="filter-btn" data-filter="3k">$3k+</button>
-    </div>
-  </div>
-</section>
-
-<div class="ad-wrap">
-  <small>Advertisement</small>
-  <script type="text/javascript">
-    atOptions = {'key':'8f03f73691bf093a8d076af0d6d62212','format':'iframe','height':250,'width':300,'params':{}};
-  </script>
-  <script type="text/javascript" src="//www.highperformanceformat.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
+<div class="container">
+<div class="search-wrap">
+<input type="text" id="search-input" placeholder="Search by title, skill, or company...">
+<select id="sort-select" class="sort-select">
+<option value="newest">Newest First</option>
+<option value="salary">Highest Salary</option>
+</select>
 </div>
-
+<div class="filters">
+<button class="filter-btn active" data-filter="all">All Jobs</button>
+<button class="filter-btn" data-filter="non-tech">Non-Tech</button>
+<button class="filter-btn" data-filter="usd">USD Jobs</button>
+<button class="filter-btn" data-filter="eur">EUR Jobs</button>
+<button class="filter-btn" data-filter="gbp">GBP Jobs</button>
+<button class="filter-btn" data-filter="300k">₦300k+</button>
+<button class="filter-btn" data-filter="500k">₦500k+</button>
+<button class="filter-btn" data-filter="3k">$3k+</button>
+</div>
+</div>
+</section>
+<div class="ad-wrap">
+<small>Advertisement</small>
+<script type="text/javascript"> atOptions = {'key':'8f03f73691bf093a8d076af0d6d62212','format':'iframe','height':250,'width':300,'params':{}}; </script>
+<script type="text/javascript" src="//www.highperformanceformat.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
+</div>
 <section class="jobs-section">
-  <div class="container">
-    <div class="jobs-header">
-      <h2>Remote Jobs Worldwide</h2>
-      <span class="jobs-count" id="jobs-count">Loading...</span>
-    </div>
-    <div class="grid" id="jobs-grid"></div>
-    <div class="load-more">
-      <button id="load-more-btn" class="btn" style="display:none;">Load More Jobs</button>
-    </div>
-  </div>
-</section>
-
-<div class="ad-wrap">
-  <small>Advertisement</small>
-  <script type="text/javascript">
-    atOptions = {'key':'8f03f73691bf093a8d076af0d6d62212','format':'iframe','height':250,'width':300,'params':{}};
-  </script>
-  <script type="text/javascript" src="//www.highperformanceformat.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
+<div class="container">
+<div class="jobs-header">
+<h2>Remote Jobs Worldwide</h2>
+<span class="jobs-count" id="jobs-count">Loading...</span>
 </div>
-
+<div class="grid" id="jobs-grid"></div>
+<div class="load-more">
+<button id="load-more-btn" class="btn" style="display:none;">Load More Jobs</button>
+</div>
+</div>
+</section>
+<div class="ad-wrap">
+<small>Advertisement</small>
+<script type="text/javascript"> atOptions = {'key':'8f03f73691bf093a8d076af0d6d62212','format':'iframe','height':250,'width':300,'params':{}}; </script>
+<script type="text/javascript" src="//www.highperformanceformat.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
+</div>
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4>RemotENG</h4>
-        <p style="color:var(--gray-500); margin-bottom:16px;">Remote jobs worldwide. Work from anywhere.</p>
-        <p>Email: support@remoteng.com.ng</p>
-        <p>WhatsApp: +234 912 565 1147</p>
-        <p>Hours: 24/7 Online. Live chat 6am-9pm GMT+1</p>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <a href="remote-jobs.html">Browse Jobs</a>
-        <a href="tech-news.html">Tech News</a>
-        <a href="service.html">Services</a>
-        <a href="post-job.html">Post a Job</a>
-        <a href="save-job.html">Saved Jobs</a>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <a href="legal.html">About Us</a>
-        <a href="legal.html#privacy">Privacy Policy</a>
-        <a href="legal.html#terms">Terms of Service</a>
-        <a href="legal.html#disclaimer">Disclaimer</a>
-      </div>
-      <div>
-        <h4>Follow Us</h4>
-        <a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
-        <a href="https://t.me/latest_ng" target="_blank">Telegram</a>
-        <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 RemotENG. All rights reserved.</p>
-    </div>
-  </div>
+<div class="container">
+<div class="footer-grid">
+<div>
+<h4>RemotENG</h4>
+<p style="color:var(--gray-500); margin-bottom:16px;">Remote jobs worldwide. Work from anywhere.</p>
+<p>Email: support@remoteng.com.ng</p>
+<p>WhatsApp: +234 912 565 1147</p>
+<p>Hours: 24/7 Online. Live chat 6am-9pm GMT+1</p>
+</div>
+<div>
+<h4>Quick Links</h4>
+<a href="remote-jobs.html">Browse Jobs</a>
+<a href="tech-news.html">Tech News</a>
+<a href="service.html">Services</a>
+<a href="post-job.html">Post a Job</a>
+<a href="save-job.html">Saved Jobs</a>
+</div>
+<div>
+<h4>Legal</h4>
+<a href="legal.html">About Us</a>
+<a href="legal.html#privacy">Privacy Policy</a>
+<a href="legal.html#terms">Terms of Service</a>
+<a href="legal.html#disclaimer">Disclaimer</a>
+</div>
+<div>
+<h4>Follow Us</h4>
+<a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
+<a href="https://t.me/latest_ng" target="_blank">Telegram</a>
+<a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 RemotENG. All rights reserved.</p>
+</div>
+</div>
 </footer>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const SUPABASE_URL = 'https://rjftctmdtutqippjzaqf.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqZnRjdG1kdHV0cWlwcGp6YXFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcwNTUyNzUsImV4cCI6MjA5MjYzMTI3NX0.L1kI8MUuOjQss3HijiJRDrCMzTY5GUc32v3se41DJiI';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
+const API_URL = 'https://remoteng-api.onrender.com';
 let currentPage = 0;
 const pageSize = 20;
 let currentFilter = 'all';
@@ -221,9 +184,8 @@ let currentSort = 'newest';
 let currentSearch = '';
 let allJobs = [];
 let savedJobs = JSON.parse(localStorage.getItem('savedJobs') || '[]');
-
-// Currency detect
 let userCurrency = 'USD';
+
 fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{
   if(d.country_code === 'NG') userCurrency='NGN';
   if(d.country_code === 'GB') userCurrency='GBP';
@@ -231,55 +193,66 @@ fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{
 }).catch(()=>{});
 
 async function loadJobs(reset=false){
-  if(reset){ currentPage=0; allJobs=[]; document.getElementById('jobs-grid').innerHTML=''; }
-  
-  let query = supabase.from('jobs').select('*', {count:'exact'});
-  
-  // Search
-  if(currentSearch) query = query.or(`title.ilike.%${currentSearch}%,company.ilike.%${currentSearch}%,description.ilike.%${currentSearch}%`);
-  
-  // Filters
-  if(currentFilter==='non-tech') query = query.not('tags','cs','{tech}');
-  if(currentFilter==='usd') query = query.ilike('salary','%$%');
-  if(currentFilter==='eur') query = query.ilike('salary','%€%');
-  if(currentFilter==='gbp') query = query.ilike('salary','%£%');
-  
-  // Sort
-  if(currentSort==='newest') query = query.order('created_at',{ascending:false});
-  if(currentSort==='salary') query = query.order('salary_numeric',{ascending:false});
-  
-  // Featured first
-  query = query.order('featured',{ascending:false});
-  
-  // Pagination
-  query = query.range(currentPage*pageSize, (currentPage+1)*pageSize-1);
-  
-  const { data, count, error } = await query;
-  
-  if(data){
-    allJobs = [...allJobs, ...data];
-    renderJobs(data);
-    document.getElementById('jobs-count').textContent = `${count} jobs found`;
-    document.getElementById('load-more-btn').style.display = data.length===pageSize ? 'inline-block' : 'none';
+  if(reset){
+    currentPage=0;
+    allJobs=[];
+    document.getElementById('jobs-grid').innerHTML='';
+  }
+
+  try {
+    const res = await fetch(`${API_URL}/api/jobs`);
+    let data = await res.json();
+
+    // Client-side filtering since Render route doesn't support params yet
+    if(currentSearch) {
+      const s = currentSearch.toLowerCase();
+      data = data.filter(j =>
+        j.title?.toLowerCase().includes(s) ||
+        j.company?.toLowerCase().includes(s) ||
+        j.description?.toLowerCase().includes(s)
+      );
+    }
+
+    if(currentFilter==='non-tech') data = data.filter(j =>!j.category?.includes('tech'));
+    if(currentFilter==='usd') data = data.filter(j => j.salary?.includes('$'));
+    if(currentFilter==='eur') data = data.filter(j => j.salary?.includes('€'));
+    if(currentFilter==='gbp') data = data.filter(j => j.salary?.includes('£'));
+
+    // Sort
+    if(currentSort==='newest') data.sort((a,b) => new Date(b.posted_at) - new Date(a.posted_at));
+
+    // Featured first
+    data.sort((a,b) => (b.pinned? 1 : 0) - (a.pinned? 1 : 0));
+
+    // Pagination
+    const start = currentPage * pageSize;
+    const paginated = data.slice(start, start + pageSize);
+
+    allJobs = reset? paginated : [...allJobs,...paginated];
+    renderJobs(paginated);
+    document.getElementById('jobs-count').textContent = `${data.length} jobs found`;
+    document.getElementById('load-more-btn').style.display = paginated.length===pageSize? 'inline-block' : 'none';
+
+  } catch(err) {
+    console.error('Failed to load jobs:', err);
+    document.getElementById('jobs-count').textContent = 'Failed to load jobs';
   }
 }
 
 function renderJobs(jobs){
   const grid = document.getElementById('jobs-grid');
   const now = new Date();
-  
   jobs.forEach((job, idx)=>{
     const isSaved = savedJobs.includes(job.id);
-    const isFeatured = job.featured && new Date(job.featured_until) > now;
+    const isFeatured = job.pinned && (!job.pin_expires || new Date(job.pin_expires) > now);
     const salary = job.salary || 'Competitive';
     const desc = job.description?.substring(0,180) + '...' || '';
-    
     const card = document.createElement('div');
-    card.className = `job-card ${isFeatured ? 'featured' : ''}`;
+    card.className = `job-card ${isFeatured? 'featured' : ''}`;
     card.innerHTML = `
       <div class="job-top">
         <div>
-          ${isFeatured ? '<span class="tag featured">Featured</span>' : ''}
+          ${isFeatured? '<span class="tag featured">Featured</span>' : ''}
           <div class="job-title">${job.title}</div>
           <div class="job-company">${job.company}</div>
         </div>
@@ -292,13 +265,12 @@ function renderJobs(jobs){
       </div>
       <div class="job-desc">${desc}</div>
       <div class="job-footer">
-        <span class="job-date">Posted ${timeAgo(job.created_at)}</span>
-        <a href="go.html?url=${encodeURIComponent(job.apply_url)}&job_id=${job.id}" class="btn">Apply Now</a>
+        <span class="job-date">Posted ${timeAgo(job.posted_at)}</span>
+        <a href="go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}" class="btn">Apply Now</a>
       </div>
     `;
     grid.appendChild(card);
-    
-    // Insert ad after item 6
+
     if((allJobs.length)%6===0 && allJobs.length>0){
       const adDiv = document.createElement('div');
       adDiv.className='ad-wrap';
@@ -316,27 +288,33 @@ function renderJobs(jobs){
 function timeAgo(date){
   const seconds = Math.floor((new Date() - new Date(date)) / 1000);
   const intervals = {year:31536000,month:2592000,week:604800,day:86400,hour:3600,minute:60};
-  for(let i in intervals){ const c=Math.floor(seconds/intervals[i]); if(c>0) return c+i[0]+' ago'; }
+  for(let i in intervals){
+    const c=Math.floor(seconds/intervals[i]);
+    if(c>0) return c+i[0]+' ago';
+  }
   return 'just now';
 }
 
-async function toggleSave(jobId, btn){
+function toggleSave(jobId, btn){
   const idx = savedJobs.indexOf(jobId);
-  if(idx>-1){ savedJobs.splice(idx,1); btn.classList.remove('saved'); }
-  else{ savedJobs.push(jobId); btn.classList.add('saved'); }
-  localStorage.setItem('savedJobs',JSON.stringify(savedJobs));
-  
-  // Save to Supabase if logged in
-  const { data: { user } } = await supabase.auth.getUser();
-  if(user){
-    if(idx>-1) await supabase.from('saved_jobs').delete().eq('user_id',user.id).eq('job_id',jobId);
-    else await supabase.from('saved_jobs').insert({user_id:user.id,job_id:jobId});
+  if(idx>-1){
+    savedJobs.splice(idx,1);
+    btn.classList.remove('saved');
+  } else{
+    savedJobs.push(jobId);
+    btn.classList.add('saved');
   }
+  localStorage.setItem('savedJobs',JSON.stringify(savedJobs));
 }
 
-// Event listeners
-document.getElementById('search-input').oninput = e=>{ currentSearch=e.target.value; loadJobs(true); };
-document.getElementById('sort-select').onchange = e=>{ currentSort=e.target.value; loadJobs(true); };
+document.getElementById('search-input').oninput = e=>{
+  currentSearch=e.target.value;
+  loadJobs(true);
+};
+document.getElementById('sort-select').onchange = e=>{
+  currentSort=e.target.value;
+  loadJobs(true);
+};
 document.querySelectorAll('.filter-btn').forEach(btn=>{
   btn.onclick = ()=>{
     document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
@@ -345,19 +323,18 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
     loadJobs(true);
   };
 });
-document.getElementById('load-more-btn').onclick = ()=>{ currentPage++; loadJobs(); };
+document.getElementById('load-more-btn').onclick = ()=>{
+  currentPage++;
+  loadJobs();
+};
 
-// URL search param
 const urlParams = new URLSearchParams(window.location.search);
-if(urlParams.get('q')){ 
-  currentSearch=urlParams.get('q'); 
-  document.getElementById('search-input').value=currentSearch; 
+if(urlParams.get('q')){
+  currentSearch=urlParams.get('q');
+  document.getElementById('search-input').value=currentSearch;
 }
-
 loadJobs(true);
 </script>
-
-<!-- Schema -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -366,6 +343,5 @@ loadJobs(true);
   "url":"https://remoteng.com.ng/remote-jobs.html"
 }
 </script>
-
 </body>
 </html>
