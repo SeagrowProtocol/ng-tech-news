@@ -148,7 +148,7 @@ async function handlePaymentSuccess(params, type) {
   const txRef = params.get('tx_ref') || params.get('transaction_id');
   const name = params.get('name') || 'Customer';
 
-  if (!email ||!txRef) {
+  if (!email || !txRef) {
     showError('Payment verification failed.', 'Missing email or transaction reference from Selar.');
     return;
   }
@@ -200,7 +200,7 @@ async function handleServiceOrder(params) {
   const service = params.get('service') || params.get('success');
   const name = params.get('name') || '';
 
-  if (!email ||!txRef) {
+  if (!email || !txRef) {
     showError('Order verification failed.', 'Missing email or transaction reference from Selar.');
     return;
   }
@@ -228,7 +228,7 @@ async function handleFeaturedJobOrder(params) {
   const salary = params.get('salary');
   const url = params.get('url');
 
-  if (!email ||!txRef ||!title) {
+  if (!email || !txRef || !title) {
     showError('Featured job order incomplete.', 'Missing required job details from payment.');
     return;
   }
