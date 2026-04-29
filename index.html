@@ -31,10 +31,10 @@ header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: s
 .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .logo img { width: 48px; height: 48px; }
-.logo-text { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
-.logo-text.dark { color: var(--blue-dark); }
-.logo-text.light { color: var(--blue); }
-.logo-text.green { color: var(--green); font-size: 14px; display: block; margin-top: -5px; font-weight: 600; }
+.logo-text { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
+.logo-text.remot { color: var(--blue-dark); }
+.logo-text.eng { color: var(--blue); }
+.logo-text.com { color: var(--green); font-size: 14px; display: block; margin-top: -5px; font-weight: 600; }
 nav { display: flex; gap: 30px; align-items: center; }
 nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; transition: color 0.2s; font-size: 15px; }
 nav a:hover, nav a.active { color: var(--blue); }
@@ -114,8 +114,8 @@ footer a:hover { color: var(--blue-cloud); }
 <a href="index.html" class="logo">
 <img src="https://remoteng.com.ng/logo.png" alt="RemotENG Logo">
 <div class="logo-text">
-<span class="dark">Remot</span><span class="light">eng</span>
-<span class="green">.com.ng</span>
+<span class="remot">Remot</span><span class="eng">eng</span>
+<span class="com">.com.ng</span>
 </div>
 </a>
 <nav>
