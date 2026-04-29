@@ -1,0 +1,21 @@
+app.get('/sitemap.xml', async (req, res) => {
+  const { rows: jobs } = await query("SELECT id, title, company FROM jobs LIMIT 500");
+  const { rows: news } = await query("SELECT slug FROM news LIMIT 100");
+  
+  let xml = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url><loc>https://remoteng.com.ng/</loc></url>
+    <url><loc>https://remoteng.com.ng/remote-jobs.html</loc></url>
+    <url><loc>https://remoteng.com.ng/services.html</loc></url>`;
+  
+  jobs.forEach(j => {
+    xml += `<url><loc>https://remoteng.com.ng/job-details.html?job=${slugify(j.title + "-" + j.company)}</loc></url>`;
+  });
+  news.forEach(n => {
+    xml += `<url><loc>https://remoteng.com.ng/news/${n.slug}.html</loc></url>`;
+  });
+  
+  xml += `</urlset>`;
+  res.header('Content-Type', 'application/xml');
+  res.send(xml);
+});
