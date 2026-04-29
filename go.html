@@ -3,265 +3,395 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verifying... | RemotENG</title>
+<title>Redirecting... | RemotENG</title>
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<link rel="icon" href="https://remoteng.com.ng/logo.png">
 <style>
-:root { 
-  --blue: #2563eb; 
-  --blue-dark: #1e3a8a; 
-  --green: #84cc16; 
+:root {
+  --blue-dark: #1e3a8a;
+  --blue: #3b82f6;
+  --green: #84cc16;
+  --gray-900: #111827;
+  --gray-700: #374151;
+  --gray-500: #6b7280;
+  --gray-100: #f3f4f6;
+  --white: #ffffff;
   --red: #ef4444;
-  --gray-900: #111827; 
-  --gray-700: #374151; 
-  --gray-500: #6b7280; 
-  --gray-100: #f3f4f6; 
-  --white: #ffffff; 
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { 
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-  color: var(--gray-900); 
-  background: var(--gray-100); 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  min-height: 100vh; 
-}
-.container { width: 100%; max-width: 500px; padding: 20px; }
-.card { 
-  background: var(--white); 
-  border-radius: 16px; 
-  padding: 40px; 
-  text-align: center; 
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
-}
-.logo { 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  gap: 12px; 
-  margin-bottom: 30px; 
-  text-decoration: none; 
-}
-.logo svg { width: 40px; height: 40px; }
-.logo-text { font-size: 24px; font-weight: 700; }
-.logo-text .dark { color: var(--blue-dark); }
-.logo-text .light { color: var(--blue); }
-.logo-text .green { color: var(--green); font-size: 14px; display: block; margin-top: -4px; }
-.spinner { 
-  width: 50px; 
-  height: 50px; 
-  border: 4px solid var(--gray-100); 
-  border-top: 4px solid var(--blue); 
-  border-radius: 50%; 
-  animation: spin 1s linear infinite; 
-  margin: 0 auto 24px; 
-}
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.container { max-width: 600px; width: 100%; background: var(--white); border-radius: 18px; padding: 50px 40px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.logo { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 30px; }
+.logo img { width: 56px; height: 56px; }
+.logo-text { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+.logo-text.remot { color: var(--blue-dark); }
+.logo-text.eng { color: var(--blue); }
+.logo-text.com { color: var(--green); font-size: 15px; display: block; margin-top: -5px; font-weight: 600; }
+.spinner { width: 60px; height: 60px; border: 4px solid var(--gray-100); border-top: 4px solid var(--blue); border-radius: 50%; animation: spin 1s linear infinite; margin: 30px auto; }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-h1 { font-size: 24px; margin-bottom: 12px; font-weight: 700; color: var(--blue-dark); }
-p { color: var(--gray-700); line-height: 1.6; margin-bottom: 24px; font-size: 15px; }
-.btn { 
-  background: var(--blue); 
-  color: var(--white); 
-  padding: 12px 24px; 
-  border-radius: 8px; 
-  text-decoration: none; 
-  font-weight: 600; 
-  display: inline-block; 
-  margin: 8px; 
-  border: none; 
-  cursor: pointer; 
-}
-.btn:hover { background: var(--blue-dark); }
+h1 { font-size: 28px; color: var(--blue-dark); margin-bottom: 16px; font-weight: 800; }
+p { color: var(--gray-700); font-size: 16px; line-height: 1.7; margin-bottom: 24px; }
+.status-icon { font-size: 64px; margin-bottom: 20px; }
+.success { color: var(--green); }
+.error { color: var(--red); }
+.btn { background: var(--blue-dark); color: var(--white); padding: 14px 32px; border-radius: 10px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; transition: all 0.2s; font-size: 16px; margin: 8px; }
+.btn:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
 .btn-green { background: var(--green); color: var(--gray-900); }
-.btn-green:hover { background: #65a30d; }
-.success-icon { 
-  width: 70px; 
-  height: 70px; 
-  background: rgba(132, 204, 22, 0.1); 
-  border: 2px solid var(--green); 
-  color: var(--green); 
-  border-radius: 50%; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  font-size: 30px; 
-  margin: 0 auto 24px; 
+.btn-green:hover { background: #65a30d; box-shadow: 0 4px 12px rgba(132,204,22,0.3); }
+.btn-outline { background: var(--white); color: var(--blue-dark); border: 2px solid var(--blue-dark); }
+.btn-outline:hover { background: var(--blue-dark); color: var(--white); }
+.details-box { background: var(--gray-100); border-radius: 12px; padding: 24px; margin: 30px 0; text-align: left; }
+.details-box h3 { font-size: 18px; color: var(--blue-dark); margin-bottom: 16px; }
+.details-box p { margin-bottom: 12px; font-size: 15px; }
+.details-box strong { color: var(--gray-900); }
+.countdown { font-size: 14px; color: var(--gray-500); margin-top: 20px; }
+.error-details { background: #fee2e2; border: 1px solid #fca5a5; border-radius: 10px; padding: 20px; margin: 24px 0; color: #991b1b; font-size: 14px; text-align: left; }
+.hidden { display: none; }
+@media (max-width: 768px) {
+ .container { padding: 40px 25px; }
+  h1 { font-size: 24px; }
 }
-.error-icon { 
-  width: 70px; 
-  height: 70px; 
-  background: rgba(239, 68, 68, 0.1); 
-  border: 2px solid var(--red); 
-  color: var(--red); 
-  border-radius: 50%; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  font-size: 30px; 
-  margin: 0 auto 24px; 
-}
-.hide { display: none; }
-ul { text-align: left; list-style: none; padding: 0; margin: 20px auto; max-width: 400px; }
-li { padding: 8px 0; color: var(--gray-700); display: flex; align-items: center; gap: 10px; font-size: 14px; }
-li::before { content: "→"; color: var(--blue); font-weight: bold; }
 </style>
 </head>
 <body>
 <div class="container">
-<a href="index.html" class="logo">
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-<path d="M25 55 Q15 55 15 45 Q15 35 25 35 Q25 25 35 25 Q50 25 50 35 Q65 35 65 45 Q75 45 75 55 Q75 65 65 65 L25 65 Q15 65 15 55 Z" fill="#3b82f6"/>
-<circle cx="70" cy="50" r="15" fill="none" stroke="#84cc16" stroke-width="3"/>
-<path d="M70 35 Q75 42 70 50 Q65 58 70 65" fill="none" stroke="#84cc16" stroke-width="2"/>
-<path d="M55 50 L85 50" fill="none" stroke="#84cc16" stroke-width="2"/>
-<ellipse cx="70" cy="50" rx="8" ry="15" fill="none" stroke="#84cc16" stroke-width="2"/>
-<path d="M45 45 L45 60 L50 55 L55 60 L55 45 Z" fill="#84cc16"/>
-<path d="M55 50 L60 55 L55 55 Z" fill="#84cc16"/>
-<path d="M40 20 Q50 10 60 20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
-<path d="M43 25 Q50 18 57 25" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-<path d="M46 30 Q50 26 54 30" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-</svg>
+<div class="logo">
+<img src="https://remoteng.com.ng/logo.png" alt="RemotENG Logo">
 <div class="logo-text">
-<span class="dark">Remot</span><span class="light">eng</span>
-<span class="green">.com.ng</span>
+<span class="remot">Remot</span><span class="eng">eng</span>
+<span class="com">.com.ng</span>
 </div>
-</a>
+</div>
 
-<div id="loading" class="card">
+<!-- Loading State -->
+<div id="loading-state">
 <div class="spinner"></div>
-<h1>Verifying...</h1>
-<p>Please wait while we secure your payment and activate your service.</p>
+<h1>Processing...</h1>
+<p>Please wait while we process your request.</p>
 </div>
 
-<div id="vip-success" class="card hide">
-<div class="success-icon">✓</div>
-<h1>VIP Activated!</h1>
-<p>You are now a premium member of RemotENG.</p>
-<ul>
-<li>First VIP alert tomorrow at 9AM</li>
-<li>Early access to USD/EUR jobs</li>
-<li>Instant email notifications</li>
-</ul>
-<a href="remote-jobs.html" class="btn btn-green">Browse VIP Jobs</a>
+<!-- Success State -->
+<div id="success-state" class="hidden">
+<div class="status-icon success">✓</div>
+<h1 id="success-title">Success!</h1>
+<p id="success-message">Your request has been processed successfully.</p>
+<div class="details-box" id="success-details"></div>
+<div id="success-actions"></div>
+<div class="countdown" id="countdown"></div>
 </div>
 
-<div id="cv-success" class="card hide">
-<div class="success-icon">✓</div>
-<h1>Order Received!</h1>
-<p>Your CV/Resume service is now in our secure queue.</p>
-<ul>
-<li>AI Bot is processing your data</li>
-<li>Delivery to your email in < 3 hours</li>
-<li>Professional ATS-optimized format</li>
-</ul>
-<a href="https://wa.me/2349125651147?text=Hi,%20I%20just%20paid%20for%20CV%20service" class="btn btn-green">Confirm on WhatsApp</a>
+<!-- Error State -->
+<div id="error-state" class="hidden">
+<div class="status-icon error">✗</div>
+<h1>Something Went Wrong</h1>
+<p id="error-message">We couldn't process your request. Please try again.</p>
+<div class="error-details" id="error-details"></div>
+<div>
+<a href="index.html" class="btn">Go to Homepage</a>
+<a href="https://wa.me/2349125651147" class="btn btn-outline" target="_blank">Contact Support</a>
 </div>
-
-<div id="cover-success" class="card hide">
-<div class="success-icon">✓</div>
-<h1>Cover Letter Order!</h1>
-<p>Payment successful. Our AI is crafting your story.</p>
-<a href="https://wa.me/2349125651147?text=Hi,%20I%20paid%20for%20Cover%20Letter" class="btn btn-green">WhatsApp Support</a>
 </div>
-
-<div id="review-success" class="card hide">
-<div class="success-icon">✓</div>
-<h1>Review in Progress!</h1>
-<p>Your CV review will be delivered via email shortly.</p>
-<a href="https://wa.me/2349125651147" class="btn btn-green">WhatsApp CV Now</a>
-</div>
-
-<div id="featured-success" class="card hide">
-<div class="success-icon">✓</div>
-<h1>Job Featured!</h1>
-<p>Your job is now being boosted across our network.</p>
-<a href="remote-jobs.html" class="btn">View Board</a>
-</div>
-
-<div id="error" class="card hide">
-<div class="error-icon">×</div>
-<h1>Oops! Something went wrong</h1>
-<p id="error-msg">We couldn't verify this transaction automatically.</p>
-<a href="index.html" class="btn">Back to Home</a>
-<a href="https://wa.me/2349125651147" class="btn btn-green">Contact Support</a>
 </div>
 
 <script>
+const GO_SECRET_KEY = 'RemotENG_2026_Secure_###';
 const API_URL = 'https://remoteng-api.onrender.com';
-const SECRET_KEY = 'RemotENG_2026_Secure_###'; // Match this in Render Environment
-const params = new URLSearchParams(window.location.search);
-const url = params.get('url');
-const jobId = params.get('job_id');
-const success = params.get('success');
-const email = params.get('email');
-const tx_ref = params.get('tx_ref');
 
-function show(id) {
-  document.querySelectorAll('.card').forEach(c => c.classList.add('hide'));
-  document.getElementById(id).classList.remove('hide');
-}
+async function init() {
+  const params = new URLSearchParams(window.location.search);
 
-async function handleRedirect() {
-  // 1. Job Click Redirect
-  if (url && jobId) {
-    try {
-      await fetch(`${API_URL}/api/click`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ job_id: parseInt(jobId), url: decodeURIComponent(url) })
-      });
-    } catch (e) {}
-    window.location.href = decodeURIComponent(url);
+  // Flow 1: Job Click Tracking
+  if (params.has('url') && params.has('job_id')) {
+    await handleJobClick(params);
     return;
   }
 
-  // 2. Selar Success Logic with Secret Handshake
-  if (success && email && tx_ref) {
-    const decodedEmail = decodeURIComponent(email);
-    // Generate Security Signature to prevent fake redirects
-    const signature = CryptoJS.HmacSHA256(decodedEmail + success, SECRET_KEY).toString();
-    const formData = JSON.parse(localStorage.getItem('remoteng_order') || '{}');
+  // Flow 2: Selar Payment Success - VIP
+  if (params.get('success') === 'vip') {
+    await handlePaymentSuccess(params, 'vip');
+    return;
+  }
 
-    try {
-      const response = await fetch(`${API_URL}/api/activate-service`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ 
-          email: decodedEmail, 
-          type: success, 
-          signature: signature, 
-          tx_ref: tx_ref, 
-          ...formData 
-        })
-      });
+  // Flow 3: Selar Payment Success - CV/Resume
+  if (params.get('success') === 'cv' || params.get('success') === 'cover_letter' || params.get('success') === 'cv_review') {
+    await handleServiceOrder(params);
+    return;
+  }
 
-      if (response.ok) {
-        localStorage.removeItem('remoteng_order');
-        if (success === 'vip') show('vip-success');
-        else if (success === 'featured') show('featured-success');
-        else if (success === 'cv') show('cv-success');
-        else if (success === 'cover') show('cover-success');
-        else if (success === 'cv_review') show('review-success');
-        else show('error');
-      } else {
-        show('error');
-      }
-    } catch (e) {
-      show('error');
+  // Flow 4: Selar Payment Success - Featured Job
+  if (params.get('success') === 'featured') {
+    await handleFeaturedJobOrder(params);
+    return;
+  }
+
+  // Invalid request
+  showError('Invalid request. Missing required parameters.', 'No action specified in URL.');
+}
+
+async function handleJobClick(params) {
+  const jobUrl = params.get('url');
+  const jobId = params.get('job_id');
+  const referrer = document.referrer || 'direct';
+
+  try {
+    // Fire click tracking to backend
+    await fetch(`${API_URL}/api/click`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        job_id: parseInt(jobId),
+        referrer: referrer
+      })
+    });
+  } catch (err) {
+    console.error('Click tracking failed:', err);
+  }
+
+  // Redirect to actual job URL
+  window.location.href = decodeURIComponent(jobUrl);
+}
+
+async function handlePaymentSuccess(params, type) {
+  const email = params.get('email');
+  const txRef = params.get('tx_ref') || params.get('transaction_id');
+  const name = params.get('name') || 'Customer';
+
+  if (!email ||!txRef) {
+    showError('Payment verification failed.', 'Missing email or transaction reference from Selar.');
+    return;
+  }
+
+  try {
+    // Verify payment with backend using GO_SECRET_KEY
+    const res = await fetch(`${API_URL}/api/verify-payment`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-GO-Secret': GO_SECRET_KEY
+      },
+      body: JSON.stringify({
+        email: email,
+        tx_ref: txRef,
+        type: type,
+        name: name
+      })
+    });
+
+    if (!res.ok) {
+      throw new Error('Payment verification failed on backend');
     }
+
+    const data = await res.json();
+
+    if (type === 'vip') {
+      showSuccess(
+        'VIP Membership Activated!',
+        `Welcome to VIP, ${name}! You now have 12-hour early access to all remote jobs.`,
+        {
+          'Email': email,
+          'Membership': 'VIP - Active',
+          'Expires': data.expiry_date || 'In 30 days',
+          'Next Step': 'Check your email at 7AM WAT daily for fresh job alerts'
+        },
+        [
+          { text: 'Browse Jobs Now', url: 'remote-jobs.html', class: 'btn-green' },
+          { text: 'Go to Homepage', url: 'index.html', class: 'btn-outline' }
+        ]
+      );
+    }
+  } catch (err) {
+    console.error('Payment verification error:', err);
+    showError(
+      'Payment received but activation failed.',
+      `Transaction ID: ${txRef}<br>Email: ${email}<br><br>Please contact support@remoteng.com.ng with your transaction details. We'll activate your membership manually within 1 hour.`
+    );
+  }
+}
+
+async function handleServiceOrder(params) {
+  const email = params.get('email');
+  const txRef = params.get('tx_ref') || params.get('transaction_id');
+  const service = params.get('service') || params.get('success');
+  const name = params.get('name') || 'Customer';
+
+  if (!email ||!txRef) {
+    showError('Order verification failed.', 'Missing email or transaction reference from Selar.');
     return;
   }
 
-  // Default to error if nothing happens
-  setTimeout(() => {
-    if(document.getElementById('loading').className === 'card') show('error');
-  }, 5000);
+  try {
+    // Fire order to backend
+    const res = await fetch(`${API_URL}/api/order`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-GO-Secret': GO_SECRET_KEY
+      },
+      body: JSON.stringify({
+        email: email,
+        service: service,
+        tx_ref: txRef,
+        name: name
+      })
+    });
+
+    if (!res.ok) {
+      throw new Error('Order processing failed on backend');
+    }
+
+    const serviceNames = {
+      'cv': 'CV/Resume Writing',
+      'cv_writing': 'CV/Resume Writing',
+      'cover_letter': 'Cover Letter Writing',
+      'cv_review': 'CV Review & Feedback'
+    };
+
+    const deliveryTimes = {
+      'cv': '48 hours',
+      'cv_writing': '48 hours',
+      'cover_letter': '24 hours',
+      'cv_review': '24 hours'
+    };
+
+    showSuccess(
+      'Order Confirmed!',
+      `Thank you, ${name}! Your ${serviceNames[service] || 'service'} order has been received.`,
+      {
+        'Service': serviceNames[service] || service,
+        'Email': email,
+        'Transaction ID': txRef,
+        'Delivery Time': deliveryTimes[service] || '24-48 hours',
+        'What Next': 'Check your email for a confirmation. We\'ll deliver your document within the stated time.'
+      },
+      [
+        { text: 'Browse More Services', url: 'service.html', class: 'btn-green' },
+        { text: 'Go to Homepage', url: 'index.html', class: 'btn-outline' }
+      ]
+    );
+  } catch (err) {
+    console.error('Order processing error:', err);
+    showError(
+      'Payment received but order processing failed.',
+      `Transaction ID: ${txRef}<br>Email: ${email}<br>Service: ${service}<br><br>Please contact support@remoteng.com.ng with your transaction details. We'll process your order manually within 1 hour.`
+    );
+  }
 }
 
-handleRedirect();
+async function handleFeaturedJobOrder(params) {
+  const email = params.get('email');
+  const txRef = params.get('tx_ref');
+  const name = params.get('name') || 'Company';
+  const title = params.get('title');
+  const description = params.get('description');
+  const salary = params.get('salary');
+  const url = params.get('url');
+
+  if (!email ||!txRef ||!title) {
+    showError('Featured job order incomplete.', 'Missing required job details from payment.');
+    return;
+  }
+
+  try {
+    // Fire order to backend
+    const res = await fetch(`${API_URL}/api/order`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-GO-Secret': GO_SECRET_KEY
+      },
+      body: JSON.stringify({
+        email: email,
+        service: 'featured_job',
+        tx_ref: txRef,
+        name: name,
+        title: title,
+        description: description,
+        salary: salary,
+        url: url
+      })
+    });
+
+    if (!res.ok) {
+      throw new Error('Featured job processing failed on backend');
+    }
+
+    showSuccess(
+      'Featured Job Activated!',
+      `Your job "${title}" is now live with Featured status for 7 days.`,
+      {
+        'Company': name,
+        'Job Title': title,
+        'Status': 'Featured - Top of Search Results',
+        'Duration': '7 days from now',
+        'Visibility': '5x more applicants expected',
+        'Email': email
+      },
+      [
+        { text: 'View Your Job', url: 'remote-jobs.html', class: 'btn-green' },
+        { text: 'Post Another Job', url: 'post-job.html', class: 'btn-outline' }
+      ]
+    );
+  } catch (err) {
+    console.error('Featured job error:', err);
+    showError(
+      'Payment received but job posting failed.',
+      `Transaction ID: ${txRef}<br>Email: ${email}<br>Job: ${title}<br><br>Please contact support@remoteng.com.ng. We'll activate your featured job manually within 1 hour.`
+    );
+  }
+}
+
+function showSuccess(title, message, details, actions) {
+  document.getElementById('loading-state').classList.add('hidden');
+  document.getElementById('success-state').classList.remove('hidden');
+  document.getElementById('success-title').textContent = title;
+  document.getElementById('success-message').textContent = message;
+
+  const detailsBox = document.getElementById('success-details');
+  detailsBox.innerHTML = '<h3>Details</h3>';
+  for (const [key, value] of Object.entries(details)) {
+    detailsBox.innerHTML += `<p><strong>${key}:</strong> ${value}</p>`;
+  }
+
+  const actionsDiv = document.getElementById('success-actions');
+  actionsDiv.innerHTML = '';
+  actions.forEach(action => {
+    const btn = document.createElement('a');
+    btn.href = action.url;
+    btn.className = `btn ${action.class}`;
+    btn.textContent = action.text;
+    actionsDiv.appendChild(btn);
+  });
+
+  // Auto-redirect countdown for job clicks (not needed for success pages)
+  if (actions.length === 0) {
+    startCountdown(5, 'index.html');
+  }
+}
+
+function showError(message, details) {
+  document.getElementById('loading-state').classList.add('hidden');
+  document.getElementById('error-state').classList.remove('hidden');
+  document.getElementById('error-message').textContent = message;
+  document.getElementById('error-details').innerHTML = details;
+}
+
+function startCountdown(seconds, redirectUrl) {
+  const countdownEl = document.getElementById('countdown');
+  let count = seconds;
+  countdownEl.textContent = `Redirecting in ${count} seconds...`;
+
+  const interval = setInterval(() => {
+    count--;
+    if (count <= 0) {
+      clearInterval(interval);
+      window.location.href = redirectUrl;
+    } else {
+      countdownEl.textContent = `Redirecting in ${count} seconds...`;
+    }
+  }, 1000);
+}
+
+init();
 </script>
 </body>
 </html>
