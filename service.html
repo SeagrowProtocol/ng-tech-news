@@ -3,334 +3,291 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Career Services - CV Writing, Cover Letters, VIP Alerts | RemotENG</title>
-<meta name="description" content="Professional CV writing, cover letters, CV review, VIP job alerts, and featured job posting services. Work with remote hiring experts worldwide.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
-
+<title>Professional Career Services - RemotENG</title>
+<meta name="description" content="ATS-optimized CV writing, cover letters, CV review, and VIP job alerts. Land global remote jobs with expert career services. Pricing in ₦ and USD.">
+<meta property="og:title" content="Professional Career Services - RemotENG">
+<meta property="og:description" content="ATS-optimized CV writing, cover letters, and VIP job alerts for global remote jobs.">
+<meta property="og:url" content="https://remoteng.com.ng/service.html">
+<meta property="og:type" content="website">
+<link rel="icon" href="https://remoteng.com.ng/logo.png">
 <style>
 :root {
-  --blue-dark: #1e3a8a; --blue: #2563eb; --blue-light: #3b82f6; --green: #84cc16;
-  --gray-900: #111827; --gray-700: #374151; --gray-500: #6b7280; --gray-100: #f3f4f6; --white: #ffffff;
+  --blue-dark: #1e3a8a;
+  --blue: #3b82f6;
+  --blue-cloud: #60a5fa;
+  --green: #84cc16;
+  --gray-900: #111827;
+  --gray-700: #374151;
+  --gray-500: #6b7280;
+  --gray-100: #f3f4f6;
+  --white: #ffffff;
+  --red: #ef4444;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--white); }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-/* Header */
-header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
-.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.97); }
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo svg { width: 40px; height: 40px; }
-.logo-text { font-size: 24px; font-weight: 700; }
-.logo-text .dark { color: var(--blue-dark); }
-.logo-text .light { color: var(--blue); }
-.logo-text .green { color: var(--green); font-size: 14px; display: block; margin-top: -4px; }
-nav { display: flex; gap: 24px; align-items: center; }
-nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; }
+.logo img { width: 48px; height: 48px; }
+.logo-text { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
+.logo-text.remot { color: var(--blue-dark); }
+.logo-text.eng { color: var(--blue); }
+.logo-text.com { color: var(--green); font-size: 14px; display: block; margin-top: -5px; font-weight: 600; }
+nav { display: flex; gap: 30px; align-items: center; }
+nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; transition: color 0.2s; font-size: 15px; }
 nav a:hover, nav a.active { color: var(--blue); }
-.btn { background: var(--blue); color: var(--white); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; }
-.btn:hover { background: var(--blue-dark); }
+.btn { background: var(--blue-dark); color: var(--white); padding: 11px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; transition: all 0.2s; font-size: 15px; }
+.btn:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
 .btn-green { background: var(--green); color: var(--gray-900); }
-.btn-green:hover { background: #65a30d; }
-
-/* Hero */
-.hero { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); color: var(--white); padding: 60px 0; text-align: center; }
-.hero h1 { font-size: 40px; margin-bottom: 16px; }
-.hero p { font-size: 18px; opacity: 0.9; max-width: 700px; margin: 0 auto; }
-
-/* Services Grid */
-.services { padding: 60px 0; }
-.section-title { font-size: 32px; text-align: center; margin-bottom: 16px; }
-.section-sub { text-align: center; color: var(--gray-500); margin-bottom: 40px; font-size: 18px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 32px; margin-top: 40px; }
-.service-card { background: var(--white); border: 2px solid var(--gray-100); border-radius: 16px; padding: 32px; transition: all 0.3s; position: relative; }
-.service-card:hover { border-color: var(--blue); box-shadow: 0 8px 24px rgba(37,99,235,0.15); transform: translateY(-4px); }
-.service-card.popular { border-color: var(--green); }
-.popular-badge { position: absolute; top: -12px; right: 24px; background: var(--green); color: var(--gray-900); padding: 4px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; }
-.service-icon { width: 60px; height: 60px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px; }
-.service-card h3 { font-size: 24px; margin-bottom: 12px; color: var(--blue-dark); }
-.service-desc { color: var(--gray-700); margin-bottom: 20px; line-height: 1.6; }
-.service-features { list-style: none; margin-bottom: 24px; }
-.service-features li { padding: 8px 0; color: var(--gray-700); display: flex; align-items: start; gap: 8px; }
-.service-features li:before { content: "✓"; color: var(--green); font-weight: 700; font-size: 18px; }
-.service-price { font-size: 36px; font-weight: 700; color: var(--blue); margin-bottom: 8px; }
-.service-price span { font-size: 16px; color: var(--gray-500); font-weight: 500; }
-.service-note { font-size: 13px; color: var(--gray-500); margin-bottom: 20px; }
-.service-card .btn { width: 100%; text-align: center; padding: 14px; font-size: 16px; }
-
-/* Other Services CTA */
-.other-services { background: var(--gray-100); padding: 60px 0; margin-top: 60px; }
-.other-services-inner { max-width: 800px; margin: 0 auto; text-align: center; }
-.other-services h2 { font-size: 32px; margin-bottom: 16px; }
-.other-services p { font-size: 18px; color: var(--gray-700); margin-bottom: 32px; }
-
-/* Footer */
-footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 20px; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
-footer h4 { color: var(--white); margin-bottom: 16px; }
-footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 8px; }
-footer a:hover { color: var(--white); }
-.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 20px; text-align: center; color: var(--gray-500); }
-
-/* Ads */
-.ad-wrap { min-height: 50px; margin: 24px 0; text-align: center; }
-.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 4px; }
-
+.btn-green:hover { background: #65a30d; box-shadow: 0 4px 12px rgba(132,204,22,0.3); }
+.btn-outline { background: var(--white); color: var(--blue-dark); border: 2px solid var(--blue-dark); }
+.btn-outline:hover { background: var(--blue-dark); color: var(--white); }
+.page-header { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); color: var(--white); padding: 70px 0 50px; text-align: center; }
+.page-header h1 { font-size: 44px; margin-bottom: 14px; font-weight: 800; }
+.page-header p { font-size: 18px; opacity: 0.95; max-width: 650px; margin: 0 auto; }
+.section { padding: 90px 0; }
+.section-title { font-size: 38px; margin-bottom: 16px; text-align: center; color: var(--blue-dark); font-weight: 800; }
+.section-subtitle { text-align: center; color: var(--gray-700); font-size: 18px; margin: 0 auto 50px; max-width: 600px; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 35px; }
+.service-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; padding: 45px 35px; text-align: center; transition: all 0.3s; position: relative; }
+.service-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: var(--blue-cloud); }
+.service-card.popular { border: 2px solid var(--green); background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
+.service-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--green); color: var(--gray-900); padding: 6px 18px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+.service-icon { width: 70px; height: 70px; margin: 0 auto 24px; background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 32px; }
+.service-card h3 { font-size: 26px; margin-bottom: 14px; color: var(--blue-dark); }
+.service-desc { color: var(--gray-700); font-size: 16px; line-height: 1.7; margin-bottom: 24px; }
+.service-features { text-align: left; margin: 24px 0 32px; }
+.service-features li { color: var(--gray-700); margin-bottom: 12px; font-size: 15px; list-style: none; padding-left: 28px; position: relative; }
+.service-features li:before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; font-size: 18px; }
+.service-price { font-size: 42px; font-weight: 800; color: var(--green); margin: 28px 0; }
+.service-price span { font-size: 18px; color: var(--gray-500); font-weight: 500; }
+.service-price.usd { font-size: 24px; color: var(--blue); margin-top: -10px; }
+.how-section { background: var(--gray-100); padding: 90px 0; }
+.steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 50px; }
+.step-card { text-align: center; }
+.step-number { width: 60px; height: 60px; background: var(--blue-dark); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700; margin: 0 auto 20px; }
+.step-card h3 { font-size: 22px; color: var(--blue-dark); margin-bottom: 12px; }
+.step-card p { color: var(--gray-700); line-height: 1.7; font-size: 15px; }
+.faq-section { padding: 90px 0; }
+.faq-grid { max-width: 800px; margin: 0 auto; }
+.faq-item { background: var(--white); border: 1px solid #e5e7eb; border-radius: 14px; padding: 26px; margin-bottom: 16px; }
+.faq-item h3 { font-size: 18px; color: var(--blue-dark); margin-bottom: 12px; }
+.faq-item p { color: var(--gray-700); line-height: 1.7; font-size: 15px; }
+.whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: var(--white); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 6px 20px rgba(37,211,102,0.4); z-index: 1000; text-decoration: none; transition: all 0.3s; }
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(37,211,102,0.5); }
+footer { background: var(--gray-900); color: var(--gray-100); padding: 90px 0 35px; margin-top: 90px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 55px; margin-bottom: 55px; }
+footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
+footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s; font-size: 15px; }
+footer a:hover { color: var(--blue-cloud); }
+.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
+.ad-wrap { min-height: 250px; margin: 50px 0; text-align: center; }
+.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
 @media (max-width: 768px) {
   nav { display: none; }
-  .hero h1 { font-size: 28px; }
-  .grid { grid-template-columns: 1fr; }
+.page-header h1 { font-size: 32px; }
+.services-grid { grid-template-columns: 1fr; }
+.section { padding: 70px 0; }
 }
 </style>
 </head>
 <body>
-
 <header>
-  <div class="container">
-    <div class="header-inner">
-      <a href="index.html" class="logo">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <path d="M25 55 Q15 55 15 45 Q15 35 25 35 Q25 25 35 25 Q50 25 50 35 Q65 35 65 45 Q75 45 75 55 Q75 65 65 65 L25 65 Q15 65 15 55 Z" fill="#3b82f6"/>
-          <circle cx="70" cy="50" r="15" fill="none" stroke="#84cc16" stroke-width="3"/>
-          <path d="M70 35 Q75 42 70 50 Q65 58 70 65" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <path d="M55 50 L85 50" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <ellipse cx="70" cy="50" rx="8" ry="15" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <path d="M45 45 L45 60 L50 55 L55 60 L55 45 Z" fill="#84cc16"/>
-          <path d="M55 50 L60 55 L55 55 Z" fill="#84cc16"/>
-          <path d="M40 20 Q50 10 60 20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
-          <path d="M43 25 Q50 18 57 25" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-          <path d="M46 30 Q50 26 54 30" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-        <div class="logo-text">
-          <span class="dark">Remot</span><span class="light">eng</span>
-          <span class="green">.com.ng</span>
-        </div>
-      </a>
-      <nav>
-        <a href="remote-jobs.html">Jobs</a>
-        <a href="tech-news.html">News</a>
-        <a href="service.html" class="active">Services</a>
-        <a href="vip.html">VIP Alerts</a>
-        <a href="post-job.html">Post Job</a>
-        <a href="vip.html" class="btn">Get VIP</a>
-      </nav>
-    </div>
-  </div>
+<div class="container">
+<div class="header-inner">
+<a href="index.html" class="logo">
+<img src="https://remoteng.com.ng/logo.png" alt="RemotENG Logo">
+<div class="logo-text">
+<span class="remot">Remot</span><span class="eng">eng</span>
+<span class="com">.com.ng</span>
+</div>
+</a>
+<nav>
+<a href="remote-jobs.html">Jobs</a>
+<a href="tech-news.html">News</a>
+<a href="service.html" class="active">Services</a>
+<a href="vip.html">VIP Alerts</a>
+<a href="post-job.html">Post Job</a>
+<a href="https://selar.co/YOUR_VIP_LINK" class="btn">Get VIP</a>
+</nav>
+</div>
+</div>
 </header>
 
-<section class="hero">
-  <div class="container">
-    <h1>Professional Career Services</h1>
-    <p>Land your dream remote job with expert CV writing, cover letters, and daily job alerts. Trusted by professionals worldwide.</p>
-  </div>
+<section class="page-header">
+<div class="container">
+<h1>Professional Career Services</h1>
+<p>Expert-crafted CVs, cover letters, and VIP job alerts to accelerate your global remote career</p>
+</div>
 </section>
 
-<section class="services">
-  <div class="container">
-    <h2 class="section-title">Our Services</h2>
-    <p class="section-sub">Choose the service that fits your career goals</p>
-    
-    <div class="grid">
-      
-      <!-- CV/Resume Writing -->
-      <div class="service-card">
-        <div class="service-icon">📄</div>
-        <h3>CV / Resume Writing</h3>
-        <p class="service-desc">ATS-optimized CV crafted by hiring experts. Get 3x more interviews.</p>
-        <ul class="service-features">
-          <li>ATS-friendly formatting</li>
-          <li>Keyword optimization for your industry</li>
-          <li>2 rounds of revisions included</li>
-          <li>Delivery in 48 hours</li>
-          <li>Word + PDF formats</li>
-        </ul>
-        <div class="service-price" id="price-cv">₦3,000 <span>/ $3</span></div>
-        <p class="service-note">One-time payment. No subscription.</p>
-        <a href="cv-resume.html?type=cv" class="btn">Order CV Writing</a>
-      </div>
-
-      <!-- Cover Letter -->
-      <div class="service-card">
-        <div class="service-icon">✉️</div>
-        <h3>Cover Letter Writing</h3>
-        <p class="service-desc">Tailored cover letter that tells your story and matches the job.</p>
-        <ul class="service-features">
-          <li>Custom written for specific job</li>
-          <li>Highlights your achievements</li>
-          <li>1 revision included</li>
-          <li>Delivery in 24 hours</li>
-          <li>Word + PDF formats</li>
-        </ul>
-        <div class="service-price" id="price-cover">₦2,500 <span>/ $2.5</span></div>
-        <p class="service-note">One-time payment. No subscription.</p>
-        <a href="cv-resume.html?type=cover" class="btn">Order Cover Letter</a>
-      </div>
-
-      <!-- CV Review -->
-      <div class="service-card">
-        <div class="service-icon">🔍</div>
-        <h3>CV Review & Audit</h3>
-        <p class="service-desc">Expert feedback on your existing CV. Fix mistakes. Improve impact.</p>
-        <ul class="service-features">
-          <li>Detailed line-by-line feedback</li>
-          <li>ATS compatibility check</li>
-          <li>Industry-specific suggestions</li>
-          <li>Delivery in 24 hours</li>
-          <li>Video walkthrough option</li>
-        </ul>
-        <div class="service-price" id="price-review">₦1,500 <span>/ $1.5</span></div>
-        <p class="service-note">One-time payment. No subscription.</p>
-        <a href="cv-resume.html?type=review" class="btn">Order CV Review</a>
-      </div>
-
-      <!-- VIP Job Alerts -->
-      <div class="service-card popular">
-        <span class="popular-badge">MOST POPULAR</span>
-        <div class="service-icon">⭐</div>
-        <h3>VIP Job Alerts</h3>
-        <p class="service-desc">Daily email alerts with best remote jobs. Early access before they go public.</p>
-        <ul class="service-features">
-          <li>Daily email with 10+ curated jobs</li>
-          <li>Early access - 24hrs before free users</li>
-          <li>VIP-only job listings</li>
-          <li>Salary insights + company intel</li>
-          <li>Cancel anytime</li>
-        </ul>
-        <div class="service-price" id="price-vip">₦2,000 <span>/ $2 per month</span></div>
-        <p class="service-note">Monthly subscription. Cancel anytime.</p>
-        <a href="vip.html" class="btn btn-green">Get VIP Access</a>
-      </div>
-
-      <!-- Featured Job Post -->
-      <div class="service-card">
-        <div class="service-icon">📢</div>
-        <h3>Featured Job Posting</h3>
-        <p class="service-desc">For employers: Post your job. Pin to top. Get 5x more applicants.</p>
-        <ul class="service-features">
-          <li>Pinned at top of job board for 30 days</li>
-          <li>Featured badge + green border</li>
-          <li>Included in VIP email alerts</li>
-          <li>Social media promotion</li>
-          <li>Dashboard to track applicants</li>
-        </ul>
-        <div class="service-price" id="price-featured">₦5,000 <span>/ $5</span></div>
-        <p class="service-note">30-day listing. One-time payment.</p>
-        <a href="post-job.html?featured=true" class="btn">Post Featured Job</a>
-      </div>
-
-      <!-- Custom Services -->
-      <div class="service-card">
-        <div class="service-icon">💬</div>
-        <h3>Custom Career Help</h3>
-        <p class="service-desc">LinkedIn optimization, interview coaching, salary negotiation, portfolio review.</p>
-        <ul class="service-features">
-          <li>LinkedIn profile makeover</li>
-          <li>Mock interviews with feedback</li>
-          <li>Salary negotiation scripts</li>
-          <li>Portfolio/website review</li>
-          <li>1-on-1 career coaching call</li>
-        </ul>
-        <div class="service-price">Custom <span>pricing</span></div>
-        <p class="service-note">Chat with us for a quote.</p>
-        <a href="https://wa.me/2349125651147?text=Hi%20RemotENG,%20I%20need%20custom%20career%20help" target="_blank" class="btn">Chat on WhatsApp</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="ad-wrap">
-  <small>Advertisement</small>
-  <script type="text/javascript">
-    atOptions = {'key':'8f03f73691bf093a8d076af0d6d62212','format':'iframe','height':250,'width':300,'params':{}};
-  </script>
-  <script type="text/javascript" src="//www.highperformanceformat.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
+<section class="section">
+<div class="container">
+<h2 class="section-title">Choose Your Service</h2>
+<p class="section-subtitle">ATS-optimized documents and exclusive opportunities for professionals worldwide</p>
+<div class="services-grid">
+<div class="service-card popular">
+<div class="service-badge">Most Popular</div>
+<div class="service-icon">📄</div>
+<h3>CV/Resume Writing</h3>
+<p class="service-desc">Professional ATS-optimized CV crafted by hiring experts for global standards</p>
+<ul class="service-features">
+<li>ATS-optimized format for global recruiters</li>
+<li>Keyword optimization for your target role</li>
+<li>2 rounds of revisions included</li>
+<li>Delivery in 48 hours via email</li>
+<li>PDF + Editable Word formats</li>
+</ul>
+<div class="service-price">₦3,000</div>
+<div class="service-price usd">$3 USD</div>
+<a href="https://selar.co/YOUR_SERVICE_LINK" class="btn btn-green">Order CV Now</a>
 </div>
 
-<section class="other-services">
-  <div class="container">
-    <div class="other-services-inner">
-      <h2>Need Something Else?</h2>
-      <p>We offer LinkedIn optimization, interview coaching, portfolio reviews, and more. All services available worldwide via WhatsApp.</p>
-      <a href="https://wa.me/2349125651147?text=Hi%20RemotENG,%20I%20need%20help%20with%20my%20career" target="_blank" class="btn btn-green">Chat on WhatsApp</a>
-    </div>
-  </div>
+<div class="service-card">
+<div class="service-icon">✉️</div>
+<h3>Cover Letter Writing</h3>
+<p class="service-desc">Tailored cover letter for each application to maximize interview chances</p>
+<ul class="service-features">
+<li>Customized for specific job posting</li>
+<li>Highlights your key achievements</li>
+<li>Professional tone for global companies</li>
+<li>Delivery in 24 hours via email</li>
+<li>PDF + Editable Word formats</li>
+</ul>
+<div class="service-price">₦2,500</div>
+<div class="service-price usd">$2.50 USD</div>
+<a href="https://selar.co/YOUR_SERVICE_LINK" class="btn">Order Cover Letter</a>
+</div>
+
+<div class="service-card">
+<div class="service-icon">🔍</div>
+<h3>CV Review & Feedback</h3>
+<p class="service-desc">Expert review of your existing CV with actionable improvement suggestions</p>
+<ul class="service-features">
+<li>Detailed line-by-line feedback</li>
+<li>ATS compatibility check</li>
+<li>Keyword gap analysis</li>
+<li>Delivery in 24 hours via email</li>
+<li>Actionable improvement guide</li>
+</ul>
+<div class="service-price">₦1,500</div>
+<div class="service-price usd">$1.50 USD</div>
+<a href="https://selar.co/YOUR_SERVICE_LINK" class="btn">Get CV Review</a>
+</div>
+
+<div class="service-card">
+<div class="service-icon">⭐</div>
+<h3>VIP Job Alerts</h3>
+<p class="service-desc">Daily curated remote job alerts + early access to exclusive opportunities</p>
+<ul class="service-features">
+<li>Daily email with 10+ fresh jobs</li>
+<li>12-hour early access before free users</li>
+<li>USD, EUR, GBP salary focus</li>
+<li>Cancel anytime</li>
+<li>Join 2,000+ professionals</li>
+</ul>
+<div class="service-price">₦2,000<span>/month</span></div>
+<div class="service-price usd">$2 USD/month</div>
+<a href="https://selar.co/YOUR_VIP_LINK" class="btn btn-green">Subscribe to VIP</a>
+</div>
+</div>
+</div>
 </section>
 
+<section class="how-section">
+<div class="container">
+<h2 class="section-title">How It Works</h2>
+<p class="section-subtitle">Simple 3-step process to get your professional documents</p>
+<div class="steps-grid">
+<div class="step-card">
+<div class="step-number">1</div>
+<h3>Choose & Pay</h3>
+<p>Select your service and complete secure payment via Selar. Instant confirmation sent to your email.</p>
+</div>
+<div class="step-card">
+<div class="step-number">2</div>
+<h3>Submit Details</h3>
+<p>Fill our simple form with your experience, target role, and skills. Upload old CV if you have one.</p>
+</div>
+<div class="step-card">
+<div class="step-number">3</div>
+<h3>Receive & Apply</h3>
+<p>Get your ATS-optimized document in 24-48hrs. Download PDF and start applying to global jobs.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="faq-section">
+<div class="container">
+<h2 class="section-title">Frequently Asked Questions</h2>
+<div class="faq-grid">
+<div class="faq-item">
+<h3>How long does delivery take?</h3>
+<p>CV Writing: 48 hours. Cover Letter: 24 hours. CV Review: 24 hours. VIP Alerts: Start immediately after payment.</p>
+</div>
+<div class="faq-item">
+<h3>Do you offer revisions?</h3>
+<p>Yes! CV and Cover Letter services include 2 rounds of revisions within 7 days of delivery to ensure you're 100% satisfied.</p>
+</div>
+<div class="faq-item">
+<h3>What formats do I receive?</h3>
+<p>All documents are delivered in both PDF and editable Word (.docx) formats via email. Ready to customize and apply.</p>
+</div>
+<div class="faq-item">
+<h3>Are the CVs ATS-optimized?</h3>
+<p>Absolutely. We use proven ATS-friendly formats with proper keyword optimization to ensure your CV passes automated screening systems used by global companies.</p>
+</div>
+<div class="faq-item">
+<h3>Can I cancel VIP subscription?</h3>
+<p>Yes, cancel anytime from your email. No questions asked. You'll retain access until the end of your billing period.</p>
+</div>
+<div class="faq-item">
+<h3>Do you accept international payments?</h3>
+<p>Yes! Selar accepts cards from 150+ countries. Prices shown in ₦ and USD. Your card will be charged in your local currency.</p>
+</div>
+</div>
+</div>
+</section>
+
+<a href="https://wa.me/2349125651147" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">💬</a>
+
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4>RemotENG</h4>
-        <p style="color:var(--gray-500); margin-bottom:16px;">Remote jobs worldwide. Work from anywhere.</p>
-        <p>Email: support@remoteng.com.ng</p>
-        <p>WhatsApp: +234 912 565 1147</p>
-        <p>Hours: 24/7 Online. Live chat 6am-9pm GMT+1</p>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <a href="remote-jobs.html">Browse Jobs</a>
-        <a href="tech-news.html">Tech News</a>
-        <a href="service.html">Services</a>
-        <a href="post-job.html">Post a Job</a>
-        <a href="save-job.html">Saved Jobs</a>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <a href="legal.html">About Us</a>
-        <a href="legal.html#privacy">Privacy Policy</a>
-        <a href="legal.html#terms">Terms of Service</a>
-        <a href="legal.html#disclaimer">Disclaimer</a>
-      </div>
-      <div>
-        <h4>Follow Us</h4>
-        <a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
-        <a href="https://t.me/latest_ng" target="_blank">Telegram</a>
-        <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 RemotENG. All rights reserved.</p>
-    </div>
-  </div>
+<div class="container">
+<div class="footer-grid">
+<div>
+<h4>RemotENG</h4>
+<p style="color:var(--gray-500); margin-bottom:20px;">Connecting professionals with global remote opportunities.</p>
+<p>Email: support@remoteng.com.ng</p>
+<p>WhatsApp: +234 912 565 1147</p>
+</div>
+<div>
+<h4>Quick Links</h4>
+<a href="remote-jobs.html">Browse Jobs</a>
+<a href="tech-news.html">Tech News</a>
+<a href="service.html">Services</a>
+<a href="post-job.html">Post a Job</a>
+<a href="save-job.html">Saved Jobs</a>
+</div>
+<div>
+<h4>Legal</h4>
+<a href="legal.html">About Us</a>
+<a href="legal.html#privacy">Privacy Policy</a>
+<a href="legal.html#terms">Terms of Service</a>
+</div>
+<div>
+<h4>Connect</h4>
+<a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
+<a href="https://t.me/latest_ng" target="_blank">Telegram</a>
+<a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 RemotENG. All rights reserved. Remote opportunities worldwide.</p>
+</div>
+</div>
 </footer>
-
-<script>
-// Multi-currency detect and update prices
-fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{
-  let symbol = '$';
-  let cvPrice = '3', coverPrice = '2.5', reviewPrice = '1.5', vipPrice = '2', featuredPrice = '5';
-  
-  if(d.country_code === 'NG'){
-    symbol = '₦';
-    cvPrice = '3,000'; coverPrice = '2,500'; reviewPrice = '1,500'; vipPrice = '2,000'; featuredPrice = '5,000';
-  }
-  if(d.country_code === 'GB'){ symbol = '£'; }
-  if(['DE','FR','ES','IT','NL'].includes(d.country_code)){ symbol = '€'; }
-  
-  document.getElementById('price-cv').innerHTML = `${symbol}${cvPrice} <span>/ ${symbol==='₦'?'$3':'$3'}</span>`;
-  document.getElementById('price-cover').innerHTML = `${symbol}${coverPrice} <span>/ ${symbol==='₦'?'$2.5':'$2.5'}</span>`;
-  document.getElementById('price-review').innerHTML = `${symbol}${reviewPrice} <span>/ ${symbol==='₦'?'$1.5':'$1.5'}</span>`;
-  document.getElementById('price-vip').innerHTML = `${symbol}${vipPrice} <span>/ ${symbol==='₦'?'$2':'$2'} per month</span>`;
-  document.getElementById('price-featured').innerHTML = `${symbol}${featuredPrice} <span>/ ${symbol==='₦'?'$5':'$5'}</span>`;
-}).catch(()=>{});
-</script>
-
-<!-- Schema -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"ItemList",
-  "name":"RemotENG Career Services",
-  "itemListElement":[
-    {"@type":"Product","name":"CV / Resume Writing","offers":{"@type":"Offer","price":"3.00","priceCurrency":"USD"}},
-    {"@type":"Product","name":"Cover Letter Writing","offers":{"@type":"Offer","price":"2.50","priceCurrency":"USD"}},
-    {"@type":"Product","name":"CV Review","offers":{"@type":"Offer","price":"1.50","priceCurrency":"USD"}},
-    {"@type":"Product","name":"VIP Job Alerts","offers":{"@type":"Offer","price":"2.00","priceCurrency":"USD"}},
-    {"@type":"Product","name":"Featured Job Posting","offers":{"@type":"Offer","price":"5.00","priceCurrency":"USD"}}
-  ]
-}
-</script>
 
 </body>
 </html>
