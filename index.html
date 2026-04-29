@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RemotENG - Global Remote Jobs | USD, EUR, GBP Salaries | Work From Anywhere</title>
-<meta name="description" content="Discover global remote jobs with USD, EUR, GBP salaries. Tech & non-tech roles for professionals. Updated daily. Apply to verified opportunities worldwide.">
+<meta name="description" content="Discover global remote jobs with USD, EUR, GBP salaries. Tech & non-tech roles for professionals worldwide. Updated daily. Apply to verified opportunities.">
 <meta property="og:title" content="RemotENG - Global Remote Jobs">
 <meta property="og:description" content="Discover global remote jobs with USD, EUR, GBP salaries. Updated daily for professionals.">
 <meta property="og:url" content="https://remoteng.com.ng">
@@ -12,73 +12,85 @@
 <meta property="og:image" content="https://remoteng.com.ng/logo.png">
 <link rel="icon" href="https://remoteng.com.ng/logo.png">
 <style>
-:root { --blue-dark: #1e3a8a; --blue: #2563eb; --blue-light: #3b82f6; --green: #84cc16; --gray-900: #111827; --gray-700: #374151; --gray-500: #6b7280; --gray-100: #f3f4f6; --white: #ffffff; --red: #ef4444; }
+:root {
+  --blue-dark: #1e3a8a;
+  --blue: #3b82f6;
+  --blue-cloud: #60a5fa;
+  --green: #84cc16;
+  --gray-900: #111827;
+  --gray-700: #374151;
+  --gray-500: #6b7280;
+  --gray-100: #f3f4f6;
+  --white: #ffffff;
+  --red: #ef4444;
+}
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--white); }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.95); }
-.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
+header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.97); }
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo img { width: 45px; height: 45px; }
-.logo-text { font-size: 24px; font-weight: 700; }
+.logo img { width: 48px; height: 48px; }
+.logo-text { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
 .logo-text.dark { color: var(--blue-dark); }
 .logo-text.light { color: var(--blue); }
-.logo-text.green { color: var(--green); font-size: 14px; display: block; margin-top: -4px; }
-nav { display: flex; gap: 28px; align-items: center; }
-nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.logo-text.green { color: var(--green); font-size: 14px; display: block; margin-top: -5px; font-weight: 600; }
+nav { display: flex; gap: 30px; align-items: center; }
+nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; transition: color 0.2s; font-size: 15px; }
 nav a:hover, nav a.active { color: var(--blue); }
-.btn { background: var(--blue); color: var(--white); padding: 10px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; transition: all 0.2s; }
-.btn:hover { background: var(--blue-dark); transform: translateY(-1px); }
+.btn { background: var(--blue-dark); color: var(--white); padding: 11px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; transition: all 0.2s; font-size: 15px; }
+.btn:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
 .btn-green { background: var(--green); color: var(--gray-900); }
-.btn-green:hover { background: #65a30d; }
-.hero { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-light) 100%); color: var(--white); padding: 100px 0 80px; text-align: center; }
-.hero h1 { font-size: 52px; margin-bottom: 16px; font-weight: 800; line-height: 1.1; }
-.hero p { font-size: 20px; margin-bottom: 36px; opacity: 0.95; max-width: 600px; margin-left: auto; margin-right: auto; }
-.search-box { max-width: 650px; margin: 0 auto; display: flex; gap: 12px; background: var(--white); padding: 6px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-.search-box input { flex: 1; padding: 16px 20px; border: none; border-radius: 8px; font-size: 16px; outline: none; }
-.search-box.btn { padding: 16px 32px; border-radius: 8px; }
-.section { padding: 80px 0; }
-.section-title { font-size: 36px; margin-bottom: 40px; text-align: center; color: var(--blue-dark); font-weight: 800; }
-.section-subtitle { text-align: center; color: var(--gray-700); font-size: 18px; margin: -20px auto 40px; max-width: 600px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; }
-.job-card,.news-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; position: relative; transition: all 0.3s; }
-.job-card:hover,.news-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+.btn-green:hover { background: #65a30d; box-shadow: 0 4px 12px rgba(132,204,22,0.3); }
+.hero { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); color: var(--white); padding: 110px 0 90px; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -50%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(132,204,22,0.15) 0%, transparent 70%); border-radius: 50%; }
+.hero h1 { font-size: 56px; margin-bottom: 18px; font-weight: 800; line-height: 1.1; position: relative; }
+.hero p { font-size: 21px; margin-bottom: 38px; opacity: 0.95; max-width: 650px; margin-left: auto; margin-right: auto; position: relative; }
+.search-box { max-width: 680px; margin: 0 auto; display: flex; gap: 12px; background: var(--white); padding: 8px; border-radius: 14px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); position: relative; }
+.search-box input { flex: 1; padding: 18px 22px; border: none; border-radius: 10px; font-size: 16px; outline: none; color: var(--gray-900); }
+.search-box.btn { padding: 18px 36px; border-radius: 10px; }
+.section { padding: 90px 0; }
+.section-title { font-size: 38px; margin-bottom: 16px; text-align: center; color: var(--blue-dark); font-weight: 800; }
+.section-subtitle { text-align: center; color: var(--gray-700); font-size: 18px; margin: 0 auto 50px; max-width: 600px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+.job-card,.news-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; padding: 30px; position: relative; transition: all 0.3s; }
+.job-card:hover,.news-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: var(--blue-cloud); }
 .job-card.featured { border: 2px solid var(--green); background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
-.tag { display: inline-block; background: var(--gray-100); padding: 6px 14px; border-radius: 20px; font-size: 12px; margin-bottom: 12px; font-weight: 600; }
+.tag { display: inline-block; background: var(--gray-100); padding: 7px 16px; border-radius: 20px; font-size: 12px; margin-bottom: 14px; font-weight: 600; }
 .tag.featured { background: var(--green); color: var(--gray-900); }
-.job-title { font-size: 21px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; line-height: 1.3; }
-.job-company { color: var(--gray-500); margin-bottom: 14px; font-weight: 500; }
-.job-salary { color: var(--green); font-weight: 700; font-size: 20px; margin: 14px 0; }
-.job-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+.job-title { font-size: 22px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; line-height: 1.3; }
+.job-company { color: var(--gray-500); margin-bottom: 16px; font-weight: 500; font-size: 15px; }
+.job-salary { color: var(--green); font-weight: 700; font-size: 21px; margin: 16px 0; }
+.job-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 22px; }
 .job-date { color: var(--gray-500); font-size: 13px; }
-.news-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 16px; }
-.news-title { font-size: 19px; font-weight: 700; margin-bottom: 8px; color: var(--blue-dark); line-height: 1.3; }
+.news-card img { width: 100%; height: 210px; object-fit: cover; border-radius: 14px; margin-bottom: 18px; }
+.news-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--blue-dark); line-height: 1.3; }
 .news-source { color: var(--gray-500); font-size: 13px; font-weight: 500; }
-.email-section { background: linear-gradient(135deg, var(--gray-100) 0%, #e0f2fe 100%); padding: 80px 0; text-align: center; }
-.email-box { max-width: 520px; margin: 0 auto; display: flex; gap: 12px; background: var(--white); padding: 6px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-.email-box input { flex: 1; padding: 14px 18px; border: none; border-radius: 8px; font-size: 16px; outline: none; }
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
-.service-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 16px; padding: 36px; text-align: center; transition: all 0.3s; }
-.service-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
-.service-card h3 { font-size: 24px; margin-bottom: 12px; color: var(--blue-dark); }
-.service-price { font-size: 36px; font-weight: 800; color: var(--green); margin: 20px 0; }
+.email-section { background: linear-gradient(135deg, var(--gray-100) 0%, #dbeafe 100%); padding: 90px 0; text-align: center; }
+.email-box { max-width: 540px; margin: 0 auto; display: flex; gap: 12px; background: var(--white); padding: 8px; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+.email-box input { flex: 1; padding: 16px 20px; border: none; border-radius: 10px; font-size: 16px; outline: none; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 30px; }
+.service-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; padding: 40px; text-align: center; transition: all 0.3s; }
+.service-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: var(--green); }
+.service-card h3 { font-size: 25px; margin-bottom: 14px; color: var(--blue-dark); }
+.service-price { font-size: 38px; font-weight: 800; color: var(--green); margin: 22px 0; }
 .service-price span { font-size: 16px; color: var(--gray-500); font-weight: 500; }
-footer { background: var(--gray-900); color: var(--gray-100); padding: 80px 0 30px; margin-top: 80px; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; margin-bottom: 50px; }
-footer h4 { color: var(--white); margin-bottom: 18px; font-size: 18px; }
-footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 10px; transition: color 0.2s; }
-footer a:hover { color: var(--white); }
-.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 30px; text-align: center; color: var(--gray-500); }
-.ad-wrap { min-height: 250px; margin: 40px 0; text-align: center; }
-.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 6px; }
+footer { background: var(--gray-900); color: var(--gray-100); padding: 90px 0 35px; margin-top: 90px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 55px; margin-bottom: 55px; }
+footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
+footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s; font-size: 15px; }
+footer a:hover { color: var(--blue-cloud); }
+.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
+.ad-wrap { min-height: 250px; margin: 50px 0; text-align: center; }
+.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
 @media (max-width: 768px) {
   nav { display: none; }
-.hero h1 { font-size: 36px; }
-.hero { padding: 60px 0; }
+.hero h1 { font-size: 38px; }
+.hero { padding: 70px 0 60px; }
 .search-box,.email-box { flex-direction: column; background: transparent; padding: 0; box-shadow: none; }
-.search-box input,.email-box input { background: var(--white); }
+.search-box input,.email-box input { background: var(--white); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 .grid { grid-template-columns: 1fr; }
-.section { padding: 60px 0; }
+.section { padding: 70px 0; }
 }
 </style>
 <script type="application/ld+json">
@@ -140,7 +152,7 @@ footer a:hover { color: var(--white); }
 <h2 class="section-title">Featured Remote Opportunities</h2>
 <p class="section-subtitle">Hand-picked roles with competitive global compensation</p>
 <div class="grid" id="jobs-grid"></div>
-<div style="text-align:center; margin-top:40px;">
+<div style="text-align:center; margin-top:50px;">
 <a href="remote-jobs.html" class="btn">Browse All Jobs</a>
 </div>
 </div>
@@ -157,7 +169,7 @@ footer a:hover { color: var(--white); }
 <h2 class="section-title">Career Insights & Tech News</h2>
 <p class="section-subtitle">Stay ahead with industry trends and remote work strategies</p>
 <div class="grid" id="news-grid"></div>
-<div style="text-align:center; margin-top:40px;">
+<div style="text-align:center; margin-top:50px;">
 <a href="tech-news.html" class="btn">Read More News</a>
 </div>
 </div>
@@ -166,12 +178,12 @@ footer a:hover { color: var(--white); }
 <section class="email-section">
 <div class="container">
 <h2 class="section-title">VIP Job Alerts</h2>
-<p style="margin-bottom:28px; color:var(--gray-700); font-size:18px;">Get daily curated remote opportunities sent directly to your inbox. Join 2,000+ professionals.</p>
+<p style="margin-bottom:32px; color:var(--gray-700); font-size:18px;">Get daily curated remote opportunities sent directly to your inbox. Join 2,000+ professionals.</p>
 <div class="email-box">
 <input type="email" id="email-input" placeholder="Enter your email address">
 <button class="btn btn-green" onclick="subscribeEmail()">Join Free List</button>
 </div>
-<p id="email-msg" style="margin-top:14px; color:var(--gray-500); font-size:14px;"></p>
+<p id="email-msg" style="margin-top:16px; color:var(--gray-500); font-size:14px;"></p>
 </div>
 </section>
 
@@ -213,10 +225,9 @@ footer a:hover { color: var(--white); }
 <div class="footer-grid">
 <div>
 <h4>RemotENG</h4>
-<p style="color:var(--gray-500); margin-bottom:18px;">Connecting professionals with global remote opportunities.</p>
+<p style="color:var(--gray-500); margin-bottom:20px;">Connecting professionals with global remote opportunities.</p>
 <p>Email: support@remoteng.com.ng</p>
 <p>WhatsApp: +234 912 565 1147</p>
-<p>Hours: 24/7 Online. Live chat 6am-9pm GMT+1</p>
 </div>
 <div>
 <h4>Quick Links</h4>
@@ -231,7 +242,6 @@ footer a:hover { color: var(--white); }
 <a href="legal.html">About Us</a>
 <a href="legal.html#privacy">Privacy Policy</a>
 <a href="legal.html#terms">Terms of Service</a>
-<a href="legal.html#disclaimer">Disclaimer</a>
 </div>
 <div>
 <h4>Connect</h4>
@@ -260,8 +270,9 @@ document.getElementById('hero-search').addEventListener('keypress', e => {
 
 async function loadFeaturedJobs() {
   try {
-    const res = await fetch(`${API_URL}/api/jobs?pinned=true&limit=6`);
-    const jobs = await res.json();
+    const res = await fetch(`${API_URL}/api/jobs`);
+    const allJobs = await res.json();
+    const jobs = allJobs.filter(j => j.featured).slice(0, 6);
     const grid = document.getElementById('jobs-grid');
     if (jobs.length === 0) {
       grid.innerHTML = '<p style="text-align:center; color:var(--gray-500); grid-column:1/-1;">No featured jobs yet. Check back soon.</p>';
@@ -269,9 +280,9 @@ async function loadFeaturedJobs() {
     }
     jobs.forEach(job => {
       const card = document.createElement('div');
-      card.className = `job-card ${job.pinned? 'featured' : ''}`;
+      card.className = `job-card featured`;
       card.innerHTML = `
-        ${job.pinned? '<span class="tag featured">Featured</span>' : ''}
+        <span class="tag featured">Featured</span>
         <div class="job-title">${job.title}</div>
         <div class="job-company">${job.company}</div>
         <div class="job-salary">${job.salary || 'Competitive Package'}</div>
@@ -290,21 +301,21 @@ async function loadFeaturedJobs() {
 
 async function loadNews() {
   try {
-    const res = await fetch(`${API_URL}/api/news?limit=6`);
+    const res = await fetch(`${API_URL}/api/news`);
     const news = await res.json();
     const grid = document.getElementById('news-grid');
     if (news.length === 0) {
       grid.innerHTML = '<p style="text-align:center; color:var(--gray-500); grid-column:1/-1;">No news available yet.</p>';
       return;
     }
-    news.forEach(item => {
+    news.slice(0, 6).forEach(item => {
       const card = document.createElement('div');
       card.className = 'news-card';
       card.innerHTML = `
         <img src="${item.image_url || 'https://via.placeholder.com/400x200?text=RemotENG'}" alt="${item.title}" loading="lazy">
         <div class="news-title">${item.title}</div>
-        <div class="news-source">${item.source} · ${timeAgo(item.published_at)}</div>
-        <p style="margin:14px 0; color:var(--gray-700); line-height:1.6;">${item.summary?.substring(0,130)}...</p>
+        <div class="news-source">${item.source || 'Tech News'} · ${timeAgo(item.posted_at)}</div>
+        <p style="margin:16px 0; color:var(--gray-700); line-height:1.6;">${item.content?.substring(0,130)}...</p>
         <a href="${item.url}" target="_blank" rel="noopener" class="btn">Read Article</a>
       `;
       grid.appendChild(card);
