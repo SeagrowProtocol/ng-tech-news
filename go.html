@@ -47,10 +47,7 @@ p { color: var(--gray-700); font-size: 16px; line-height: 1.7; margin-bottom: 24
 .countdown { font-size: 14px; color: var(--gray-500); margin-top: 20px; }
 .error-details { background: #fee2e2; border: 1px solid #fca5a5; border-radius: 10px; padding: 20px; margin: 24px 0; color: #991b1b; font-size: 14px; text-align: left; }
 .hidden { display: none; }
-@media (max-width: 768px) {
- .container { padding: 40px 25px; }
-  h1 { font-size: 24px; }
-}
+@media (max-width: 768px) { .container { padding: 40px 25px; } h1 { font-size: 24px; } }
 </style>
 </head>
 <body>
@@ -112,8 +109,8 @@ async function init() {
     return;
   }
 
-  // Flow 3: Selar Payment Success - CV/Resume
-  if (params.get('success') === 'cv' || params.get('success') === 'cover_letter' || params.get('success') === 'cv_review') {
+  // Flow 3: Selar Payment Success - CV/Resume/Cover Letter/CV Review
+  if (params.get('success') === 'cv' || params.get('success') === 'cover_letter' || params.get('success') === 'cv_review' || params.get('success') === 'cv_writing') {
     await handleServiceOrder(params);
     return;
   }
@@ -134,20 +131,15 @@ async function handleJobClick(params) {
   const referrer = document.referrer || 'direct';
 
   try {
-    // Fire click tracking to backend
     await fetch(`${API_URL}/api/click`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        job_id: parseInt(jobId),
-        referrer: referrer
-      })
+      body: JSON.stringify({ job_id: parseInt(jobId), referrer: referrer })
     });
   } catch (err) {
     console.error('Click tracking failed:', err);
   }
 
-  // Redirect to actual job URL
   window.location.href = decodeURIComponent(jobUrl);
 }
 
@@ -162,19 +154,13 @@ async function handlePaymentSuccess(params, type) {
   }
 
   try {
-    // Verify payment with backend using GO_SECRET_KEY
     const res = await fetch(`${API_URL}/api/verify-payment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'X-GO-Secret': GO_SECRET_KEY
       },
-      body: JSON.stringify({
-        email: email,
-        tx_ref: txRef,
-        type: type,
-        name: name
-      })
+      body: JSON.stringify({ email: email, tx_ref: txRef, type: type, name: name })
     });
 
     if (!res.ok) {
@@ -212,69 +198,25 @@ async function handleServiceOrder(params) {
   const email = params.get('email');
   const txRef = params.get('tx_ref') || params.get('transaction_id');
   const service = params.get('service') || params.get('success');
-  const name = params.get('name') || 'Customer';
+  const name = params.get('name') || '';
 
   if (!email ||!txRef) {
     showError('Order verification failed.', 'Missing email or transaction reference from Selar.');
     return;
   }
 
-  try {
-    // Fire order to backend
-    const res = await fetch(`${API_URL}/api/order`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-GO-Secret': GO_SECRET_KEY
-      },
-      body: JSON.stringify({
-        email: email,
-        service: service,
-        tx_ref: txRef,
-        name: name
-      })
-    });
-
-    if (!res.ok) {
-      throw new Error('Order processing failed on backend');
-    }
-
-    const serviceNames = {
-      'cv': 'CV/Resume Writing',
-      'cv_writing': 'CV/Resume Writing',
-      'cover_letter': 'Cover Letter Writing',
-      'cv_review': 'CV Review & Feedback'
-    };
-
-    const deliveryTimes = {
-      'cv': '48 hours',
-      'cv_writing': '48 hours',
-      'cover_letter': '24 hours',
-      'cv_review': '24 hours'
-    };
-
-    showSuccess(
-      'Order Confirmed!',
-      `Thank you, ${name}! Your ${serviceNames[service] || 'service'} order has been received.`,
-      {
-        'Service': serviceNames[service] || service,
-        'Email': email,
-        'Transaction ID': txRef,
-        'Delivery Time': deliveryTimes[service] || '24-48 hours',
-        'What Next': 'Check your email for a confirmation. We\'ll deliver your document within the stated time.'
-      },
-      [
-        { text: 'Browse More Services', url: 'service.html', class: 'btn-green' },
-        { text: 'Go to Homepage', url: 'index.html', class: 'btn-outline' }
-      ]
-    );
-  } catch (err) {
-    console.error('Order processing error:', err);
-    showError(
-      'Payment received but order processing failed.',
-      `Transaction ID: ${txRef}<br>Email: ${email}<br>Service: ${service}<br><br>Please contact support@remoteng.com.ng with your transaction details. We'll process your order manually within 1 hour.`
-    );
-  }
+  const orderFormUrl = `order-form.html?email=${encodeURIComponent(email)}&tx_ref=${encodeURIComponent(txRef)}&service=${encodeURIComponent(service)}&name=${encodeURIComponent(name)}`;
+  
+  document.getElementById('loading-state').innerHTML = `
+    <div class="status-icon success">✓</div>
+    <h1>Payment Confirmed!</h1>
+    <p>Redirecting to complete your order details...</p>
+    <div class="spinner"></div>
+  `;
+  
+  setTimeout(() => {
+    window.location.href = orderFormUrl;
+  }, 2000);
 }
 
 async function handleFeaturedJobOrder(params) {
@@ -292,7 +234,6 @@ async function handleFeaturedJobOrder(params) {
   }
 
   try {
-    // Fire order to backend
     const res = await fetch(`${API_URL}/api/order`, {
       method: 'POST',
       headers: {
@@ -345,13 +286,13 @@ function showSuccess(title, message, details, actions) {
   document.getElementById('success-state').classList.remove('hidden');
   document.getElementById('success-title').textContent = title;
   document.getElementById('success-message').textContent = message;
-
+  
   const detailsBox = document.getElementById('success-details');
   detailsBox.innerHTML = '<h3>Details</h3>';
   for (const [key, value] of Object.entries(details)) {
     detailsBox.innerHTML += `<p><strong>${key}:</strong> ${value}</p>`;
   }
-
+  
   const actionsDiv = document.getElementById('success-actions');
   actionsDiv.innerHTML = '';
   actions.forEach(action => {
@@ -361,11 +302,6 @@ function showSuccess(title, message, details, actions) {
     btn.textContent = action.text;
     actionsDiv.appendChild(btn);
   });
-
-  // Auto-redirect countdown for job clicks (not needed for success pages)
-  if (actions.length === 0) {
-    startCountdown(5, 'index.html');
-  }
 }
 
 function showError(message, details) {
@@ -373,22 +309,6 @@ function showError(message, details) {
   document.getElementById('error-state').classList.remove('hidden');
   document.getElementById('error-message').textContent = message;
   document.getElementById('error-details').innerHTML = details;
-}
-
-function startCountdown(seconds, redirectUrl) {
-  const countdownEl = document.getElementById('countdown');
-  let count = seconds;
-  countdownEl.textContent = `Redirecting in ${count} seconds...`;
-
-  const interval = setInterval(() => {
-    count--;
-    if (count <= 0) {
-      clearInterval(interval);
-      window.location.href = redirectUrl;
-    } else {
-      countdownEl.textContent = `Redirecting in ${count} seconds...`;
-    }
-  }, 1000);
 }
 
 init();
