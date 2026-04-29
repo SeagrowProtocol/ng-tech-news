@@ -49,6 +49,7 @@ header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: s
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .btn { background: var(--blue-dark); color: var(--white); padding: 16px 36px; border-radius: 12px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; transition: all 0.2s; font-size: 17px; width: 100%; }
 .btn:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
+.btn:disabled { background: var(--gray-500); cursor: not-allowed; transform: none; }
 .btn-green { background: var(--green); color: var(--gray-900); }
 .btn-green:hover { background: #65a30d; box-shadow: 0 4px 12px rgba(132,204,22,0.3); }
 .alert { padding: 18px 24px; border-radius: 12px; margin-bottom: 24px; display: none; }
@@ -84,7 +85,7 @@ footer a { color: var(--blue-cloud); text-decoration: none; }
 <section class="page-header">
 <div class="container">
 <h1>Payment Confirmed!</h1>
-<p>Now submit your details to receive your professional CV</p>
+<p>Now submit your details to receive your professional document</p>
 </div>
 </section>
 
@@ -94,7 +95,7 @@ footer a { color: var(--blue-cloud); text-decoration: none; }
 <div class="icon">✓</div>
 <h2>Payment Successful</h2>
 <p>Transaction ID: <strong id="tx-display">Loading...</strong></p>
-<p>Fill the form below with your details. We'll deliver your ATS-optimized CV within 48 hours.</p>
+<p>Fill the form below with your details. We'll deliver your ATS-optimized document within 48 hours.</p>
 </div>
 
 <div class="info-box">
@@ -177,7 +178,7 @@ footer a { color: var(--blue-cloud); text-decoration: none; }
 <textarea id="additional" placeholder="Any specific requirements? Target companies? Special formatting?"></textarea>
 </div>
 
-<button type="submit" class="btn btn-green" id="submit-btn">Submit Details & Get My CV</button>
+<button type="submit" class="btn btn-green" id="submit-btn">Submit Details & Get My Document</button>
 </form>
 </div>
 </div>
@@ -216,23 +217,25 @@ document.getElementById('cv-form').addEventListener('submit', async function(e) 
 
   const formData = {
     email: email,
-    tx_ref: txRef,
     service: service,
-    name: document.getElementById('full-name').value.trim(),
-    phone: document.getElementById('phone').value.trim(),
-    target_role: document.getElementById('target-role').value.trim(),
-    experience: document.getElementById('experience').value,
-    work_history: document.getElementById('work-history').value.trim(),
-    skills: document.getElementById('skills').value.trim(),
-    education: document.getElementById('education').value.trim(),
-    achievements: document.getElementById('achievements').value.trim(),
-    linkedin: document.getElementById('linkedin').value.trim(),
-    old_cv_url: document.getElementById('old-cv').value.trim(),
-    additional_notes: document.getElementById('additional').value.trim()
+    data: {
+      full_name: document.getElementById('full-name').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      target_role: document.getElementById('target-role').value.trim(),
+      experience: document.getElementById('experience').value,
+      experience_details: document.getElementById('work-history').value.trim(),
+      skills: document.getElementById('skills').value.trim(),
+      education: document.getElementById('education').value.trim(),
+      achievements: document.getElementById('achievements').value.trim(),
+      linkedin: document.getElementById('linkedin').value.trim(),
+      old_cv_url: document.getElementById('old-cv').value.trim(),
+      additional_notes: document.getElementById('additional').value.trim(),
+      tx_ref: txRef
+    }
   };
 
   try {
-    const res = await fetch(`${API_URL}/api/submit-cv-details`, {
+    const res = await fetch(`${API_URL}/api/order`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -245,7 +248,7 @@ document.getElementById('cv-form').addEventListener('submit', async function(e) 
 
     alertBox.className = 'alert success';
     alertBox.style.display = 'block';
-    alertBox.innerHTML = '<strong>Success!</strong> Your details have been submitted. You\'ll receive your ATS-optimized CV via email within 48 hours. Check your inbox and spam folder.';
+    alertBox.innerHTML = '<strong>Success!</strong> Your details have been submitted. You\'ll receive your professional document via email within 48 hours. Check your inbox and spam folder.';
     
     document.getElementById('cv-form').reset();
     window.scrollTo({top: 0, behavior: 'smooth'});
@@ -258,7 +261,7 @@ document.getElementById('cv-form').addEventListener('submit', async function(e) 
     alertBox.style.display = 'block';
     alertBox.innerHTML = `<strong>Error:</strong> Failed to submit details. Please email your details to support@remoteng.com.ng with Transaction ID: ${txRef}`;
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit Details & Get My CV';
+    submitBtn.textContent = 'Submit Details & Get My Document';
   }
 });
 </script>
