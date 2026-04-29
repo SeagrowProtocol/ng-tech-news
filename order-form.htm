@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit Your Details - CV Order | RemotENG</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="https://remoteng.com.ng/logo.png">
+<style>
+:root {
+  --blue-dark: #1e3a8a;
+  --blue: #3b82f6;
+  --blue-cloud: #60a5fa;
+  --green: #84cc16;
+  --gray-900: #111827;
+  --gray-700: #374151;
+  --gray-500: #6b7280;
+  --gray-100: #f3f4f6;
+  --white: #ffffff;
+  --red: #ef4444;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--white); }
+.container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.97); }
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo img { width: 48px; height: 48px; }
+.logo-text { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
+.logo-text.remot { color: var(--blue-dark); }
+.logo-text.eng { color: var(--blue); }
+.logo-text.com { color: var(--green); font-size: 14px; display: block; margin-top: -5px; font-weight: 600; }
+.page-header { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); color: var(--white); padding: 60px 0 40px; text-align: center; }
+.page-header h1 { font-size: 38px; margin-bottom: 12px; font-weight: 800; }
+.page-header p { font-size: 17px; opacity: 0.95; }
+.section { padding: 60px 0; }
+.success-banner { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid var(--green); border-radius: 14px; padding: 30px; margin-bottom: 40px; text-align: center; }
+.success-banner .icon { font-size: 48px; margin-bottom: 16px; }
+.success-banner h2 { font-size: 24px; color: var(--blue-dark); margin-bottom: 12px; }
+.success-banner p { color: var(--gray-700); font-size: 15px; }
+.form-container { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; padding: 50px; }
+.form-group { margin-bottom: 28px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 10px; color: var(--gray-900); font-size: 15px; }
+.form-group label span { color: var(--red); }
+.form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px 18px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 16px; outline: none; font-family: inherit; transition: all 0.2s; }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+.form-group textarea { min-height: 120px; resize: vertical; }
+.form-group small { display: block; color: var(--gray-500); font-size: 13px; margin-top: 8px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.btn { background: var(--blue-dark); color: var(--white); padding: 16px 36px; border-radius: 12px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; transition: all 0.2s; font-size: 17px; width: 100%; }
+.btn:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
+.btn-green { background: var(--green); color: var(--gray-900); }
+.btn-green:hover { background: #65a30d; box-shadow: 0 4px 12px rgba(132,204,22,0.3); }
+.alert { padding: 18px 24px; border-radius: 12px; margin-bottom: 24px; display: none; }
+.alert.success { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+.alert.error { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+.info-box { background: var(--gray-100); border-radius: 12px; padding: 24px; margin-bottom: 32px; }
+.info-box h3 { font-size: 18px; color: var(--blue-dark); margin-bottom: 12px; }
+.info-box p { color: var(--gray-700); font-size: 15px; margin-bottom: 8px; }
+footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 35px; margin-top: 90px; text-align: center; }
+footer a { color: var(--blue-cloud); text-decoration: none; }
+@media (max-width: 768px) {
+  .form-container { padding: 35px 25px; }
+  .form-row { grid-template-columns: 1fr; }
+  .page-header h1 { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<div class="header-inner">
+<a href="index.html" class="logo">
+<img src="https://remoteng.com.ng/logo.png" alt="RemotENG Logo">
+<div class="logo-text">
+<span class="remot">Remot</span><span class="eng">eng</span>
+<span class="com">.com.ng</span>
+</div>
+</a>
+</div>
+</div>
+</header>
+
+<section class="page-header">
+<div class="container">
+<h1>Payment Confirmed!</h1>
+<p>Now submit your details to receive your professional CV</p>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="success-banner">
+<div class="icon">✓</div>
+<h2>Payment Successful</h2>
+<p>Transaction ID: <strong id="tx-display">Loading...</strong></p>
+<p>Fill the form below with your details. We'll deliver your ATS-optimized CV within 48 hours.</p>
+</div>
+
+<div class="info-box">
+<h3>Order Details</h3>
+<p><strong>Service:</strong> <span id="service-display">CV/Resume Writing</span></p>
+<p><strong>Email:</strong> <span id="email-display">Loading...</span></p>
+<p><strong>Delivery:</strong> 48 hours via email in PDF + Word formats</p>
+</div>
+
+<div id="alert-box" class="alert"></div>
+
+<div class="form-container">
+<form id="cv-form">
+<div class="form-row">
+<div class="form-group">
+<label for="full-name">Full Name <span>*</span></label>
+<input type="text" id="full-name" placeholder="John Doe" required>
+</div>
+<div class="form-group">
+<label for="phone">Phone Number <span>*</span></label>
+<input type="tel" id="phone" placeholder="+1 234 567 8900" required>
+</div>
+</div>
+
+<div class="form-group">
+<label for="target-role">Target Job Title <span>*</span></label>
+<input type="text" id="target-role" placeholder="e.g. Senior React Developer, Product Manager" required>
+<small>What role are you applying for?</small>
+</div>
+
+<div class="form-group">
+<label for="experience">Years of Experience <span>*</span></label>
+<select id="experience" required>
+<option value="">Select experience level</option>
+<option value="0-1">0-1 years (Entry Level)</option>
+<option value="1-3">1-3 years (Junior)</option>
+<option value="3-5">3-5 years (Mid-Level)</option>
+<option value="5-8">5-8 years (Senior)</option>
+<option value="8+">8+ years (Expert/Lead)</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="work-history">Work Experience <span>*</span></label>
+<textarea id="work-history" placeholder="List your jobs: Company Name | Job Title | Dates | Key Achievements&#10;&#10;Example:&#10;TechGlobal Inc | Senior Developer | 2021-Present&#10;- Led team of 5 developers&#10;- Increased app performance by 60%&#10;- Managed $500k project budget" required></textarea>
+<small>Include company, title, dates, and 2-3 key achievements per role</small>
+</div>
+
+<div class="form-group">
+<label for="skills">Key Skills <span>*</span></label>
+<textarea id="skills" placeholder="React, Node.js, TypeScript, AWS, Docker, PostgreSQL, Git, Agile, Team Leadership" required></textarea>
+<small>Separate skills with commas. Include technical and soft skills.</small>
+</div>
+
+<div class="form-group">
+<label for="education">Education <span>*</span></label>
+<textarea id="education" placeholder="B.S. Computer Science | University of Technology | 2019&#10;Relevant certifications, courses" required></textarea>
+<small>Include degree, university, year, and relevant certifications</small>
+</div>
+
+<div class="form-group">
+<label for="achievements">Key Achievements (Optional)</label>
+<textarea id="achievements" placeholder="Increased sales by 40%, Led team of 10, Managed $1M budget, Published 3 papers"></textarea>
+<small>Numbers and metrics help your CV stand out</small>
+</div>
+
+<div class="form-group">
+<label for="linkedin">LinkedIn Profile (Optional)</label>
+<input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+</div>
+
+<div class="form-group">
+<label for="old-cv">Have an Old CV? (Optional)</label>
+<input type="url" id="old-cv" placeholder="Paste Google Drive/Dropbox link to your old CV">
+<small>Upload to Google Drive and paste share link here</small>
+</div>
+
+<div class="form-group">
+<label for="additional">Additional Notes (Optional)</label>
+<textarea id="additional" placeholder="Any specific requirements? Target companies? Special formatting?"></textarea>
+</div>
+
+<button type="submit" class="btn btn-green" id="submit-btn">Submit Details & Get My CV</button>
+</form>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p>&copy; 2026 RemotENG. All rights reserved.</p>
+<p>Questions? Email <a href="mailto:support@remoteng.com.ng">support@remoteng.com.ng</a> or WhatsApp <a href="https://wa.me/2349125651147">+234 912 565 1147</a></p>
+</div>
+</footer>
+
+<script>
+const API_URL = 'https://remoteng-api.onrender.com';
+const GO_SECRET_KEY = 'RemotENG_2026_Secure_###';
+
+const params = new URLSearchParams(window.location.search);
+const email = params.get('email');
+const txRef = params.get('tx_ref');
+const service = params.get('service') || 'cv_writing';
+const name = params.get('name') || '';
+
+document.getElementById('tx-display').textContent = txRef || 'N/A';
+document.getElementById('email-display').textContent = email || 'N/A';
+document.getElementById('service-display').textContent = service.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+if (name) document.getElementById('full-name').value = name;
+
+document.getElementById('cv-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const submitBtn = document.getElementById('submit-btn');
+  const alertBox = document.getElementById('alert-box');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Submitting...';
+
+  const formData = {
+    email: email,
+    tx_ref: txRef,
+    service: service,
+    name: document.getElementById('full-name').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    target_role: document.getElementById('target-role').value.trim(),
+    experience: document.getElementById('experience').value,
+    work_history: document.getElementById('work-history').value.trim(),
+    skills: document.getElementById('skills').value.trim(),
+    education: document.getElementById('education').value.trim(),
+    achievements: document.getElementById('achievements').value.trim(),
+    linkedin: document.getElementById('linkedin').value.trim(),
+    old_cv_url: document.getElementById('old-cv').value.trim(),
+    additional_notes: document.getElementById('additional').value.trim()
+  };
+
+  try {
+    const res = await fetch(`${API_URL}/api/submit-cv-details`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-GO-Secret': GO_SECRET_KEY
+      },
+      body: JSON.stringify(formData)
+    });
+
+    if (!res.ok) throw new Error('Submission failed');
+
+    alertBox.className = 'alert success';
+    alertBox.style.display = 'block';
+    alertBox.innerHTML = '<strong>Success!</strong> Your details have been submitted. You\'ll receive your ATS-optimized CV via email within 48 hours. Check your inbox and spam folder.';
+    
+    document.getElementById('cv-form').reset();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 5000);
+  } catch (err) {
+    alertBox.className = 'alert error';
+    alertBox.style.display = 'block';
+    alertBox.innerHTML = `<strong>Error:</strong> Failed to submit details. Please email your details to support@remoteng.com.ng with Transaction ID: ${txRef}`;
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit Details & Get My CV';
+  }
+});
+</script>
+</body>
+</html>
