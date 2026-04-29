@@ -4,382 +4,425 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Post a Remote Job - Hire Global Talent | RemotENG</title>
-<meta name="description" content="Post your remote job and reach thousands of professionals worldwide. Free basic posting or Featured for $5. Get quality applicants fast.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
-
+<meta name="description" content="Post your remote job on RemotENG. Reach 50,000+ professionals worldwide. Free basic posting or Featured for ₦5,000/$5. Get quality applicants fast.">
+<meta property="og:title" content="Post a Remote Job - Hire Global Talent | RemotENG">
+<meta property="og:description" content="Post your remote job on RemotENG. Reach 50,000+ professionals worldwide. Free or Featured ₦5,000/$5.">
+<meta property="og:url" content="https://remoteng.com.ng/post-job.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://remoteng.com.ng/logo.png">
+<link rel="icon" href="https://remoteng.com.ng/logo.png">
 <style>
 :root {
-  --blue-dark: #1e3a8a; --blue: #2563eb; --blue-light: #3b82f6; --green: #84cc16;
-  --gray-900: #111827; --gray-700: #374151; --gray-500: #6b7280; --gray-100: #f3f4f6; --white: #ffffff;
-  --gold: #fbbf24;
+  --blue-dark: #1e3a8a;
+  --blue: #3b82f6;
+  --blue-cloud: #60a5fa;
+  --green: #84cc16;
+  --gray-900: #111827;
+  --gray-700: #374151;
+  --gray-500: #6b7280;
+  --gray-100: #f3f4f6;
+  --white: #ffffff;
+  --red: #ef4444;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--gray-100); }
-.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-
-/* Header */
-header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
-.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--white); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.97); }
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo svg { width: 40px; height: 40px; }
-.logo-text { font-size: 24px; font-weight: 700; }
-.logo-text .dark { color: var(--blue-dark); }
-.logo-text .light { color: var(--blue); }
-.logo-text .green { color: var(--green); font-size: 14px; display: block; margin-top: -4px; }
-nav { display: flex; gap: 24px; align-items: center; }
-nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; }
+.logo img { width: 48px; height: 48px; }
+.logo-text { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
+.logo-text.remot { color: var(--blue-dark); }
+.logo-text.eng { color: var(--blue); }
+.logo-text.com { color: var(--green); font-size: 14px; display: block; margin-top: -5px; font-weight: 600; }
+nav { display: flex; gap: 30px; align-items: center; }
+nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; transition: color 0.2s; font-size: 15px; }
 nav a:hover, nav a.active { color: var(--blue); }
-.btn { background: var(--blue); color: var(--white); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; }
-.btn:hover { background: var(--blue-dark); }
+.btn { background: var(--blue-dark); color: var(--white); padding: 11px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; transition: all 0.2s; font-size: 15px; }
+.btn:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
 .btn-green { background: var(--green); color: var(--gray-900); }
-.btn-green:hover { background: #65a30d; }
-.btn-gold { background: var(--gold); color: var(--gray-900); }
-.btn-gold:hover { background: #f59e0b; }
-
-/* Hero */
-.hero { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); color: var(--white); padding: 60px 0; text-align: center; }
-.hero h1 { font-size: 40px; margin-bottom: 16px; }
-.hero p { font-size: 18px; opacity: 0.95; max-width: 700px; margin: 0 auto; }
-
-/* Form Section */
-.form-section { padding: 60px 0; }
-.form-card { background: var(--white); border-radius: 16px; padding: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-.form-title { font-size: 28px; margin-bottom: 8px; color: var(--blue-dark); }
-.form-sub { color: var(--gray-500); margin-bottom: 32px; }
-.form-group { margin-bottom: 24px; }
-.form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--gray-700); }
-.form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 16px; font-family: inherit; }
-.form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
-.form-group textarea { min-height: 150px; resize: vertical; }
+.btn-green:hover { background: #65a30d; box-shadow: 0 4px 12px rgba(132,204,22,0.3); }
+.btn-outline { background: var(--white); color: var(--blue-dark); border: 2px solid var(--blue-dark); }
+.btn-outline:hover { background: var(--blue-dark); color: var(--white); }
+.btn-large { padding: 16px 36px; font-size: 17px; border-radius: 12px; }
+.page-header { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); color: var(--white); padding: 70px 0 50px; text-align: center; }
+.page-header h1 { font-size: 44px; margin-bottom: 14px; font-weight: 800; }
+.page-header p { font-size: 18px; opacity: 0.95; max-width: 650px; margin: 0 auto; }
+.section { padding: 90px 0; }
+.section-title { font-size: 38px; margin-bottom: 16px; text-align: center; color: var(--blue-dark); font-weight: 800; }
+.section-subtitle { text-align: center; color: var(--gray-700); font-size: 18px; margin: 0 auto 50px; max-width: 600px; }
+.form-container { max-width: 800px; margin: 0 auto; background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; padding: 50px; }
+.form-group { margin-bottom: 28px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 10px; color: var(--gray-900); font-size: 15px; }
+.form-group label span { color: var(--red); }
+.form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px 18px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 16px; outline: none; font-family: inherit; transition: all 0.2s; }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+.form-group textarea { min-height: 140px; resize: vertical; }
+.form-group small { display: block; color: var(--gray-500); font-size: 13px; margin-top: 8px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.required { color: #ef4444; }
-.help-text { font-size: 13px; color: var(--gray-500); margin-top: 4px; }
-
-/* Pricing Options */
-.pricing-options { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
-.price-card { border: 2px solid var(--gray-100); border-radius: 12px; padding: 24px; cursor: pointer; transition: all 0.2s; position: relative; }
-.price-card:hover { border-color: var(--blue); }
-.price-card.selected { border-color: var(--blue); background: #eff6ff; }
-.price-card.featured { border-color: var(--gold); }
-.price-card.featured.selected { background: #fffbeb; border-color: var(--gold); }
-.popular-badge { position: absolute; top: -12px; right: 20px; background: var(--gold); color: var(--gray-900); padding: 4px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; }
-.price-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-.price-amount { font-size: 32px; font-weight: 800; color: var(--blue); margin-bottom: 12px; }
-.price-card.featured .price-amount { color: var(--gold); }
-.price-amount span { font-size: 14px; font-weight: 500; color: var(--gray-500); }
-.price-features { list-style: none; font-size: 14px; }
-.price-features li { padding: 6px 0; color: var(--gray-700); }
-.price-features li:before { content: "✓ "; color: var(--green); font-weight: 700; }
-
-/* Submit */
-.submit-section { text-align: center; margin-top: 40px; }
-.submit-section .btn { font-size: 18px; padding: 16px 48px; }
-.terms { font-size: 13px; color: var(--gray-500); margin-top: 16px; }
-.terms a { color: var(--blue); }
-
-/* Success */
-.success-card { background: var(--white); border-radius: 16px; padding: 60px 40px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-.success-icon { width: 80px; height: 80px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 24px; }
-.hide { display: none; }
-
-/* Footer */
-footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 20px; margin-top: 80px; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
-footer h4 { color: var(--white); margin-bottom: 16px; }
-footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 8px; }
-footer a:hover { color: var(--white); }
-.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 20px; text-align: center; color: var(--gray-500); }
-
+.pricing-box { background: var(--gray-100); border-radius: 14px; padding: 30px; margin: 35px 0; }
+.pricing-box h3 { font-size: 22px; color: var(--blue-dark); margin-bottom: 20px; text-align: center; }
+.pricing-options { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.pricing-option { background: var(--white); border: 2px solid #e5e7eb; border-radius: 14px; padding: 28px; cursor: pointer; transition: all 0.3s; position: relative; }
+.pricing-option:hover { border-color: var(--blue); }
+.pricing-option.selected { border-color: var(--green); background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
+.pricing-option input[type="radio"] { position: absolute; opacity: 0; }
+.pricing-option .check { width: 24px; height: 24px; border: 2px solid #d1d5db; border-radius: 50%; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.pricing-option.selected .check { border-color: var(--green); background: var(--green); }
+.pricing-option.selected .check:after { content: '✓'; color: var(--gray-900); font-weight: 700; font-size: 14px; }
+.pricing-option h4 { font-size: 20px; color: var(--blue-dark); margin-bottom: 8px; }
+.pricing-option .price { font-size: 32px; font-weight: 800; color: var(--green); margin: 12px 0; }
+.pricing-option .price span { font-size: 16px; color: var(--gray-500); font-weight: 500; }
+.pricing-option ul { text-align: left; margin-top: 16px; }
+.pricing-option ul li { color: var(--gray-700); margin-bottom: 10px; font-size: 14px; list-style: none; padding-left: 24px; position: relative; }
+.pricing-option ul li:before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+.form-actions { display: flex; gap: 16px; margin-top: 40px; }
+.form-actions .btn { flex: 1; }
+.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 35px; margin-top: 50px; }
+.benefit-card { text-align: center; padding: 30px; }
+.benefit-icon { width: 70px; height: 70px; margin: 0 auto 20px; background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 32px; }
+.benefit-card h3 { font-size: 20px; color: var(--blue-dark); margin-bottom: 12px; }
+.benefit-card p { color: var(--gray-700); line-height: 1.7; font-size: 15px; }
+.stats-section { background: var(--gray-100); padding: 90px 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-top: 50px; }
+.stat-card { text-align: center; }
+.stat-number { font-size: 48px; font-weight: 800; color: var(--blue-dark); margin-bottom: 12px; }
+.stat-label { font-size: 18px; color: var(--gray-700); font-weight: 500; }
+.alert { padding: 18px 24px; border-radius: 12px; margin-bottom: 24px; display: none; }
+.alert.success { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+.alert.error { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+footer { background: var(--gray-900); color: var(--gray-100); padding: 90px 0 35px; margin-top: 90px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 55px; margin-bottom: 55px; }
+footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
+footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s; font-size: 15px; }
+footer a:hover { color: var(--blue-cloud); }
+.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
+.ad-wrap { min-height: 250px; margin: 50px 0; text-align: center; }
+.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
 @media (max-width: 768px) {
   nav { display: none; }
-  .hero h1 { font-size: 28px; }
-  .form-row, .pricing-options { grid-template-columns: 1fr; }
-  .form-card { padding: 24px; }
+.page-header h1 { font-size: 32px; }
+.form-container { padding: 35px 25px; }
+.form-row { grid-template-columns: 1fr; }
+.pricing-options { grid-template-columns: 1fr; }
+.form-actions { flex-direction: column; }
+.section { padding: 70px 0; }
 }
 </style>
 </head>
 <body>
-
 <header>
-  <div class="container">
-    <div class="header-inner">
-      <a href="index.html" class="logo">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <path d="M25 55 Q15 55 15 45 Q15 35 25 35 Q25 25 35 25 Q50 25 50 35 Q65 35 65 45 Q75 45 75 55 Q75 65 65 65 L25 65 Q15 65 15 55 Z" fill="#3b82f6"/>
-          <circle cx="70" cy="50" r="15" fill="none" stroke="#84cc16" stroke-width="3"/>
-          <path d="M70 35 Q75 42 70 50 Q65 58 70 65" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <path d="M55 50 L85 50" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <ellipse cx="70" cy="50" rx="8" ry="15" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <path d="M45 45 L45 60 L50 55 L55 60 L55 45 Z" fill="#84cc16"/>
-          <path d="M55 50 L60 55 L55 55 Z" fill="#84cc16"/>
-          <path d="M40 20 Q50 10 60 20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
-          <path d="M43 25 Q50 18 57 25" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-          <path d="M46 30 Q50 26 54 30" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-        <div class="logo-text">
-          <span class="dark">Remot</span><span class="light">eng</span>
-          <span class="green">.com.ng</span>
-        </div>
-      </a>
-      <nav>
-        <a href="remote-jobs.html">Jobs</a>
-        <a href="tech-news.html">News</a>
-        <a href="service.html">Services</a>
-        <a href="vip.html">VIP Alerts</a>
-        <a href="post-job.html" class="active">Post Job</a>
-        <a href="vip.html" class="btn">Get VIP</a>
-      </nav>
-    </div>
-  </div>
+<div class="container">
+<div class="header-inner">
+<a href="index.html" class="logo">
+<img src="https://remoteng.com.ng/logo.png" alt="RemotENG Logo">
+<div class="logo-text">
+<span class="remot">Remot</span><span class="eng">eng</span>
+<span class="com">.com.ng</span>
+</div>
+</a>
+<nav>
+<a href="remote-jobs.html">Jobs</a>
+<a href="tech-news.html">News</a>
+<a href="service.html">Services</a>
+<a href="vip.html">VIP Alerts</a>
+<a href="post-job.html" class="active">Post Job</a>
+<a href="https://selar.co/YOUR_VIP_LINK" class="btn">Get VIP</a>
+</nav>
+</div>
+</div>
 </header>
 
-<section class="hero">
-  <div class="container">
-    <h1>Hire Remote Talent Worldwide</h1>
-    <p>Post your job and reach 10,000+ qualified professionals. Free basic posting or Featured for maximum visibility.</p>
-  </div>
+<section class="page-header">
+<div class="container">
+<h1>Hire Global Remote Talent</h1>
+<p>Post your job to 50,000+ professionals worldwide. Free basic posting or Featured for maximum visibility.</p>
+</div>
 </section>
 
-<section class="form-section">
-  <div class="container">
-    <div class="form-card" id="job-form">
-      <h2 class="form-title">Post a Remote Job</h2>
-      <p class="form-sub">Fill in the details below. Jobs go live within 1 hour after review.</p>
-      
-      <form id="post-job-form">
-        <div class="form-group">
-          <label>Job Title <span class="required">*</span></label>
-          <input type="text" id="title" placeholder="e.g. Senior React Developer" required>
-        </div>
+<section class="section">
+<div class="container">
+<h2 class="section-title">Post Your Remote Job</h2>
+<p class="section-subtitle">Fill the form below. Free jobs go live instantly. Featured jobs after payment.</p>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label>Company Name <span class="required">*</span></label>
-            <input type="text" id="company" placeholder="Your Company Inc." required>
-          </div>
-          <div class="form-group">
-            <label>Company Website</label>
-            <input type="url" id="company_url" placeholder="https://yourcompany.com">
-          </div>
-        </div>
+<div class="form-container">
+<div id="alert-box" class="alert"></div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label>Job Type <span class="required">*</span></label>
-            <select id="type" required>
-              <option value="">Select type</option>
-              <option value="Full-time">Full-time</option>
-              <option value="Part-time">Part-time</option>
-              <option value="Contract">Contract</option>
-              <option value="Freelance">Freelance</option>
-              <option value="Internship">Internship</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Location <span class="required">*</span></label>
-            <input type="text" id="location" placeholder="Remote - Worldwide" value="Remote - Worldwide" required>
-          </div>
-        </div>
+<form id="job-form">
+<div class="form-group">
+<label for="job-title">Job Title <span>*</span></label>
+<input type="text" id="job-title" placeholder="e.g. Senior React Developer" required>
+</div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label>Salary Range <span class="required">*</span></label>
-            <input type="text" id="salary" placeholder="e.g. $80,000 - $120,000 / year" required>
-            <p class="help-text">Be specific. Jobs with salary get 3x more applicants.</p>
-          </div>
-          <div class="form-group">
-            <label>Application URL or Email <span class="required">*</span></label>
-            <input type="text" id="apply_url" placeholder="https://... or jobs@company.com" required>
-          </div>
-        </div>
+<div class="form-group">
+<label for="company">Company Name <span>*</span></label>
+<input type="text" id="company" placeholder="e.g. TechGlobal Inc." required>
+</div>
 
-        <div class="form-group">
-          <label>Job Description <span class="required">*</span></label>
-          <textarea id="description" placeholder="Describe the role, responsibilities, requirements, and benefits..." required></textarea>
-          <p class="help-text">Minimum 200 characters. Include tech stack, experience needed, and perks.</p>
-        </div>
+<div class="form-row">
+<div class="form-group">
+<label for="salary">Salary Range <span>*</span></label>
+<input type="text" id="salary" placeholder="e.g. $5,000 - $7,000/month or ₦500,000 - ₦800,000" required>
+<small>Include currency: USD, EUR, GBP, or ₦</small>
+</div>
+<div class="form-group">
+<label for="job-type">Job Type <span>*</span></label>
+<select id="job-type" required>
+<option value="">Select type</option>
+<option value="Full-time">Full-time</option>
+<option value="Part-time">Part-time</option>
+<option value="Contract">Contract</option>
+<option value="Freelance">Freelance</option>
+</select>
+</div>
+</div>
 
-        <div class="form-group">
-          <label>Tags / Skills (comma separated)</label>
-          <input type="text" id="tags" placeholder="e.g. React, Node.js, AWS, Remote, Senior">
-          <p class="help-text">Helps candidates find your job. Max 10 tags.</p>
-        </div>
+<div class="form-group">
+<label for="description">Job Description <span>*</span></label>
+<textarea id="description" placeholder="Describe the role, responsibilities, requirements, and benefits..." required></textarea>
+<small>Minimum 100 characters. Be detailed to attract quality applicants.</small>
+</div>
 
-        <div class="form-group">
-          <label>Your Email <span class="required">*</span></label>
-          <input type="email" id="contact_email" placeholder="you@company.com" required>
-          <p class="help-text">We’ll send you applicant notifications here. Not shown publicly.</p>
-        </div>
+<div class="form-group">
+<label for="apply-url">Application URL or Email <span>*</span></label>
+<input type="text" id="apply-url" placeholder="https://yourcompany.com/careers or careers@company.com" required>
+<small>Where should candidates apply?</small>
+</div>
 
-        <h3 style="margin: 40px 0 20px; font-size: 22px;">Choose Your Listing Type</h3>
-        
-        <div class="pricing-options">
-          <div class="price-card" id="free-option" onclick="selectPlan('free')">
-            <div class="price-title">Basic Listing</div>
-            <div class="price-amount">Free <span>/ 30 days</span></div>
-            <ul class="price-features">
-              <li>Listed on job board</li>
-              <li>Shown in search results</li>
-              <li>Email to free subscribers</li>
-              <li>Basic applicant tracking</li>
-            </ul>
-          </div>
+<div class="form-group">
+<label for="poster-email">Your Email <span>*</span></label>
+<input type="email" id="poster-email" placeholder="your@company.com" required>
+<small>We'll send you applicants and updates to this email</small>
+</div>
 
-          <div class="price-card featured" id="featured-option" onclick="selectPlan('featured')">
-            <span class="popular-badge">RECOMMENDED</span>
-            <div class="price-title">Featured Listing</div>
-            <div class="price-amount" id="featured-price">₦5,000 <span>/ 30 days</span></div>
-            <ul class="price-features">
-              <li>Pinned to top of job board</li>
-              <li>Green "Featured" badge</li>
-              <li>Included in VIP daily emails</li>
-              <li>Social media promotion</li>
-              <li>5x more applicants</li>
-            </ul>
-          </div>
-        </div>
+<div class="pricing-box">
+<h3>Choose Your Posting Type</h3>
+<div class="pricing-options">
+<label class="pricing-option selected" for="free-post">
+<input type="radio" id="free-post" name="posting-type" value="free" checked>
+<div class="check"></div>
+<h4>Free Posting</h4>
+<div class="price">₦0 <span>Free</span></div>
+<ul>
+<li>Live for 30 days</li>
+<li>Basic visibility</li>
+<li>Email notifications</li>
+<li>Instant approval</li>
+</ul>
+</label>
 
-        <input type="hidden" id="listing_type" value="free">
+<label class="pricing-option" for="featured-post">
+<input type="radio" id="featured-post" name="posting-type" value="featured">
+<div class="check"></div>
+<h4>Featured Job</h4>
+<div class="price">₦5,000 <span>$5 USD</span></div>
+<ul>
+<li>Top of search results</li>
+<li>Green "Featured" badge</li>
+<li>7 days pinned placement</li>
+<li>5x more applicants</li>
+<li>VIP email inclusion</li>
+</ul>
+</label>
+</div>
+</div>
 
-        <div class="submit-section">
-          <button type="submit" class="btn btn-green" id="submit-btn">Post Job for Free</button>
-          <p class="terms">By posting, you agree to our <a href="legal.html#terms">Terms of Service</a> and <a href="legal.html#privacy">Privacy Policy</a></p>
-        </div>
-      </form>
-    </div>
+<div class="form-actions">
+<button type="button" class="btn btn-outline" onclick="resetForm()">Clear Form</button>
+<button type="submit" class="btn btn-green btn-large" id="submit-btn">Post Job Free</button>
+</div>
+</form>
+</div>
+</div>
+</section>
 
-    <!-- Success State -->
-    <div class="success-card hide" id="success-state">
-      <div class="success-icon">✓</div>
-      <h1>Job Posted Successfully!</h1>
-      <p id="success-msg">Your job has been submitted for review. It will go live within 1 hour.</p>
-      <a href="remote-jobs.html" class="btn">View All Jobs</a>
-      <a href="post-job.html" class="btn btn-green">Post Another Job</a>
-    </div>
-  </div>
+<div class="ad-wrap">
+<small>Advertisement</small>
+<script type="text/javascript">atOptions = {'key':'YOUR_KEY_HERE','format':'iframe','height':250,'width':300,'params':{}};</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY_HERE/invoke.js"></script>
+</div>
+
+<section class="section" style="background:var(--gray-100);">
+<div class="container">
+<h2 class="section-title">Why Post on RemotENG?</h2>
+<p class="section-subtitle">Reach qualified global talent faster</p>
+<div class="benefits-grid">
+<div class="benefit-card">
+<div class="benefit-icon">🌍</div>
+<h3>Global Reach</h3>
+<p>Access 50,000+ professionals across 150+ countries actively seeking remote opportunities.</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-icon">⚡</div>
+<h3>Fast Hiring</h3>
+<p>Average time to first quality applicant: 6 hours. Featured jobs get 5x more views.</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-icon">💰</div>
+<h3>Cost Effective</h3>
+<p>Free basic posting. Featured only ₦5,000/$5 vs $500+ on other job boards.</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-icon">✅</div>
+<h3>Quality Applicants</h3>
+<p>Pre-screened audience of professionals experienced in remote work and global collaboration.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="stats-section">
+<div class="container">
+<h2 class="section-title">RemotENG by the Numbers</h2>
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-number">50,000+</div>
+<div class="stat-label">Monthly Visitors</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">2,000+</div>
+<div class="stat-label">VIP Subscribers</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">500+</div>
+<div class="stat-label">Jobs Posted Monthly</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">73%</div>
+<div class="stat-label">Hire Rate for Featured</div>
+</div>
+</div>
+</div>
 </section>
 
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4>RemotENG</h4>
-        <p style="color:var(--gray-500); margin-bottom:16px;">Remote jobs worldwide. Work from anywhere.</p>
-        <p>Email: support@remoteng.com.ng</p>
-        <p>WhatsApp: +234 912 565 1147</p>
-        <p>Hours: 24/7 Online. Live chat 6am-9pm GMT+1</p>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <a href="remote-jobs.html">Browse Jobs</a>
-        <a href="tech-news.html">Tech News</a>
-        <a href="service.html">Services</a>
-        <a href="post-job.html">Post a Job</a>
-        <a href="save-job.html">Saved Jobs</a>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <a href="legal.html">About Us</a>
-        <a href="legal.html#privacy">Privacy Policy</a>
-        <a href="legal.html#terms">Terms of Service</a>
-        <a href="legal.html#disclaimer">Disclaimer</a>
-      </div>
-      <div>
-        <h4>Follow Us</h4>
-        <a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
-        <a href="https://t.me/latest_ng" target="_blank">Telegram</a>
-        <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 RemotENG. All rights reserved.</p>
-    </div>
-  </div>
+<div class="container">
+<div class="footer-grid">
+<div>
+<h4>RemotENG</h4>
+<p style="color:var(--gray-500); margin-bottom:20px;">Connecting professionals with global remote opportunities.</p>
+<p>Email: support@remoteng.com.ng</p>
+<p>WhatsApp: +234 912 565 1147</p>
+</div>
+<div>
+<h4>Quick Links</h4>
+<a href="remote-jobs.html">Browse Jobs</a>
+<a href="tech-news.html">Tech News</a>
+<a href="service.html">Services</a>
+<a href="post-job.html">Post a Job</a>
+<a href="save-job.html">Saved Jobs</a>
+</div>
+<div>
+<h4>Legal</h4>
+<a href="legal.html">About Us</a>
+<a href="legal.html#privacy">Privacy Policy</a>
+<a href="legal.html#terms">Terms of Service</a>
+</div>
+<div>
+<h4>Connect</h4>
+<a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
+<a href="https://t.me/latest_ng" target="_blank">Telegram</a>
+<a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 RemotENG. All rights reserved. Remote opportunities worldwide.</p>
+</div>
+</div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const SUPABASE_URL = 'https://rjftctmdtutqippjzaqf.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqZnRjdG1kdHV0cWlwcGp6YXFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcwNTUyNzUsImV4cCI6MjA5MjYzMTI3NX0.L1kI8MUuOjQss3HijiJRDrCMzTY5GUc32v3se41DJiI';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const API_URL = 'https://remoteng-api.onrender.com';
 
-let selectedPlan = 'free';
+document.querySelectorAll('input[name="posting-type"]').forEach(radio => {
+  radio.addEventListener('change', function() {
+    document.querySelectorAll('.pricing-option').forEach(opt => opt.classList.remove('selected'));
+    this.closest('.pricing-option').classList.add('selected');
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = this.value === 'featured'? 'Continue to Payment ₦5,000' : 'Post Job Free';
+  });
+});
 
-// Multi-currency detect
-fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{
-  let price = '₦5,000';
-  if(d.country_code === 'GB') price = '£5';
-  else if(['DE','FR','ES','IT','NL'].includes(d.country_code)) price = '€5';
-  else if(d.country_code !== 'NG') price = '$5';
-  document.getElementById('featured-price').innerHTML = `${price} <span>/ 30 days</span>`;
-}).catch(()=>{});
-
-function selectPlan(plan) {
-  selectedPlan = plan;
-  document.getElementById('listing_type').value = plan;
-  document.querySelectorAll('.price-card').forEach(c => c.classList.remove('selected'));
-  document.getElementById(plan + '-option').classList.add('selected');
-  
-  const btn = document.getElementById('submit-btn');
-  if (plan === 'featured') {
-    btn.textContent = 'Continue to Payment';
-    btn.classList.remove('btn-green');
-    btn.classList.add('btn-gold');
-  } else {
-    btn.textContent = 'Post Job for Free';
-    btn.classList.remove('btn-gold');
-    btn.classList.add('btn-green');
-  }
-}
-
-// Check if featured from URL
-const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.get('featured') === 'true') {
-  selectPlan('featured');
-} else {
-  selectPlan('free');
-}
-
-document.getElementById('post-job-form').onsubmit = async (e) => {
+document.getElementById('job-form').addEventListener('submit', async function(e) {
   e.preventDefault();
-  
+
+  const alertBox = document.getElementById('alert-box');
+  const submitBtn = document.getElementById('submit-btn');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Processing...';
+
   const jobData = {
-    title: document.getElementById('title').value,
-    company: document.getElementById('company').value,
-    company_url: document.getElementById('company_url').value,
-    type: document.getElementById('type').value,
-    location: document.getElementById('location').value,
-    salary: document.getElementById('salary').value,
-    apply_url: document.getElementById('apply_url').value,
-    description: document.getElementById('description').value,
-    tags: document.getElementById('tags').value.split(',').map(t => t.trim()).filter(t => t),
-    contact_email: document.getElementById('contact_email').value,
-    featured: selectedPlan === 'featured',
-    featured_until: selectedPlan === 'featured' ? new Date(Date.now() + 30*24*60*60*1000).toISOString() : null,
-    status: selectedPlan === 'featured' ? 'pending_payment' : 'pending_review',
-    created_at: new Date().toISOString()
+    title: document.getElementById('job-title').value.trim(),
+    company: document.getElementById('company').value.trim(),
+    salary: document.getElementById('salary').value.trim(),
+    description: document.getElementById('description').value.trim(),
+    url: document.getElementById('apply-url').value.trim(),
+    posted_by_email: document.getElementById('poster-email').value.trim(),
+    job_type: document.getElementById('job-type').value
   };
 
+  const postingType = document.querySelector('input[name="posting-type"]:checked').value;
+
+  if (jobData.description.length < 100) {
+    showAlert('Job description must be at least 100 characters', 'error');
+    submitBtn.disabled = false;
+    submitBtn.textContent = postingType === 'featured'? 'Continue to Payment ₦5,000' : 'Post Job Free';
+    return;
+  }
+
   try {
-    const { data, error } = await supabase.from('jobs').insert([jobData]).select();
-    
-    if (error) throw error;
-    
-    if (selectedPlan === 'featured') {
-      // Redirect to Selar for payment
-      const selarUrl = `https://selar.co/REMOTENG_FEATURED_JOB?job_id=${data[0].id}&email=${jobData.contact_email}`;
-      window.location.href = selarUrl;
+    if (postingType === 'free') {
+      const res = await fetch(`${API_URL}/api/post-job`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(jobData)
+      });
+
+      if (res.ok) {
+        showAlert('Success! Your job is now live. Check remote-jobs.html to see it.', 'success');
+        resetForm();
+        setTimeout(() => window.location.href = 'remote-jobs.html', 2000);
+      } else {
+        throw new Error('Failed to post job');
+      }
     } else {
-      // Show success for free posting
-      document.getElementById('job-form').classList.add('hide');
-      document.getElementById('success-state').classList.remove('hide');
-      window.scrollTo(0, 0);
+      const params = new URLSearchParams({
+        success: 'featured',
+        email: jobData.posted_by_email,
+        name: jobData.company,
+        amount: 5000,
+        tx_ref: 'TX_' + Date.now(),
+        title: jobData.title,
+        description: jobData.description,
+        salary: jobData.salary,
+        url: jobData.url
+      });
+
+      window.location.href = `https://selar.co/YOUR_FEATURED_LINK?${params.toString()}`;
     }
   } catch (err) {
-    alert('Error posting job: ' + err.message);
+    showAlert('Error posting job. Please try again or contact support@remoteng.com.ng', 'error');
+    submitBtn.disabled = false;
+    submitBtn.textContent = postingType === 'featured'? 'Continue to Payment ₦5,000' : 'Post Job Free';
   }
-};
-</script>
+});
 
+function showAlert(msg, type) {
+  const alertBox = document.getElementById('alert-box');
+  alertBox.textContent = msg;
+  alertBox.className = `alert ${type}`;
+  alertBox.style.display = 'block';
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function resetForm() {
+  document.getElementById('job-form').reset();
+  document.getElementById('free-post').checked = true;
+  document.querySelectorAll('.pricing-option').forEach(opt => opt.classList.remove('selected'));
+  document.querySelector('.pricing-option').classList.add('selected');
+  document.getElementById('submit-btn').textContent = 'Post Job Free';
+  document.getElementById('alert-box').style.display = 'none';
+}
+</script>
 </body>
 </html>
