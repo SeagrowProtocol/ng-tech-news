@@ -3,335 +3,256 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tech News & Remote Work Updates | RemotENG</title>
-<meta name="description" content="Latest tech news, remote work trends, career tips, and industry updates from around the world. Updated daily.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
-
+<title>Tech News & Career Insights - RemotENG</title>
+<meta name="description" content="Latest tech news, remote work trends, and career insights for global professionals. Stay updated with industry news from TechCrunch and more.">
+<meta property="og:title" content="Tech News & Career Insights - RemotENG">
+<meta property="og:description" content="Latest tech news, remote work trends, and career insights for global professionals.">
+<meta property="og:url" content="https://remoteng.com.ng/tech-news.html">
+<meta property="og:type" content="website">
+<link rel="icon" href="https://remoteng.com.ng/logo.png">
 <style>
 :root {
-  --blue-dark: #1e3a8a; --blue: #2563eb; --blue-light: #3b82f6; --green: #84cc16;
-  --gray-900: #111827; --gray-700: #374151; --gray-500: #6b7280; --gray-100: #f3f4f6; --white: #ffffff;
+  --blue-dark: #1e3a8a;
+  --blue: #3b82f6;
+  --blue-cloud: #60a5fa;
+  --green: #84cc16;
+  --gray-900: #111827;
+  --gray-700: #374151;
+  --gray-500: #6b7280;
+  --gray-100: #f3f4f6;
+  --white: #ffffff;
+  --red: #ef4444;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--gray-100); }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--white); }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-/* Header */
-header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
-.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.97); }
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo svg { width: 40px; height: 40px; }
-.logo-text { font-size: 24px; font-weight: 700; }
-.logo-text.dark { color: var(--blue-dark); }
-.logo-text.light { color: var(--blue); }
-.logo-text.green { color: var(--green); font-size: 14px; display: block; margin-top: -4px; }
-nav { display: flex; gap: 24px; align-items: center; }
-nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; }
+.logo img { width: 48px; height: 48px; }
+.logo-text { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
+.logo-text.remot { color: var(--blue-dark); }
+.logo-text.eng { color: var(--blue); }
+.logo-text.com { color: var(--green); font-size: 14px; display: block; margin-top: -5px; font-weight: 600; }
+nav { display: flex; gap: 30px; align-items: center; }
+nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; transition: color 0.2s; font-size: 15px; }
 nav a:hover, nav a.active { color: var(--blue); }
-.btn { background: var(--blue); color: var(--white); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; }
-.btn:hover { background: var(--blue-dark); }
-
-/* Search Bar */
-.search-section { background: var(--white); padding: 32px 0; border-bottom: 1px solid #e5e7eb; }
-.search-wrap { display: flex; gap: 12px; margin-bottom: 20px; }
-.search-wrap input { flex: 1; padding: 14px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 16px; }
-.filters { display: flex; gap: 12px; flex-wrap: wrap; }
-.filter-btn { padding: 8px 16px; border: 1px solid #d1d5db; background: var(--white); border-radius: 20px; cursor: pointer; font-size: 14px; }
-.filter-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
-
-/* News Grid */
-.news-section { padding: 40px 0; }
-.news-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-.news-count { color: var(--gray-500); }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
-.news-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; transition: all 0.2s; cursor: pointer; }
-.news-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-2px); }
-.news-img { width: 100%; height: 200px; object-fit: cover; background: var(--gray-100); }
-.news-content { padding: 20px; }
-.news-source { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
-.source-badge { background: var(--blue); color: var(--white); padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.btn { background: var(--blue-dark); color: var(--white); padding: 11px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; transition: all 0.2s; font-size: 15px; }
+.btn:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
+.btn-green { background: var(--green); color: var(--gray-900); }
+.btn-green:hover { background: #65a30d; box-shadow: 0 4px 12px rgba(132,204,22,0.3); }
+.page-header { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); color: var(--white); padding: 70px 0 50px; text-align: center; }
+.page-header h1 { font-size: 44px; margin-bottom: 14px; font-weight: 800; }
+.page-header p { font-size: 18px; opacity: 0.95; }
+.section { padding: 60px 0; }
+.news-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.news-count { font-size: 16px; color: var(--gray-700); font-weight: 500; }
+.filter-select { padding: 10px 16px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 15px; outline: none; cursor: pointer; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+.news-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; overflow: hidden; transition: all 0.3s; display: flex; flex-direction: column; }
+.news-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: var(--blue-cloud); }
+.news-card img { width: 100%; height: 210px; object-fit: cover; }
+.news-content { padding: 26px; flex: 1; display: flex; flex-direction: column; }
+.news-tag { display: inline-block; background: var(--gray-100); padding: 6px 14px; border-radius: 20px; font-size: 12px; margin-bottom: 12px; font-weight: 600; color: var(--blue-dark); width: fit-content; }
+.news-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--blue-dark); line-height: 1.3; }
+.news-excerpt { color: var(--gray-700); font-size: 15px; line-height: 1.6; margin-bottom: 18px; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.news-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 18px; border-top: 1px solid #e5e7eb; }
+.news-source { color: var(--gray-500); font-size: 13px; font-weight: 500; }
 .news-date { color: var(--gray-500); font-size: 13px; }
-.news-title { font-size: 18px; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; line-height: 1.4; }
-.news-desc { color: var(--gray-700); font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
-.news-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-.tag { background: var(--gray-100); padding: 4px 12px; border-radius: 20px; font-size: 12px; color: var(--gray-700); }
-.read-more { color: var(--blue); font-weight: 600; text-decoration: none; font-size: 14px; }
-.read-more:hover { text-decoration: underline; }
-
-/* Load More */
-.load-more { text-align: center; margin: 40px 0; }
-
-/* Footer */
-footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 20px; margin-top: 60px; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
-footer h4 { color: var(--white); margin-bottom: 16px; }
-footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 8px; }
-footer a:hover { color: var(--white); }
-.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 20px; text-align: center; color: var(--gray-500); }
-
-/* Ads */
-.ad-wrap { min-height: 50px; margin: 24px 0; text-align: center; }
-.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 4px; }
-
+.load-more { text-align: center; margin-top: 50px; }
+footer { background: var(--gray-900); color: var(--gray-100); padding: 90px 0 35px; margin-top: 90px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 55px; margin-bottom: 55px; }
+footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
+footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s; font-size: 15px; }
+footer a:hover { color: var(--blue-cloud); }
+.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
+.ad-wrap { min-height: 250px; margin: 50px 0; text-align: center; }
+.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
+.empty-state { text-align: center; padding: 80px 20px; color: var(--gray-500); }
+.empty-state h3 { font-size: 24px; color: var(--gray-700); margin-bottom: 12px; }
 @media (max-width: 768px) {
   nav { display: none; }
- .search-wrap { flex-direction: column; }
- .grid { grid-template-columns: 1fr; }
+.page-header h1 { font-size: 32px; }
+.news-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+.grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
-
 <header>
-  <div class="container">
-    <div class="header-inner">
-      <a href="index.html" class="logo">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <path d="M25 55 Q15 55 15 45 Q15 35 25 35 Q25 25 35 25 Q50 25 50 35 Q65 35 65 45 Q75 45 75 55 Q75 65 65 65 L25 65 Q15 65 15 55 Z" fill="#3b82f6"/>
-          <circle cx="70" cy="50" r="15" fill="none" stroke="#84cc16" stroke-width="3"/>
-          <path d="M70 35 Q75 42 70 50 Q65 58 70 65" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <path d="M55 50 L85 50" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <ellipse cx="70" cy="50" rx="8" ry="15" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <path d="M45 45 L45 60 L50 55 L55 60 L55 45 Z" fill="#84cc16"/>
-          <path d="M55 50 L60 55 L55 55 Z" fill="#84cc16"/>
-          <path d="M40 20 Q50 10 60 20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
-          <path d="M43 25 Q50 18 57 25" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-          <path d="M46 30 Q50 26 54 30" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-        <div class="logo-text">
-          <span class="dark">Remot</span><span class="light">eng</span>
-          <span class="green">.com.ng</span>
-        </div>
-      </a>
-      <nav>
-        <a href="remote-jobs.html">Jobs</a>
-        <a href="tech-news.html" class="active">News</a>
-        <a href="service.html">Services</a>
-        <a href="vip.html">VIP Alerts</a>
-        <a href="post-job.html">Post Job</a>
-        <a href="vip.html" class="btn">Get VIP</a>
-      </nav>
-    </div>
-  </div>
+<div class="container">
+<div class="header-inner">
+<a href="index.html" class="logo">
+<img src="https://remoteng.com.ng/logo.png" alt="RemotENG Logo">
+<div class="logo-text">
+<span class="remot">Remot</span><span class="eng">eng</span>
+<span class="com">.com.ng</span>
+</div>
+</a>
+<nav>
+<a href="remote-jobs.html">Jobs</a>
+<a href="tech-news.html" class="active">News</a>
+<a href="service.html">Services</a>
+<a href="vip.html">VIP Alerts</a>
+<a href="post-job.html">Post Job</a>
+<a href="https://selar.co/YOUR_VIP_LINK" class="btn">Get VIP</a>
+</nav>
+</div>
+</div>
 </header>
 
-<section class="search-section">
-  <div class="container">
-    <div class="search-wrap">
-      <input type="text" id="search-input" placeholder="Search tech news, remote work, career tips...">
-    </div>
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">All News</button>
-      <button class="filter-btn" data-filter="tech">Tech</button>
-      <button class="filter-btn" data-filter="remote-work">Remote Work</button>
-      <button class="filter-btn" data-filter="career">Career Tips</button>
-      <button class="filter-btn" data-filter="ai">AI & Future</button>
-      <button class="filter-btn" data-filter="startup">Startups</button>
-    </div>
-  </div>
+<section class="page-header">
+<div class="container">
+<h1>Tech News & Career Insights</h1>
+<p>Latest trends in tech, remote work, and professional development</p>
+</div>
 </section>
 
 <div class="ad-wrap">
-  <small>Advertisement</small>
-  <script type="text/javascript">
-    atOptions = {'key':'8f03f73691bf093a8d076af0d6d62212','format':'iframe','height':250,'width':300,'params':{}};
-  </script>
-  <script type="text/javascript" src="//www.highperformanceformat.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
+<small>Advertisement</small>
+<script type="text/javascript">atOptions = {'key':'YOUR_KEY_HERE','format':'iframe','height':250,'width':300,'params':{}};</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY_HERE/invoke.js"></script>
 </div>
 
-<section class="news-section">
-  <div class="container">
-    <div class="news-header">
-      <h2>Latest Tech & Remote Work News</h2>
-      <span class="news-count" id="news-count">Loading...</span>
-    </div>
-    <div class="grid" id="news-grid"></div>
-    <div class="load-more">
-      <button id="load-more-btn" class="btn" style="display:none;">Load More News</button>
-    </div>
-  </div>
+<section class="section">
+<div class="container">
+<div class="news-header">
+<div class="news-count" id="news-count">Loading news...</div>
+<select class="filter-select" id="source-filter" onchange="filterNews()">
+<option value="all">All Sources</option>
+<option value="TechCrunch">TechCrunch</option>
+</select>
+</div>
+<div class="grid" id="news-grid"></div>
+<div class="load-more" id="load-more-wrap" style="display:none;">
+<button class="btn btn-outline" onclick="loadMore()">Load More News</button>
+</div>
+</div>
 </section>
 
 <div class="ad-wrap">
-  <small>Advertisement</small>
-  <script type="text/javascript">
-    atOptions = {'key':'8f03f73691bf093a8d076af0d6d62212','format':'iframe','height':250,'width':300,'params':{}};
-  </script>
-  <script type="text/javascript" src="//www.highperformanceformat.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
+<small>Advertisement</small>
+<script type="text/javascript">atOptions = {'key':'YOUR_KEY_HERE','format':'iframe','height':250,'width':300,'params':{}};</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY_HERE/invoke.js"></script>
 </div>
 
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4>RemotENG</h4>
-        <p style="color:var(--gray-500); margin-bottom:16px;">Remote jobs worldwide. Work from anywhere.</p>
-        <p>Email: support@remoteng.com.ng</p>
-        <p>WhatsApp: +234 912 565 1147</p>
-        <p>Hours: 24/7 Online. Live chat 6am-9pm GMT+1</p>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <a href="remote-jobs.html">Browse Jobs</a>
-        <a href="tech-news.html">Tech News</a>
-        <a href="service.html">Services</a>
-        <a href="post-job.html">Post a Job</a>
-        <a href="save-job.html">Saved Jobs</a>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <a href="legal.html">About Us</a>
-        <a href="legal.html#privacy">Privacy Policy</a>
-        <a href="legal.html#terms">Terms of Service</a>
-        <a href="legal.html#disclaimer">Disclaimer</a>
-      </div>
-      <div>
-        <h4>Follow Us</h4>
-        <a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
-        <a href="https://t.me/latest_ng" target="_blank">Telegram</a>
-        <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 RemotENG. All rights reserved.</p>
-    </div>
-  </div>
+<div class="container">
+<div class="footer-grid">
+<div>
+<h4>RemotENG</h4>
+<p style="color:var(--gray-500); margin-bottom:20px;">Connecting professionals with global remote opportunities.</p>
+<p>Email: support@remoteng.com.ng</p>
+<p>WhatsApp: +234 912 565 1147</p>
+</div>
+<div>
+<h4>Quick Links</h4>
+<a href="remote-jobs.html">Browse Jobs</a>
+<a href="tech-news.html">Tech News</a>
+<a href="service.html">Services</a>
+<a href="post-job.html">Post a Job</a>
+<a href="save-job.html">Saved Jobs</a>
+</div>
+<div>
+<h4>Legal</h4>
+<a href="legal.html">About Us</a>
+<a href="legal.html#privacy">Privacy Policy</a>
+<a href="legal.html#terms">Terms of Service</a>
+</div>
+<div>
+<h4>Connect</h4>
+<a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
+<a href="https://t.me/latest_ng" target="_blank">Telegram</a>
+<a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 RemotENG. All rights reserved. Remote opportunities worldwide.</p>
+</div>
+</div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const SUPABASE_URL = 'https://rjftctmdtutqippjzaqf.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqZnRjdG1kdHV0cWlwcGp6YXFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcwNTUyNzUsImV4cCI6MjA5MjYzMTI3NX0.L1kI8MUuOjQss3HijiJRDrCMzTY5GUc32v3se41DJiI';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-let currentPage = 0;
-const pageSize = 12;
-let currentFilter = 'all';
-let currentSearch = '';
+const API_URL = 'https://remoteng-api.onrender.com';
 let allNews = [];
+let filteredNews = [];
+let displayedCount = 0;
+const NEWS_PER_PAGE = 12;
 
-async function loadNews(reset=false){
-  if(reset){ currentPage=0; allNews=[]; document.getElementById('news-grid').innerHTML=''; }
-  
-  let query = supabase.from('news').select('*', {count:'exact'});
-  
-  // Search
-  if(currentSearch) query = query.or(`title.ilike.%${currentSearch}%,summary.ilike.%${currentSearch}%,source.ilike.%${currentSearch}%`);
-  
-  // Filters - assuming you have a 'category' column
-  if(currentFilter!=='all') query = query.eq('category', currentFilter);
-  
-  // Sort newest
-  query = query.order('published_at',{ascending:false});
-  
-  // Pagination
-  query = query.range(currentPage*pageSize, (currentPage+1)*pageSize-1);
-  
-  const { data, count, error } = await query;
-  
-  if(data){
-    allNews = [...allNews,...data];
-    renderNews(data);
-    document.getElementById('news-count').textContent = `${count} articles found`;
-    document.getElementById('load-more-btn').style.display = data.length===pageSize? 'inline-block' : 'none';
+async function loadNews() {
+  try {
+    const res = await fetch(`${API_URL}/api/news`);
+    allNews = await res.json();
+    filterNews();
+  } catch (err) {
+    console.error('Failed to load news:', err);
+    document.getElementById('news-grid').innerHTML = '<div class="empty-state"><h3>Unable to load news</h3><p>Please refresh the page or try again later.</p></div>';
   }
 }
 
-function renderNews(news){
+function filterNews() {
+  const sourceFilter = document.getElementById('source-filter').value;
+
+  filteredNews = allNews.filter(item => {
+    if (sourceFilter === 'all') return true;
+    return (item.source || 'TechCrunch').toLowerCase().includes(sourceFilter.toLowerCase());
+  });
+
+  filteredNews.sort((a, b) => new Date(b.posted_at) - new Date(a.posted_at));
+
+  displayedCount = 0;
+  document.getElementById('news-grid').innerHTML = '';
+  document.getElementById('news-count').textContent = `${filteredNews.length} articles found`;
+  renderNews();
+}
+
+function renderNews() {
   const grid = document.getElementById('news-grid');
-  
-  news.forEach((item, idx)=>{
-    const desc = item.summary?.substring(0,140) + '...' || item.description?.substring(0,140) + '...' || '';
-    const img = item.image_url || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="200"%3E%3Crect fill="%23f3f4f6" width="400" height="200"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="%236b7280" font-family="sans-serif" font-size="16"%3ENo Image%3C/text%3E%3C/svg%3E';
-    
+  const newsToShow = filteredNews.slice(displayedCount, displayedCount + NEWS_PER_PAGE);
+
+  if (displayedCount === 0 && newsToShow.length === 0) {
+    grid.innerHTML = '<div class="empty-state"><h3>No news found</h3><p>Check back later for fresh updates.</p></div>';
+    document.getElementById('load-more-wrap').style.display = 'none';
+    return;
+  }
+
+  newsToShow.forEach(item => {
     const card = document.createElement('div');
     card.className = 'news-card';
-    card.onclick = ()=> trackClickAndOpen(item);
     card.innerHTML = `
-      <img src="${img}" alt="${item.title}" class="news-img" loading="lazy">
+      <img src="${item.image_url || 'https://via.placeholder.com/400x210?text=RemotENG+News'}" alt="${item.title}" loading="lazy">
       <div class="news-content">
-        <div class="news-source">
-          <span class="source-badge">${item.source || 'Tech News'}</span>
-          <span class="news-date">${timeAgo(item.published_at)}</span>
-        </div>
+        <span class="news-tag">${item.source || 'Tech News'}</span>
         <div class="news-title">${item.title}</div>
-        <div class="news-desc">${desc}</div>
-        <div class="news-tags">
-          ${item.tags?.map(t=>`<span class="tag">${t}</span>`).join('') || ''}
-        </div>
-        <div style="margin-top:12px;">
-          <span class="read-more">Read Full Article →</span>
+        <div class="news-excerpt">${item.content?.substring(0, 180)}...</div>
+        <div class="news-meta">
+          <span class="news-date">${timeAgo(item.posted_at)}</span>
+          <a href="${item.url}" target="_blank" rel="noopener" class="btn">Read Full Article</a>
         </div>
       </div>
     `;
     grid.appendChild(card);
-    
-    // Insert ad after item 6
-    if((allNews.length)%6===0 && allNews.length>0){
-      const adDiv = document.createElement('div');
-      adDiv.className='ad-wrap';
-      adDiv.style.gridColumn='1 / -1';
-      adDiv.innerHTML=`<small>Advertisement</small><div id="ad-news-${allNews.length}"></div>`;
-      grid.appendChild(adDiv);
-      const script1=document.createElement('script');
-      script1.text='atOptions={"key":"8f03f73691bf093a8d076af0d6d62212","format":"iframe","height":250,"width":300,"params":{}};';
-      const script2=document.createElement('script');
-      script2.src='//www.highperformanceformat.com/8f03f73691bf093a8d076af0d6d62212/invoke.js';
-      document.getElementById(`ad-news-${allNews.length}`).append(script1,script2);
-    }
   });
+
+  displayedCount += newsToShow.length;
+  document.getElementById('load-more-wrap').style.display = displayedCount < filteredNews.length? 'block' : 'none';
 }
 
-function timeAgo(date){
+function loadMore() {
+  renderNews();
+}
+
+function timeAgo(date) {
   const seconds = Math.floor((new Date() - new Date(date)) / 1000);
-  const intervals = {year:31536000,month:2592000,week:604800,day:86400,hour:3600,minute:60};
-  for(let i in intervals){ const c=Math.floor(seconds/intervals[i]); if(c>0) return c+i[0]+' ago'; }
-  return 'just now';
+  const intervals = {year: 31536000, month: 2592000, week: 604800, day: 86400, hour: 3600, minute: 60};
+  for (let i in intervals) {
+    const c = Math.floor(seconds / intervals[i]);
+    if (c > 0) return c + ' ' + i + (c > 1? 's' : '') + ' ago';
+  }
+  return 'Just now';
 }
 
-async function trackClickAndOpen(item){
-  // Track click to Supabase
-  await supabase.from('clicks').insert({
-    type: 'news',
-    item_id: item.id,
-    url: item.url,
-    timestamp: new Date().toISOString()
-  });
-  // Open in new tab
-  window.open(item.url, '_blank');
-}
-
-// Event listeners
-document.getElementById('search-input').oninput = e=>{ currentSearch=e.target.value; loadNews(true); };
-document.querySelectorAll('.filter-btn').forEach(btn=>{
-  btn.onclick = ()=>{
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    currentFilter = btn.dataset.filter;
-    loadNews(true);
-  };
-});
-document.getElementById('load-more-btn').onclick = ()=>{ currentPage++; loadNews(); };
-
-// URL search param
-const urlParams = new URLSearchParams(window.location.search);
-if(urlParams.get('q')){ 
-  currentSearch=urlParams.get('q'); 
-  document.getElementById('search-input').value=currentSearch; 
-}
-
-loadNews(true);
+loadNews();
 </script>
-
-<!-- Schema -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"ItemList",
-  "name":"Tech News & Remote Work Updates",
-  "url":"https://remoteng.com.ng/tech-news.html"
-}
-</script>
-
 </body>
 </html>
