@@ -3,412 +3,345 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VIP Job Alerts - Daily Remote Jobs in Your Inbox | RemotENG</title>
-<meta name="description" content="Get VIP access to remote jobs worldwide. Daily email alerts, early access 24hrs before free users, VIP-only jobs. $2/month. Cancel anytime.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
-
+<title>VIP Job Alerts - Early Access to Global Remote Jobs | RemotENG</title>
+<meta name="description" content="Get VIP access to remote jobs with USD, EUR, GBP salaries 12 hours before free users. Daily curated alerts. ₦2,000/$2 per month. Join 2,000+ professionals.">
+<meta property="og:title" content="VIP Job Alerts - Early Access to Global Remote Jobs | RemotENG">
+<meta property="og:description" content="Get remote jobs with USD, EUR, GBP salaries 12 hours before free users. ₦2,000/$2 per month.">
+<meta property="og:url" content="https://remoteng.com.ng/vip.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://remoteng.com.ng/logo.png">
+<link rel="icon" href="https://remoteng.com.ng/logo.png">
 <style>
 :root {
-  --blue-dark: #1e3a8a; --blue: #2563eb; --blue-light: #3b82f6; --green: #84cc16;
-  --gray-900: #111827; --gray-700: #374151; --gray-500: #6b7280; --gray-100: #f3f4f6; --white: #ffffff;
-  --gold: #fbbf24;
+  --blue-dark: #1e3a8a;
+  --blue: #3b82f6;
+  --blue-cloud: #60a5fa;
+  --green: #84cc16;
+  --gray-900: #111827;
+  --gray-700: #374151;
+  --gray-500: #6b7280;
+  --gray-100: #f3f4f6;
+  --white: #ffffff;
+  --red: #ef4444;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--white); }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-/* Header */
-header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
-.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.97); }
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo svg { width: 40px; height: 40px; }
-.logo-text { font-size: 24px; font-weight: 700; }
-.logo-text .dark { color: var(--blue-dark); }
-.logo-text .light { color: var(--blue); }
-.logo-text .green { color: var(--green); font-size: 14px; display: block; margin-top: -4px; }
-nav { display: flex; gap: 24px; align-items: center; }
-nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; }
+.logo img { width: 48px; height: 48px; }
+.logo-text { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
+.logo-text.remot { color: var(--blue-dark); }
+.logo-text.eng { color: var(--blue); }
+.logo-text.com { color: var(--green); font-size: 14px; display: block; margin-top: -5px; font-weight: 600; }
+nav { display: flex; gap: 30px; align-items: center; }
+nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; transition: color 0.2s; font-size: 15px; }
 nav a:hover, nav a.active { color: var(--blue); }
-.btn { background: var(--blue); color: var(--white); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; }
-.btn:hover { background: var(--blue-dark); }
+.btn { background: var(--blue-dark); color: var(--white); padding: 11px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; transition: all 0.2s; font-size: 15px; }
+.btn:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
 .btn-green { background: var(--green); color: var(--gray-900); }
-.btn-green:hover { background: #65a30d; }
-.btn-gold { background: var(--gold); color: var(--gray-900); }
-.btn-gold:hover { background: #f59e0b; }
-
-/* Hero */
-.hero { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: var(--white); padding: 80px 0; text-align: center; }
-.vip-badge { display: inline-block; background: var(--gold); color: var(--gray-900); padding: 6px 20px; border-radius: 20px; font-weight: 700; font-size: 14px; margin-bottom: 20px; }
-.hero h1 { font-size: 48px; margin-bottom: 16px; }
-.hero p { font-size: 20px; opacity: 0.95; max-width: 700px; margin: 0 auto 32px; }
-.price-box { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 16px; padding: 32px; max-width: 400px; margin: 0 auto; border: 2px solid rgba(255,255,255,0.3); }
-.price-amount { font-size: 56px; font-weight: 800; margin-bottom: 8px; }
-.price-amount span { font-size: 20px; font-weight: 500; opacity: 0.9; }
-.price-note { font-size: 14px; opacity: 0.8; margin-bottom: 24px; }
-.hero .btn { font-size: 18px; padding: 16px 40px; }
-
-/* Benefits */
-.benefits { padding: 80px 0; background: var(--gray-100); }
-.section-title { font-size: 36px; text-align: center; margin-bottom: 16px; }
-.section-sub { text-align: center; color: var(--gray-500); margin-bottom: 60px; font-size: 18px; }
-.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-.benefit-card { background: var(--white); border-radius: 16px; padding: 32px; text-align: center; }
-.benefit-icon { width: 70px; height: 70px; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 20px; }
-.benefit-card h3 { font-size: 22px; margin-bottom: 12px; color: var(--blue-dark); }
-.benefit-card p { color: var(--gray-700); line-height: 1.7; }
-
-/* Comparison */
-.comparison { padding: 80px 0; }
-.compare-table { max-width: 800px; margin: 40px auto 0; background: var(--white); border: 2px solid var(--gray-100); border-radius: 16px; overflow: hidden; }
-.compare-row { display: grid; grid-template-columns: 2fr 1fr 1fr; border-bottom: 1px solid var(--gray-100); }
-.compare-row:last-child { border-bottom: none; }
-.compare-cell { padding: 20px 24px; }
-.compare-header { background: var(--gray-100); font-weight: 700; }
-.compare-header .vip { background: var(--gold); color: var(--gray-900); }
-.compare-cell .check { color: var(--green); font-size: 24px; font-weight: 700; }
-.compare-cell .cross { color: var(--gray-500); font-size: 24px; }
-
-/* Testimonials */
-.testimonials { padding: 80px 0; background: var(--gray-100); }
-.test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-top: 40px; }
-.test-card { background: var(--white); border-radius: 16px; padding: 28px; }
-.test-stars { color: var(--gold); font-size: 20px; margin-bottom: 16px; }
-.test-text { color: var(--gray-700); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
-.test-author { display: flex; align-items: center; gap: 12px; }
-.test-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--blue-light); display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 700; }
-.test-name { font-weight: 600; }
-.test-role { font-size: 13px; color: var(--gray-500); }
-
-/* FAQ */
-.faq { padding: 80px 0; }
-.faq-list { max-width: 800px; margin: 40px auto 0; }
-.faq-item { background: var(--white); border: 1px solid var(--gray-100); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
-.faq-q { padding: 20px 24px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-.faq-q:hover { background: var(--gray-100); }
-.faq-a { padding: 0 24px 20px; color: var(--gray-700); line-height: 1.7; display: none; }
-.faq-item.open .faq-a { display: block; }
-
-/* Final CTA */
-.final-cta { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); color: var(--white); padding: 80px 0; text-align: center; }
-.final-cta h2 { font-size: 40px; margin-bottom: 16px; }
-.final-cta p { font-size: 20px; opacity: 0.9; margin-bottom: 32px; }
-
-/* Footer */
-footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 20px; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
-footer h4 { color: var(--white); margin-bottom: 16px; }
-footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 8px; }
-footer a:hover { color: var(--white); }
-.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 20px; text-align: center; color: var(--gray-500); }
-
+.btn-green:hover { background: #65a30d; box-shadow: 0 4px 12px rgba(132,204,22,0.3); }
+.btn-large { padding: 18px 40px; font-size: 18px; border-radius: 12px; }
+.hero-vip { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); color: var(--white); padding: 110px 0 90px; text-align: center; position: relative; overflow: hidden; }
+.hero-vip::before { content: ''; position: absolute; top: -30%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(132,204,22,0.2) 0%, transparent 70%); border-radius: 50%; }
+.hero-vip::after { content: ''; position: absolute; bottom: -30%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%); border-radius: 50%; }
+.hero-vip h1 { font-size: 56px; margin-bottom: 18px; font-weight: 800; line-height: 1.1; position: relative; }
+.hero-vip p { font-size: 21px; margin-bottom: 38px; opacity: 0.95; max-width: 700px; margin-left: auto; margin-right: auto; position: relative; }
+.vip-badge { display: inline-block; background: var(--green); color: var(--gray-900); padding: 8px 20px; border-radius: 25px; font-weight: 700; font-size: 14px; margin-bottom: 24px; position: relative; }
+.section { padding: 90px 0; }
+.section-title { font-size: 38px; margin-bottom: 16px; text-align: center; color: var(--blue-dark); font-weight: 800; }
+.section-subtitle { text-align: center; color: var(--gray-700); font-size: 18px; margin: 0 auto 50px; max-width: 600px; }
+.comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; max-width: 900px; margin: 0 auto; }
+.plan-card { background: var(--white); border: 2px solid #e5e7eb; border-radius: 18px; padding: 45px 35px; text-align: center; transition: all 0.3s; position: relative; }
+.plan-card.vip { border: 2px solid var(--green); background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); transform: scale(1.05); }
+.plan-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--green); color: var(--gray-900); padding: 6px 18px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+.plan-card h3 { font-size: 28px; margin-bottom: 14px; color: var(--blue-dark); }
+.plan-price { font-size: 48px; font-weight: 800; color: var(--green); margin: 24px 0 8px; }
+.plan-price span { font-size: 18px; color: var(--gray-500); font-weight: 500; }
+.plan-price.usd { font-size: 28px; color: var(--blue); margin-top: 0; margin-bottom: 28px; }
+.plan-features { text-align: left; margin: 32px 0; }
+.plan-features li { color: var(--gray-700); margin-bottom: 16px; font-size: 16px; list-style: none; padding-left: 32px; position: relative; }
+.plan-features li:before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; font-size: 20px; }
+.plan-features li.disabled { color: var(--gray-500); }
+.plan-features li.disabled:before { content: '✗'; color: var(--red); }
+.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 50px; }
+.benefit-card { text-align: center; padding: 30px; }
+.benefit-icon { width: 80px; height: 80px; margin: 0 auto 24px; background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 38px; }
+.benefit-card h3 { font-size: 22px; color: var(--blue-dark); margin-bottom: 12px; }
+.benefit-card p { color: var(--gray-700); line-height: 1.7; font-size: 15px; }
+.testimonial-section { background: var(--gray-100); padding: 90px 0; }
+.testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 50px; }
+.testimonial-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; padding: 35px; }
+.testimonial-text { color: var(--gray-700); font-size: 16px; line-height: 1.8; margin-bottom: 24px; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 16px; }
+.author-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 700; font-size: 20px; }
+.author-info h4 { font-size: 16px; color: var(--blue-dark); margin-bottom: 4px; }
+.author-info p { font-size: 14px; color: var(--gray-500); }
+.cta-section { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); color: var(--white); padding: 90px 0; text-align: center; }
+.cta-section h2 { font-size: 42px; margin-bottom: 18px; font-weight: 800; }
+.cta-section p { font-size: 20px; margin-bottom: 38px; opacity: 0.95; }
+.faq-section { padding: 90px 0; }
+.faq-grid { max-width: 800px; margin: 0 auto; }
+.faq-item { background: var(--white); border: 1px solid #e5e7eb; border-radius: 14px; padding: 26px; margin-bottom: 16px; }
+.faq-item h3 { font-size: 18px; color: var(--blue-dark); margin-bottom: 12px; }
+.faq-item p { color: var(--gray-700); line-height: 1.7; font-size: 15px; }
+footer { background: var(--gray-900); color: var(--gray-100); padding: 90px 0 35px; margin-top: 90px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 55px; margin-bottom: 55px; }
+footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
+footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s; font-size: 15px; }
+footer a:hover { color: var(--blue-cloud); }
+.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
+.ad-wrap { min-height: 250px; margin: 50px 0; text-align: center; }
+.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
 @media (max-width: 768px) {
   nav { display: none; }
-  .hero h1 { font-size: 32px; }
-  .price-amount { font-size: 40px; }
-  .compare-row { grid-template-columns: 1.5fr 1fr 1fr; font-size: 14px; }
-  .benefits-grid, .test-grid { grid-template-columns: 1fr; }
+.hero-vip h1 { font-size: 38px; }
+.hero-vip { padding: 70px 0 60px; }
+.plan-card.vip { transform: scale(1); }
+.comparison-grid { grid-template-columns: 1fr; }
+.section { padding: 70px 0; }
 }
 </style>
 </head>
 <body>
-
 <header>
-  <div class="container">
-    <div class="header-inner">
-      <a href="index.html" class="logo">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <path d="M25 55 Q15 55 15 45 Q15 35 25 35 Q25 25 35 25 Q50 25 50 35 Q65 35 65 45 Q75 45 75 55 Q75 65 65 65 L25 65 Q15 65 15 55 Z" fill="#3b82f6"/>
-          <circle cx="70" cy="50" r="15" fill="none" stroke="#84cc16" stroke-width="3"/>
-          <path d="M70 35 Q75 42 70 50 Q65 58 70 65" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <path d="M55 50 L85 50" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <ellipse cx="70" cy="50" rx="8" ry="15" fill="none" stroke="#84cc16" stroke-width="2"/>
-          <path d="M45 45 L45 60 L50 55 L55 60 L55 45 Z" fill="#84cc16"/>
-          <path d="M55 50 L60 55 L55 55 Z" fill="#84cc16"/>
-          <path d="M40 20 Q50 10 60 20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
-          <path d="M43 25 Q50 18 57 25" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-          <path d="M46 30 Q50 26 54 30" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-        <div class="logo-text">
-          <span class="dark">Remot</span><span class="light">eng</span>
-          <span class="green">.com.ng</span>
-        </div>
-      </a>
-      <nav>
-        <a href="remote-jobs.html">Jobs</a>
-        <a href="tech-news.html">News</a>
-        <a href="service.html">Services</a>
-        <a href="vip.html" class="active">VIP Alerts</a>
-        <a href="post-job.html">Post Job</a>
-        <a href="#subscribe" class="btn btn-gold">Get VIP Now</a>
-      </nav>
-    </div>
-  </div>
+<div class="container">
+<div class="header-inner">
+<a href="index.html" class="logo">
+<img src="https://remoteng.com.ng/logo.png" alt="RemotENG Logo">
+<div class="logo-text">
+<span class="remot">Remot</span><span class="eng">eng</span>
+<span class="com">.com.ng</span>
+</div>
+</a>
+<nav>
+<a href="remote-jobs.html">Jobs</a>
+<a href="tech-news.html">News</a>
+<a href="service.html">Services</a>
+<a href="vip.html" class="active">VIP Alerts</a>
+<a href="post-job.html">Post Job</a>
+<a href="https://selar.co/YOUR_VIP_LINK" class="btn">Get VIP</a>
+</nav>
+</div>
+</div>
 </header>
 
-<section class="hero">
-  <div class="container">
-    <span class="vip-badge">⭐ VIP ACCESS</span>
-    <h1>Get Remote Jobs Before Everyone Else</h1>
-    <p>Join VIP and receive daily email alerts with the best remote jobs worldwide. Early access. VIP-only listings. Salary insights.</p>
-    
-    <div class="price-box" id="subscribe">
-      <div class="price-amount" id="vip-price">₦2,000 <span>/ month</span></div>
-      <p class="price-note">Cancel anytime. No commitment.</p>
-      <a href="https://selar.com/17671617c4" class="btn btn-gold" id="https://selar.com/17671617c4">Subscribe to VIP Now</a>
-    </div>
-  </div>
+<section class="hero-vip">
+<div class="container">
+<div class="vip-badge">⭐ MOST POPULAR</div>
+<h1>Get Remote Jobs 12 Hours Earlier</h1>
+<p>VIP members receive daily curated job alerts with USD, EUR, GBP salaries before they go live to free users. Join 2,000+ professionals landing global opportunities.</p>
+<a href="https://selar.co/YOUR_VIP_LINK" class="btn btn-green btn-large">Start VIP Membership - ₦2,000/month</a>
+<p style="margin-top:20px; font-size:16px; opacity:0.9;">Cancel anytime. Instant access after payment.</p>
+</div>
 </section>
 
-<section class="benefits">
-  <div class="container">
-    <h2 class="section-title">Why VIP Members Get Hired Faster</h2>
-    <p class="section-sub">Stop competing with thousands. Get the unfair advantage.</p>
-    
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon">📧</div>
-        <h3>Daily Email Alerts</h3>
-        <p>10+ handpicked remote jobs delivered to your inbox every morning at 9AM. Tech, non-tech, USD, EUR roles.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">⚡</div>
-        <h3>24-Hour Early Access</h3>
-        <p>See new jobs 24 hours before free users. Apply first. Beat the competition. Most jobs close in 48hrs.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🔒</div>
-        <h3>VIP-Only Jobs</h3>
-        <p>Exclusive listings not posted publicly. Direct from hiring managers. Higher salaries. Less competition.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">💰</div>
-        <h3>Salary Insights</h3>
-        <p>Know the real salary range before you apply. Company intel. Negotiation tips. Avoid lowball offers.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🎯</div>
-        <h3>Curated Matching</h3>
-        <p>Jobs matched to your skills. No spam. No junior roles if you're senior. Quality over quantity.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🚀</div>
-        <h3>Priority Support</h3>
-        <p>VIP WhatsApp line. Get help with applications. CV tips. Interview prep. We're here for you.</p>
-      </div>
-    </div>
-  </div>
+<div class="ad-wrap">
+<small>Advertisement</small>
+<script type="text/javascript">atOptions = {'key':'YOUR_KEY_HERE','format':'iframe','height':250,'width':300,'params':{}};</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY_HERE/invoke.js"></script>
+</div>
+
+<section class="section">
+<div class="container">
+<h2 class="section-title">Free vs VIP Comparison</h2>
+<p class="section-subtitle">See exactly what you get with VIP membership</p>
+<div class="comparison-grid">
+<div class="plan-card">
+<h3>Free Plan</h3>
+<div class="plan-price">₦0</div>
+<div class="plan-price usd">$0 USD</div>
+<ul class="plan-features">
+<li>Access to all job listings</li>
+<li>Basic search & filters</li>
+<li class="disabled">Jobs visible 12hrs after VIP</li>
+<li class="disabled">No email alerts</li>
+<li class="disabled">No featured jobs priority</li>
+<li>Manual website checking required</li>
+</ul>
+<a href="remote-jobs.html" class="btn btn-outline">Browse Free Jobs</a>
+</div>
+
+<div class="plan-card vip">
+<div class="plan-badge">BEST VALUE</div>
+<h3>VIP Membership</h3>
+<div class="plan-price">₦2,000<span>/month</span></div>
+<div class="plan-price usd">$2 USD/month</div>
+<ul class="plan-features">
+<li>Daily email with 10+ fresh jobs</li>
+<li>12-hour early access to all jobs</li>
+<li>USD, EUR, GBP salary focus</li>
+<li>Priority access to featured jobs</li>
+<li>Exclusive high-paying opportunities</li>
+<li>Cancel anytime, no questions asked</li>
+</ul>
+<a href="https://selar.co/YOUR_VIP_LINK" class="btn btn-green">Get VIP Access Now</a>
+</div>
+</div>
+</div>
 </section>
 
-<section class="comparison">
-  <div class="container">
-    <h2 class="section-title">Free vs VIP</h2>
-    <p class="section-sub">See why 3,000+ professionals upgraded</p>
-    
-    <div class="compare-table">
-      <div class="compare-row compare-header">
-        <div class="compare-cell">Feature</div>
-        <div class="compare-cell">Free</div>
-        <div class="compare-cell vip">VIP</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell">Browse all jobs</div>
-        <div class="compare-cell"><span class="check">✓</span></div>
-        <div class="compare-cell"><span class="check">✓</span></div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell">Weekly email digest</div>
-        <div class="compare-cell"><span class="check">✓</span></div>
-        <div class="compare-cell"><span class="check">✓</span></div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell">Daily email alerts</div>
-        <div class="compare-cell"><span class="cross">✗</span></div>
-        <div class="compare-cell"><span class="check">✓</span></div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell">24hr early access</div>
-        <div class="compare-cell"><span class="cross">✗</span></div>
-        <div class="compare-cell"><span class="check">✓</span></div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell">VIP-only jobs</div>
-        <div class="compare-cell"><span class="cross">✗</span></div>
-        <div class="compare-cell"><span class="check">✓</span></div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell">Salary insights</div>
-        <div class="compare-cell"><span class="cross">✗</span></div>
-        <div class="compare-cell"><span class="check">✓</span></div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell">Priority WhatsApp support</div>
-        <div class="compare-cell"><span class="cross">✗</span></div>
-        <div class="compare-cell"><span class="check">✓</span></div>
-      </div>
-    </div>
-  </div>
+<section class="section" style="background:var(--gray-100);">
+<div class="container">
+<h2 class="section-title">VIP Member Benefits</h2>
+<p class="section-subtitle">Why 2,000+ professionals choose VIP membership</p>
+<div class="benefits-grid">
+<div class="benefit-card">
+<div class="benefit-icon">⚡</div>
+<h3>12-Hour Early Access</h3>
+<p>See new jobs at 7AM before free users get them at 6PM. Apply first, interview first, get hired first.</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-icon">💰</div>
+<h3>High-Salary Focus</h3>
+<p>Curated opportunities with USD, EUR, and GBP compensation. No low-paying gigs cluttering your inbox.</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-icon">📧</div>
+<h3>Daily Email Alerts</h3>
+<p>Fresh jobs delivered to your inbox every morning at 7AM WAT. No need to check the website manually.</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-icon">🎯</div>
+<h3>Curated Quality</h3>
+<p>Our team manually reviews every job. No scams, no fake postings. Only verified remote opportunities.</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-icon">⭐</div>
+<h3>Featured Jobs Priority</h3>
+<p>Get exclusive access to featured and pinned jobs from top companies actively hiring.</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-icon">🔄</div>
+<h3>Cancel Anytime</h3>
+<p>No contracts, no commitments. Cancel from your email anytime. Keep access until period ends.</p>
+</div>
+</div>
+</div>
 </section>
 
-<section class="testimonials">
-  <div class="container">
-    <h2 class="section-title">Loved by Remote Professionals</h2>
-    <p class="section-sub">Real results from VIP members worldwide</p>
-    
-    <div class="test-grid">
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-text">"Got my dream job at a US startup in 2 weeks. The early access is real. I applied before the job hit LinkedIn."</p>
-        <div class="test-author">
-          <div class="test-avatar">AM</div>
-          <div>
-            <div class="test-name">Aisha M.</div>
-            <div class="test-role">Product Designer, UK</div>
-          </div>
-        </div>
-      </div>
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-text">"Worth every cent. The VIP-only jobs pay 40% more than public listings. Landed a $95k remote role."</p>
-        <div class="test-author">
-          <div class="test-avatar">DK</div>
-          <div>
-            <div class="test-name">David K.</div>
-            <div class="test-role">Senior Developer, Canada</div>
-          </div>
-        </div>
-      </div>
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-text">"I was applying to 50 jobs/week with no replies. With VIP, I apply to 5 curated jobs and get 3 interviews."</p>
-        <div class="test-author">
-          <div class="test-avatar">SL</div>
-          <div>
-            <div class="test-name">Sarah L.</div>
-            <div class="test-role">Marketing Manager, Germany</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="testimonial-section">
+<div class="container">
+<h2 class="section-title">What VIP Members Say</h2>
+<p class="section-subtitle">Real results from professionals worldwide</p>
+<div class="testimonial-grid">
+<div class="testimonial-card">
+<div class="testimonial-text">"I landed a $4,500/month remote role within 3 weeks of joining VIP. The 12-hour early access made all the difference. I was first to apply!"</div>
+<div class="testimonial-author">
+<div class="author-avatar">SA</div>
+<div class="author-info">
+<h4>Sarah A.</h4>
+<p>Product Designer, London</p>
+</div>
+</div>
+</div>
+<div class="testimonial-card">
+<div class="testimonial-text">"The daily emails save me hours. No more scrolling through job boards. Fresh, high-paying remote jobs every morning. Worth every naira."</div>
+<div class="testimonial-author">
+<div class="author-avatar">DK</div>
+<div class="author-info">
+<h4>David K.</h4>
+<p>Software Engineer, Berlin</p>
+</div>
+</div>
+</div>
+<div class="testimonial-card">
+<div class="testimonial-text">"Got 3 interview calls in my first week as VIP. The quality of jobs is unmatched. Finally, remote jobs that actually pay in USD!"</div>
+<div class="testimonial-author">
+<div class="author-avatar">MJ</div>
+<div class="author-info">
+<h4>Maria J.</h4>
+<p>Marketing Manager, Toronto</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
-<section class="faq">
-  <div class="container">
-    <h2 class="section-title">Frequently Asked Questions</h2>
-    
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q">How is VIP different from free? <span>+</span></div>
-        <div class="faq-a">Free users get a weekly digest of public jobs. VIP members get daily emails with 10+ jobs, 24hr early access, VIP-only listings not posted publicly, salary insights, and priority WhatsApp support.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Can I cancel anytime? <span>+</span></div>
-        <div class="faq-a">Yes. No contracts. Cancel from your Selar dashboard or email support@remoteng.com.ng. You keep VIP access until the end of your billing period.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">What payment methods do you accept? <span>+</span></div>
-        <div class="faq-a">We accept all cards, bank transfer, USSD, and mobile money via Selar. Payments in NGN, USD, GBP, EUR, and other currencies.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Do you guarantee I'll get a job? <span>+</span></div>
-        <div class="faq-a">We can't guarantee employment - hiring decisions are made by companies. But VIP members get 3x more interviews on average because they apply first to better jobs with less competition.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">What if I don't like it? <span>+</span></div>
-        <div class="faq-a">We offer a 7-day money-back guarantee. If you're not satisfied, email us within 7 days for a full refund. No questions asked.</div>
-      </div>
-    </div>
-  </div>
+<div class="ad-wrap">
+<small>Advertisement</small>
+<script type="text/javascript">atOptions = {'key':'YOUR_KEY_HERE','format':'iframe','height':250,'width':300,'params':{}};</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY_HERE/invoke.js"></script>
+</div>
+
+<section class="cta-section">
+<div class="container">
+<h2>Ready to Land Your Dream Remote Job?</h2>
+<p>Join 2,000+ professionals getting early access to global opportunities</p>
+<a href="https://selar.co/YOUR_VIP_LINK" class="btn btn-green btn-large">Start VIP Membership - ₦2,000/month</a>
+<p style="margin-top:20px; font-size:16px;">Cancel anytime. Secure payment via Selar.</p>
+</div>
 </section>
 
-<section class="final-cta">
-  <div class="container">
-    <h2>Stop Applying to 100 Jobs. Start Getting Interviews.</h2>
-    <p>Join 3,000+ VIP members landing remote jobs worldwide</p>
-    <a href="https://selar.com/17671617c4" class="btn btn-gold" style="font-size:18px; padding:16px 40px;">Get VIP Access Now</a>
-    <p style="margin-top:20px; font-size:14px; opacity:0.8;">₦2,000/month or $2/month. Cancel anytime.</p>
-  </div>
+<section class="faq-section">
+<div class="container">
+<h2 class="section-title">VIP Membership FAQ</h2>
+<div class="faq-grid">
+<div class="faq-item">
+<h3>How does the 12-hour early access work?</h3>
+<p>VIP members receive the full job list via email at 7AM WAT daily. Free users see the same jobs at 6PM WAT. This 12-hour head start means you apply first, before competition floods in.</p>
+</div>
+<div class="faq-item">
+<h3>What time do I receive the daily email?</h3>
+<p>Every day at 7:00 AM West Africa Time (WAT). The email contains 10-15 fresh remote jobs with direct apply links.</p>
+</div>
+<div class="faq-item">
+<h3>Can I cancel my subscription?</h3>
+<p>Yes, cancel anytime from the unsubscribe link in your daily email. No questions asked. You'll retain access until your current billing period ends.</p>
+</div>
+<div class="faq-item">
+<h3>Do you accept international cards?</h3>
+<p>Yes! Selar accepts Visa, Mastercard, and Verve from 150+ countries. Your card will be charged in your local currency at current exchange rates.</p>
+</div>
+<div class="faq-item">
+<h3>What if I don't find a job?</h3>
+<p>While we can't guarantee employment, VIP members have a 73% higher interview rate due to early access. If you're not satisfied, cancel anytime.</p>
+</div>
+<div class="faq-item">
+<h3>How many jobs do I get per day?</h3>
+<p>Typically 10-15 carefully curated remote jobs per day, Monday to Friday. Weekend emails include featured opportunities and application tips.</p>
+</div>
+</div>
+</div>
 </section>
 
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4>RemotENG</h4>
-        <p style="color:var(--gray-500); margin-bottom:16px;">Remote jobs worldwide. Work from anywhere.</p>
-        <p>Email: support@remoteng.com.ng</p>
-        <p>WhatsApp: +234 912 565 1147</p>
-        <p>Hours: 24/7 Online. Live chat 6am-9pm GMT+1</p>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <a href="remote-jobs.html">Browse Jobs</a>
-        <a href="tech-news.html">Tech News</a>
-        <a href="service.html">Services</a>
-        <a href="post-job.html">Post a Job</a>
-        <a href="save-job.html">Saved Jobs</a>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <a href="legal.html">About Us</a>
-        <a href="legal.html#privacy">Privacy Policy</a>
-        <a href="legal.html#terms">Terms of Service</a>
-        <a href="legal.html#refund">Refund Policy</a>
-      </div>
-      <div>
-        <h4>Follow Us</h4>
-        <a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
-        <a href="https://t.me/latest_ng" target="_blank">Telegram</a>
-        <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 RemotENG. All rights reserved.</p>
-    </div>
-  </div>
+<div class="container">
+<div class="footer-grid">
+<div>
+<h4>RemotENG</h4>
+<p style="color:var(--gray-500); margin-bottom:20px;">Connecting professionals with global remote opportunities.</p>
+<p>Email: support@remoteng.com.ng</p>
+<p>WhatsApp: +234 912 565 1147</p>
+</div>
+<div>
+<h4>Quick Links</h4>
+<a href="remote-jobs.html">Browse Jobs</a>
+<a href="tech-news.html">Tech News</a>
+<a href="service.html">Services</a>
+<a href="post-job.html">Post a Job</a>
+<a href="save-job.html">Saved Jobs</a>
+</div>
+<div>
+<h4>Legal</h4>
+<a href="legal.html">About Us</a>
+<a href="legal.html#privacy">Privacy Policy</a>
+<a href="legal.html#terms">Terms of Service</a>
+</div>
+<div>
+<h4>Connect</h4>
+<a href="https://www.instagram.com/remoteng_official" target="_blank">Instagram</a>
+<a href="https://t.me/latest_ng" target="_blank">Telegram</a>
+<a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 RemotENG. All rights reserved. Remote opportunities worldwide.</p>
+</div>
+</div>
 </footer>
-
-<script>
-// Multi-currency detect and update price
-fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{
-  let price = '₦2,000';
-  let usd = '$2';
-  let link = 'https://selar.co/REMOTENG_VIP_NGN';
-  
-  if(d.country_code === 'GB'){ price = '£2'; link = 'https://selar.co/REMOTENG_VIP_GBP'; }
-  else if(['DE','FR','ES','IT','NL'].includes(d.country_code)){ price = '€2'; link = 'https://selar.co/REMOTENG_VIP_EUR'; }
-  else if(d.country_code !== 'NG'){ price = '$2'; link = 'https://selar.co/REMOTENG_VIP_USD'; }
-  
-  document.getElementById('vip-price').innerHTML = `${price} <span>/ month</span>`;
-  document.getElementById('selar-link').href = link;
-  document.querySelectorAll('a[href*="selar.co"]').forEach(a=>a.href=link);
-}).catch(()=>{});
-
-// FAQ accordion
-document.querySelectorAll('.faq-q').forEach(q=>{
-  q.onclick = ()=>{
-    const item = q.parentElement;
-    item.classList.toggle('open');
-    q.querySelector('span').textContent = item.classList.contains('open') ? '−' : '+';
-  };
-});
-</script>
-
-<!-- Schema -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Product",
-  "name":"RemotENG VIP Job Alerts",
-  "description":"Daily remote job alerts with early access and VIP-only listings",
-  "offers":{
-    "@type":"Offer",
-    "price":"2.00",
-    "priceCurrency":"USD",
-    "availability":"https://schema.org/InStock"
-  }
-}
-</script>
 
 </body>
 </html>
