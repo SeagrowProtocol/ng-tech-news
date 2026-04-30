@@ -386,16 +386,27 @@ document.getElementById('job-form').addEventListener('submit', async function(e)
         throw new Error('Failed to post job');
       }
     } else {
+      // Save job first with pending status
+      const saveRes = await fetch(`${API_URL}/api/post-job`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          ...jobData,
+          status: 'pending_payment'
+        })
+      });
+
+      if (!saveRes.ok) throw new Error('Failed to save job');
+      
+      const saveData = await saveRes.json();
+      const jobId = saveData.job_id || 'TX_' + Date.now();
+
+      // Redirect to Selar - only pass what go.html needs
       const params = new URLSearchParams({
-        success: 'featured',
+        success: 'featured_job',
         email: jobData.posted_by_email,
-        name: jobData.company,
-        amount: 5000,
-        tx_ref: 'TX_' + Date.now(),
-        title: jobData.title,
-        description: jobData.description,
-        salary: jobData.salary,
-        url: jobData.url
+        tx_ref: jobId,
+        name: jobData.company
       });
 
       window.location.href = `https://selar.co/YOUR_FEATURED_LINK?${params.toString()}`;
