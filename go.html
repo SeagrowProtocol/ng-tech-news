@@ -115,8 +115,8 @@ async function init() {
     return;
   }
 
-  // Flow 4: Selar Payment Success - Featured Job
-  if (params.get('success') === 'featured') {
+  // Flow 4: Selar Payment Success - Featured Job - FIXED
+  if (params.get('success') === 'featured_job') {
     await handleFeaturedJobOrder(params);
     return;
   }
@@ -221,20 +221,16 @@ async function handleServiceOrder(params) {
 
 async function handleFeaturedJobOrder(params) {
   const email = params.get('email');
-  const txRef = params.get('tx_ref');
+  const txRef = params.get('tx_ref') || params.get('transaction_id');
   const name = params.get('name') || 'Company';
-  const title = params.get('title');
-  const description = params.get('description');
-  const salary = params.get('salary');
-  const url = params.get('url');
 
-  if (!email || !txRef || !title) {
-    showError('Featured job order incomplete.', 'Missing required job details from payment.');
+  if (!email || !txRef) {
+    showError('Featured job order incomplete.', 'Missing email or transaction reference from Selar.');
     return;
   }
 
   try {
-    const res = await fetch(`${API_URL}/api/order`, {
+    const res = await fetch(`${API_URL}/api/verify-payment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -242,13 +238,9 @@ async function handleFeaturedJobOrder(params) {
       },
       body: JSON.stringify({
         email: email,
-        service: 'featured_job',
         tx_ref: txRef,
-        name: name,
-        title: title,
-        description: description,
-        salary: salary,
-        url: url
+        type: 'featured_job',
+        name: name
       })
     });
 
@@ -256,12 +248,13 @@ async function handleFeaturedJobOrder(params) {
       throw new Error('Featured job processing failed on backend');
     }
 
+    const data = await res.json();
+
     showSuccess(
       'Featured Job Activated!',
-      `Your job "${title}" is now live with Featured status for 7 days.`,
+      `Your job posting has been upgraded to Featured for 7 days.`,
       {
         'Company': name,
-        'Job Title': title,
         'Status': 'Featured - Top of Search Results',
         'Duration': '7 days from now',
         'Visibility': '5x more applicants expected',
@@ -275,8 +268,8 @@ async function handleFeaturedJobOrder(params) {
   } catch (err) {
     console.error('Featured job error:', err);
     showError(
-      'Payment received but job posting failed.',
-      `Transaction ID: ${txRef}<br>Email: ${email}<br>Job: ${title}<br><br>Please contact support@remoteng.com.ng. We'll activate your featured job manually within 1 hour.`
+      'Payment received but job upgrade failed.',
+      `Transaction ID: ${txRef}<br>Email: ${email}<br><br>Please contact support@remoteng.com.ng. We'll activate your featured job manually within 1 hour.`
     );
   }
 }
