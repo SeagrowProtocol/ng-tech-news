@@ -51,7 +51,7 @@ nav a:hover, nav a.active { color: var(--blue); }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
 .news-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; overflow: hidden; transition: all 0.3s; display: flex; flex-direction: column; }
 .news-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: var(--blue-cloud); }
-.news-card img { width: 100%; height: 210px; object-fit: cover; }
+.news-card img { width: 100%; height: 210px; object-fit: cover; background: var(--gray-100); }
 .news-content { padding: 26px; flex: 1; display: flex; flex-direction: column; }
 .news-tag { display: inline-block; background: var(--gray-100); padding: 6px 14px; border-radius: 20px; font-size: 12px; margin-bottom: 12px; font-weight: 600; color: var(--blue-dark); width: fit-content; }
 .news-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--blue-dark); line-height: 1.3; }
@@ -66,8 +66,8 @@ footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
 footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s; font-size: 15px; }
 footer a:hover { color: var(--blue-cloud); }
 .footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
-.ad-wrap { min-height: 250px; margin: 50px 0; text-align: center; }
-.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
+.ad-wrap { min-height: 60px; margin: 50px 0; text-align: center; display: flex; justify-content: center; align-items: center; }
+.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; position: absolute; margin-top: -30px; }
 .empty-state { text-align: center; padding: 80px 20px; color: var(--gray-500); }
 .empty-state h3 { font-size: 24px; color: var(--gray-700); margin-bottom: 12px; }
 @media (max-width: 768px) {
@@ -110,8 +110,16 @@ footer a:hover { color: var(--blue-cloud); }
 
 <div class="ad-wrap">
 <small>Advertisement</small>
-<script type="text/javascript">atOptions = {'key':'YOUR_KEY_HERE','format':'iframe','height':250,'width':300,'params':{}};</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY_HERE/invoke.js"></script>
+<script>
+  atOptions = {
+    'key' : '8f03f73691bf093a8d076af0d6d62212',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script src="https://fixesconsessionconsession.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
 </div>
 
 <section class="section">
@@ -132,8 +140,16 @@ footer a:hover { color: var(--blue-cloud); }
 
 <div class="ad-wrap">
 <small>Advertisement</small>
-<script type="text/javascript">atOptions = {'key':'YOUR_KEY_HERE','format':'iframe','height':250,'width':300,'params':{}};</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY_HERE/invoke.js"></script>
+<script>
+  atOptions = {
+    'key' : '8f03f73691bf093a8d076af0d6d62212',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script src="https://fixesconsessionconsession.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
 </div>
 
 <footer>
@@ -220,7 +236,7 @@ function renderNews() {
     const card = document.createElement('div');
     card.className = 'news-card';
     card.innerHTML = `
-      <img src="${item.image_url || 'https://via.placeholder.com/400x210?text=RemotENG+News'}" alt="${item.title}" loading="lazy">
+      <img src="${item.image_url || 'https://via.placeholder.com/400x210?text=RemotENG+News'}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x210?text=RemotENG+News'">
       <div class="news-content">
         <span class="news-tag">${item.source || 'Tech News'}</span>
         <div class="news-title">${item.title}</div>
