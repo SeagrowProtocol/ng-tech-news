@@ -41,11 +41,16 @@ nav a:hover, nav a.active { color: var(--blue); }
 .btn:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
 .btn-green { background: var(--green); color: var(--gray-900); }
 .btn-green:hover { background: #65a30d; box-shadow: 0 4px 12px rgba(132,204,22,0.3); }
+.btn-outline { background: var(--white); color: var(--blue-dark); border: 2px solid var(--blue-dark); }
+.btn-outline:hover { background: var(--blue-dark); color: var(--white); }
 .page-header { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); color: var(--white); padding: 70px 0 50px; text-align: center; }
 .page-header h1 { font-size: 44px; margin-bottom: 14px; font-weight: 800; }
 .page-header p { font-size: 18px; opacity: 0.95; }
 .section { padding: 60px 0; }
-.news-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.search-bar { display: flex; gap: 12px; margin-bottom: 30px; flex-wrap: wrap; }
+.search-input { flex: 1; min-width: 250px; padding: 12px 18px; border: 2px solid #d1d5db; border-radius: 10px; font-size: 16px; outline: none; transition: border 0.2s; }
+.search-input:focus { border-color: var(--blue); }
+.news-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 16px; }
 .news-count { font-size: 16px; color: var(--gray-700); font-weight: 500; }
 .filter-select { padding: 10px 16px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 15px; outline: none; cursor: pointer; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
@@ -66,8 +71,8 @@ footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
 footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s; font-size: 15px; }
 footer a:hover { color: var(--blue-cloud); }
 .footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
-.ad-wrap { min-height: 60px; margin: 50px 0; text-align: center; display: flex; justify-content: center; align-items: center; }
-.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; position: absolute; margin-top: -30px; }
+.ad-wrap { min-height: 260px; margin: 50px 0; text-align: center; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
 .empty-state { text-align: center; padding: 80px 20px; color: var(--gray-500); }
 .empty-state h3 { font-size: 24px; color: var(--gray-700); margin-bottom: 12px; }
 @media (max-width: 768px) {
@@ -75,6 +80,7 @@ footer a:hover { color: var(--blue-cloud); }
 .page-header h1 { font-size: 32px; }
 .news-header { flex-direction: column; gap: 16px; align-items: flex-start; }
 .grid { grid-template-columns: 1fr; }
+.search-bar { flex-direction: column; }
 }
 </style>
 </head>
@@ -108,13 +114,25 @@ footer a:hover { color: var(--blue-cloud); }
 </div>
 </section>
 
+<section class="section">
+<div class="container">
+<!-- Search Bar -->
+<div class="search-bar">
+<input type="text" class="search-input" id="search-input" placeholder="Search news by title or keyword..." onkeyup="handleSearch()">
+<select class="filter-select" id="source-filter" onchange="filterNews()">
+<option value="all">All Sources</option>
+<option value="TechCrunch">TechCrunch</option>
+</select>
+</div>
+
+<!-- Ad 1: After Search Bar -->
 <div class="ad-wrap">
 <small>Advertisement</small>
 <script>
   atOptions = {
     'key' : '8f03f73691bf093a8d076af0d6d62212',
     'format' : 'iframe',
-    'height' : 50,
+    'height' : 250,
     'width' : 320,
     'params' : {}
   };
@@ -122,29 +140,28 @@ footer a:hover { color: var(--blue-cloud); }
 <script src="https://fixesconsessionconsession.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"></script>
 </div>
 
-<section class="section">
-<div class="container">
 <div class="news-header">
 <div class="news-count" id="news-count">Loading news...</div>
-<select class="filter-select" id="source-filter" onchange="filterNews()">
-<option value="all">All Sources</option>
-<option value="TechCrunch">TechCrunch</option>
-</select>
 </div>
 <div class="grid" id="news-grid"></div>
+
+<!-- Ad 2: Middle of scroll - injected via JS after 6 articles -->
+<div id="mid-ad-container"></div>
+
 <div class="load-more" id="load-more-wrap" style="display:none;">
 <button class="btn btn-outline" onclick="loadMore()">Load More News</button>
 </div>
 </div>
 </section>
 
+<!-- Ad 3: Bottom -->
 <div class="ad-wrap">
 <small>Advertisement</small>
 <script>
   atOptions = {
     'key' : '8f03f73691bf093a8d076af0d6d62212',
     'format' : 'iframe',
-    'height' : 50,
+    'height' : 250,
     'width' : 320,
     'params' : {}
   };
@@ -194,6 +211,7 @@ let allNews = [];
 let filteredNews = [];
 let displayedCount = 0;
 const NEWS_PER_PAGE = 12;
+let searchTimeout;
 
 async function loadNews() {
   try {
@@ -206,18 +224,30 @@ async function loadNews() {
   }
 }
 
+function handleSearch() {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    filterNews();
+  }, 300);
+}
+
 function filterNews() {
   const sourceFilter = document.getElementById('source-filter').value;
+  const searchTerm = document.getElementById('search-input').value.toLowerCase();
 
   filteredNews = allNews.filter(item => {
-    if (sourceFilter === 'all') return true;
-    return (item.source || 'TechCrunch').toLowerCase().includes(sourceFilter.toLowerCase());
+    const matchesSource = sourceFilter === 'all' || (item.source || 'TechCrunch').toLowerCase().includes(sourceFilter.toLowerCase());
+    const matchesSearch =!searchTerm ||
+      item.title.toLowerCase().includes(searchTerm) ||
+      (item.content && item.content.toLowerCase().includes(searchTerm));
+    return matchesSource && matchesSearch;
   });
 
   filteredNews.sort((a, b) => new Date(b.posted_at) - new Date(a.posted_at));
 
   displayedCount = 0;
   document.getElementById('news-grid').innerHTML = '';
+  document.getElementById('mid-ad-container').innerHTML = '';
   document.getElementById('news-count').textContent = `${filteredNews.length} articles found`;
   renderNews();
 }
@@ -227,12 +257,12 @@ function renderNews() {
   const newsToShow = filteredNews.slice(displayedCount, displayedCount + NEWS_PER_PAGE);
 
   if (displayedCount === 0 && newsToShow.length === 0) {
-    grid.innerHTML = '<div class="empty-state"><h3>No news found</h3><p>Check back later for fresh updates.</p></div>';
+    grid.innerHTML = '<div class="empty-state"><h3>No news found</h3><p>Try a different search or check back later.</p></div>';
     document.getElementById('load-more-wrap').style.display = 'none';
     return;
   }
 
-  newsToShow.forEach(item => {
+  newsToShow.forEach((item, index) => {
     const card = document.createElement('div');
     card.className = 'news-card';
     card.innerHTML = `
@@ -248,6 +278,26 @@ function renderNews() {
       </div>
     `;
     grid.appendChild(card);
+
+    // Inject mid-ad after 6th article on first page
+    if (displayedCount === 0 && index === 5 && filteredNews.length > 6) {
+      const adDiv = document.createElement('div');
+      adDiv.className = 'ad-wrap';
+      adDiv.innerHTML = `
+        <small>Advertisement</small>
+        <script>
+          atOptions = {
+            'key' : '8f03f73691bf093a8d076af0d6d62212',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 320,
+            'params' : {}
+          };
+        <\/script>
+        <script src="https://fixesconsessionconsession.com/8f03f73691bf093a8d076af0d6d62212/invoke.js"><\/script>
+      `;
+      document.getElementById('mid-ad-container').appendChild(adDiv);
+    }
   });
 
   displayedCount += newsToShow.length;
