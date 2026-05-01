@@ -3,5 +3,5 @@ Allow: /
 Disallow: /api/
 Disallow: /go.html
 Disallow: /order-form.html
-
+Disallow: /admin.html
 Sitemap: https://remoteng.com.ng/sitemap.xml
