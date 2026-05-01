@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RemoteNG Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        dark: { 900: '#0a0a0b', 800: '#111113', 700: '#1a1a1d', 600: '#2a2a2e' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .glass { 
+            background: rgba(26, 26, 29, 0.7); 
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-in { animation: slideIn 0.3s ease-out; }
+    </style>
+</head>
+<body class="bg-dark-900 text-gray-100 min-h-screen">
+    <div class="max-w-7xl mx-auto p-4 md:p-8">
+        
+        <!-- Login Screen -->
+        <div id="loginScreen" class="min-h-screen flex items-center justify-center">
+            <div class="glass rounded-3xl p-8 md:p-12 w-full max-w-md animate-in">
+                <div class="text-center mb-8">
+                    <h1 class="text-4xl font-bold gradient-text mb-2">RemoteNG</h1>
+                    <p class="text-gray-400 text-sm">Admin Control Panel</p>
+                </div>
+                <div class="space-y-4">
+                    <input 
+                        type="password" 
+                        id="adminKeyInput" 
+                        placeholder="Enter Admin Key"
+                        class="w-full bg-dark-800 border border-dark-600 rounded-xl px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition"
+                        onkeypress="if(event.key==='Enter') login()"
+                    >
+                    <button 
+                        onclick="login()" 
+                        class="w-full bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 text-white font-semibold py-3 rounded-xl transition transform hover:scale-[1.02] active:scale-[0.98]"
+                    >
+                        Access Dashboard
+                    </button>
+                    <p id="loginError" class="text-red-400 text-sm text-center hidden"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="hidden">
+            <!-- Header -->
+            <div class="glass rounded-2xl p-6 mb-6 flex justify-between items-center animate-in">
+                <div>
+                    <h1 class="text-3xl font-bold gradient-text">Dashboard</h1>
+                    <p class="text-gray-400 text-sm mt-1">Real-time control center</p>
+                </div>
+                <button 
+                    onclick="logout()" 
+                    class="bg-dark-700 hover:bg-dark-600 px-5 py-2.5 rounded-xl text-sm font-medium transition"
+                >
+                    Logout
+                </button>
+            </div>
+
+            <!-- Stats Grid -->
+            <div id="statsGrid" class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6"></div>
+
+            <!-- Jobs Section -->
+            <div class="glass rounded-2xl p-6 animate-in">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold">Job Management</h2>
+                        <p class="text-gray-400 text-sm mt-1">Manage all job postings</p>
+                    </div>
+                    <div class="flex gap-3 w-full md:w-auto">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Search jobs..." 
+                            oninput="filterJobs()"
+                            class="flex-1 md:w-64 bg-dark-800 border border-dark-600 rounded-xl px-4 py-2.5 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        >
+                        <button 
+                            onclick="loadJobs()" 
+                            class="bg-dark-700 hover:bg-dark-600 px-5 py-2.5 rounded-xl text-sm font-medium transition whitespace-nowrap"
+                        >
+                            ↻ Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jobs Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-dark-600">
+                                <th class="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Job</th>
+                                <th class="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Company</th>
+                                <th class="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Status</th>
+                                <th class="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Posted</th>
+                                <th class="text-right py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="jobsTableBody"></tbody>
+                    </table>
+                    <div id="loadingJobs" class="text-center py-12 text-gray-500">Loading jobs...</div>
+                    <div id="noJobs" class="text-center py-12 text-gray-500 hidden">No jobs found</div>
+                </div>
+            </div>
+
+            <!-- Toast -->
+            <div id="toast" class="fixed bottom-8 right-8 glass rounded-xl px-6 py-4 transform translate-y-32 transition-all duration-300 z-50">
+                <p id="toastMsg" class="font-medium"></p>
+            </div>
+        </div>
+    </div>
+
+<script>
+const API_URL = 'https://remoteng-api.onrender.com';
+let ADMIN_KEY = '';
+let allJobs = [];
+
+function login() {
+    const key = document.getElementById('adminKeyInput').value.trim();
+    const errorEl = document.getElementById('loginError');
+    
+    if (!key) {
+        errorEl.textContent = 'Please enter your admin key';
+        errorEl.classList.remove('hidden');
+        return;
+    }
+    
+    ADMIN_KEY = key;
+    localStorage.setItem('remoteng_admin_key', key);
+    loadDashboard();
+}
+
+function logout() {
+    localStorage.removeItem('remoteng_admin_key');
+    ADMIN_KEY = '';
+    document.getElementById('loginScreen').classList.remove('hidden');
+    document.getElementById('dashboard').classList.add('hidden');
+}
+
+async function loadDashboard() {
+    try {
+        const res = await fetch(`${API_URL}/api/admin/stats?key=${ADMIN_KEY}`);
+        if (!res.ok) throw new Error('Invalid key');
+        
+        const stats = await res.json();
+        document.getElementById('loginScreen').classList.add('hidden');
+        document.getElementById('dashboard').classList.remove('hidden');
+        document.getElementById('loginError').classList.add('hidden');
+        
+        renderStats(stats);
+        loadJobs();
+    } catch (err) {
+        const errorEl = document.getElementById('loginError');
+        errorEl.textContent = 'Invalid key or server error';
+        errorEl.classList.remove('hidden');
+    }
+}
+
+function renderStats(stats) {
+    const statsData = [
+        { label: 'Total Jobs', value: stats.total_jobs, icon: '💼', color: 'from-sky-500 to-blue-500' },
+        { label: 'Featured', value: stats.featured_jobs, icon: '⭐', color: 'from-amber-500 to-orange-500' },
+        { label: 'Users', value: stats.total_users, icon: '👥', color: 'from-violet-500 to-purple-500' },
+        { label: 'VIPs', value: stats.active_vips, icon: '💎', color: 'from-pink-500 to-rose-500' },
+        { label: 'Clicks 7d', value: stats.clicks_7d, icon: '📊', color: 'from-emerald-500 to-teal-500' }
+    ];
+    
+    document.getElementById('statsGrid').innerHTML = statsData.map(stat => `
+        <div class="glass rounded-2xl p-5 hover:scale-105 transition transform">
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-2xl">${stat.icon}</span>
+                <div class="w-2 h-2 rounded-full bg-gradient-to-r ${stat.color}"></div>
+            </div>
+            <p class="text-3xl font-bold mb-1">${stat.value}</p>
+            <p class="text-gray-400 text-xs uppercase tracking-wider">${stat.label}</p>
+        </div>
+    `).join('');
+}
+
+async function loadJobs() {
+    document.getElementById('loadingJobs').classList.remove('hidden');
+    document.getElementById('noJobs').classList.add('hidden');
+    
+    try {
+        const res = await fetch(`${API_URL}/api/admin/jobs?key=${ADMIN_KEY}`);
+        allJobs = await res.json();
+        renderJobs(allJobs);
+    } catch (err) {
+        showToast('Error loading jobs', true);
+    } finally {
+        document.getElementById('loadingJobs').classList.add('hidden');
+    }
+}
+
+function renderJobs(jobs) {
+    const tbody = document.getElementById('jobsTableBody');
+    
+    if (jobs.length === 0) {
+        tbody.innerHTML = '';
+        document.getElementById('noJobs').classList.remove('hidden');
+        return;
+    }
+    
+    document.getElementById('noJobs').classList.add('hidden');
+    
+    tbody.innerHTML = jobs.map(job => {
+        const date = new Date(job.posted_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        const isFeatured = job.featured && new Date(job.featured_until) > new Date();
+        
+        return `
+            <tr class="border-b border-dark-700 hover:bg-dark-800/50 transition">
+                <td class="py-4 px-4">
+                    <div class="font-medium text-gray-100">${job.title}</div>
+                </td>
+                <td class="py-4 px-4 text-gray-400">${job.company || 'N/A'}</td>
+                <td class="py-4 px-4">
+                    ${isFeatured ? '<span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full">Featured</span>' : '<span class="text-gray-500 text-xs">Active</span>'}
+                </td>
+                <td class="py-4 px-4 text-gray-400 text-sm">${date}</td>
+                <td class="py-4 px-4">
+                    <div class="flex gap-2 justify-end">
+                        <button 
+                            onclick="featureJob(${job.id})" 
+                            class="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white text-xs font-medium px-4 py-2 rounded-lg transition"
+                        >
+                            ${isFeatured ? 'Extend' : 'Feature'}
+                        </button>
+                        <button 
+                            onclick="deleteJob(${job.id}, '${job.title.replace(/'/g, "\\'")}')" 
+                            class="bg-dark-600 hover:bg-red-500/20 hover:text-red-400 text-gray-400 text-xs font-medium px-4 py-2 rounded-lg transition"
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        `;
+    }).join('');
+}
+
+function filterJobs() {
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    const filtered = allJobs.filter(job => 
+        job.title.toLowerCase().includes(search) || 
+        (job.company && job.company.toLowerCase().includes(search))
+    );
+    renderJobs(filtered);
+}
+
+async function deleteJob(id, title) {
+    if (!confirm(`Delete "${title}"? This cannot be undone.`)) return;
+    
+    try {
+        const res = await fetch(`${API_URL}/api/admin/jobs/${id}?key=${ADMIN_KEY}`, { method: 'DELETE' });
+        if (res.ok) {
+            showToast('Job deleted successfully');
+            loadJobs();
+            loadDashboard();
+        } else {
+            throw new Error('Delete failed');
+        }
+    } catch (err) {
+        showToast('Failed to delete job', true);
+    }
+}
+
+async function featureJob(id) {
+    try {
+        const res = await fetch(`${API_URL}/api/admin/feature-job/${id}?key=${ADMIN_KEY}`, { method: 'POST' });
+        if (res.ok) {
+            showToast('Job featured for 7 days');
+            loadJobs();
+            loadDashboard();
+        } else {
+            throw new Error('Feature failed');
+        }
+    } catch (err) {
+        showToast('Failed to feature job', true);
+    }
+}
+
+function showToast(msg, isError = false) {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+    
+    toastMsg.textContent = msg;
+    toast.className = `fixed bottom-8 right-8 glass rounded-xl px-6 py-4 transform transition-all duration-300 z-50 ${isError ? 'border border-red-500/50' : 'border border-emerald-500/50'}`;
+    toast.classList.remove('translate-y-32');
+    
+    setTimeout(() => {
+        toast.classList.add('translate-y-32');
+    }, 3000);
+}
+
+// Auto-login if key saved
+window.onload = () => {
+    const saved = localStorage.getItem('remoteng_admin_key');
+    if (saved) {
+        document.getElementById('adminKeyInput').value = saved;
+        ADMIN_KEY = saved;
+        loadDashboard();
+    }
+};
+</script>
+</body>
+</html>
