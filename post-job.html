@@ -40,6 +40,7 @@ nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; transit
 nav a:hover, nav a.active { color: var(--blue); }
 .btn { background: var(--blue-dark); color: var(--white); padding: 11px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; transition: all 0.2s; font-size: 15px; }
 .btn:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 .btn-green { background: var(--green); color: var(--gray-900); }
 .btn-green:hover { background: #65a30d; box-shadow: 0 4px 12px rgba(132,204,22,0.3); }
 .btn-outline { background: var(--white); color: var(--blue-dark); border: 2px solid var(--blue-dark); }
@@ -97,8 +98,6 @@ footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
 footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s; font-size: 15px; }
 footer a:hover { color: var(--blue-cloud); }
 .footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
-.ad-wrap { min-height: 250px; margin: 50px 0; text-align: center; }
-.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
 @media (max-width: 768px) {
   nav { display: none; }
 .page-header h1 { font-size: 32px; }
@@ -127,7 +126,7 @@ footer a:hover { color: var(--blue-cloud); }
 <a href="service.html">Services</a>
 <a href="vip.html">VIP Alerts</a>
 <a href="post-job.html" class="active">Post Job</a>
-<a href="https://selar.co/YOUR_VIP_LINK" class="btn">Get VIP</a>
+<a href="https://selar.com/17671617c4" class="btn">Get VIP</a>
 </nav>
 </div>
 </div>
@@ -143,7 +142,7 @@ footer a:hover { color: var(--blue-cloud); }
 <section class="section">
 <div class="container">
 <h2 class="section-title">Post Your Remote Job</h2>
-<p class="section-subtitle">Fill the form below. Free jobs go live instantly. Featured jobs after payment.</p>
+<p class="section-subtitle">Fill the form below. Free jobs need approval. Featured jobs go live after payment.</p>
 
 <div class="form-container">
 <div id="alert-box" class="alert"></div>
@@ -204,10 +203,10 @@ footer a:hover { color: var(--blue-cloud); }
 <h4>Free Posting</h4>
 <div class="price">₦0 <span>Free</span></div>
 <ul>
-<li>Live for 30 days</li>
+<li>Live for 30 days after approval</li>
 <li>Basic visibility</li>
 <li>Email notifications</li>
-<li>Instant approval</li>
+<li>Manual approval within 24hrs</li>
 </ul>
 </label>
 
@@ -215,13 +214,14 @@ footer a:hover { color: var(--blue-cloud); }
 <input type="radio" id="featured-post" name="posting-type" value="featured">
 <div class="check"></div>
 <h4>Featured Job</h4>
-<div class="price">₦5,000 <span>$5 USD</span></div>
+<div class="price" id="featured-price">₦5,000 <span>NGN</span></div>
 <ul>
 <li>Top of search results</li>
 <li>Green "Featured" badge</li>
 <li>7 days pinned placement</li>
 <li>5x more applicants</li>
 <li>VIP email inclusion</li>
+<li>Instant approval after payment</li>
 </ul>
 </label>
 </div>
@@ -235,12 +235,6 @@ footer a:hover { color: var(--blue-cloud); }
 </div>
 </div>
 </section>
-
-<div class="ad-wrap">
-<small>Advertisement</small>
-<script type="text/javascript">atOptions = {'key':'YOUR_KEY_HERE','format':'iframe','height':250,'width':300,'params':{}};</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY_HERE/invoke.js"></script>
-</div>
 
 <section class="section" style="background:var(--gray-100);">
 <div class="container">
@@ -333,13 +327,46 @@ footer a:hover { color: var(--blue-cloud); }
 
 <script>
 const API_URL = 'https://remoteng-api.onrender.com';
+const VIP_SELAR_LINK = 'https://selar.com/17671617c4';
+const JOB_SELAR_LINK = 'https://selar.com/5wq1ks7005';
+let userCountry = 'NG';
+
+async function detectLocation() {
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    const data = await res.json();
+    userCountry = data.country_code || 'NG';
+    
+    const priceEl = document.getElementById('featured-price');
+    const btn = document.getElementById('submit-btn');
+    
+    if (userCountry === 'NG') {
+      priceEl.innerHTML = '₦5,000 <span>NGN</span>';
+      if (document.querySelector('input[name="posting-type"]:checked').value === 'featured') {
+        btn.textContent = 'Continue to Payment ₦5,000';
+      }
+    } else {
+      priceEl.innerHTML = '$5 <span>USD</span>';
+      if (document.querySelector('input[name="posting-type"]:checked').value === 'featured') {
+        btn.textContent = 'Continue to Payment $5';
+      }
+    }
+  } catch (err) {
+    console.log('IP detect failed, defaulting to NGN');
+  }
+}
+detectLocation();
 
 document.querySelectorAll('input[name="posting-type"]').forEach(radio => {
   radio.addEventListener('change', function() {
     document.querySelectorAll('.pricing-option').forEach(opt => opt.classList.remove('selected'));
     this.closest('.pricing-option').classList.add('selected');
     const btn = document.getElementById('submit-btn');
-    btn.textContent = this.value === 'featured'? 'Continue to Payment ₦5,000' : 'Post Job Free';
+    if (this.value === 'featured') {
+      btn.textContent = userCountry === 'NG' ? 'Continue to Payment ₦5,000' : 'Continue to Payment $5';
+    } else {
+      btn.textContent = 'Post Job Free';
+    }
   });
 });
 
@@ -365,56 +392,58 @@ document.getElementById('job-form').addEventListener('submit', async function(e)
 
   if (jobData.description.length < 100) {
     showAlert('Job description must be at least 100 characters', 'error');
-    submitBtn.disabled = false;
-    submitBtn.textContent = postingType === 'featured'? 'Continue to Payment ₦5,000' : 'Post Job Free';
+    resetSubmitBtn(postingType);
     return;
   }
 
   try {
     if (postingType === 'free') {
-      const res = await fetch(`${API_URL}/api/post-job`, {
+      const res = await fetch(`${API_URL}/api/order`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(jobData)
+        body: JSON.stringify({
+          order_type: 'job_post',
+          user_data: jobData,
+          featured: false
+        })
       });
 
       if (res.ok) {
-        showAlert('Success! Your job is now live. Check remote-jobs.html to see it.', 'success');
+        showAlert('Success! Your job was submitted for approval. We will review it within 24 hours and email you when live.', 'success');
         resetForm();
-        setTimeout(() => window.location.href = 'remote-jobs.html', 2000);
       } else {
         throw new Error('Failed to post job');
       }
     } else {
-      // Save job first with pending status
-      const saveRes = await fetch(`${API_URL}/api/post-job`, {
+      const res = await fetch(`${API_URL}/api/order`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-          ...jobData,
-          status: 'pending_payment'
+          order_type: 'job_post',
+          user_data: jobData,
+          featured: true
         })
       });
 
-      if (!saveRes.ok) throw new Error('Failed to save job');
+      if (!res.ok) throw new Error('Failed to create order');
       
-      const saveData = await saveRes.json();
-      const jobId = saveData.job_id || 'TX_' + Date.now();
+      const data = await res.json();
+      const tx_ref = data.tx_ref || 'TX_' + Date.now();
 
-      // Redirect to Selar - only pass what go.html needs
       const params = new URLSearchParams({
-        success: 'featured_job',
+        tx_ref: tx_ref,
         email: jobData.posted_by_email,
-        tx_ref: jobId,
-        name: jobData.company
+        name: jobData.company,
+        amount: userCountry === 'NG' ? '5000' : '5',
+        currency: userCountry === 'NG' ? 'NGN' : 'USD'
       });
 
-      window.location.href = `https://selar.co/YOUR_FEATURED_LINK?${params.toString()}`;
+      window.location.href = `${JOB_SELAR_LINK}?${params.toString()}`;
     }
   } catch (err) {
+    console.error(err);
     showAlert('Error posting job. Please try again or contact support@remoteng.com.ng', 'error');
-    submitBtn.disabled = false;
-    submitBtn.textContent = postingType === 'featured'? 'Continue to Payment ₦5,000' : 'Post Job Free';
+    resetSubmitBtn(postingType);
   }
 });
 
@@ -424,6 +453,16 @@ function showAlert(msg, type) {
   alertBox.className = `alert ${type}`;
   alertBox.style.display = 'block';
   window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function resetSubmitBtn(postingType) {
+  const submitBtn = document.getElementById('submit-btn');
+  submitBtn.disabled = false;
+  if (postingType === 'featured') {
+    submitBtn.textContent = userCountry === 'NG' ? 'Continue to Payment ₦5,000' : 'Continue to Payment $5';
+  } else {
+    submitBtn.textContent = 'Post Job Free';
+  }
 }
 
 function resetForm() {
