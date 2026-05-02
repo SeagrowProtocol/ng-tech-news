@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RemotENG - Global Remote Jobs | USD, EUR, GBP Salaries | Work From Anywhere</title>
-<meta name="description" content="Discover verified global remote jobs with USD, EUR, GBP salaries. Tech & non-tech roles for professionals worldwide. Updated daily. Apply to 500+ opportunities.">
-<meta name="keywords" content="remote jobs, work from home, USD salary, global jobs, Nigeria remote, tech jobs, international jobs">
+<title>RemoteNG - Remote Tech Jobs Worldwide | USD, EUR, GBP Salaries</title>
+<meta name="description" content="Find verified remote tech jobs worldwide on RemotENG. Browse 500+ remote developer, designer & marketing roles with USD, EUR, GBP salaries. Get VIP alerts 12 hours early. Daily tech news & CV services.">
+<meta name="keywords" content="remote jobs, work from home, USD salary jobs, tech jobs Nigeria, global remote work, software developer jobs, remote designer jobs, EUR salary, GBP jobs">
 <meta name="robots" content="index, follow">
+<meta name="author" content="RemoteNG">
 <link rel="canonical" href="https://remoteng.com.ng/">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://remoteng.com.ng/">
-<meta property="og:title" content="RemotENG - Remote Jobs Globally 🌍">
-<meta property="og:description" content="Find remote jobs. Get paid in USD, EUR, GBP. Work from anywhere. 500+ verified opportunities updated daily.">
+<meta property="og:title" content="RemoteNG - Remote Tech Jobs Worldwide">
+<meta property="og:description" content="Browse 500+ verified remote tech jobs with USD/EUR/GBP salaries. Get VIP alerts 12 hours early. Daily tech news, CV services & global opportunities.">
 <meta property="og:image" content="https://remoteng.com.ng/logo.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -22,8 +23,8 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://remoteng.com.ng/">
-<meta name="twitter:title" content="RemotENG - Remote Jobs Globally 🌍">
-<meta name="twitter:description" content="Find remote jobs. Get paid in USD, EUR, GBP. Work from anywhere.">
+<meta name="twitter:title" content="RemotENG - Remote Tech Jobs Worldwide">
+<meta name="twitter:description" content="Find verified remote tech jobs with USD, EUR, GBP salaries. Work from anywhere. VIP alerts available.">
 <meta name="twitter:image" content="https://remoteng.com.ng/logo.png">
 
 <!-- Favicon -->
@@ -67,19 +68,20 @@ nav a:hover, nav a.active { color: var(--blue); }
 .hero p { font-size: 21px; margin-bottom: 38px; opacity: 0.95; max-width: 650px; margin-left: auto; margin-right: auto; position: relative; }
 .search-box { max-width: 680px; margin: 0 auto; display: flex; gap: 12px; background: var(--white); padding: 8px; border-radius: 14px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); position: relative; }
 .search-box input { flex: 1; padding: 18px 22px; border: none; border-radius: 10px; font-size: 16px; outline: none; color: var(--gray-900); }
-.search-box.btn { padding: 18px 36px; border-radius: 10px; }
+.search-box .btn { padding: 18px 36px; border-radius: 10px; }
 .section { padding: 90px 0; }
 .section-title { font-size: 38px; margin-bottom: 16px; text-align: center; color: var(--blue-dark); font-weight: 800; }
 .section-subtitle { text-align: center; color: var(--gray-700); font-size: 18px; margin: 0 auto 50px; max-width: 600px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
-.job-card,.news-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; padding: 30px; position: relative; transition: all 0.3s; }
+.job-card,.news-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; padding: 30px; position: relative; transition: all 0.3s; display: flex; flex-direction: column; }
 .job-card:hover,.news-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: var(--blue-cloud); }
 .job-card.featured { border: 2px solid var(--green); background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
-.tag { display: inline-block; background: var(--gray-100); padding: 7px 16px; border-radius: 20px; font-size: 12px; margin-bottom: 14px; font-weight: 600; }
+.tag { display: inline-block; background: var(--gray-100); padding: 7px 16px; border-radius: 20px; font-size: 12px; margin-bottom: 14px; font-weight: 600; width: fit-content; }
 .tag.featured { background: var(--green); color: var(--gray-900); }
 .job-title { font-size: 22px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; line-height: 1.3; }
 .job-company { color: var(--gray-500); margin-bottom: 16px; font-weight: 500; font-size: 15px; }
 .job-salary { color: var(--green); font-weight: 700; font-size: 21px; margin: 16px 0; }
+.job-desc { color: var(--gray-700); font-size: 15px; line-height: 1.6; margin: 16px 0; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .job-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 22px; }
 .job-date { color: var(--gray-500); font-size: 13px; }
 .news-card img { width: 100%; height: 210px; object-fit: cover; border-radius: 14px; margin-bottom: 18px; }
@@ -100,16 +102,20 @@ footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
 footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s; font-size: 15px; }
 footer a:hover { color: var(--blue-cloud); }
 .footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
-.ad-wrap { min-height: 250px; margin: 50px 0; text-align: center; }
+.ad-wrap { margin: 50px 0; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
+.ad-wrap.banner-728 { min-height: 90px; }
+.ad-wrap.banner-300 { min-height: 250px; }
+.ad-wrap.native { min-height: 250px; }
 @media (max-width: 768px) {
   nav { display: none; }
- .hero h1 { font-size: 38px; }
- .hero { padding: 70px 0 60px; }
- .search-box,.email-box { flex-direction: column; background: transparent; padding: 0; box-shadow: none; }
- .search-box input,.email-box input { background: var(--white); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
- .grid { grid-template-columns: 1fr; }
- .section { padding: 70px 0; }
+.hero h1 { font-size: 38px; }
+.hero { padding: 70px 0 60px; }
+.search-box,.email-box { flex-direction: column; background: transparent; padding: 0; box-shadow: none; }
+.search-box input,.email-box input { background: var(--white); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.grid { grid-template-columns: 1fr; }
+.section { padding: 70px 0; }
+.ad-wrap.banner-728 { min-height: 250px; }
 }
 </style>
 
@@ -121,11 +127,17 @@ footer a:hover { color: var(--blue-cloud); }
   "name": "RemotENG",
   "url": "https://remoteng.com.ng",
   "logo": "https://remoteng.com.ng/logo.png",
+  "description": "Find verified remote tech jobs worldwide with USD, EUR, GBP salaries. Daily tech news and CV services.",
   "sameAs": [
     "https://www.instagram.com/remoteng_official",
     "https://t.me/latest_ng",
     "https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10"
-  ]
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "support@remoteng.com.ng",
+    "contactType": "Customer Support"
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -162,7 +174,6 @@ footer a:hover { color: var(--blue-cloud); }
 <a href="https://selar.com/17671617c4" class="btn">Get VIP</a>
 </nav>
 </div>
-</div>
 </header>
 
 <section class="hero">
@@ -176,19 +187,19 @@ footer a:hover { color: var(--blue-cloud); }
 </div>
 </section>
 
-<!-- AD 1: After search button -->
-<div class="ad-wrap">
+<!-- AD 1: After search - 728x90 Banner -->
+<div class="ad-wrap banner-728">
 <small>Advertisement</small>
 <script>
   atOptions = {
-    'key' : '60fd2652d0e23a02a61b30ff30ef9fe8',
+    'key' : '7f21b78d39ff758bf00eeea8b35b92b4',
     'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
+    'height' : 90,
+    'width' : 728,
     'params' : {}
   };
 </script>
-<script src="https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js"></script>
+<script src="https://fixesconsessionconsession.com/7f21b78d39ff758bf00eeea8b35b92b4/invoke.js"></script>
 </div>
 
 <section class="section">
@@ -203,12 +214,11 @@ footer a:hover { color: var(--blue-cloud); }
 </section>
 
 <!-- NATIVE ADSTERRA BANNER: Middle of scroll -->
-<div class="ad-wrap">
+<div class="ad-wrap native">
 <small>Advertisement</small>
-<!-- Replace with your actual Adsterra Native Banner Code -->
 <script async="async" data-cfasync="false" src="https://fixesconsessionconsession.com/67abc4f6c4779907d9aa956165783490/invoke.js"></script>
 <div id="container-67abc4f6c4779907d9aa956165783490"></div>
-
+</div>
 
 <section class="section" style="background:var(--gray-100);">
 <div class="container">
@@ -241,27 +251,27 @@ footer a:hover { color: var(--blue-cloud); }
 <div class="service-card">
 <h3>CV/Resume Writing</h3>
 <p>ATS-optimized CV crafted by hiring experts for global standards</p>
-<div class="service-price">₦3,000 <span>/ $3</span></div>
+<div class="service-price" id="cv-price">₦3,000 <span>/ $3</span></div>
 <a href="cv-resume.html" class="btn">Order Now</a>
 </div>
 <div class="service-card">
 <h3>Cover Letter</h3>
 <p>Tailored for each application to maximize interview chances</p>
-<div class="service-price">₦2,500 <span>/ $2.5</span></div>
+<div class="service-price" id="cover-price">₦2,500 <span>/ $2.5</span></div>
 <a href="cv-resume.html" class="btn">Order Now</a>
 </div>
 <div class="service-card">
 <h3>VIP Job Alerts</h3>
 <p>Daily curated alerts + Early access + Exclusive opportunities</p>
-<div class="service-price">₦2,000<span>/mo</span></div>
+<div class="service-price" id="vip-price">₦2,000<span>/mo</span></div>
 <a href="https://selar.com/17671617c4" class="btn btn-green">Get VIP Access</a>
 </div>
 </div>
 </div>
 </section>
 
-<!-- AD 3: Before footer -->
-<div class="ad-wrap">
+<!-- AD 3: Before footer - 300x250 -->
+<div class="ad-wrap banner-300">
 <small>Advertisement</small>
 <script>
   atOptions = {
@@ -308,11 +318,44 @@ footer a:hover { color: var(--blue-cloud); }
 <div class="footer-bottom">
 <p>&copy; 2026 RemotENG. All rights reserved. Remote opportunities worldwide.</p>
 </div>
-</div>
 </footer>
 
 <script>
 const API_URL = 'https://remoteng-api.onrender.com';
+let userCurrency = 'NGN';
+let userCountry = 'NG';
+
+// IP Detect for currency
+async function detectLocation() {
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    const data = await res.json();
+    userCountry = data.country_code || 'NG';
+    
+    const currencyMap = {
+      'NG': { symbol: '₦', code: 'NGN', cv: 3000, cover: 2500, vip: 2000 },
+      'US': { symbol: '$', code: 'USD', cv: 3, cover: 2.5, vip: 2 },
+      'GB': { symbol: '£', code: 'GBP', cv: 2.5, cover: 2, vip: 1.5 },
+      'DE': { symbol: '€', code: 'EUR', cv: 2.8, cover: 2.3, vip: 1.8 },
+      'FR': { symbol: '€', code: 'EUR', cv: 2.8, cover: 2.3, vip: 1.8 },
+      'IT': { symbol: '€', code: 'EUR', cv: 2.8, cover: 2.3, vip: 1.8 },
+      'ES': { symbol: '€', code: 'EUR', cv: 2.8, cover: 2.3, vip: 1.8 },
+      'CA': { symbol: 'C$', code: 'CAD', cv: 4, cover: 3.5, vip: 2.5 },
+      'AU': { symbol: 'A$', code: 'AUD', cv: 4.5, cover: 3.8, vip: 3 },
+      'ZA': { symbol: 'R', code: 'ZAR', cv: 55, cover: 45, vip: 35 }
+    };
+    
+    const cur = currencyMap[userCountry] || currencyMap['NG'];
+    userCurrency = cur.code;
+    
+    document.getElementById('cv-price').innerHTML = `${cur.symbol}${cur.cv.toLocaleString()} <span>/ ${cur.code}</span>`;
+    document.getElementById('cover-price').innerHTML = `${cur.symbol}${cur.cover.toLocaleString()} <span>/ ${cur.code}</span>`;
+    document.getElementById('vip-price').innerHTML = `${cur.symbol}${cur.vip.toLocaleString()}<span>/mo</span>`;
+  } catch (err) {
+    console.log('IP detect failed, defaulting to NGN');
+  }
+}
+detectLocation();
 
 function searchJobs() {
   const q = document.getElementById('hero-search').value;
@@ -336,11 +379,13 @@ async function loadFeaturedJobs() {
     jobs.forEach(job => {
       const card = document.createElement('div');
       card.className = `job-card featured`;
+      const desc = job.description ? job.description : 'Remote opportunity with competitive global compensation. Work with top international teams and get paid in USD, EUR, or GBP. Apply now to join leading companies hiring globally.';
       card.innerHTML = `
         <span class="tag featured">Featured</span>
         <div class="job-title">${job.title}</div>
         <div class="job-company">${job.company}</div>
         <div class="job-salary">${job.salary || 'Competitive Package'}</div>
+        <div class="job-desc">${desc}</div>
         <div class="job-footer">
           <span class="job-date">${timeAgo(job.posted_at)}</span>
           <a href="go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}" class="btn">Apply Now</a>
