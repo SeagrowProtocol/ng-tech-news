@@ -20,18 +20,11 @@
     </script>
     <style>
         * { font-family: 'Inter', sans-serif; }
-        .glass { 
-            background: rgba(26, 26, 29, 0.7); 
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .glass { background: rgba(26, 26, 29, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .gradient-text { background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .animate-in { animation: slideIn 0.3s ease-out; }
+        .tab-active { background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%); }
     </style>
 </head>
 <body class="bg-dark-900 text-gray-100 min-h-screen">
@@ -45,19 +38,8 @@
                     <p class="text-gray-400 text-sm">Admin Control Panel</p>
                 </div>
                 <div class="space-y-4">
-                    <input 
-                        type="password" 
-                        id="adminKeyInput" 
-                        placeholder="Enter Admin Key"
-                        class="w-full bg-dark-800 border border-dark-600 rounded-xl px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition"
-                        onkeypress="if(event.key==='Enter') login()"
-                    >
-                    <button 
-                        onclick="login()" 
-                        class="w-full bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 text-white font-semibold py-3 rounded-xl transition transform hover:scale-[1.02] active:scale-[0.98]"
-                    >
-                        Access Dashboard
-                    </button>
+                    <input type="password" id="adminKeyInput" placeholder="Enter Admin Key" class="w-full bg-dark-800 border border-dark-600 rounded-xl px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition" onkeypress="if(event.key==='Enter') login()">
+                    <button onclick="login()" class="w-full bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 text-white font-semibold py-3 rounded-xl transition transform hover:scale-[1.02] active:scale-[0.98]">Access Dashboard</button>
                     <p id="loginError" class="text-red-400 text-sm text-center hidden"></p>
                 </div>
             </div>
@@ -71,42 +53,30 @@
                     <h1 class="text-3xl font-bold gradient-text">Dashboard</h1>
                     <p class="text-gray-400 text-sm mt-1">Real-time control center</p>
                 </div>
-                <button 
-                    onclick="logout()" 
-                    class="bg-dark-700 hover:bg-dark-600 px-5 py-2.5 rounded-xl text-sm font-medium transition"
-                >
-                    Logout
-                </button>
+                <button onclick="logout()" class="bg-dark-700 hover:bg-dark-600 px-5 py-2.5 rounded-xl text-sm font-medium transition">Logout</button>
             </div>
 
             <!-- Stats Grid -->
             <div id="statsGrid" class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6"></div>
 
+            <!-- Tabs -->
+            <div class="flex gap-2 mb-6 overflow-x-auto">
+                <button onclick="switchTab('jobs')" id="tab-jobs" class="tab-active px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap transition">Jobs</button>
+                <button onclick="switchTab('subscribers')" id="tab-subscribers" class="bg-dark-700 hover:bg-dark-600 px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap transition">Subscribers</button>
+            </div>
+
             <!-- Jobs Section -->
-            <div class="glass rounded-2xl p-6 animate-in">
+            <div id="jobsSection" class="glass rounded-2xl p-6 animate-in">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
                     <div>
                         <h2 class="text-2xl font-bold">Job Management</h2>
                         <p class="text-gray-400 text-sm mt-1">Manage all job postings</p>
                     </div>
                     <div class="flex gap-3 w-full md:w-auto">
-                        <input 
-                            type="text" 
-                            id="searchInput" 
-                            placeholder="Search jobs..." 
-                            oninput="filterJobs()"
-                            class="flex-1 md:w-64 bg-dark-800 border border-dark-600 rounded-xl px-4 py-2.5 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500"
-                        >
-                        <button 
-                            onclick="loadJobs()" 
-                            class="bg-dark-700 hover:bg-dark-600 px-5 py-2.5 rounded-xl text-sm font-medium transition whitespace-nowrap"
-                        >
-                            ↻ Refresh
-                        </button>
+                        <input type="text" id="searchJobsInput" placeholder="Search jobs..." oninput="filterJobs()" class="flex-1 md:w-64 bg-dark-800 border border-dark-600 rounded-xl px-4 py-2.5 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <button onclick="loadJobs()" class="bg-dark-700 hover:bg-dark-600 px-5 py-2.5 rounded-xl text-sm font-medium transition whitespace-nowrap">↻ Refresh</button>
                     </div>
                 </div>
-
-                <!-- Jobs Table -->
                 <div class="overflow-x-auto">
                     <table class="w-full">
                         <thead>
@@ -125,6 +95,40 @@
                 </div>
             </div>
 
+            <!-- Subscribers Section -->
+            <div id="subscribersSection" class="glass rounded-2xl p-6 animate-in hidden">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold">Subscriber Management</h2>
+                        <p class="text-gray-400 text-sm mt-1">Manage VIP & Free users</p>
+                    </div>
+                    <div class="flex gap-3 w-full md:w-auto">
+                        <select id="filterType" onchange="filterSubscribers()" class="bg-dark-800 border border-dark-600 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            <option value="all">All Users</option>
+                            <option value="vip">VIP Only</option>
+                            <option value="free">Free Only</option>
+                        </select>
+                        <input type="text" id="searchSubsInput" placeholder="Search email..." oninput="filterSubscribers()" class="flex-1 md:w-64 bg-dark-800 border border-dark-600 rounded-xl px-4 py-2.5 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <button onclick="loadSubscribers()" class="bg-dark-700 hover:bg-dark-600 px-5 py-2.5 rounded-xl text-sm font-medium transition whitespace-nowrap">↻ Refresh</button>
+                    </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-dark-600">
+                                <th class="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Email</th>
+                                <th class="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Type</th>
+                                <th class="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Status</th>
+                                <th class="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Expires</th>
+                                <th class="text-right py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subsTableBody"></tbody>
+                    </table>
+                    <div id="loadingSubs" class="text-center py-12 text-gray-500">Loading subscribers...</div>
+                    <div id="noSubs" class="text-center py-12 text-gray-500 hidden">No subscribers found</div>
+                </div>
+            </div>
+
             <!-- Toast -->
             <div id="toast" class="fixed bottom-8 right-8 glass rounded-xl px-6 py-4 transform translate-y-32 transition-all duration-300 z-50">
                 <p id="toastMsg" class="font-medium"></p>
@@ -136,17 +140,13 @@
 const API_URL = 'https://remoteng-api.onrender.com';
 let ADMIN_KEY = '';
 let allJobs = [];
+let allSubs = [];
+let currentTab = 'jobs';
 
 function login() {
     const key = document.getElementById('adminKeyInput').value.trim();
     const errorEl = document.getElementById('loginError');
-    
-    if (!key) {
-        errorEl.textContent = 'Please enter your admin key';
-        errorEl.classList.remove('hidden');
-        return;
-    }
-    
+    if (!key) { errorEl.textContent = 'Please enter your admin key'; errorEl.classList.remove('hidden'); return; }
     ADMIN_KEY = key;
     localStorage.setItem('remoteng_admin_key', key);
     loadDashboard();
@@ -163,18 +163,15 @@ async function loadDashboard() {
     try {
         const res = await fetch(`${API_URL}/api/admin/stats?key=${ADMIN_KEY}`);
         if (!res.ok) throw new Error('Invalid key');
-        
         const stats = await res.json();
         document.getElementById('loginScreen').classList.add('hidden');
         document.getElementById('dashboard').classList.remove('hidden');
         document.getElementById('loginError').classList.add('hidden');
-        
         renderStats(stats);
         loadJobs();
     } catch (err) {
-        const errorEl = document.getElementById('loginError');
-        errorEl.textContent = 'Invalid key or server error';
-        errorEl.classList.remove('hidden');
+        document.getElementById('loginError').textContent = 'Invalid key or server error';
+        document.getElementById('loginError').classList.remove('hidden');
     }
 }
 
@@ -186,7 +183,6 @@ function renderStats(stats) {
         { label: 'VIPs', value: stats.active_vips, icon: '💎', color: 'from-pink-500 to-rose-500' },
         { label: 'Clicks 7d', value: stats.clicks_7d, icon: '📊', color: 'from-emerald-500 to-teal-500' }
     ];
-    
     document.getElementById('statsGrid').innerHTML = statsData.map(stat => `
         <div class="glass rounded-2xl p-5 hover:scale-105 transition transform">
             <div class="flex items-center justify-between mb-3">
@@ -199,10 +195,19 @@ function renderStats(stats) {
     `).join('');
 }
 
+function switchTab(tab) {
+    currentTab = tab;
+    document.getElementById('tab-jobs').className = tab === 'jobs' ? 'tab-active px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap transition' : 'bg-dark-700 hover:bg-dark-600 px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap transition';
+    document.getElementById('tab-subscribers').className = tab === 'subscribers' ? 'tab-active px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap transition' : 'bg-dark-700 hover:bg-dark-600 px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap transition';
+    document.getElementById('jobsSection').classList.toggle('hidden', tab !== 'jobs');
+    document.getElementById('subscribersSection').classList.toggle('hidden', tab !== 'subscribers');
+    if (tab === 'subscribers' && allSubs.length === 0) loadSubscribers();
+}
+
+// JOBS FUNCTIONS
 async function loadJobs() {
     document.getElementById('loadingJobs').classList.remove('hidden');
     document.getElementById('noJobs').classList.add('hidden');
-    
     try {
         const res = await fetch(`${API_URL}/api/admin/jobs?key=${ADMIN_KEY}`);
         allJobs = await res.json();
@@ -216,43 +221,21 @@ async function loadJobs() {
 
 function renderJobs(jobs) {
     const tbody = document.getElementById('jobsTableBody');
-    
-    if (jobs.length === 0) {
-        tbody.innerHTML = '';
-        document.getElementById('noJobs').classList.remove('hidden');
-        return;
-    }
-    
+    if (jobs.length === 0) { tbody.innerHTML = ''; document.getElementById('noJobs').classList.remove('hidden'); return; }
     document.getElementById('noJobs').classList.add('hidden');
-    
     tbody.innerHTML = jobs.map(job => {
         const date = new Date(job.posted_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
         const isFeatured = job.featured && new Date(job.featured_until) > new Date();
-        
         return `
             <tr class="border-b border-dark-700 hover:bg-dark-800/50 transition">
-                <td class="py-4 px-4">
-                    <div class="font-medium text-gray-100">${job.title}</div>
-                </td>
+                <td class="py-4 px-4"><div class="font-medium text-gray-100">${job.title}</div></td>
                 <td class="py-4 px-4 text-gray-400">${job.company || 'N/A'}</td>
-                <td class="py-4 px-4">
-                    ${isFeatured ? '<span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full">Featured</span>' : '<span class="text-gray-500 text-xs">Active</span>'}
-                </td>
+                <td class="py-4 px-4">${isFeatured ? '<span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full">Featured</span>' : '<span class="text-gray-500 text-xs">Active</span>'}</td>
                 <td class="py-4 px-4 text-gray-400 text-sm">${date}</td>
                 <td class="py-4 px-4">
                     <div class="flex gap-2 justify-end">
-                        <button 
-                            onclick="featureJob(${job.id})" 
-                            class="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white text-xs font-medium px-4 py-2 rounded-lg transition"
-                        >
-                            ${isFeatured ? 'Extend' : 'Feature'}
-                        </button>
-                        <button 
-                            onclick="deleteJob(${job.id}, '${job.title.replace(/'/g, "\\'")}')" 
-                            class="bg-dark-600 hover:bg-red-500/20 hover:text-red-400 text-gray-400 text-xs font-medium px-4 py-2 rounded-lg transition"
-                        >
-                            Delete
-                        </button>
+                        <button onclick="featureJob(${job.id})" class="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white text-xs font-medium px-4 py-2 rounded-lg transition">${isFeatured ? 'Extend' : 'Feature'}</button>
+                        <button onclick="deleteJob(${job.id}, '${job.title.replace(/'/g, "\\'")}')" class="bg-dark-600 hover:bg-red-500/20 hover:text-red-400 text-gray-400 text-xs font-medium px-4 py-2 rounded-lg transition">Delete</button>
                     </div>
                 </td>
             </tr>
@@ -261,67 +244,136 @@ function renderJobs(jobs) {
 }
 
 function filterJobs() {
-    const search = document.getElementById('searchInput').value.toLowerCase();
-    const filtered = allJobs.filter(job => 
-        job.title.toLowerCase().includes(search) || 
-        (job.company && job.company.toLowerCase().includes(search))
-    );
+    const search = document.getElementById('searchJobsInput').value.toLowerCase();
+    const filtered = allJobs.filter(job => job.title.toLowerCase().includes(search) || (job.company && job.company.toLowerCase().includes(search)));
     renderJobs(filtered);
 }
 
 async function deleteJob(id, title) {
     if (!confirm(`Delete "${title}"? This cannot be undone.`)) return;
-    
     try {
         const res = await fetch(`${API_URL}/api/admin/jobs/${id}?key=${ADMIN_KEY}`, { method: 'DELETE' });
-        if (res.ok) {
-            showToast('Job deleted successfully');
-            loadJobs();
-            loadDashboard();
-        } else {
-            throw new Error('Delete failed');
-        }
-    } catch (err) {
-        showToast('Failed to delete job', true);
-    }
+        if (res.ok) { showToast('Job deleted successfully'); loadJobs(); loadDashboard(); } else { throw new Error('Delete failed'); }
+    } catch (err) { showToast('Failed to delete job', true); }
 }
 
 async function featureJob(id) {
     try {
         const res = await fetch(`${API_URL}/api/admin/feature-job/${id}?key=${ADMIN_KEY}`, { method: 'POST' });
-        if (res.ok) {
-            showToast('Job featured for 7 days');
-            loadJobs();
-            loadDashboard();
-        } else {
-            throw new Error('Feature failed');
-        }
+        if (res.ok) { showToast('Job featured for 7 days'); loadJobs(); loadDashboard(); } else { throw new Error('Feature failed'); }
+    } catch (err) { showToast('Failed to feature job', true); }
+}
+
+// SUBSCRIBERS FUNCTIONS
+async function loadSubscribers() {
+    document.getElementById('loadingSubs').classList.remove('hidden');
+    document.getElementById('noSubs').classList.add('hidden');
+    try {
+        const res = await fetch(`${API_URL}/api/admin/subscribers?key=${ADMIN_KEY}`);
+        allSubs = await res.json();
+        renderSubscribers(allSubs);
     } catch (err) {
-        showToast('Failed to feature job', true);
+        showToast('Error loading subscribers', true);
+    } finally {
+        document.getElementById('loadingSubs').classList.add('hidden');
     }
+}
+
+function renderSubscribers(subs) {
+    const tbody = document.getElementById('subsTableBody');
+    if (subs.length === 0) { tbody.innerHTML = ''; document.getElementById('noSubs').classList.remove('hidden'); return; }
+    document.getElementById('noSubs').classList.add('hidden');
+    
+    tbody.innerHTML = subs.map(sub => {
+        const isVip = sub.type === 'vip' && sub.payment_status === 'active';
+        const isExpired = sub.expiry_date && new Date(sub.expiry_date) < new Date();
+        const expiryDate = sub.expiry_date ? new Date(sub.expiry_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'N/A';
+        const joinedDate = new Date(sub.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        
+        return `
+            <tr class="border-b border-dark-700 hover:bg-dark-800/50 transition">
+                <td class="py-4 px-4">
+                    <div class="font-medium text-gray-100">${sub.email}</div>
+                    <div class="text-xs text-gray-500">Joined ${joinedDate}</div>
+                </td>
+                <td class="py-4 px-4">
+                    ${isVip ? '<span class="bg-gradient-to-r from-pink-500 to-rose-500 text-white text-xs font-semibold px-3 py-1 rounded-full">VIP</span>' : '<span class="bg-dark-600 text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">Free</span>'}
+                </td>
+                <td class="py-4 px-4">
+                    ${isExpired ? '<span class="text-red-400 text-xs font-medium">Expired</span>' : isVip ? '<span class="text-emerald-400 text-xs font-medium">Active</span>' : '<span class="text-gray-500 text-xs">Free</span>'}
+                </td>
+                <td class="py-4 px-4 text-gray-400 text-sm">${expiryDate}</td>
+                <td class="py-4 px-4">
+                    <div class="flex gap-2 justify-end">
+                        ${!isVip ? `<button onclick="activateVip(${sub.id}, '${sub.email}')" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-xs font-medium px-4 py-2 rounded-lg transition">Make VIP</button>` : `<button onclick="deactivateVip(${sub.id}, '${sub.email}')" class="bg-dark-600 hover:bg-orange-500/20 hover:text-orange-400 text-gray-400 text-xs font-medium px-4 py-2 rounded-lg transition">Downgrade</button>`}
+                        <button onclick="deleteSubscriber(${sub.id}, '${sub.email}')" class="bg-dark-600 hover:bg-red-500/20 hover:text-red-400 text-gray-400 text-xs font-medium px-4 py-2 rounded-lg transition">Delete</button>
+                    </div>
+                </td>
+            </tr>
+        `;
+    }).join('');
+}
+
+function filterSubscribers() {
+    const search = document.getElementById('searchSubsInput').value.toLowerCase();
+    const type = document.getElementById('filterType').value;
+    let filtered = allSubs;
+    
+    if (type !== 'all') {
+        filtered = filtered.filter(sub => sub.type === type);
+    }
+    if (search) {
+        filtered = filtered.filter(sub => sub.email.toLowerCase().includes(search));
+    }
+    renderSubscribers(filtered);
+}
+
+async function activateVip(id, email) {
+    const days = prompt(`How many days to activate VIP for ${email}?`, '30');
+    if (!days || isNaN(days)) return;
+    
+    try {
+        const res = await fetch(`${API_URL}/api/admin/update-subscriber/${id}?key=${ADMIN_KEY}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type: 'vip', payment_status: 'active', days: parseInt(days) })
+        });
+        if (res.ok) { showToast(`${email} upgraded to VIP for ${days} days`); loadSubscribers(); loadDashboard(); } else { throw new Error('Update failed'); }
+    } catch (err) { showToast('Failed to activate VIP', true); }
+}
+
+async function deactivateVip(id, email) {
+    if (!confirm(`Downgrade ${email} to free user?`)) return;
+    try {
+        const res = await fetch(`${API_URL}/api/admin/update-subscriber/${id}?key=${ADMIN_KEY}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type: 'free', payment_status: 'inactive', days: 0 })
+        });
+        if (res.ok) { showToast(`${email} downgraded to free`); loadSubscribers(); loadDashboard(); } else { throw new Error('Update failed'); }
+    } catch (err) { showToast('Failed to downgrade user', true); }
+}
+
+async function deleteSubscriber(id, email) {
+    if (!confirm(`Delete ${email}? This cannot be undone.`)) return;
+    try {
+        const res = await fetch(`${API_URL}/api/admin/subscribers/${id}?key=${ADMIN_KEY}`, { method: 'DELETE' });
+        if (res.ok) { showToast('Subscriber deleted'); loadSubscribers(); loadDashboard(); } else { throw new Error('Delete failed'); }
+    } catch (err) { showToast('Failed to delete subscriber', true); }
 }
 
 function showToast(msg, isError = false) {
     const toast = document.getElementById('toast');
     const toastMsg = document.getElementById('toastMsg');
-    
     toastMsg.textContent = msg;
     toast.className = `fixed bottom-8 right-8 glass rounded-xl px-6 py-4 transform transition-all duration-300 z-50 ${isError ? 'border border-red-500/50' : 'border border-emerald-500/50'}`;
     toast.classList.remove('translate-y-32');
-    
-    setTimeout(() => {
-        toast.classList.add('translate-y-32');
-    }, 3000);
+    setTimeout(() => { toast.classList.add('translate-y-32'); }, 3000);
 }
 
-// Auto-login if key saved
 window.onload = () => {
     const saved = localStorage.getItem('remoteng_admin_key');
-    if (saved) {
-        document.getElementById('adminKeyInput').value = saved;
-        ADMIN_KEY = saved;
-        loadDashboard();
-    }
+    if (saved) { document.getElementById('adminKeyInput').value = saved; ADMIN_KEY = saved; loadDashboard(); }
 };
 </script>
 </body>
