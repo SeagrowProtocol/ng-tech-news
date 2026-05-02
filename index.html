@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://remoteng.com.ng/logo.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:site_name" content="RemotENG">
+<meta property="og:site_name" content="RemoteNG">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
@@ -81,7 +81,7 @@ nav a:hover, nav a.active { color: var(--blue); }
 .job-title { font-size: 22px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; line-height: 1.3; }
 .job-company { color: var(--gray-500); margin-bottom: 16px; font-weight: 500; font-size: 15px; }
 .job-salary { color: var(--green); font-weight: 700; font-size: 21px; margin: 16px 0; }
-.job-desc { color: var(--gray-700); font-size: 15px; line-height: 1.6; margin: 16px 0; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.job-desc { color: var(--gray-700); font-size: 15px; line-height: 1.6; margin: 16px 0; flex: 1; }
 .job-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 22px; }
 .job-date { color: var(--gray-500); font-size: 13px; }
 .news-card img { width: 100%; height: 210px; object-fit: cover; border-radius: 14px; margin-bottom: 18px; }
@@ -106,7 +106,6 @@ footer a:hover { color: var(--blue-cloud); }
 .ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
 .ad-wrap.banner-728 { min-height: 90px; }
 .ad-wrap.banner-300 { min-height: 250px; }
-.ad-wrap.native { min-height: 250px; }
 @media (max-width: 768px) {
   nav { display: none; }
 .hero h1 { font-size: 38px; }
@@ -214,7 +213,7 @@ footer a:hover { color: var(--blue-cloud); }
 </section>
 
 <!-- NATIVE ADSTERRA BANNER: Middle of scroll -->
-<div class="ad-wrap native">
+<div class="ad-wrap">
 <small>Advertisement</small>
 <script async="async" data-cfasync="false" src="https://fixesconsessionconsession.com/67abc4f6c4779907d9aa956165783490/invoke.js"></script>
 <div id="container-67abc4f6c4779907d9aa956165783490"></div>
@@ -318,6 +317,7 @@ footer a:hover { color: var(--blue-cloud); }
 <div class="footer-bottom">
 <p>&copy; 2026 RemotENG. All rights reserved. Remote opportunities worldwide.</p>
 </div>
+</div>
 </footer>
 
 <script>
@@ -338,11 +338,7 @@ async function detectLocation() {
       'GB': { symbol: '£', code: 'GBP', cv: 2.5, cover: 2, vip: 1.5 },
       'DE': { symbol: '€', code: 'EUR', cv: 2.8, cover: 2.3, vip: 1.8 },
       'FR': { symbol: '€', code: 'EUR', cv: 2.8, cover: 2.3, vip: 1.8 },
-      'IT': { symbol: '€', code: 'EUR', cv: 2.8, cover: 2.3, vip: 1.8 },
-      'ES': { symbol: '€', code: 'EUR', cv: 2.8, cover: 2.3, vip: 1.8 },
-      'CA': { symbol: 'C$', code: 'CAD', cv: 4, cover: 3.5, vip: 2.5 },
-      'AU': { symbol: 'A$', code: 'AUD', cv: 4.5, cover: 3.8, vip: 3 },
-      'ZA': { symbol: 'R', code: 'ZAR', cv: 55, cover: 45, vip: 35 }
+      'CA': { symbol: 'C$', code: 'CAD', cv: 4, cover: 3.5, vip: 2.5 }
     };
     
     const cur = currencyMap[userCountry] || currencyMap['NG'];
@@ -379,7 +375,7 @@ async function loadFeaturedJobs() {
     jobs.forEach(job => {
       const card = document.createElement('div');
       card.className = `job-card featured`;
-      const desc = job.description ? job.description : 'Remote opportunity with competitive global compensation. Work with top international teams and get paid in USD, EUR, or GBP. Apply now to join leading companies hiring globally.';
+      const desc = job.description ? job.description.substring(0, 140) + '...' : 'Remote opportunity with competitive global compensation. Apply now to join top international teams.';
       card.innerHTML = `
         <span class="tag featured">Featured</span>
         <div class="job-title">${job.title}</div>
