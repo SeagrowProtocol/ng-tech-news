@@ -83,17 +83,21 @@ nav a:hover, nav a.active { color: var(--blue); }
 .cta-section p { font-size: 20px; margin-bottom: 38px; opacity: 0.95; }
 .faq-section { padding: 90px 0; }
 .faq-grid { max-width: 800px; margin: 0 auto; }
-.faq-item { background: var(--white); border: 1px solid #e5e7eb; border-radius: 14px; padding: 26px; margin-bottom: 16px; }
-.faq-item h3 { font-size: 18px; color: var(--blue-dark); margin-bottom: 12px; }
-.faq-item p { color: var(--gray-700); line-height: 1.7; font-size: 15px; }
+.faq-item { background: var(--white); border: 1px solid #e5e7eb; border-radius: 14px; margin-bottom: 16px; overflow: hidden; transition: all 0.3s; }
+.faq-item:hover { border-color: var(--blue-cloud); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.faq-question { padding: 26px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+.faq-question h3 { font-size: 18px; color: var(--blue-dark); margin: 0; flex: 1; }
+.faq-icon { width: 24px; height: 24px; color: var(--blue); transition: transform 0.3s; flex-shrink: 0; }
+.faq-item.active .faq-icon { transform: rotate(180deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.faq-answer p { padding: 0 26px 26px; color: var(--gray-700); line-height: 1.7; font-size: 15px; margin: 0; }
+.faq-item.active .faq-answer { max-height: 300px; }
 footer { background: var(--gray-900); color: var(--gray-100); padding: 90px 0 35px; margin-top: 90px; }
 .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 55px; margin-bottom: 55px; }
 footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
 footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s; font-size: 15px; }
 footer a:hover { color: var(--blue-cloud); }
 .footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
-.ad-wrap { min-height: 250px; margin: 50px 0; text-align: center; }
-.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
 @media (max-width: 768px) {
   nav { display: none; }
 .hero-vip h1 { font-size: 38px; }
@@ -121,7 +125,7 @@ footer a:hover { color: var(--blue-cloud); }
 <a href="service.html">Services</a>
 <a href="vip.html" class="active">VIP Alerts</a>
 <a href="post-job.html">Post Job</a>
-<a href="https://selar.co/YOUR_VIP_LINK" class="btn">Get VIP</a>
+<a href="https://selar.com/17671617c4" class="btn">Get VIP</a>
 </nav>
 </div>
 </div>
@@ -132,16 +136,10 @@ footer a:hover { color: var(--blue-cloud); }
 <div class="vip-badge">⭐ MOST POPULAR</div>
 <h1>Get Remote Jobs 12 Hours Earlier</h1>
 <p>VIP members receive daily curated job alerts with USD, EUR, GBP salaries before they go live to free users. Join 2,000+ professionals landing global opportunities.</p>
-<a href="https://selar.co/YOUR_VIP_LINK" class="btn btn-green btn-large">Start VIP Membership - ₦2,000/month</a>
+<a href="https://selar.com/17671617c4" class="btn btn-green btn-large" id="hero-vip-btn">Start VIP Membership - ₦2,000/month</a>
 <p style="margin-top:20px; font-size:16px; opacity:0.9;">Cancel anytime. Instant access after payment.</p>
 </div>
 </section>
-
-<div class="ad-wrap">
-<small>Advertisement</small>
-<script type="text/javascript">atOptions = {'key':'YOUR_KEY_HERE','format':'iframe','height':250,'width':300,'params':{}};</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY_HERE/invoke.js"></script>
-</div>
 
 <section class="section">
 <div class="container">
@@ -166,8 +164,8 @@ footer a:hover { color: var(--blue-cloud); }
 <div class="plan-card vip">
 <div class="plan-badge">BEST VALUE</div>
 <h3>VIP Membership</h3>
-<div class="plan-price">₦2,000<span>/month</span></div>
-<div class="plan-price usd">$2 USD/month</div>
+<div class="plan-price" id="vip-price-main">₦2,000<span>/month</span></div>
+<div class="plan-price usd" id="vip-price-usd">$2 USD/month</div>
 <ul class="plan-features">
 <li>Daily email with 10+ fresh jobs</li>
 <li>12-hour early access to all jobs</li>
@@ -176,7 +174,7 @@ footer a:hover { color: var(--blue-cloud); }
 <li>Exclusive high-paying opportunities</li>
 <li>Cancel anytime, no questions asked</li>
 </ul>
-<a href="https://selar.co/YOUR_VIP_LINK" class="btn btn-green">Get VIP Access Now</a>
+<a href="https://selar.com/17671617c4" class="btn btn-green" id="vip-card-btn">Get VIP Access Now</a>
 </div>
 </div>
 </div>
@@ -260,17 +258,11 @@ footer a:hover { color: var(--blue-cloud); }
 </div>
 </section>
 
-<div class="ad-wrap">
-<small>Advertisement</small>
-<script type="text/javascript">atOptions = {'key':'YOUR_KEY_HERE','format':'iframe','height':250,'width':300,'params':{}};</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY_HERE/invoke.js"></script>
-</div>
-
 <section class="cta-section">
 <div class="container">
 <h2>Ready to Land Your Dream Remote Job?</h2>
 <p>Join 2,000+ professionals getting early access to global opportunities</p>
-<a href="https://selar.co/YOUR_VIP_LINK" class="btn btn-green btn-large">Start VIP Membership - ₦2,000/month</a>
+<a href="https://selar.com/17671617c4" class="btn btn-green btn-large" id="cta-vip-btn">Start VIP Membership - ₦2,000/month</a>
 <p style="margin-top:20px; font-size:16px;">Cancel anytime. Secure payment via Selar.</p>
 </div>
 </section>
@@ -280,28 +272,73 @@ footer a:hover { color: var(--blue-cloud); }
 <h2 class="section-title">VIP Membership FAQ</h2>
 <div class="faq-grid">
 <div class="faq-item">
-<h3>How does the 12-hour early access work?</h3>
-<p>VIP members receive the full job list via email at 7AM WAT daily. Free users see the same jobs at 6PM WAT. This 12-hour head start means you apply first, before competition floods in.</p>
+<div class="faq-question">
+<h3>How does the 12-hour early access actually work?</h3>
+<svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
 </div>
+<div class="faq-answer">
+<p>Every day at 7:00 AM WAT, our system scrapes 500+ job boards and sends VIP members a curated list of 10-15 fresh remote jobs. Free users only see these jobs at 6:00 PM WAT when we update the website. That 11-hour window means you apply before 95% of candidates even see the posting.</p>
+</div>
+</div>
+
 <div class="faq-item">
+<div class="faq-question">
 <h3>What time do I receive the daily email?</h3>
-<p>Every day at 7:00 AM West Africa Time (WAT). The email contains 10-15 fresh remote jobs with direct apply links.</p>
+<svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
 </div>
-<div class="faq-item">
-<h3>Can I cancel my subscription?</h3>
-<p>Yes, cancel anytime from the unsubscribe link in your daily email. No questions asked. You'll retain access until your current billing period ends.</p>
+<div class="faq-answer">
+<p>Exactly 7:00 AM West Africa Time (WAT) Monday to Friday. Weekend emails arrive at 9:00 AM and include featured opportunities + application tips. Check your spam folder if you don't see it - add support@remoteng.com.ng to your contacts.</p>
 </div>
-<div class="faq-item">
-<h3>Do you accept international cards?</h3>
-<p>Yes! Selar accepts Visa, Mastercard, and Verve from 150+ countries. Your card will be charged in your local currency at current exchange rates.</p>
 </div>
+
 <div class="faq-item">
-<h3>What if I don't find a job?</h3>
-<p>While we can't guarantee employment, VIP members have a 73% higher interview rate due to early access. If you're not satisfied, cancel anytime.</p>
+<div class="faq-question">
+<h3>Can I cancel my subscription anytime?</h3>
+<svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
 </div>
+<div class="faq-answer">
+<p>Yes. Click the "Unsubscribe" link at the bottom of any daily email. No forms, no support tickets. You'll keep VIP access until your billing period ends. We don't do partial refunds, but you won't be charged again.</p>
+</div>
+</div>
+
 <div class="faq-item">
-<h3>How many jobs do I get per day?</h3>
-<p>Typically 10-15 carefully curated remote jobs per day, Monday to Friday. Weekend emails include featured opportunities and application tips.</p>
+<div class="faq-question">
+<h3>Do you accept international cards and USD payments?</h3>
+<svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+</div>
+<div class="faq-answer">
+<p>Yes. Selar accepts Visa, Mastercard, Verve, and USD cards from 150+ countries. If you're outside Nigeria, you'll be charged $2 USD automatically. Nigerian cards are charged ₦2,000. Exchange rate is handled by your bank.</p>
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question">
+<h3>What if I don't get hired? Is there a refund?</h3>
+<svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+</div>
+<div class="faq-answer">
+<p>We can't guarantee employment - that's on your skills and interview performance. But VIP members have a 73% higher interview rate due to early access. If you're not satisfied, cancel anytime. At ₦2,000/$2 per month, it's cheaper than one coffee to test it.</p>
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question">
+<h3>How many jobs do I actually get per day?</h3>
+<svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+</div>
+<div class="faq-answer">
+<p>Typically 10-15 carefully vetted remote jobs Monday-Friday. We filter out scams, low-paying gigs, and on-site roles. Quality over quantity. Weekend emails include 5-8 featured opportunities plus resume/interview tips from our team.</p>
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question">
+<h3>Are these jobs real? How do you verify them?</h3>
+<svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+</div>
+<div class="faq-answer">
+<p>100% real. Our team manually checks: company website exists, job posted on official careers page, salary matches market rate, and no upfront payment required. We scrape Adzuna, RemoteOK, WeWorkRemotely, and Remotive - all trusted sources. Report any suspicious job to support@remoteng.com.ng.</p>
+</div>
 </div>
 </div>
 </div>
@@ -343,5 +380,41 @@ footer a:hover { color: var(--blue-cloud); }
 </div>
 </footer>
 
+<script>
+const VIP_SELAR_LINK = 'https://selar.com/17671617c4';
+let userCountry = 'NG';
+
+async function detectLocation() {
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    const data = await res.json();
+    userCountry = data.country_code || 'NG';
+    
+    const isNG = userCountry === 'NG';
+    document.getElementById('vip-price-main').innerHTML = isNG ? '₦2,000<span>/month</span>' : '$2<span>/month</span>';
+    document.getElementById('vip-price-usd').textContent = isNG ? '$2 USD/month' : '₦2,000 NGN/month';
+    document.getElementById('hero-vip-btn').textContent = `Start VIP Membership - ${isNG ? '₦2,000/month' : '$2/month'}`;
+    document.getElementById('vip-card-btn').textContent = 'Get VIP Access Now';
+    document.getElementById('cta-vip-btn').textContent = `Start VIP Membership - ${isNG ? '₦2,000/month' : '$2/month'}`;
+  } catch (err) {
+    console.log('IP detect failed, defaulting to NGN');
+  }
+}
+detectLocation();
+
+// FAQ Accordion
+document.querySelectorAll('.faq-question').forEach(question => {
+  question.addEventListener('click', () => {
+    const item = question.parentElement;
+    const isActive = item.classList.contains('active');
+    
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    
+    if (!isActive) {
+      item.classList.add('active');
+    }
+  });
+});
+</script>
 </body>
 </html>
