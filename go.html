@@ -97,7 +97,7 @@ const API_URL = 'https://remoteng-api.onrender.com';
 async function init() {
   const params = new URLSearchParams(window.location.search);
 
-  // Flow 1: Job Click Tracking
+  // Flow 1: Job Click Tracking - FIXED: Now sends email + url to backend
   if (params.has('url') && params.has('job_id')) {
     await handleJobClick(params);
     return;
@@ -115,7 +115,7 @@ async function init() {
     return;
   }
 
-  // Flow 4: Selar Payment Success - Featured Job - FIXED
+  // Flow 4: Selar Payment Success - Featured Job - FIXED: Now sends job_id
   if (params.get('success') === 'featured_job') {
     await handleFeaturedJobOrder(params);
     return;
@@ -126,21 +126,27 @@ async function init() {
 }
 
 async function handleJobClick(params) {
-  const jobUrl = params.get('url');
-  const jobId = params.get('job_id');
-  const referrer = document.referrer || 'direct';
+  const jobUrl = decodeURIComponent(params.get('url'));
+  const jobId = parseInt(params.get('job_id'));
+  const email = localStorage.getItem('remoteng_email') || null;
 
+  // FIXED: Send email and url to match backend schema
   try {
     await fetch(`${API_URL}/api/click`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ job_id: parseInt(jobId), referrer: referrer })
+      body: JSON.stringify({ 
+        job_id: jobId, 
+        email: email, 
+        url: jobUrl 
+      })
     });
   } catch (err) {
     console.error('Click tracking failed:', err);
   }
 
-  window.location.href = decodeURIComponent(jobUrl);
+  // Redirect immediately after tracking
+  window.location.href = jobUrl;
 }
 
 async function handlePaymentSuccess(params, type) {
@@ -184,6 +190,18 @@ async function handlePaymentSuccess(params, type) {
           { text: 'Go to Homepage', url: 'index.html', class: 'btn-outline' }
         ]
       );
+      
+      // Auto-redirect to jobs after 5 seconds
+      let countdown = 5;
+      const countdownEl = document.getElementById('countdown');
+      const interval = setInterval(() => {
+        countdownEl.textContent = `Redirecting to jobs in ${countdown} seconds...`;
+        countdown--;
+        if (countdown < 0) {
+          clearInterval(interval);
+          window.location.href = 'remote-jobs.html';
+        }
+      }, 1000);
     }
   } catch (err) {
     console.error('Payment verification error:', err);
@@ -223,6 +241,7 @@ async function handleFeaturedJobOrder(params) {
   const email = params.get('email');
   const txRef = params.get('tx_ref') || params.get('transaction_id');
   const name = params.get('name') || 'Company';
+  const jobId = params.get('job_id') ? parseInt(params.get('job_id')) : null;
 
   if (!email || !txRef) {
     showError('Featured job order incomplete.', 'Missing email or transaction reference from Selar.');
@@ -240,7 +259,8 @@ async function handleFeaturedJobOrder(params) {
         email: email,
         tx_ref: txRef,
         type: 'featured_job',
-        name: name
+        name: name,
+        job_id: jobId
       })
     });
 
