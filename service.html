@@ -25,7 +25,8 @@
   --red: #ef4444;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--white); }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--white); overflow-x: hidden; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.97); }
 .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
@@ -47,23 +48,25 @@ nav a:hover, nav a.active { color: var(--blue); }
 .page-header { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); color: var(--white); padding: 70px 0 50px; text-align: center; }
 .page-header h1 { font-size: 44px; margin-bottom: 14px; font-weight: 800; }
 .page-header p { font-size: 18px; opacity: 0.95; max-width: 650px; margin: 0 auto; }
+.currency-banner { background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%); border-bottom: 1px solid var(--blue-cloud); padding: 14px 0; text-align: center; font-size: 15px; color: var(--blue-dark); font-weight: 600; }
+.currency-banner span { color: var(--green); font-weight: 700; }
 .section { padding: 90px 0; }
 .section-title { font-size: 38px; margin-bottom: 16px; text-align: center; color: var(--blue-dark); font-weight: 800; }
 .section-subtitle { text-align: center; color: var(--gray-700); font-size: 18px; margin: 0 auto 50px; max-width: 600px; }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 35px; }
-.service-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; padding: 45px 35px; text-align: center; transition: all 0.3s; position: relative; }
+.service-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; padding: 45px 35px; text-align: center; transition: all 0.3s; position: relative; display: flex; flex-direction: column; }
 .service-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: var(--blue-cloud); }
 .service-card.popular { border: 2px solid var(--green); background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
 .service-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--green); color: var(--gray-900); padding: 6px 18px; border-radius: 20px; font-size: 12px; font-weight: 700; }
 .service-icon { width: 70px; height: 70px; margin: 0 auto 24px; background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 32px; }
 .service-card h3 { font-size: 26px; margin-bottom: 14px; color: var(--blue-dark); }
-.service-desc { color: var(--gray-700); font-size: 16px; line-height: 1.7; margin-bottom: 24px; }
+.service-desc { color: var(--gray-700); font-size: 16px; line-height: 1.7; margin-bottom: 24px; flex: 1; }
 .service-features { text-align: left; margin: 24px 0 32px; }
 .service-features li { color: var(--gray-700); margin-bottom: 12px; font-size: 15px; list-style: none; padding-left: 28px; position: relative; }
 .service-features li:before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; font-size: 18px; }
 .service-price { font-size: 42px; font-weight: 800; color: var(--green); margin: 28px 0 8px; }
 .service-price span { font-size: 18px; color: var(--gray-500); font-weight: 500; }
-.service-price.usd { font-size: 24px; color: var(--blue); margin-top: 0; margin-bottom: 28px; }
+.service-price-alt { font-size: 20px; color: var(--blue); margin-top: 0; margin-bottom: 28px; font-weight: 600; }
 .how-section { background: var(--gray-100); padding: 90px 0; }
 .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 50px; }
 .step-card { text-align: center; }
@@ -72,9 +75,13 @@ nav a:hover, nav a.active { color: var(--blue); }
 .step-card p { color: var(--gray-700); line-height: 1.7; font-size: 15px; }
 .faq-section { padding: 90px 0; }
 .faq-grid { max-width: 800px; margin: 0 auto; }
-.faq-item { background: var(--white); border: 1px solid #e5e7eb; border-radius: 14px; padding: 26px; margin-bottom: 16px; }
-.faq-item h3 { font-size: 18px; color: var(--blue-dark); margin-bottom: 12px; }
-.faq-item p { color: var(--gray-700); line-height: 1.7; font-size: 15px; }
+.faq-item { background: var(--white); border: 1px solid #e5e7eb; border-radius: 14px; padding: 26px; margin-bottom: 16px; cursor: pointer; transition: all 0.2s; }
+.faq-item:hover { border-color: var(--blue-cloud); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.faq-item h3 { font-size: 18px; color: var(--blue-dark); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+.faq-item h3::after { content: '+'; font-size: 24px; color: var(--blue); transition: transform 0.2s; }
+.faq-item.active h3::after { transform: rotate(45deg); }
+.faq-item p { color: var(--gray-700); line-height: 1.7; font-size: 15px; display: none; }
+.faq-item.active p { display: block; }
 .cta-banner { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); color: var(--white); padding: 60px 0; text-align: center; margin: 90px 0 0; }
 .cta-banner h2 { font-size: 36px; margin-bottom: 16px; font-weight: 800; }
 .cta-banner p { font-size: 18px; margin-bottom: 32px; opacity: 0.95; }
@@ -152,10 +159,14 @@ footer a:hover { color: var(--blue-cloud); }
 <a href="service.html" class="active">Services</a>
 <a href="vip.html">VIP Alerts</a>
 <a href="post-job.html">Post Job</a>
-<a href="vip.html" class="btn">Get VIP</a>
+<a href="https://selar.com/17671617c4" class="btn">Get VIP</a>
 </nav>
 </div>
 </header>
+
+<div class="currency-banner" id="currency-banner">
+📍 Detected location: <span id="user-location">Loading...</span> | Prices shown in <span id="currency-display">NGN/USD</span>
+</div>
 
 <section class="page-header">
 <div class="container">
@@ -181,8 +192,8 @@ footer a:hover { color: var(--blue-cloud); }
 <li>Delivery in 48 hours via email</li>
 <li>PDF + Editable Word formats</li>
 </ul>
-<div class="service-price">₦3,000</div>
-<div class="service-price usd">$3 USD</div>
+<div class="service-price" data-ngn="₦3,000" data-usd="$3">$3 USD</div>
+<div class="service-price-alt" data-ngn="₦3,000" data-usd="$3">₦3,000</div>
 <a href="cv-resume.html" class="btn btn-green">Order CV Now</a>
 </div>
 
@@ -197,8 +208,8 @@ footer a:hover { color: var(--blue-cloud); }
 <li>Delivery in 24 hours via email</li>
 <li>PDF + Editable Word formats</li>
 </ul>
-<div class="service-price">₦2,500</div>
-<div class="service-price usd">$2.50 USD</div>
+<div class="service-price" data-ngn="₦2,500" data-usd="$2.50">$2.50 USD</div>
+<div class="service-price-alt" data-ngn="₦2,500" data-usd="$2.50">₦2,500</div>
 <a href="cv-resume.html#cover-letter" class="btn">Order Cover Letter</a>
 </div>
 
@@ -213,15 +224,15 @@ footer a:hover { color: var(--blue-cloud); }
 <li>Delivery in 24 hours via email</li>
 <li>Actionable improvement guide</li>
 </ul>
-<div class="service-price">₦1,500</div>
-<div class="service-price usd">$1.50 USD</div>
+<div class="service-price" data-ngn="₦1,500" data-usd="$1.50">$1.50 USD</div>
+<div class="service-price-alt" data-ngn="₦1,500" data-usd="$1.50">₦1,500</div>
 <a href="cv-resume.html#review" class="btn">Get CV Review</a>
 </div>
 
 <div class="service-card">
 <div class="service-icon">⭐</div>
 <h3>VIP Job Alerts</h3>
-<p class="service-desc">Daily curated remote job alerts + early access to exclusive opportunities</p>
+<p class="service-desc">Daily curated remote job alerts + 12-hour early access to exclusive opportunities</p>
 <ul class="service-features">
 <li>Daily email with 10+ fresh jobs</li>
 <li>12-hour early access before free users</li>
@@ -229,9 +240,9 @@ footer a:hover { color: var(--blue-cloud); }
 <li>Cancel anytime</li>
 <li>Join 2,000+ professionals</li>
 </ul>
-<div class="service-price">₦2,000<span>/month</span></div>
-<div class="service-price usd">$2 USD/month</div>
-<a href="vip.html" class="btn btn-green">Subscribe to VIP</a>
+<div class="service-price" data-ngn="₦2,000" data-usd="$2"><span>/month</span>$2 USD</div>
+<div class="service-price-alt" data-ngn="₦2,000" data-usd="$2">₦2,000<span>/month</span></div>
+<a href="https://selar.com/17671617c4" class="btn btn-green">Subscribe to VIP</a>
 </div>
 </div>
 </div>
@@ -263,31 +274,39 @@ footer a:hover { color: var(--blue-cloud); }
 
 <section class="faq-section">
 <div class="container">
-<h2 class="section-title">Frequently Asked Questions</h2>
+<h2 class="section-title">Career Questions Answered</h2>
 <div class="faq-grid">
-<div class="faq-item">
-<h3>How long does delivery take?</h3>
-<p>CV Writing: 48 hours. Cover Letter: 24 hours. CV Review: 24 hours. VIP Alerts: Start immediately after activation.</p>
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>Why do I need an ATS-optimized CV?</h3>
+<p>95% of Fortune 500 companies use Applicant Tracking Systems to filter CVs before humans see them. If your CV isn't formatted correctly with the right keywords, it's rejected instantly. Our CVs are designed to pass these filters and reach hiring managers. This is why our clients have a 73% interview rate vs 15% industry average.</p>
 </div>
-<div class="faq-item">
-<h3>Do you offer revisions?</h3>
-<p>Yes! CV and Cover Letter services include 2 rounds of revisions within 7 days of delivery to ensure you're 100% satisfied.</p>
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>How is VIP different from free job alerts?</h3>
+<p>VIP members get jobs at 7AM WAT daily. Free users get the same jobs at 6PM WAT. That 12-hour window is critical. Early applicants are 8x more likely to get interviewed. Companies often close applications after receiving 50-100 CVs. VIP ensures you're in the first batch, not the last.</p>
 </div>
-<div class="faq-item">
-<h3>What formats do I receive?</h3>
-<p>All documents are delivered in both PDF and editable Word (.docx) formats via email. Ready to customize and apply.</p>
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>Do you guarantee I'll get a job?</h3>
+<p>No career service can guarantee employment. Hiring depends on your skills, experience, interview performance, and company needs. What we guarantee: ATS-optimized documents that pass filters, professional formatting, keyword optimization, and 2 revisions. We give you the best tools, but you must apply and interview well.</p>
 </div>
-<div class="faq-item">
-<h3>Are the CVs ATS-optimized?</h3>
-<p>Absolutely. We use proven ATS-friendly formats with proper keyword optimization to ensure your CV passes automated screening systems used by global companies.</p>
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>What if I'm not satisfied with my CV?</h3>
+<p>You get 2 rounds of revisions within 7 days. Tell us what to change and we'll update it. If we fail to deliver within 72 hours without communication, full refund. If you're unhappy after revisions, we'll work with you until you're satisfied. Your success is our reputation.</p>
 </div>
-<div class="faq-item">
-<h3>Can I cancel VIP subscription?</h3>
-<p>Yes, cancel anytime from your email. No questions asked. You'll retain access until the end of your billing period.</p>
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>Can you write a CV for any industry?</h3>
+<p>Yes. We've written CVs for software engineers, marketers, designers, accountants, teachers, nurses, and 40+ other professions. Our team includes hiring managers from tech, finance, healthcare, and education who know exactly what each industry wants to see.</p>
 </div>
-<div class="faq-item">
-<h3>Do you accept international payments?</h3>
-<p>Yes! We accept cards from 150+ countries. Prices shown in ₦ and USD. Your card will be charged in your local currency.</p>
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>How do I pay from outside Nigeria?</h3>
+<p>All services accept international cards via Selar. Prices shown in USD are charged in your local currency at current exchange rates. Your bank handles conversion. No extra fees from us. We support cards from 150+ countries including US, UK, Canada, EU, India, and more.</p>
+</div>
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>What's included in a CV review?</h3>
+<p>We analyze: ATS compatibility, keyword density, formatting issues, content gaps, achievement quantification, and overall impact. You get a detailed PDF report with specific line-by-line suggestions. Most clients see 3x more interview calls after implementing our feedback.</p>
+</div>
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>Can I cancel VIP anytime?</h3>
+<p>Yes. Click "Unsubscribe" in any VIP email. No questions asked, no cancellation fees. You'll retain access until the end of your billing period. We believe in earning your subscription monthly, not trapping you in contracts.</p>
 </div>
 </div>
 </div>
@@ -336,8 +355,48 @@ footer a:hover { color: var(--blue-cloud); }
 <div class="footer-bottom">
 <p>&copy; 2026 RemotENG. All rights reserved. Remote opportunities worldwide.</p>
 </div>
-</div>
 </footer>
 
+<script>
+// IP-based currency detection
+async function detectCurrency() {
+  const currencyBanner = document.getElementById('currency-banner');
+  const locationEl = document.getElementById('user-location');
+  const currencyEl = document.getElementById('currency-display');
+  
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    const data = await res.json();
+    const country = data.country_name || 'your location';
+    const currency = data.currency || 'USD';
+    const isNigeria = data.country_code === 'NG';
+    
+    locationEl.textContent = country;
+    
+    if (isNigeria) {
+      currencyEl.textContent = 'NGN';
+      document.querySelectorAll('[data-ngn]').forEach(el => {
+        el.textContent = el.dataset.ngn;
+      });
+    } else {
+      currencyEl.textContent = 'USD';
+      document.querySelectorAll('[data-usd]').forEach(el => {
+        el.textContent = el.dataset.usd;
+      });
+    }
+  } catch (err) {
+    console.error('Currency detection failed:', err);
+    locationEl.textContent = 'your location';
+    currencyEl.textContent = 'NGN/USD';
+  }
+}
+
+// FAQ toggle
+function toggleFAQ(element) {
+  element.classList.toggle('active');
+}
+
+detectCurrency();
+</script>
 </body>
 </html>
