@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Remote Jobs - USD, EUR, GBP | RemotENG</title>
+<title>Remote Jobs - USD, EUR, GBP | RemoteNG</title>
 <meta name="description" content="Browse 500+ global remote jobs with USD, EUR, GBP salaries. Filter by tech, non-tech, salary range. Updated daily. Apply to verified opportunities worldwide.">
-<meta property="og:title" content="Remote Jobs - USD, EUR, GBP | RemotENG">
+<meta property="og:title" content="Remote Jobs - USD, EUR, GBP | RemoteNG">
 <meta property="og:description" content="Browse 500+ global remote jobs with USD, EUR, GBP salaries. Updated daily.">
 <meta property="og:url" content="https://remoteng.com.ng/remote-jobs.html">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://remoteng.com.ng/logo.png">
 <link rel="icon" href="https://remoteng.com.ng/logo.png">
+<link rel="canonical" href="https://remoteng.com.ng/remote-jobs.html">
 <style>
 :root {
   --blue-dark: #1e3a8a;
@@ -68,6 +70,8 @@ nav a:hover, nav a.active { color: var(--blue); }
 .tag.featured { background: var(--green); color: var(--gray-900); }
 .tag.pinned { background: var(--blue); color: var(--white); }
 .job-title { font-size: 22px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; line-height: 1.3; }
+.job-title a { color: inherit; text-decoration: none; }
+.job-title a:hover { color: var(--blue); }
 .job-company { color: var(--gray-500); margin-bottom: 16px; font-weight: 500; font-size: 15px; }
 .job-desc { color: var(--gray-700); font-size: 15px; line-height: 1.6; margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
 .job-salary { color: var(--green); font-weight: 700; font-size: 21px; margin: 16px 0; }
@@ -77,6 +81,8 @@ nav a:hover, nav a.active { color: var(--blue); }
 .save-btn { background: var(--white); border: 2px solid #e5e7eb; border-radius: 10px; padding: 10px 14px; cursor: pointer; transition: all 0.2s; font-size: 18px; line-height: 1; }
 .save-btn:hover { border-color: var(--red); background: #fef2f2; }
 .save-btn.saved { background: var(--red); border-color: var(--red); color: var(--white); }
+.skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite; border-radius: 8px; }
+@keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 .load-more { text-align: center; margin-top: 50px; }
 footer { background: var(--gray-900); color: var(--gray-100); padding: 90px 0 35px; margin-top: 90px; }
 .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 55px; margin-bottom: 55px; }
@@ -90,13 +96,13 @@ footer a:hover { color: var(--blue-cloud); }
 .empty-state h3 { font-size: 24px; color: var(--gray-700); margin-bottom: 12px; }
 @media (max-width: 768px) {
   nav { display: none; }
- .page-header h1 { font-size: 32px; }
- .search-bar { flex-direction: column; }
- .jobs-header { flex-direction: column; align-items: flex-start; }
- .grid { grid-template-columns: 1fr; }
- .job-footer { flex-direction: column; align-items: stretch; }
- .job-actions { width: 100%; }
- .job-actions.btn { flex: 1; text-align: center; }
+.page-header h1 { font-size: 32px; }
+.search-bar { flex-direction: column; }
+.jobs-header { flex-direction: column; align-items: flex-start; }
+.grid { grid-template-columns: 1fr; }
+.job-footer { flex-direction: column; align-items: stretch; }
+.job-actions { width: 100%; }
+.job-actions.btn { flex: 1; text-align: center; }
 }
 </style>
 </head>
@@ -105,7 +111,7 @@ footer a:hover { color: var(--blue-cloud); }
 <div class="container">
 <div class="header-inner">
 <a href="index.html" class="logo">
-<img src="https://remoteng.com.ng/logo.png" alt="RemotENG Logo">
+<img src="https://remoteng.com.ng/logo.png" alt="RemoteNG Logo">
 <div class="logo-text">
 <span class="remot">Remot</span><span class="eng">eng</span>
 <span class="com">.com.ng</span>
@@ -171,7 +177,11 @@ footer a:hover { color: var(--blue-cloud); }
 <option value="salary-low">Salary: Low to High</option>
 </select>
 </div>
-<div class="grid" id="jobs-grid"></div>
+<div class="grid" id="jobs-grid">
+  <div class="job-card"><div class="skeleton" style="height: 24px; width: 60%; margin-bottom: 14px;"></div><div class="skeleton" style="height: 18px; width: 40%; margin-bottom: 16px;"></div><div class="skeleton" style="height: 28px; width: 50%; margin: 16px 0;"></div><div class="skeleton" style="height: 60px; margin: 16px 0;"></div></div>
+  <div class="job-card"><div class="skeleton" style="height: 24px; width: 60%; margin-bottom: 14px;"></div><div class="skeleton" style="height: 18px; width: 40%; margin-bottom: 16px;"></div><div class="skeleton" style="height: 28px; width: 50%; margin: 16px 0;"></div><div class="skeleton" style="height: 60px; margin: 16px 0;"></div></div>
+  <div class="job-card"><div class="skeleton" style="height: 24px; width: 60%; margin-bottom: 14px;"></div><div class="skeleton" style="height: 18px; width: 40%; margin-bottom: 16px;"></div><div class="skeleton" style="height: 28px; width: 50%; margin: 16px 0;"></div><div class="skeleton" style="height: 60px; margin: 16px 0;"></div></div>
+</div>
 <div class="load-more" id="load-more-wrap" style="display:none;">
 <button class="btn btn-outline" onclick="loadMore()">Load More Jobs</button>
 </div>
@@ -196,7 +206,7 @@ footer a:hover { color: var(--blue-cloud); }
 <div class="container">
 <div class="footer-grid">
 <div>
-<h4>RemotENG</h4>
+<h4>RemoteNG</h4>
 <p style="color:var(--gray-500); margin-bottom:20px;">Connecting professionals with global remote opportunities.</p>
 <p>Email: support@remoteng.com.ng</p>
 <p>WhatsApp: +234 912 565 1147</p>
@@ -223,7 +233,7 @@ footer a:hover { color: var(--blue-cloud); }
 </div>
 </div>
 <div class="footer-bottom">
-<p>&copy; 2026 RemotENG. All rights reserved. Remote opportunities worldwide.</p>
+<p>&copy; 2026 RemoteNG. All rights reserved. Remote opportunities worldwide.</p>
 </div>
 </div>
 </footer>
@@ -235,6 +245,7 @@ let filteredJobs = [];
 let displayedCount = 0;
 const JOBS_PER_PAGE = 20;
 let currentFilter = 'all';
+let currentPage = 1;
 let savedJobs = JSON.parse(localStorage.getItem('remoteng_saved') || '[]');
 let userEmail = localStorage.getItem('remoteng_email') || null;
 
@@ -243,21 +254,32 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     currentFilter = this.dataset.filter;
+    currentPage = 1;
     applyFilters();
   });
 });
 
 document.getElementById('search-input').addEventListener('keypress', e => {
-  if (e.key === 'Enter') applyFilters();
+  if (e.key === 'Enter') {
+    currentPage = 1;
+    applyFilters();
+  }
 });
 
 async function loadJobs() {
   try {
-    const res = await fetch(`${API_URL}/api/jobs`);
-    allJobs = await res.json();
+    const res = await fetch(`${API_URL}/api/jobs?page=${currentPage}`);
+    const jobs = await res.json();
+
+    if (currentPage === 1) {
+      allJobs = jobs;
+    } else {
+      allJobs = [...allJobs,...jobs];
+    }
+
     const urlParams = new URLSearchParams(window.location.search);
     const q = urlParams.get('q');
-    if (q) document.getElementById('search-input').value = q;
+    if (q && currentPage === 1) document.getElementById('search-input').value = q;
     applyFilters();
   } catch (err) {
     console.error('Failed to load jobs:', err);
@@ -342,10 +364,11 @@ function renderJobs() {
     const card = document.createElement('div');
     card.className = `job-card ${job.featured? 'featured' : ''} ${job.pinned? 'pinned' : ''}`;
     const desc = job.description? job.description.substring(0, 200) : 'Remote opportunity with competitive compensation. Apply now to join top international teams.';
+    const jobUrl = job.slug? `/job-details.html?job=${job.slug}` : `go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}`;
     card.innerHTML = `
       ${job.featured? '<span class="tag featured">Featured</span>' : ''}
       ${job.pinned? '<span class="tag pinned">Pinned</span>' : ''}
-      <div class="job-title">${job.title}</div>
+      <div class="job-title"><a href="${jobUrl}">${job.title}</a></div>
       <div class="job-company">${job.company}</div>
       <div class="job-desc">${desc}</div>
       <div class="job-salary">${job.salary || 'Competitive Package'}</div>
@@ -353,7 +376,7 @@ function renderJobs() {
         <span class="job-date">${timeAgo(job.posted_at)}</span>
         <div class="job-actions">
           <button class="save-btn ${isSaved? 'saved' : ''}" onclick="toggleSave(${job.id})" title="${isSaved? 'Unsave' : 'Save'} job">${isSaved? '♥' : '♡'}</button>
-          <a href="go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}" class="btn">Apply Now</a>
+          <a href="${jobUrl}" class="btn">View Details</a>
         </div>
       </div>
     `;
@@ -361,11 +384,17 @@ function renderJobs() {
   });
 
   displayedCount += jobsToShow.length;
-  document.getElementById('load-more-wrap').style.display = displayedCount < filteredJobs.length? 'block' : 'none';
+  const hasMore = displayedCount < filteredJobs.length || allJobs.length % JOBS_PER_PAGE === 0;
+  document.getElementById('load-more-wrap').style.display = hasMore? 'block' : 'none';
 }
 
 function loadMore() {
-  renderJobs();
+  if (displayedCount >= filteredJobs.length && allJobs.length % JOBS_PER_PAGE === 0) {
+    currentPage++;
+    loadJobs();
+  } else {
+    renderJobs();
+  }
 }
 
 async function toggleSave(jobId) {
