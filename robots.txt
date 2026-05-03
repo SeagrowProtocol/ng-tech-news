@@ -1,7 +1,15 @@
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /go.html
 Disallow: /order-form.html
 Disallow: /admin.html
+Disallow: /confirm.html
+
 Sitemap: https://remoteng.com.ng/sitemap.xml
