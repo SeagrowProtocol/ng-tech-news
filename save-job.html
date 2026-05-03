@@ -27,7 +27,7 @@
 html { scroll-behavior: smooth; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--white); overflow-x: hidden; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,0.97); }
+header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.97); }
 .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .logo img { width: 48px; height: 48px; }
@@ -52,8 +52,8 @@ nav a:hover, nav a.active { color: var(--blue); }
 .section { padding: 60px 0; }
 .jobs-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 16px; }
 .jobs-count { font-size: 16px; color: var(--gray-700); font-weight: 500; }
-.email-prompt { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 1px solid #fbbf24; border-radius: 14px; padding: 30px; margin-bottom: 40px; text-align: center; }
-.email-prompt h3 { font-size: 22px; color: var(--gray-900); margin-bottom: 12px; }
+.email-prompt { background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%); border: 1px solid var(--blue-cloud); border-radius: 14px; padding: 30px; margin-bottom: 40px; text-align: center; }
+.email-prompt h3 { font-size: 22px; color: var(--blue-dark); margin-bottom: 12px; }
 .email-prompt p { color: var(--gray-700); margin-bottom: 20px; font-size: 15px; }
 .email-input-group { max-width: 500px; margin: 0 auto; display: flex; gap: 12px; }
 .email-input-group input { flex: 1; padding: 14px 18px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 16px; outline: none; }
@@ -118,7 +118,6 @@ footer a:hover { color: var(--blue-cloud); }
 <a href="post-job.html">Post Job</a>
 <a href="https://selar.com/17671617c4" class="btn">Get VIP</a>
 </nav>
-</div>
 </div>
 </header>
 
@@ -201,6 +200,7 @@ footer a:hover { color: var(--blue-cloud); }
 <a href="https://t.me/latest_ng" target="_blank">Telegram</a>
 <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
 </div>
+</div>
 <div class="footer-bottom">
 <p>&copy; 2026 RemotENG. All rights reserved. Remote opportunities worldwide.</p>
 </div>
@@ -227,14 +227,13 @@ function loadFromLocalStorage() {
     showEmptyState();
     return;
   }
-  // Load jobs from API then filter by local IDs
   fetch(`${API_URL}/api/jobs`)
-   .then(res => res.json())
-   .then(allJobs => {
+  .then(res => res.json())
+  .then(allJobs => {
       savedJobsData = allJobs.filter(job => localSaved.includes(job.id));
       renderSavedJobs();
     })
-   .catch(err => {
+  .catch(err => {
       console.error('Failed to load jobs:', err);
       showEmptyState();
     });
