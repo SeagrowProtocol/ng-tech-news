@@ -399,7 +399,7 @@ function renderJobs() {
     const card = document.createElement('div');
     card.className = `job-card ${job.featured? 'featured' : ''}`;
     const desc = job.description? job.description.substring(0, 200) : 'Remote opportunity with competitive compensation. Apply now to join top international teams.';
-    const jobUrl = job.slug? `/job-details.html?job=${job.slug}` : `go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}`;
+    const jobUrl = job.slug? `${API_URL}/job-details.html?job=${job.slug}` : `go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}`;
     card.innerHTML = `
       ${job.featured? '<span class="tag featured">Featured</span>' : ''}
       <div class="job-title"><a href="${jobUrl}">${escapeHtml(job.title)}</a></div>
