@@ -114,14 +114,14 @@ footer a:hover { color: var(--blue-cloud); }
 .ad-wrap.banner-300 { min-height: 250px; }
 @media (max-width: 768px) {
   nav { display: none; }
- .hero h1 { font-size: 38px; }
- .hero { padding: 70px 0 60px; }
- .search-box,.email-box { flex-direction: column; background: transparent; padding: 0; box-shadow: none; }
- .search-box input,.email-box input { background: var(--white); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
- .grid { grid-template-columns: 1fr; }
- .section { padding: 70px 0; }
- .ad-wrap.banner-728 { min-height: 250px; }
- .trust-bar { gap: 20px; }
+.hero h1 { font-size: 38px; }
+.hero { padding: 70px 0 60px; }
+.search-box,.email-box { flex-direction: column; background: transparent; padding: 0; box-shadow: none; }
+.search-box input,.email-box input { background: var(--white); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.grid { grid-template-columns: 1fr; }
+.section { padding: 70px 0; }
+.ad-wrap.banner-728 { min-height: 250px; }
+.trust-bar { gap: 20px; }
 }
 </style>
 
@@ -401,7 +401,7 @@ async function loadFeaturedJobs() {
       const card = document.createElement('div');
       card.className = `job-card featured`;
       const desc = job.description? job.description.substring(0, 140) + '...' : 'Remote opportunity with competitive global compensation. Apply now to join top international teams.';
-      const jobUrl = job.slug? `/job-details.html?job=${job.slug}` : `go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}`;
+      const jobUrl = job.slug? `${API_URL}/job-details.html?job=${job.slug}` : `go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}`;
       card.innerHTML = `
         <span class="tag featured">Featured</span>
         <div class="job-title"><a href="${jobUrl}">${job.title}</a></div>
