@@ -1,18 +1,20 @@
 app.get('/sitemap.xml', async (req, res) => {
-  const { rows: jobs } = await query("SELECT id, title, company FROM jobs LIMIT 500");
-  const { rows: news } = await query("SELECT slug FROM news LIMIT 100");
+  const { rows: jobs } = await query(
+    `SELECT slug, posted_at FROM jobs 
+     WHERE posted_at > NOW() - INTERVAL '90 days' 
+     ORDER BY posted_at DESC LIMIT 5000`
+  );
   
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url><loc>https://remoteng.com.ng/</loc></url>
-    <url><loc>https://remoteng.com.ng/remote-jobs.html</loc></url>
-    <url><loc>https://remoteng.com.ng/services.html</loc></url>`;
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://remoteng.com.ng/</loc><priority>1.0</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://remoteng.com.ng/remote-jobs.html</loc><priority>0.9</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://remoteng.com.ng/tech-news.html</loc><priority>0.7</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://remoteng.com.ng/service.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>`;
   
   jobs.forEach(j => {
-    xml += `<url><loc>https://remoteng.com.ng/job-details.html?job=${slugify(j.title + "-" + j.company)}</loc></url>`;
-  });
-  news.forEach(n => {
-    xml += `<url><loc>https://remoteng.com.ng/news/${n.slug}.html</loc></url>`;
+    const date = new Date(j.posted_at).toISOString().split('T')[0];
+    xml += `<url><loc>https://remoteng.com.ng/job-details.html?job=${j.slug}</loc><lastmod>${date}</lastmod><priority>0.8</priority><changefreq>weekly</changefreq></url>`;
   });
   
   xml += `</urlset>`;
