@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Post a Remote Job - Hire Global Talent | RemotENG</title>
-<meta name="description" content="Post your remote job on RemotENG. Reach 50,000+ professionals worldwide. Free basic posting or Featured for ₦5,000/$5. Get quality applicants fast.">
-<meta property="og:title" content="Post a Remote Job - Hire Global Talent | RemotENG">
-<meta property="og:description" content="Post your remote job on RemotENG. Reach 50,000+ professionals worldwide. Free or Featured ₦5,000/$5.">
+<title>Post a Featured Remote Job - RemotENG</title>
+<meta name="description" content="Post your featured remote job on RemotENG. Reach 50,000+ professionals worldwide. ₦5,000/$5 for 7 days pinned placement.">
+<meta property="og:title" content="Post a Featured Remote Job - RemotENG">
+<meta property="og:description" content="Post your featured remote job on RemotENG. Reach 50,000+ professionals worldwide.">
 <meta property="og:url" content="https://remoteng.com.ng/post-job.html">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://remoteng.com.ng/logo.png">
@@ -43,8 +43,6 @@ nav a:hover, nav a.active { color: var(--blue); }
 .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 .btn-green { background: var(--green); color: var(--gray-900); }
 .btn-green:hover { background: #65a30d; box-shadow: 0 4px 12px rgba(132,204,22,0.3); }
-.btn-outline { background: var(--white); color: var(--blue-dark); border: 2px solid var(--blue-dark); }
-.btn-outline:hover { background: var(--blue-dark); color: var(--white); }
 .btn-large { padding: 16px 36px; font-size: 17px; border-radius: 12px; }
 .page-header { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); color: var(--white); padding: 70px 0 50px; text-align: center; }
 .page-header h1 { font-size: 44px; margin-bottom: 14px; font-weight: 800; }
@@ -63,14 +61,9 @@ nav a:hover, nav a.active { color: var(--blue); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .pricing-box { background: var(--gray-100); border-radius: 14px; padding: 30px; margin: 35px 0; }
 .pricing-box h3 { font-size: 22px; color: var(--blue-dark); margin-bottom: 20px; text-align: center; }
-.pricing-options { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.pricing-option { background: var(--white); border: 2px solid #e5e7eb; border-radius: 14px; padding: 28px; cursor: pointer; transition: all 0.3s; position: relative; }
-.pricing-option:hover { border-color: var(--blue); }
-.pricing-option.selected { border-color: var(--green); background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
-.pricing-option input[type="radio"] { position: absolute; opacity: 0; }
-.pricing-option .check { width: 24px; height: 24px; border: 2px solid #d1d5db; border-radius: 50%; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-.pricing-option.selected .check { border-color: var(--green); background: var(--green); }
-.pricing-option.selected .check:after { content: '✓'; color: var(--gray-900); font-weight: 700; font-size: 14px; }
+.pricing-option { background: var(--white); border: 2px solid var(--green); border-radius: 14px; padding: 28px; position: relative; background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
+.pricing-option .check { width: 24px; height: 24px; border: 2px solid var(--green); background: var(--green); border-radius: 50%; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; }
+.pricing-option .check:after { content: '✓'; color: var(--gray-900); font-weight: 700; font-size: 14px; }
 .pricing-option h4 { font-size: 20px; color: var(--blue-dark); margin-bottom: 8px; }
 .pricing-option .price { font-size: 32px; font-weight: 800; color: var(--green); margin: 12px 0; }
 .pricing-option .price span { font-size: 16px; color: var(--gray-500); font-weight: 500; }
@@ -79,16 +72,6 @@ nav a:hover, nav a.active { color: var(--blue); }
 .pricing-option ul li:before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
 .form-actions { display: flex; gap: 16px; margin-top: 40px; }
 .form-actions .btn { flex: 1; }
-.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 35px; margin-top: 50px; }
-.benefit-card { text-align: center; padding: 30px; }
-.benefit-icon { width: 70px; height: 70px; margin: 0 auto 20px; background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 32px; }
-.benefit-card h3 { font-size: 20px; color: var(--blue-dark); margin-bottom: 12px; }
-.benefit-card p { color: var(--gray-700); line-height: 1.7; font-size: 15px; }
-.stats-section { background: var(--gray-100); padding: 90px 0; }
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-top: 50px; }
-.stat-card { text-align: center; }
-.stat-number { font-size: 48px; font-weight: 800; color: var(--blue-dark); margin-bottom: 12px; }
-.stat-label { font-size: 18px; color: var(--gray-700); font-weight: 500; }
 .alert { padding: 18px 24px; border-radius: 12px; margin-bottom: 24px; display: none; }
 .alert.success { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
 .alert.error { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
@@ -103,7 +86,6 @@ footer a:hover { color: var(--blue-cloud); }
 .page-header h1 { font-size: 32px; }
 .form-container { padding: 35px 25px; }
 .form-row { grid-template-columns: 1fr; }
-.pricing-options { grid-template-columns: 1fr; }
 .form-actions { flex-direction: column; }
 .section { padding: 70px 0; }
 }
@@ -134,15 +116,15 @@ footer a:hover { color: var(--blue-cloud); }
 
 <section class="page-header">
 <div class="container">
-<h1>Hire Global Remote Talent</h1>
-<p>Post your job to 50,000+ professionals worldwide. Free basic posting or Featured for maximum visibility.</p>
+<h1>Post a Featured Remote Job</h1>
+<p>Get 5x more applicants. Pinned at the top for 7 days with green "Featured" badge.</p>
 </div>
 </section>
 
 <section class="section">
 <div class="container">
-<h2 class="section-title">Post Your Remote Job</h2>
-<p class="section-subtitle">Fill the form below. Free jobs need approval. Featured jobs go live after payment.</p>
+<h2 class="section-title">Job Details</h2>
+<p class="section-subtitle">Fill the form below. After payment, your job goes live instantly.</p>
 
 <div class="form-container">
 <div id="alert-box" class="alert"></div>
@@ -161,7 +143,7 @@ footer a:hover { color: var(--blue-cloud); }
 <div class="form-row">
 <div class="form-group">
 <label for="salary">Salary Range <span>*</span></label>
-<input type="text" id="salary" placeholder="e.g. $5,000 - $7,000/month or ₦500,000 - ₦800,000" required>
+<input type="text" id="salary" placeholder="e.g. $5,000 - $7,000/month" required>
 <small>Include currency: USD, EUR, GBP, or ₦</small>
 </div>
 <div class="form-group">
@@ -195,96 +177,26 @@ footer a:hover { color: var(--blue-cloud); }
 </div>
 
 <div class="pricing-box">
-<h3>Choose Your Posting Type</h3>
-<div class="pricing-options">
-<label class="pricing-option selected" for="free-post">
-<input type="radio" id="free-post" name="posting-type" value="free" checked>
-<div class="check"></div>
-<h4>Free Posting</h4>
-<div class="price">₦0 <span>Free</span></div>
-<ul>
-<li>Live for 30 days after approval</li>
-<li>Basic visibility</li>
-<li>Email notifications</li>
-<li>Manual approval within 24hrs</li>
-</ul>
-</label>
-
-<label class="pricing-option" for="featured-post">
-<input type="radio" id="featured-post" name="posting-type" value="featured">
+<h3>Featured Job Posting</h3>
+<div class="pricing-option">
 <div class="check"></div>
 <h4>Featured Job</h4>
 <div class="price" id="featured-price">₦5,000 <span>NGN</span></div>
 <ul>
-<li>Top of search results</li>
+<li>Top of search results for 7 days</li>
 <li>Green "Featured" badge</li>
-<li>7 days pinned placement</li>
-<li>5x more applicants</li>
-<li>VIP email inclusion</li>
+<li>5x more applicants than free posts</li>
+<li>VIP email newsletter inclusion</li>
 <li>Instant approval after payment</li>
+<li>Social media promotion</li>
 </ul>
-</label>
 </div>
 </div>
 
 <div class="form-actions">
-<button type="button" class="btn btn-outline" onclick="resetForm()">Clear Form</button>
-<button type="submit" class="btn btn-green btn-large" id="submit-btn">Post Job Free</button>
+<button type="submit" class="btn btn-green btn-large" id="submit-btn">Continue to Payment ₦5,000</button>
 </div>
 </form>
-</div>
-</div>
-</section>
-
-<section class="section" style="background:var(--gray-100);">
-<div class="container">
-<h2 class="section-title">Why Post on RemotENG?</h2>
-<p class="section-subtitle">Reach qualified global talent faster</p>
-<div class="benefits-grid">
-<div class="benefit-card">
-<div class="benefit-icon">🌍</div>
-<h3>Global Reach</h3>
-<p>Access 50,000+ professionals across 150+ countries actively seeking remote opportunities.</p>
-</div>
-<div class="benefit-card">
-<div class="benefit-icon">⚡</div>
-<h3>Fast Hiring</h3>
-<p>Average time to first quality applicant: 6 hours. Featured jobs get 5x more views.</p>
-</div>
-<div class="benefit-card">
-<div class="benefit-icon">💰</div>
-<h3>Cost Effective</h3>
-<p>Free basic posting. Featured only ₦5,000/$5 vs $500+ on other job boards.</p>
-</div>
-<div class="benefit-card">
-<div class="benefit-icon">✅</div>
-<h3>Quality Applicants</h3>
-<p>Pre-screened audience of professionals experienced in remote work and global collaboration.</p>
-</div>
-</div>
-</div>
-</section>
-
-<section class="stats-section">
-<div class="container">
-<h2 class="section-title">RemotENG by the Numbers</h2>
-<div class="stats-grid">
-<div class="stat-card">
-<div class="stat-number">50,000+</div>
-<div class="stat-label">Monthly Visitors</div>
-</div>
-<div class="stat-card">
-<div class="stat-number">2,000+</div>
-<div class="stat-label">VIP Subscribers</div>
-</div>
-<div class="stat-card">
-<div class="stat-number">500+</div>
-<div class="stat-label">Jobs Posted Monthly</div>
-</div>
-<div class="stat-card">
-<div class="stat-number">73%</div>
-<div class="stat-label">Hire Rate for Featured</div>
-</div>
 </div>
 </div>
 </section>
@@ -304,7 +216,6 @@ footer a:hover { color: var(--blue-cloud); }
 <a href="tech-news.html">Tech News</a>
 <a href="service.html">Services</a>
 <a href="post-job.html">Post a Job</a>
-<a href="save-job.html">Saved Jobs</a>
 </div>
 <div>
 <h4>Legal</h4>
@@ -327,8 +238,8 @@ footer a:hover { color: var(--blue-cloud); }
 
 <script>
 const API_URL = 'https://remoteng-api.onrender.com';
-const VIP_SELAR_LINK = 'https://selar.com/17671617c4';
 const JOB_SELAR_LINK = 'https://selar.com/5wq1ks7005';
+const GO_SECRET = 'RemotENG_2026_Secure_###';
 let userCountry = 'NG';
 
 async function detectLocation() {
@@ -342,14 +253,10 @@ async function detectLocation() {
     
     if (userCountry === 'NG') {
       priceEl.innerHTML = '₦5,000 <span>NGN</span>';
-      if (document.querySelector('input[name="posting-type"]:checked').value === 'featured') {
-        btn.textContent = 'Continue to Payment ₦5,000';
-      }
+      btn.textContent = 'Continue to Payment ₦5,000';
     } else {
       priceEl.innerHTML = '$5 <span>USD</span>';
-      if (document.querySelector('input[name="posting-type"]:checked').value === 'featured') {
-        btn.textContent = 'Continue to Payment $5';
-      }
+      btn.textContent = 'Continue to Payment $5';
     }
   } catch (err) {
     console.log('IP detect failed, defaulting to NGN');
@@ -357,26 +264,13 @@ async function detectLocation() {
 }
 detectLocation();
 
-document.querySelectorAll('input[name="posting-type"]').forEach(radio => {
-  radio.addEventListener('change', function() {
-    document.querySelectorAll('.pricing-option').forEach(opt => opt.classList.remove('selected'));
-    this.closest('.pricing-option').classList.add('selected');
-    const btn = document.getElementById('submit-btn');
-    if (this.value === 'featured') {
-      btn.textContent = userCountry === 'NG' ? 'Continue to Payment ₦5,000' : 'Continue to Payment $5';
-    } else {
-      btn.textContent = 'Post Job Free';
-    }
-  });
-});
-
 document.getElementById('job-form').addEventListener('submit', async function(e) {
   e.preventDefault();
 
   const alertBox = document.getElementById('alert-box');
   const submitBtn = document.getElementById('submit-btn');
   submitBtn.disabled = true;
-  submitBtn.textContent = 'Processing...';
+  submitBtn.textContent = 'Redirecting to payment...';
 
   const jobData = {
     title: document.getElementById('job-title').value.trim(),
@@ -384,94 +278,55 @@ document.getElementById('job-form').addEventListener('submit', async function(e)
     salary: document.getElementById('salary').value.trim(),
     description: document.getElementById('description').value.trim(),
     url: document.getElementById('apply-url').value.trim(),
-    posted_by_email: document.getElementById('poster-email').value.trim(),
+    email: document.getElementById('poster-email').value.trim(),
+    name: document.getElementById('company').value.trim(),
     job_type: document.getElementById('job-type').value
   };
 
-  const postingType = document.querySelector('input[name="posting-type"]:checked').value;
-
   if (jobData.description.length < 100) {
     showAlert('Job description must be at least 100 characters', 'error');
-    resetSubmitBtn(postingType);
+    resetSubmitBtn();
     return;
   }
 
-  try {
-    if (postingType === 'free') {
-      const res = await fetch(`${API_URL}/api/order`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          order_type: 'job_post',
-          user_data: jobData,
-          featured: false
-        })
-      });
-
-      if (res.ok) {
-        showAlert('Success! Your job was submitted for approval. We will review it within 24 hours and email you when live.', 'success');
-        resetForm();
-      } else {
-        throw new Error('Failed to post job');
-      }
-    } else {
-      const res = await fetch(`${API_URL}/api/order`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          order_type: 'job_post',
-          user_data: jobData,
-          featured: true
-        })
-      });
-
-      if (!res.ok) throw new Error('Failed to create order');
-      
-      const data = await res.json();
-      const tx_ref = data.tx_ref || 'TX_' + Date.now();
-
-      const params = new URLSearchParams({
-        tx_ref: tx_ref,
-        email: jobData.posted_by_email,
-        name: jobData.company,
-        amount: userCountry === 'NG' ? '5000' : '5',
-        currency: userCountry === 'NG' ? 'NGN' : 'USD'
-      });
-
-      window.location.href = `${JOB_SELAR_LINK}?${params.toString()}`;
-    }
-  } catch (err) {
-    console.error(err);
-    showAlert('Error posting job. Please try again or contact support@remoteng.com.ng', 'error');
-    resetSubmitBtn(postingType);
+  if (!jobData.title || !jobData.company || !jobData.url || !jobData.email) {
+    showAlert('Please fill all required fields', 'error');
+    resetSubmitBtn();
+    return;
   }
+
+  // Save to localStorage so go.html can use it after payment
+  localStorage.setItem('pendingJob', JSON.stringify(jobData));
+
+  // Redirect to Selar
+  const amount = userCountry === 'NG' ? '5000' : '5';
+  const currency = userCountry === 'NG' ? 'NGN' : 'USD';
+  const redirectUrl = `https://remoteng.com.ng/go.html`;
+  
+  const params = new URLSearchParams({
+    amount: amount,
+    currency: currency,
+    redirect_url: redirectUrl,
+    email: jobData.email,
+    first_name: jobData.company,
+    description: `Featured Job: ${jobData.title}`
+  });
+
+  window.location.href = `${JOB_SELAR_LINK}?${params.toString()}`;
 });
 
 function showAlert(msg, type) {
   const alertBox = document.getElementById('alert-box');
-  alertBox.textContent = msg;
+  alertBox.innerHTML = msg;
   alertBox.className = `alert ${type}`;
   alertBox.style.display = 'block';
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-function resetSubmitBtn(postingType) {
+function resetSubmitBtn() {
   const submitBtn = document.getElementById('submit-btn');
   submitBtn.disabled = false;
-  if (postingType === 'featured') {
-    submitBtn.textContent = userCountry === 'NG' ? 'Continue to Payment ₦5,000' : 'Continue to Payment $5';
-  } else {
-    submitBtn.textContent = 'Post Job Free';
-  }
-}
-
-function resetForm() {
-  document.getElementById('job-form').reset();
-  document.getElementById('free-post').checked = true;
-  document.querySelectorAll('.pricing-option').forEach(opt => opt.classList.remove('selected'));
-  document.querySelector('.pricing-option').classList.add('selected');
-  document.getElementById('submit-btn').textContent = 'Post Job Free';
-  document.getElementById('alert-box').style.display = 'none';
+  submitBtn.textContent = userCountry === 'NG' ? 'Continue to Payment ₦5,000' : 'Continue to Payment $5';
 }
 </script>
 </body>
