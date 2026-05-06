@@ -402,7 +402,7 @@ async function loadFeaturedJobs() {
       const card = document.createElement('div');
       card.className = `job-card featured`;
       const desc = job.description? job.description.substring(0, 140) + '...' : 'Remote opportunity with competitive global compensation. Apply now to join top international teams.';
-      const jobUrl = job.slug? `${API_URL}/job-details.html?job=${job.slug}` : `go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}`;
+      const jobUrl = job.slug? `${SITE_URL}/job-details.html?job=${job.slug}` : `${SITE_URL}/go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}`;
       card.innerHTML = `
         <span class="tag featured">Featured</span>
         <div class="job-title"><a href="${jobUrl}">${job.title}</a></div>
