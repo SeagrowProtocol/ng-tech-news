@@ -1,15 +1,26 @@
+# RemoteNG Robots.txt
+# Allow social crawlers for link previews
 User-agent: facebookexternalhit
 Allow: /
 
 User-agent: Facebot
 Allow: /
 
+# Main rules for all other crawlers including Googlebot
 User-agent: *
 Allow: /
+
+# Allow Googlebot to fetch API data so it can render job content for SEO
+Allow: https://remoteng-api.onrender.com/api/jobs
+Allow: https://remoteng-api.onrender.com/api/news
+
+# Block sensitive and non-public pages
 Disallow: /api/
 Disallow: /go.html
 Disallow: /order-form.html
 Disallow: /admin.html
 Disallow: /confirm.html
+
+# Sitemaps
 Sitemap: https://remoteng-api.onrender.com/sitemap.xml
 Sitemap: https://remoteng.com.ng/sitemap.xml
