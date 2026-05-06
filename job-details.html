@@ -40,8 +40,6 @@ nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; transit
 nav a:hover { color: var(--blue); }
 .btn { background: var(--blue-dark); color: var(--white); padding: 14px 32px; border-radius: 10px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; transition: all 0.2s; font-size: 16px; }
 .btn:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
-.btn-outline { background: var(--white); color: var(--blue-dark); border: 2px solid var(--blue-dark); }
-.btn-outline:hover { background: var(--blue-dark); color: var(--white); }
 .job-hero { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); color: var(--white); padding: 60px 0 40px; }
 .job-hero h1 { font-size: 38px; margin-bottom: 12px; font-weight: 800; line-height: 1.2; }
 .job-hero.company { font-size: 20px; opacity: 0.95; margin-bottom: 20px; font-weight: 500; }
@@ -51,7 +49,10 @@ nav a:hover { color: var(--blue); }
 .section { padding: 50px 0; }
 .job-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; padding: 40px; margin-bottom: 30px; }
 .job-card h2 { font-size: 24px; color: var(--blue-dark); margin-bottom: 20px; font-weight: 700; }
-.job-description { color: var(--gray-700); font-size: 16px; line-height: 1.8; white-space: pre-wrap; word-wrap: break-word; }
+.job-description { color: var(--gray-700); font-size: 16px; line-height: 1.8; }
+.job-description p { margin-bottom: 16px; }
+.job-description ul { margin: 16px 0; padding-left: 24px; }
+.job-description li { margin-bottom: 8px; }
 .apply-section { text-align: center; padding: 40px 0; }
 .apply-section.btn { font-size: 18px; padding: 16px 48px; }
 .back-link { text-align: center; margin-top: 30px; }
@@ -68,9 +69,9 @@ footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 35
 .error { text-align: center; padding: 100px 0; color: #dc2626; font-size: 18px; }
 @media (max-width: 768px) {
   nav { display: none; }
- .job-hero h1 { font-size: 28px; }
- .job-card { padding: 25px; }
- .apply-section.btn { width: 100%; }
+.job-hero h1 { font-size: 28px; }
+.job-card { padding: 25px; }
+.apply-section.btn { width: 100%; }
 }
 </style>
 </head>
@@ -97,6 +98,15 @@ footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 35
 
 <div id="job-content" class="loading">Loading job...</div>
 
+<!-- Adsterr Native Banner - Before Footer -->
+<div class="container">
+<div class="ad-wrap">
+<small>Advertisement</small>
+<script async="async" data-cfasync="false" src="https://fixesconsessionconsession.com/67abc4f6c4779907d9aa956165783490/invoke.js"></script>
+<div id="container-67abc4f6c4779907d9aa956165783490"></div>
+</div>
+</div>
+
 <footer>
 <div class="container">
 <div class="footer-simple">
@@ -119,6 +129,31 @@ const SITE_URL = 'https://remoteng.com.ng';
 const urlParams = new URLSearchParams(window.location.search);
 const jobSlug = urlParams.get('job');
 
+// Format description to handle any text properly
+function formatDescription(text) {
+  if (!text) return '<p>No description available.</p>';
+
+  // Escape HTML to prevent XSS
+  text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  // Convert line breaks to paragraphs
+  text = text.replace(/\r\n\r\n|\n\n/g, '</p><p>');
+  text = text.replace(/\r\n|\n/g, '<br>');
+
+  // Convert bullet points to lists
+  text = text.replace(/•\s/g, '<li>');
+  text = text.replace(/-\s/g, '<li>');
+  text = text.replace(/<li>/g, '<ul><li>');
+  text = text.replace(/<\/li>(?!<li>)/g, '</li></ul>');
+
+  // Wrap in paragraph if not already
+  if (!text.startsWith('<p>')) {
+    text = '<p>' + text + '</p>';
+  }
+
+  return text;
+}
+
 async function loadJob() {
   if (!jobSlug) {
     document.getElementById('job-content').innerHTML = '<div class="error">Job not specified</div>';
@@ -130,7 +165,6 @@ async function loadJob() {
     if (!res.ok) throw new Error('Job not found');
     const job = await res.json();
 
-    // Build salary object for schema
     const salaryObj = job.salary && /\d/.test(job.salary)? {
       "@type": "MonetaryAmount",
       "currency": "USD",
@@ -141,7 +175,6 @@ async function loadJob() {
       }
     } : null;
 
-    // Build JobPosting schema
     const jobSchema = {
       "@context": "https://schema.org/",
       "@type": "JobPosting",
@@ -164,7 +197,6 @@ async function loadJob() {
       "baseSalary": salaryObj
     };
 
-    // Update meta tags for SEO
     document.title = `${job.title} at ${job.company} - RemoteNG`;
     document.querySelector('meta[name="description"]').content = `Apply to ${job.title} at ${job.company}. Remote job with ${job.salary || 'competitive salary'}. ${job.description.substring(0, 150)}`;
     document.querySelector('meta[property="og:title"]').content = `${job.title} at ${job.company}`;
@@ -172,7 +204,8 @@ async function loadJob() {
     document.querySelector('meta[property="og:url"]').content = `${SITE_URL}/job-details.html?job=${job.slug}`;
     document.querySelector('link[rel="canonical"]').href = `${SITE_URL}/job-details.html?job=${job.slug}`;
 
-    // Render the full HTML
+    const formattedDesc = formatDescription(job.description);
+
     document.getElementById('job-content').innerHTML = `
 <section class="job-hero">
 <div class="container">
@@ -191,26 +224,12 @@ async function loadJob() {
 <div class="container">
 <div class="job-card">
 <h2>Job Description</h2>
-<div class="job-description">${job.description}</div>
+<div class="job-description">${formattedDesc}</div>
 </div>
 
 <div class="apply-section">
-<a href="${SITE_URL}/go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}" class="btn">Apply for this Job →</a>
+<a href="${SITE_URL}/go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}" class="btn" target="_blank" rel="nofollow">Apply for this Job →</a>
 <p style="margin-top: 16px; color: var(--gray-500); font-size: 14px;">You’ll be redirected to the company’s application page</p>
-</div>
-
-<div class="ad-wrap">
-<small>Advertisement</small>
-<script>
-  atOptions = {
-    'key' : '60fd2652d0e23a02a61b30ff30ef9fe8',
-    'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
-    'params' : {}
-  };
-<\/script>
-<script src="https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js"><\/script>
 </div>
 
 <div class="back-link">
