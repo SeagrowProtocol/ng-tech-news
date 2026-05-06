@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Details - RemoteNG</title>
+<meta name="description" content="Remote job details">
+<meta property="og:title" content="Job Details - RemoteNG">
+<meta property="og:description" content="Remote job details">
+<meta property="og:url" content="https://remoteng.com.ng/job-details.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://remoteng.com.ng/logo.png">
+<link rel="icon" href="https://remoteng.com.ng/logo.png">
+<link rel="canonical" href="https://remoteng.com.ng/job-details.html">
+<style>
+:root {
+  --blue-dark: #1e3a8a;
+  --blue: #3b82f6;
+  --blue-cloud: #60a5fa;
+  --green: #84cc16;
+  --gray-900: #111827;
+  --gray-700: #374151;
+  --gray-500: #6b7280;
+  --gray-100: #f3f4f6;
+  --white: #ffffff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--white); }
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.97); }
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo img { width: 48px; height: 48px; }
+.logo-text { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
+.logo-text.remot { color: var(--blue-dark); }
+.logo-text.eng { color: var(--blue); }
+.logo-text.com { color: var(--green); font-size: 14px; display: block; margin-top: -5px; font-weight: 600; }
+nav { display: flex; gap: 30px; align-items: center; }
+nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; transition: color 0.2s; font-size: 15px; }
+nav a:hover { color: var(--blue); }
+.btn { background: var(--blue-dark); color: var(--white); padding: 14px 32px; border-radius: 10px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; transition: all 0.2s; font-size: 16px; }
+.btn:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
+.btn-outline { background: var(--white); color: var(--blue-dark); border: 2px solid var(--blue-dark); }
+.btn-outline:hover { background: var(--blue-dark); color: var(--white); }
+.job-hero { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); color: var(--white); padding: 60px 0 40px; }
+.job-hero h1 { font-size: 38px; margin-bottom: 12px; font-weight: 800; line-height: 1.2; }
+.job-hero.company { font-size: 20px; opacity: 0.95; margin-bottom: 20px; font-weight: 500; }
+.job-meta { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 24px; }
+.meta-badge { background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; backdrop-filter: blur(10px); }
+.salary-badge { background: var(--green); color: var(--gray-900); padding: 10px 20px; border-radius: 20px; font-size: 18px; font-weight: 700; }
+.section { padding: 50px 0; }
+.job-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; padding: 40px; margin-bottom: 30px; }
+.job-card h2 { font-size: 24px; color: var(--blue-dark); margin-bottom: 20px; font-weight: 700; }
+.job-description { color: var(--gray-700); font-size: 16px; line-height: 1.8; white-space: pre-wrap; word-wrap: break-word; }
+.apply-section { text-align: center; padding: 40px 0; }
+.apply-section.btn { font-size: 18px; padding: 16px 48px; }
+.back-link { text-align: center; margin-top: 30px; }
+.back-link a { color: var(--blue); text-decoration: none; font-weight: 600; }
+.back-link a:hover { text-decoration: underline; }
+.ad-wrap { min-height: 250px; margin: 50px 0; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--gray-100); border-radius: 18px; padding: 20px; }
+.ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
+footer { background: var(--gray-900); color: var(--gray-100); padding: 60px 0 35px; margin-top: 60px; }
+.footer-simple { text-align: center; }
+.footer-simple a { color: var(--gray-500); text-decoration: none; margin: 0 15px; transition: color 0.2s; }
+.footer-simple a:hover { color: var(--blue-cloud); }
+.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 25px; margin-top: 25px; text-align: center; color: var(--gray-500); font-size: 14px; }
+.loading { text-align: center; padding: 100px 0; color: var(--gray-500); font-size: 18px; }
+.error { text-align: center; padding: 100px 0; color: #dc2626; font-size: 18px; }
+@media (max-width: 768px) {
+  nav { display: none; }
+ .job-hero h1 { font-size: 28px; }
+ .job-card { padding: 25px; }
+ .apply-section.btn { width: 100%; }
+}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<div class="header-inner">
+<a href="https://remoteng.com.ng/remote-jobs.html" class="logo">
+<img src="https://remoteng.com.ng/logo.png" alt="RemoteNG Logo">
+<div class="logo-text">
+<span class="remot">Remot</span><span class="eng">eng</span>
+<span class="com">.com.ng</span>
+</div>
+</a>
+<nav>
+<a href="https://remoteng.com.ng/remote-jobs.html">Jobs</a>
+<a href="https://remoteng.com.ng/tech-news.html">News</a>
+<a href="https://remoteng.com.ng/service.html">Services</a>
+<a href="https://selar.com/17671617c4" class="btn">Get VIP</a>
+</nav>
+</div>
+</div>
+</header>
+
+<div id="job-content" class="loading">Loading job...</div>
+
+<footer>
+<div class="container">
+<div class="footer-simple">
+<a href="https://remoteng.com.ng/remote-jobs.html">Browse Jobs</a>
+<a href="https://remoteng.com.ng/tech-news.html">Tech News</a>
+<a href="https://remoteng.com.ng/legal.html">About Us</a>
+<a href="https://remoteng.com.ng/legal.html#privacy">Privacy</a>
+<a href="https://remoteng.com.ng/legal.html#terms">Terms</a>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 RemoteNG. All rights reserved.</p>
+</div>
+</div>
+</footer>
+
+<script>
+const API_URL = 'https://remoteng-api.onrender.com';
+const SITE_URL = 'https://remoteng.com.ng';
+
+const urlParams = new URLSearchParams(window.location.search);
+const jobSlug = urlParams.get('job');
+
+async function loadJob() {
+  if (!jobSlug) {
+    document.getElementById('job-content').innerHTML = '<div class="error">Job not specified</div>';
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API_URL}/api/jobs/${jobSlug}`);
+    if (!res.ok) throw new Error('Job not found');
+    const job = await res.json();
+
+    // Build salary object for schema
+    const salaryObj = job.salary && /\d/.test(job.salary)? {
+      "@type": "MonetaryAmount",
+      "currency": "USD",
+      "value": {
+        "@type": "QuantitativeValue",
+        "value": job.salary.match(/\d+/)?.[0] || "0",
+        "unitText": "YEAR"
+      }
+    } : null;
+
+    // Build JobPosting schema
+    const jobSchema = {
+      "@context": "https://schema.org/",
+      "@type": "JobPosting",
+      "title": job.title,
+      "description": job.description,
+      "datePosted": job.posted_at,
+      "hiringOrganization": {
+        "@type": "Organization",
+        "name": job.company,
+        "sameAs": SITE_URL
+      },
+      "jobLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "Remote"
+        }
+      },
+      "employmentType": "FULL_TIME",
+      "baseSalary": salaryObj
+    };
+
+    // Update meta tags for SEO
+    document.title = `${job.title} at ${job.company} - RemoteNG`;
+    document.querySelector('meta[name="description"]').content = `Apply to ${job.title} at ${job.company}. Remote job with ${job.salary || 'competitive salary'}. ${job.description.substring(0, 150)}`;
+    document.querySelector('meta[property="og:title"]').content = `${job.title} at ${job.company}`;
+    document.querySelector('meta[property="og:description"]').content = job.description.substring(0, 160);
+    document.querySelector('meta[property="og:url"]').content = `${SITE_URL}/job-details.html?job=${job.slug}`;
+    document.querySelector('link[rel="canonical"]').href = `${SITE_URL}/job-details.html?job=${job.slug}`;
+
+    // Render the full HTML
+    document.getElementById('job-content').innerHTML = `
+<section class="job-hero">
+<div class="container">
+<h1>${job.title}</h1>
+<div class="company">${job.company}</div>
+<div class="job-meta">
+  ${job.salary? `<div class="salary-badge">${job.salary}</div>` : ''}
+  <div class="meta-badge">🌍 Remote</div>
+  <div class="meta-badge">Full-time</div>
+  <div class="meta-badge">Posted ${new Date(job.posted_at).toLocaleDateString()}</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="job-card">
+<h2>Job Description</h2>
+<div class="job-description">${job.description}</div>
+</div>
+
+<div class="apply-section">
+<a href="${SITE_URL}/go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}" class="btn">Apply for this Job →</a>
+<p style="margin-top: 16px; color: var(--gray-500); font-size: 14px;">You’ll be redirected to the company’s application page</p>
+</div>
+
+<div class="ad-wrap">
+<small>Advertisement</small>
+<script>
+  atOptions = {
+    'key' : '60fd2652d0e23a02a61b30ff30ef9fe8',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+<\/script>
+<script src="https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js"><\/script>
+</div>
+
+<div class="back-link">
+<a href="${SITE_URL}/remote-jobs.html">← Back to all jobs</a>
+</div>
+</div>
+</section>
+<script type="application/ld+json">${JSON.stringify(jobSchema)}<\/script>
+    `;
+  } catch (err) {
+    document.getElementById('job-content').innerHTML = '<div class="error">Job not found</div>';
+    document.title = 'Job Not Found - RemoteNG';
+  }
+}
+
+loadJob();
+</script>
+</body>
+</html>
