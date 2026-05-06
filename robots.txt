@@ -11,5 +11,5 @@ Disallow: /go.html
 Disallow: /order-form.html
 Disallow: /admin.html
 Disallow: /confirm.html
-
+Sitemap: https://remoteng-api.onrender.com/sitemap.xml
 Sitemap: https://remoteng.com.ng/sitemap.xml
