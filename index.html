@@ -388,8 +388,9 @@ document.getElementById('hero-search').addEventListener('keypress', e => {
 
 async function loadFeaturedJobs() {
   try {
-const res = await fetch(`${API_URL}/api/jobs?limit=6`);
-const jobs = await res.json();
+const res = await fetch(`${API_URL}/api/jobs`);
+const allJobs = await res.json();
+const jobs = allJobs.filter(j => j.featured).slice(0, 6);
 const grid = document.getElementById('jobs-grid');
     grid.innerHTML = '';
 
