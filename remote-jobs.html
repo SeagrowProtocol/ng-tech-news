@@ -204,7 +204,6 @@ footer a:hover { color: var(--blue-cloud); }
 
 <div class="ad-wrap small">
 <small>Advertisement</small>
-<script async="async" data-cfasync="false" src="https://fixesconsessionconsession.com/7f21b78d39ff758bf00eeea8b35b92b4/invoke.js" loading="lazy"></script>
 <div style="max-width: 728px; margin: 0 auto;">
   <script>
     atOptions = {
@@ -215,6 +214,7 @@ footer a:hover { color: var(--blue-cloud); }
       'params' : {}
     };
   </script>
+  <script src="https://fixesconsessionconsession.com/7f21b78d39ff758bf00eeea8b35b92b4/invoke.js" loading="lazy"></script>
 </div>
 </div>
 
@@ -497,7 +497,10 @@ async function toggleSave(jobId) {
 }
 
 function timeAgo(date) {
+  if (!date) return 'Just now';
   const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+  if (seconds < 60) return 'Just now';
+
   const intervals = {year: 31536000, month: 2592000, week: 604800, day: 86400, hour: 3600, minute: 60};
   for (let i in intervals) {
     const c = Math.floor(seconds / intervals[i]);
@@ -507,6 +510,7 @@ function timeAgo(date) {
 }
 
 function escapeHtml(text) {
+  if (!text) return '';
   const map = {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'};
   return text.replace(/[&<>"']/g, m => map[m]);
 }
