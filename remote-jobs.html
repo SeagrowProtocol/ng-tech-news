@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Remote Jobs - USD, EUR, GBP | RemoteNG</title>
-<meta name="description" content="Browse 500+ global remote jobs with USD, EUR, GBP salaries. Filter by tech, non-tech, salary range. Updated daily. Apply to verified opportunities worldwide.">
+<meta name="description" content="Browse global remote jobs with USD, EUR, GBP salaries. Filter by tech, non-tech, salary range. Updated daily. Apply to verified opportunities worldwide.">
 <meta property="og:title" content="Remote Jobs - USD, EUR, GBP | RemoteNG">
-<meta property="og:description" content="Browse 500+ global remote jobs with USD, EUR, GBP salaries. Updated daily.">
+<meta property="og:description" content="Browse global remote jobs with USD, EUR, GBP salaries. Updated daily.">
 <meta property="og:url" content="https://remoteng.com.ng/remote-jobs.html">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://remoteng.com.ng/logo.png">
@@ -17,7 +17,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Remote Jobs",
-  "description": "Browse 500+ global remote jobs with USD, EUR, GBP salaries",
+  "description": "Browse global remote jobs with USD, EUR, GBP salaries",
   "url": "https://remoteng.com.ng/remote-jobs.html"
 }
 </script>
@@ -99,7 +99,9 @@ footer a { color: var(--gray-500); text-decoration: none; display: block; margin
 footer a:hover { color: var(--blue-cloud); }
 .footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
 .ad-wrap { min-height: 250px; margin: 50px 0; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.ad-wrap.small { min-height: 100px; }
 .ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
+.ad-in-grid { grid-column: 1/-1; margin: 0; padding: 20px 0; display: flex; justify-content: center; }
 .empty-state { text-align: center; padding: 80px 20px; color: var(--gray-500); grid-column: 1/-1; }
 .empty-state h3 { font-size: 24px; color: var(--gray-700); margin-bottom: 12px; }
 .error-state { text-align: center; padding: 80px 20px; color: var(--red); grid-column: 1/-1; }
@@ -112,6 +114,7 @@ footer a:hover { color: var(--blue-cloud); }
 .job-footer { flex-direction: column; align-items: stretch; }
 .job-actions { width: 100%; }
 .job-actions.btn { flex: 1; text-align: center; }
+.ad-wrap { min-height: 100px; }
 }
 </style>
 </head>
@@ -142,7 +145,7 @@ footer a:hover { color: var(--blue-cloud); }
 <section class="page-header">
 <div class="container">
 <h1>Global Remote Jobs</h1>
-<p>500+ opportunities with USD, EUR, GBP salaries. Updated daily.</p>
+<p>Fresh opportunities with USD, EUR, GBP salaries. Updated daily.</p>
 </div>
 </section>
 
@@ -175,7 +178,7 @@ footer a:hover { color: var(--blue-cloud); }
     'params' : {}
   };
 </script>
-<script src="https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js"></script>
+<script src="https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js" loading="lazy"></script>
 </div>
 
 <section class="section">
@@ -199,18 +202,20 @@ footer a:hover { color: var(--blue-cloud); }
 </div>
 </section>
 
-<div class="ad-wrap">
+<div class="ad-wrap small">
 <small>Advertisement</small>
-<script>
-  atOptions = {
-    'key' : '60fd2652d0e23a02a61b30ff30ef9fe8',
-    'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
-    'params' : {}
-  };
-</script>
-<script src="https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js"></script>
+<script async="async" data-cfasync="false" src="https://fixesconsessionconsession.com/7f21b78d39ff758bf00eeea8b35b92b4/invoke.js" loading="lazy"></script>
+<div style="max-width: 728px; margin: 0 auto;">
+  <script>
+    atOptions = {
+      'key' : '7f21b78d39ff758bf00eeea8b35b92b4',
+      'format' : 'iframe',
+      'height' : 90,
+      'width' : 728,
+      'params' : {}
+    };
+  </script>
+</div>
 </div>
 
 <footer>
@@ -260,7 +265,7 @@ let currentPage = 1;
 let savedJobs = JSON.parse(localStorage.getItem('remoteng_saved') || '[]');
 let userEmail = localStorage.getItem('remoteng_email') || null;
 let searchTimeout;
-let totalJobsFromAPI = 0;
+let nativeAdInjected = false;
 
 document.getElementById('saved-count').textContent = savedJobs.length;
 
@@ -270,7 +275,11 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     this.classList.add('active');
     currentFilter = this.dataset.filter;
     currentPage = 1;
+    displayedCount = 0;
+    allJobs = [];
+    nativeAdInjected = false;
     applyFilters();
+    loadJobs();
   });
 });
 
@@ -278,7 +287,11 @@ document.getElementById('search-input').addEventListener('input', e => {
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(() => {
     currentPage = 1;
+    displayedCount = 0;
+    allJobs = [];
+    nativeAdInjected = false;
     applyFilters();
+    loadJobs();
   }, 500);
 });
 
@@ -286,17 +299,21 @@ document.getElementById('search-input').addEventListener('keypress', e => {
   if (e.key === 'Enter') {
     clearTimeout(searchTimeout);
     currentPage = 1;
+    displayedCount = 0;
+    allJobs = [];
+    nativeAdInjected = false;
     applyFilters();
+    loadJobs();
   }
 });
 
 async function loadJobs(retryCount = 0) {
   try {
-    const res = await fetch(`${API_URL}/api/jobs?page=${currentPage}`);
+    const url = `${API_URL}/api/jobs?page=${currentPage}`;
+    const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const jobs = await res.json();
-    totalJobsFromAPI = jobs.length;
 
     if (currentPage === 1) {
       allJobs = jobs;
@@ -304,9 +321,6 @@ async function loadJobs(retryCount = 0) {
       allJobs = [...allJobs,...jobs];
     }
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const q = urlParams.get('q');
-    if (q && currentPage === 1) document.getElementById('search-input').value = q;
     applyFilters();
   } catch (err) {
     console.error('Failed to load jobs:', err);
@@ -374,7 +388,8 @@ function applyFilters() {
 
   displayedCount = 0;
   document.getElementById('jobs-grid').innerHTML = '';
-  document.getElementById('jobs-count').textContent = `${filteredJobs.length} jobs found`;
+  nativeAdInjected = false;
+  document.getElementById('jobs-count').textContent = `${filteredJobs.length} jobs loaded`;
   renderJobs();
 }
 
@@ -394,12 +409,12 @@ function renderJobs() {
     return;
   }
 
-  jobsToShow.forEach(job => {
+  jobsToShow.forEach((job, index) => {
     const isSaved = savedJobs.includes(job.id);
     const card = document.createElement('div');
     card.className = `job-card ${job.featured? 'featured' : ''}`;
     const desc = job.description? job.description.substring(0, 200) : 'Remote opportunity with competitive compensation. Apply now to join top international teams.';
-    const jobUrl = job.slug? `/job-details.html?job=${job.slug}` : `go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}`;
+    const jobUrl = job.slug? `/job-details.html?job=${job.slug}` : job.url;
     card.innerHTML = `
       ${job.featured? '<span class="tag featured">Featured</span>' : ''}
       <div class="job-title"><a href="${jobUrl}">${escapeHtml(job.title)}</a></div>
@@ -410,15 +425,27 @@ function renderJobs() {
         <span class="job-date">${timeAgo(job.posted_at)}</span>
         <div class="job-actions">
           <button class="save-btn ${isSaved? 'saved' : ''}" onclick="toggleSave(${job.id})" title="${isSaved? 'Unsave' : 'Save'} job">${isSaved? '♥' : '♡'}</button>
-          <a href="${jobUrl}" class="btn">View Details</a>
+          <a href="${jobUrl}" class="btn" target="_blank">Apply</a>
         </div>
       </div>
     `;
     grid.appendChild(card);
+
+    if (index === 5 &&!nativeAdInjected && currentPage === 1) {
+      const adDiv = document.createElement('div');
+      adDiv.className = 'ad-in-grid';
+      adDiv.innerHTML = `
+        <small>Advertisement</small>
+        <script async="async" data-cfasync="false" src="https://fixesconsessionconsession.com/67abc4f6c4779907d9aa956165783490/invoke.js" loading="lazy"><\/script>
+        <div id="container-67abc4f6c4779907d9aa956165783490"></div>
+      `;
+      grid.appendChild(adDiv);
+      nativeAdInjected = true;
+    }
   });
 
   displayedCount += jobsToShow.length;
-  const hasMore = displayedCount < filteredJobs.length || (allJobs.length % JOBS_PER_PAGE === 0 && allJobs.length >= JOBS_PER_PAGE);
+  const hasMore = jobsToShow.length === JOBS_PER_PAGE;
   document.getElementById('load-more-wrap').style.display = hasMore? 'block' : 'none';
 }
 
@@ -427,12 +454,8 @@ async function loadMore() {
   btn.textContent = 'Loading...';
   btn.disabled = true;
 
-  if (displayedCount >= filteredJobs.length && allJobs.length % JOBS_PER_PAGE === 0) {
-    currentPage++;
-    await loadJobs();
-  } else {
-    renderJobs();
-  }
+  currentPage++;
+  await loadJobs();
 
   btn.textContent = 'Load More Jobs';
   btn.disabled = false;
@@ -466,7 +489,7 @@ async function toggleSave(jobId) {
 
     localStorage.setItem('remoteng_saved', JSON.stringify(savedJobs));
     document.getElementById('saved-count').textContent = savedJobs.length;
-    applyFilters();
+    renderJobs();
   } catch (err) {
     console.error('Save failed:', err);
     alert('Failed to save job. Please try again.');
@@ -478,7 +501,7 @@ function timeAgo(date) {
   const intervals = {year: 31536000, month: 2592000, week: 604800, day: 86400, hour: 3600, minute: 60};
   for (let i in intervals) {
     const c = Math.floor(seconds / intervals[i]);
-    if (c > 0) return c + ' ' + i + (c > 1? 's' : '') + ' ago';
+    if (c > 0) return c + ' + i + (c > 1? 's' : '') + ' ago';
   }
   return 'Just now';
 }
