@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Best-Fit Remote Roles | RemoteNG</title>
+<link rel="icon" href="https://remoteng.com.ng/logo.png">
+<style>
+:root {
+  --blue-dark: #1e3a8a;
+  --blue: #3b82f6;
+  --green: #84cc16;
+  --gray-900: #111827;
+  --gray-700: #374151;
+  --gray-500: #6b7280;
+  --gray-100: #f3f4f6;
+  --white: #ffffff;
+  --red: #ef4444;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+  color: var(--gray-900); 
+  background: var(--gray-100); 
+  line-height: 1.6;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+header { 
+  background: var(--white); 
+  border-bottom: 1px solid #e5e7eb; 
+  position: sticky; 
+  top: 0; 
+  z-index: 100; 
+}
+.header-inner { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 16px 0; 
+}
+.logo { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  text-decoration: none; 
+}
+.logo img { width: 42px; height: 42px; }
+.logo-text { font-size: 22px; font-weight: 700; }
+.logo-text.remot { color: var(--blue-dark); }
+.logo-text.eng { color: var(--blue); }
+
+.btn { 
+  background: var(--blue-dark); 
+  color: var(--white); 
+  padding: 12px 24px; 
+  border-radius: 10px; 
+  text-decoration: none; 
+  font-weight: 600; 
+  border: none; 
+  cursor: pointer; 
+  display: inline-block; 
+  transition: all 0.2s; 
+  font-size: 15px;
+}
+.btn:hover { background: var(--blue); transform: translateY(-1px); }
+.btn-green { background: var(--green); color: var(--gray-900); }
+.btn-green:hover { background: #65a30d; }
+.btn-outline { 
+  background: transparent; 
+  border: 2px solid var(--blue-dark); 
+  color: var(--blue-dark); 
+}
+.btn-outline:hover { background: var(--blue-dark); color: var(--white); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.quiz-wrapper {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 40px;
+  margin: 40px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  min-height: 500px;
+}
+.quiz-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+.quiz-header h1 {
+  font-size: 32px;
+  color: var(--blue-dark);
+  margin-bottom: 10px;
+}
+.quiz-header p {
+  color: var(--gray-700);
+  font-size: 16px;
+}
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--gray-100);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--green) 100%);
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.role-card {
+  border: 2px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.role-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+.role-card.selected {
+  border-color: var(--blue);
+  background: #eff6ff;
+}
+.role-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+.role-name {
+  font-weight: 600;
+  color: var(--gray-900);
+  font-size: 15px;
+}
+
+.question-box {
+  margin-bottom: 25px;
+}
+.question-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: 18px;
+}
+.option-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.option {
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.option:hover {
+  border-color: var(--blue);
+  background: #f8fafc;
+}
+.option.selected {
+  border-color: var(--blue);
+  background: #eff6ff;
+}
+.option input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--blue);
+}
+
+.quiz-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 35px;
+  padding-top: 25px;
+  border-top: 1px solid #e5e7eb;
+}
+.step-indicator {
+  color: var(--gray-500);
+  font-size: 14px;
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+.match-score {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--green);
+  margin: 10px 0;
+}
+.result-role {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--blue-dark);
+}
+.job-card {
+  background: var(--gray-100);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.job-title {
+  font-weight: 700;
+  color: var(--blue-dark);
+  margin-bottom: 6px;
+}
+.job-company {
+  color: var(--gray-500);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.job-salary {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.hidden { display: none; }
+
+@media (max-width: 768px) {
+  .quiz-wrapper { padding: 25px 20px; margin: 20px 0; }
+  .quiz-header h1 { font-size: 26px; }
+  .role-grid { grid-template-columns: 1fr 1fr; }
+  .quiz-footer { flex-direction: column; gap: 15px; }
+}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<div class="header-inner">
+<a href="index.html" class="logo">
+<img src="https://remoteng.com.ng/logo.png" alt="RemoteNG Logo">
+<div class="logo-text">
+<span class="remot">Remot</span><span class="eng">eng</span>
+</div>
+</a>
+<a href="remote-jobs.html" class="btn-outline btn">Browse Jobs</a>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="quiz-wrapper">
+  
+  <!-- Step 1: Role Selection -->
+  <div id="step-role" class="quiz-step">
+    <div class="quiz-header">
+      <h1>🎯 Find Your Best-Fit Remote Roles</h1>
+      <p>Select 1-3 roles you're interested in. We'll ask you 10 questions per role.</p>
+    </div>
+    <div class="role-grid" id="roleGrid"></div>
+    <div class="quiz-footer">
+      <div class="step-indicator">Step 1 of 3</div>
+      <button class="btn" id="startQuizBtn" disabled>Start Quiz →</button>
+    </div>
+  </div>
+
+  <!-- Step 2: Questions -->
+  <div id="step-questions" class="quiz-step hidden">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div id="questionContainer"></div>
+    <div class="quiz-footer">
+      <div class="step-indicator" id="stepIndicator"></div>
+      <div>
+        <button class="btn-outline btn" id="prevBtn">← Back</button>
+        <button class="btn" id="nextBtn">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3: Results -->
+  <div id="step-results" class="quiz-step hidden">
+    <div class="result-header">
+      <div>✅ Quiz Complete!</div>
+      <div class="match-score" id="matchScore">87%</div>
+      <div class="result-role" id="resultRole">Frontend Developer</div>
+      <p style="color: var(--gray-700); margin-top: 10px;">Based on your answers, here are your top matches</p>
+    </div>
+    
+    <h3 style="margin-bottom: 16px;">🔥 Recommended Jobs for You</h3>
+    <div id="recommendedJobs"></div>
+    
+    <div style="margin-top: 35px; text-align: center;">
+      <button class="btn btn-green" id="saveRoleBtn">💾 Save This Role & Get VIP Alerts</button>
+      <a href="remote-jobs.html" class="btn-outline btn" style="margin-left: 12px;">Browse All Jobs</a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+const SITE_URL = 'https://remoteng.com.ng';
+
+// Role data with icons and sample jobs
+const ROLES = [
+  { id: 'frontend', name: 'Frontend Developer', icon: '💻', keywords: ['react', 'vue', 'javascript'] },
+  { id: 'backend', name: 'Backend Developer', icon: '⚙️', keywords: ['node', 'python', 'api'] },
+  { id: 'designer', name: 'UI/UX Designer', icon: '🎨', keywords: ['figma', 'design', 'ui'] },
+  { id: 'support', name: 'Customer Support', icon: '💬', keywords: ['support', 'customer'] },
+  { id: 'va', name: 'Virtual Assistant', icon: '📋', keywords: ['assistant', 'admin'] },
+  { id: 'writer', name: 'Content Writer', icon: '✍️', keywords: ['writing', 'content'] },
+  { id: 'data', name: 'Data Analyst', icon: '📊', keywords: ['excel', 'sql', 'data'] },
+  { id: 'pm', name: 'Project Manager', icon: '📅', keywords: ['project', 'manager'] },
+  { id: 'sales', name: 'Sales & Marketing', icon: '📈', keywords: ['sales', 'marketing'] },
+  { id: 'qa', name: 'QA Tester', icon: '🐛', keywords: ['testing', 'qa'] },
+  { id: 'devops', name: 'DevOps Engineer', icon: '☁️', keywords: ['docker', 'aws', 'devops'] },
+  { id: 'seo', name: 'SEO Specialist', icon: '🔍', keywords: ['seo', 'search'] }
+];
+
+// Questions per role with emojis
+const QUESTIONS = {
+  frontend: [
+    { q: "💻 How comfortable are you with React or Vue?", opts: ["Expert", "Intermediate", "Beginner", "Never used"] },
+    { q: "🎨 Do you work with CSS frameworks like Tailwind?", opts: ["Yes, daily", "Sometimes", "No"] },
+    { q: "📱 Have you built responsive mobile-first sites?", opts: ["Yes", "No", "Not sure"] },
+    { q: "⚡ How do you handle state management?", opts: ["Redux/Zustand", "Context API", "Props drilling", "I don't know"] },
+    { q: "🔧 Do you use Git for version control?", opts: ["Yes, daily", "Occasionally", "No"] },
+    { q: "🧪 Have you written unit tests?", opts: ["Yes with Jest", "Tried it once", "No"] },
+    { q: "🚀 How do you optimize site performance?", opts: ["Lazy loading, code splitting", "Basic optimization", "Not sure"] },
+    { q: "📦 Do you use build tools like Webpack/Vite?", opts: ["Yes", "Heard of it", "No"] },
+    { q: "🌐 Have you worked with REST APIs?", opts: ["Yes, often", "A few times", "No"] },
+    { q: "💡 Rate your JavaScript skills 1-5", opts: ["5 - Expert", "4 - Advanced", "3 - Intermediate", "2 - Basic", "1 - Beginner"] }
+  ],
+  backend: [
+    { q: "⚙️ Which backend language do you prefer?", opts: ["Node.js", "Python", "PHP", "Java", "Go"] },
+    { q: "🗄️ How comfortable are you with SQL?", opts: ["Expert", "Intermediate", "Beginner", "No experience"] },
+    { q: "🔐 Have you built authentication systems?", opts: ["Yes, with JWT/OAuth", "Basic auth only", "No"] },
+    { q: "📡 Do you understand REST API design?", opts: ["Yes, I design APIs", "I use APIs", "No"] },
+    { q: "☁️ Have you deployed apps to AWS/Heroku?", opts: ["Yes", "Tried it", "No"] },
+    { q: "🐳 Do you use Docker?", opts: ["Yes, regularly", "Tried once", "No"] },
+    { q: "🔄 How do you handle async operations?", opts: ["Async/await, Promises", "Callbacks", "Not sure"] },
+    { q: "🧪 Do you write backend tests?", opts: ["Yes with Jest/Pytest", "Sometimes", "No"] },
+    { q: "📊 Have you worked with caching like Redis?", opts: ["Yes", "No"] },
+    { q: "💡 Rate your backend skills 1-5", opts: ["5", "4", "3", "2", "1"] }
+  ],
+  designer: [
+    { q: "🎨 Which design tools do you use?", opts: ["Figma", "Adobe XD", "Sketch", "Photoshop"] },
+    { q: "📱 Have you designed mobile apps?", opts: ["Yes", "Web only", "No"] },
+    { q: "👥 Do you conduct user research?", opts: ["Yes, regularly", "Sometimes", "No"] },
+    { q: "🎯 Can you create wireframes and prototypes?", opts: ["Yes, both", "Wireframes only", "No"] },
+    { q: "🎨 Do you understand design systems?", opts: ["Yes, I've built one", "I use them", "No"] },
+    { q: "📐 How do you handle design handoff to devs?", opts: ["Figma dev mode", "Zeplin", "Manual handoff"] },
+    { q: "♿ Do you consider accessibility in designs?", opts: ["Yes, WCAG compliant", "Sometimes", "No"] },
+    { q: "📊 Do you test designs with users?", opts: ["Yes, usability testing", "No"] },
+    { q: "🎨 Rate your Figma skills 1-5", opts: ["5", "4", "3", "2", "1"] },
+    { q: "💡 Can you explain design decisions to clients?", opts: ["Yes, confidently", "Sometimes", "No"] }
+  ],
+  support: [
+    { q: "💬 How do you handle angry customers?", opts: ["Stay calm, listen, solve", "Escalate immediately", "Not sure"] },
+    { q: "📧 Are you comfortable with email support?", opts: ["Yes, fast typer", "Okay", "No"] },
+    { q: "⏱️ Can you work in shifts/time zones?", opts: ["Yes, flexible", "Day shift only", "No"] },
+    { q: "📞 Have you used Zendesk/Intercom?", opts: ["Yes", "Heard of it", "No"] },
+    { q: "📊 Do you track support metrics?", opts: ["Yes", "No"] },
+    { q: "🧠 How do you explain technical issues simply?", opts: ["I'm good at it", "With effort", "Struggle"] },
+    { q: "📝 Can you write help documentation?", opts: ["Yes", "No"] },
+    { q: "🤝 Do you enjoy helping people?", opts: ["Yes, it's my favorite part", "It's okay", "No"] },
+    { q: "🌍 Are you comfortable with multiple languages?", opts: ["Yes", "English only"] },
+    { q: "💡 Rate your communication skills 1-5", opts: ["5", "4", "3", "2", "1"] }
+  ],
+  va: [
+    { q: "📋 How organized are you 1-5?", opts: ["5 - Very organized", "4", "3", "2", "1"] },
+    { q: "📅 Have you managed calendars/scheduling?", opts: ["Yes, for executives", "Personal only", "No"] },
+    { q: "📧 Are you comfortable with email management?", opts: ["Yes, inbox zero", "Okay", "No"] },
+    { q: "📊 Do you use Excel/Google Sheets?", opts: ["Advanced", "Basic", "No"] },
+    { q: "🔍 Can you do online research quickly?", opts: ["Yes, very fast", "Average", "Slow"] },
+    { q: "📞 Have you done customer calls?", opts: ["Yes", "No"] },
+    { q: "💼 Do you know project management tools?", opts: ["Asana, Trello, ClickUp", "Some", "None"] },
+    { q: "⏰ How do you prioritize tasks?", opts: ["Urgent/Important matrix", "I just do them", "Struggle"] },
+    { q: "💬 Are you good at communication?", opts: ["Yes, written & verbal", "Written only", "No"] },
+    { q: "🚀 Can you work independently?", opts: ["Yes", "Need guidance", "No"] }
+  ]
+};
+
+// Add default questions for other roles
+ROLES.forEach(role => {
+  if (!QUESTIONS[role.id]) {
+    QUESTIONS[role.id] = [
+      { q: `💼 How much experience do you have in ${role.name}?`, opts: ["3+ years", "1-2 years", "<1 year", "None"] },
+      { q: `🎯 Are you actively looking for ${role.name} roles?`, opts: ["Yes, now", "In 1-2 months", "Just exploring"] },
+      { q: `📚 Have you taken courses in ${role.name}?`, opts: ["Yes, certified", "Self-taught", "No"] },
+      { q: `💻 Do you have a portfolio for ${role.name}?`, opts: ["Yes, link ready", "Working on it", "No"] },
+      { q: `⏰ Can you work 40hrs/week remotely?`, opts: ["Yes", "Part-time only", "No"] },
+      { q: `🌍 Are you okay with US/EU time zones?`, opts: ["Yes", "Maybe", "No"] },
+      { q: `💬 How is your English communication?`, opts: ["Fluent", "Good", "Basic"] },
+      { q: `🚀 How fast can you start?`, opts: ["Immediately", "2 weeks", "1 month"] },
+      { q: `💡 Rate your skills in ${role.name} 1-5`, opts: ["5", "4", "3", "2", "1"] },
+      { q: `🎯 Why do you want this role?`, opts: ["Passion for it", "Career growth", "Remote flexibility"] }
+    ];
+  }
+});
+
+// State
+let selectedRoles = [];
+let currentRoleIndex = 0;
+let currentQuestionIndex = 0;
+let answers = {};
+let quizResults = {};
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+  renderRoleGrid();
+  loadSavedRoles();
+  
+  document.getElementById('startQuizBtn').onclick = startQuiz;
+  document.getElementById('nextBtn').onclick = nextQuestion;
+  document.getElementById('prevBtn').onclick = prevQuestion;
+  document.getElementById('saveRoleBtn').onclick = saveRoles;
+});
+
+// Render role selection
+function renderRoleGrid() {
+  const grid = document.getElementById('roleGrid');
+  grid.innerHTML = ROLES.map(role => `
+    <div class="role-card" data-role="${role.id}">
+      <div class="role-icon">${role.icon}</div>
+      <div class="role-name">${role.name}</div>
+    </div>
+  `).join('');
+  
+  document.querySelectorAll('.role-card').forEach(card => {
+    card.onclick = () => toggleRole(card.dataset.role);
+  });
+}
+
+function toggleRole(roleId) {
+  const card = document.querySelector(`[data-role="${roleId}"]`);
+  if (selectedRoles.includes(roleId)) {
+    selectedRoles = selectedRoles.filter(r => r !== roleId);
+    card.classList.remove('selected');
+  } else {
+    if (selectedRoles.length >= 3) {
+      alert('You can select max 3 roles');
+      return;
+    }
+    selectedRoles.push(roleId);
+    card.classList.add('selected');
+  }
+  document.getElementById('startQuizBtn').disabled = selectedRoles.length === 0;
+}
+
+function loadSavedRoles() {
+  const saved = localStorage.getItem('remoteng_selected_roles');
+  if (saved) {
+    selectedRoles = JSON.parse(saved);
+    selectedRoles.forEach(roleId => {
+      const card = document.querySelector(`[data-role="${roleId}"]`);
+      if (card) card.classList.add('selected');
+    });
+    document.getElementById('startQuizBtn').disabled = selectedRoles.length === 0;
+  }
+}
+
+function startQuiz() {
+  if (selectedRoles.length === 0) return;
+  currentRoleIndex = 0;
+  currentQuestionIndex = 0;
+  answers = {};
+  showStep('questions');
+  renderQuestion();
+}
+
+function showStep(step) {
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+  document.getElementById(`step-${step}`).classList.remove('hidden');
+}
+
+function renderQuestion() {
+  const roleId = selectedRoles[currentRoleIndex];
+  const role = ROLES.find(r => r.id === roleId);
+  const questions = QUESTIONS[roleId];
+  const question = questions[currentQuestionIndex];
+  
+  const totalQuestions = selectedRoles.length * questions.length;
+  const answeredQuestions = currentRoleIndex * questions.length + currentQuestionIndex;
+  const progress = (answeredQuestions / totalQuestions) * 100;
+  
+  document.getElementById('progressFill').style.width = progress + '%';
+  document.getElementById('stepIndicator').textContent = 
+    `Role ${currentRoleIndex + 1}/${selectedRoles.length} - Q${currentQuestionIndex + 1}/${questions.length}`;
+  
+  document.getElementById('questionContainer').innerHTML = `
+    <div class="question-box">
+      <div style="color: var(--blue); font-weight: 600; margin-bottom: 10px;">${role.icon} ${role.name}</div>
+      <div class="question-text">${question.q}</div>
+      <div class="option-list">
+        ${question.opts.map((opt, i) => `
+          <label class="option ${answers[`${roleId}-${currentQuestionIndex}`] === i ? 'selected' : ''}">
+            <input type="radio" name="q" value="${i}" ${answers[`${roleId}-${currentQuestionIndex}`] === i ? 'checked' : ''}>
+            <span>${opt}</span>
+          </label>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  
+  document.querySelectorAll('.option').forEach((opt, i) => {
+    opt.onclick = () => selectOption(i);
+  });
+  
+  document.getElementById('prevBtn').disabled = currentRoleIndex === 0 && currentQuestionIndex === 0;
+  document.getElementById('nextBtn').textContent = 
+    (currentRoleIndex === selectedRoles.length - 1 && currentQuestionIndex === questions.length - 1) 
+    ? 'See Results →' : 'Next →';
+}
+
+function selectOption(index) {
+  const roleId = selectedRoles[currentRoleIndex];
+  answers[`${roleId}-${currentQuestionIndex}`] = index;
+  renderQuestion();
+}
+
+function nextQuestion() {
+  const roleId = selectedRoles[currentRoleIndex];
+  const questions = QUESTIONS[roleId];
+  
+  if (answers[`${roleId}-${currentQuestionIndex}`] === undefined) {
+    alert('Please select an answer');
+    return;
+  }
+  
+  if (currentQuestionIndex < questions.length - 1) {
+    currentQuestionIndex++;
+  } else if (currentRoleIndex < selectedRoles.length - 1) {
+    currentRoleIndex++;
+    currentQuestionIndex = 0;
+  } else {
+    calculateResults();
+    showResults();
+    return;
+  }
+  renderQuestion();
+}
+
+function prevQuestion() {
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+  } else if (currentRoleIndex > 0) {
+    currentRoleIndex--;
+    currentQuestionIndex = QUESTIONS[selectedRoles[currentRoleIndex]].length - 1;
+  }
+  renderQuestion();
+}
+
+function calculateResults() {
+  // Simple scoring: more positive answers = higher score
+  let totalScore = 0;
+  let maxScore = 0;
+  
+  selectedRoles.forEach(roleId => {
+    const questions = QUESTIONS[roleId];
+    questions.forEach((q, i) => {
+      const answer = answers[`${roleId}-${i}`];
+      if (answer !== undefined) {
+        totalScore += (q.opts.length - answer); // Higher option = better
+        maxScore += q.opts.length;
+      }
+    });
+  });
+  
+  const score = Math.round((totalScore / maxScore) * 100);
+  quizResults = {
+    score: Math.min(score, 95), // Cap at 95%
+    role: ROLES.find(r => r.id === selectedRoles[0]),
+    roles: selectedRoles
+  };
+}
+
+function showResults() {
+  document.getElementById('matchScore').textContent = quizResults.score + '%';
+  document.getElementById('resultRole').textContent = quizResults.role.name;
+  
+  // Mock recommended jobs based on role
+  const mockJobs = [
+    { title: `Senior ${quizResults.role.name}`, company: 'TechCorp', salary: '$3k-$5k/month' },
+    { title: `Remote ${quizResults.role.name}`, company: 'Global Inc', salary: '$2k-$4k/month' },
+    { title: `Junior ${quizResults.role.name}`, company: 'StartupXYZ', salary: '$1.5k-$3k/month' }
+  ];
+  
+  document.getElementById('recommendedJobs').innerHTML = mockJobs.map(job => `
+    <div class="job-card">
+      <div class="job-title">${job.title}</div>
+      <div class="job-company">${job.company}</div>
+      <div class="job-salary">${job.salary}</div>
+    </div>
+  `).join('');
+  
+  showStep('results');
+}
+
+function saveRoles() {
+  localStorage.setItem('remoteng_selected_roles', JSON.stringify(selectedRoles));
+  alert('✅ Roles saved! When you upgrade to VIP, you\'ll get alerts only for these roles.');
+  window.location.href = SITE_URL + '/remote-jobs.html';
+}
+
+// Check if user came from confirmation
+window.addEventListener('load', () => {
+  const confirmed = localStorage.getItem('remoteng_email_confirmed');
+  if (confirmed === 'true') {
+    document.querySelector('.quiz-header h1').innerHTML = '🎉 Welcome! Let\'s find your best roles';
+  }
+});
+</script>
+</body>
+</html>
