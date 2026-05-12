@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Confirmation | RemoteNG</title>
+<link rel="icon" href="https://remoteng.com.ng/logo.png">
+<style>
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); 
+  min-height: 100vh; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 20px;
+  margin: 0;
+}
+.container { 
+  max-width: 500px; 
+  background: white; 
+  border-radius: 18px; 
+  padding: 50px 40px; 
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+h1 { 
+  font-size: 28px; 
+  color: #1e3a8a; 
+  margin-bottom: 16px; 
+}
+p { 
+  color: #374151; 
+  margin-bottom: 30px; 
+  line-height: 1.6;
+}
+.btn { 
+  background: #1e3a8a; 
+  color: white; 
+  padding: 14px 32px; 
+  border-radius: 10px; 
+  text-decoration: none; 
+  font-weight: 600; 
+  display: inline-block;
+  transition: background 0.2s;
+}
+.btn:hover {
+  background: #1e40af;
+}
+.status-icon { 
+  font-size: 64px; 
+  margin-bottom: 20px; 
+}
+.success { color: #22c55e; }
+.error { color: #ef4444; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div id="content">
+    <!-- Content will be replaced by JS if needed -->
+    <div class="status-icon success">✓</div>
+    <h1>Email Confirmed!</h1>
+    <p>You're now subscribed to RemotENG job alerts. You'll start receiving remote jobs in your inbox.</p>
+    <a href="https://remoteng.com.ng/remote-jobs.html" class="btn">Browse Jobs</a>
+  </div>
+</div>
+
+<script>
+// The backend now sends the full HTML, so this is only for fallback.
+// If you access this file directly without ?email&token, show error.
+const params = new URLSearchParams(window.location.search);
+if (!params.has('email') || !params.has('token')) {
+  document.getElementById('content').innerHTML = `
+    <div class="status-icon error">✗</div>
+    <h1>Invalid Link</h1>
+    <p>This confirmation link is missing or expired. Please sign up again.</p>
+    <a href="https://remoteng.com.ng" class="btn">Go to Homepage</a>
+  `;
+}
+</script>
+</body>
+</html>
