@@ -13,7 +13,7 @@ Allow: /
 # Allow Googlebot to fetch API data so it can render job content for SEO
 Allow: https://remoteng-api.onrender.com/api/jobs
 Allow: https://remoteng-api.onrender.com/api/news
-
+Allow: https://remoteng.com.ng/remote
 # Block sensitive and non-public pages
 Disallow: /api/
 Disallow: /go.html
