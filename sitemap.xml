@@ -1,31 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <!-- Homepage -->
   <url>
     <loc>https://remoteng.com.ng/</loc>
     <priority>1.0</priority>
     <changefreq>daily</changefreq>
   </url>
-  
-  <!-- Jobs listing page -->
   <url>
     <loc>https://remoteng.com.ng/remote-jobs.html</loc>
     <priority>0.9</priority>
     <changefreq>daily</changefreq>
   </url>
-  
-  <!-- Job detail pages -->
+  <url>
+    <loc>https://remoteng.com.ng/tech-news.html</loc>
+    <priority>0.7</priority>
+    <changefreq>daily</changefreq>
+  </url>
   <url>
     <loc>https://remoteng.com.ng/job-details.html?job=product-manager-saas-part-time-fixed-term-brandwatch</loc>
-    <changefreq>daily</changefreq>
     <priority>0.8</priority>
+    <changefreq>daily</changefreq>
     <lastmod>2025-10-04</lastmod>
   </url>
-  
-  <url>
-    <loc>https://remoteng.com.ng/job-details.html?job=another-job-slug</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2025-10-04</lastmod>
-  </url>
+</urlset>
