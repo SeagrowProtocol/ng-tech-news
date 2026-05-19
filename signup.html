@@ -582,7 +582,7 @@ form.addEventListener('submit', async (e) => {
     if (res.ok) {
       if (typeof fbq!== 'undefined') {
         fbq('track', 'Lead');
-      }window.location.href = `/confirm.html?email=${encodeURIComponent(email)}`;
+      }window.location.href = `/confirm-pending.html?email=${encodeURIComponent(email)}`;
     } else {
       alert('Something went wrong. Please try again.');
       submitBtn.disabled = false;
