@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check Your Email | RemoteNG</title>
+<link rel="icon" href="https://remoteng.com.ng/logo.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --accent: #3b82f6;
+  --accent-dark: #2563eb;
+  --border: #e2e8f0;
+  --shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.15);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 520px;
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 56px 48px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 24px;
+  border-radius: 14px;
+}
+
+.icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 24px;
+  background: #dbeafe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 36px;
+  height: 36px;
+  color: var(--accent);
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.email-box {
+  background: #f1f5f9;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  word-break: break-all;
+}
+
+.btn {
+  background: var(--accent);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.note {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <img src="https://remoteng.com.ng/logo.png" alt="RemoteNG" class="logo">
+  
+  <div class="icon">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+    </svg>
+  </div>
+
+  <h1>Check Your Inbox</h1>
+  <p>We've sent a confirmation link to:</p>
+  <div class="email-box" id="email-box"></div>
+  <p>Click the link in the email to confirm your address and start the role quiz.</p>
+  
+  <a href="/signup.html" class="btn">Use Different Email</a>
+  
+  <p class="note">Didn't see it? Check your spam folder. The email arrives within 1-2 minutes.</p>
+</div>
+
+<script>
+const email = new URLSearchParams(window.location.search).get('email');
+document.getElementById('email-box').textContent = email || 'your email';
+</script>
+</body>
+</html>
