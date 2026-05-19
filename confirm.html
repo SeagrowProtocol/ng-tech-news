@@ -5,81 +5,160 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Email Confirmation | RemoteNG</title>
 <link rel="icon" href="https://remoteng.com.ng/logo.png">
+
 <style>
-body { 
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
-  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); 
-  min-height: 100vh; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #0f172a;
+  --card-bg: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --accent: #3b82f6;
+  --accent-dark: #2563eb;
+  --success: #10b981;
+  --error: #ef4444;
+  --border: #e2e8f0;
+  --shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.15);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
-  margin: 0;
+  -webkit-font-smoothing: antialiased;
 }
-.container { 
-  max-width: 500px; 
-  background: white; 
-  border-radius: 18px; 
-  padding: 50px 40px; 
+
+.container {
+  max-width: 520px;
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 56px 48px;
   text-align: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
 }
-h1 { 
-  font-size: 28px; 
-  color: #1e3a8a; 
-  margin-bottom: 16px; 
+
+.logo {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 24px;
+  border-radius: 14px;
 }
-p { 
-  color: #374151; 
-  margin-bottom: 30px; 
+
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: 32px;
   line-height: 1.6;
+  font-size: 16px;
 }
-.btn { 
-  background: #1e3a8a; 
-  color: white; 
-  padding: 14px 32px; 
-  border-radius: 10px; 
-  text-decoration: none; 
-  font-weight: 600; 
+
+.btn {
+  background: var(--accent);
+  color: white;
+  padding: 16px 36px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
   display: inline-block;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  font-family: inherit;
 }
+
 .btn:hover {
-  background: #1e40af;
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -5px rgba(59, 130, 246, 0.4);
 }
-.status-icon { 
-  font-size: 64px; 
-  margin-bottom: 20px; 
-}
-.success { color: #22c55e; }
-.error { color: #ef4444; }
-.loading { 
-  border: 4px solid #f3f4f6;
-  border-top: 4px solid #3b82f6;
+
+.status-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 24px;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 700;
 }
+
+.success {
+  background: #d1fae5;
+  color: var(--success);
+}
+
+.error {
+  background: #fee2e2;
+  color: var(--error);
+}
+
+.loading {
+  border: 4px solid #f1f5f9;
+  border-top: 4px solid var(--accent);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 24px;
+}
+
 @keyframes spin {
  0% { transform: rotate(0deg); }
  100% { transform: rotate(360deg); }
+}
+
+.secondary-link {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.secondary-link:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 40px 28px;
+  }
+  h1 {
+    font-size: 26px;
+  }
 }
 </style>
 </head>
 <body>
 <div class="container">
+  <img src="https://remoteng.com.ng/logo.png" alt="RemoteNG" class="logo">
   <div id="content">
     <div class="loading"></div>
     <h1>Confirming your email...</h1>
-    <p>Please wait while we verify your Email .</p>
+    <p>Please wait while we verify your email address.</p>
   </div>
 </div>
 
 <script>
 const API_URL = 'https://remoteng-api.onrender.com';
-const SITE_URL = 'https://remoteng.com.ng';
 const content = document.getElementById('content');
 
 const params = new URLSearchParams(window.location.search);
@@ -98,15 +177,13 @@ async function confirmEmail(email, token) {
     
     if (res.ok) {
       const html = await res.text();
-      // Backend returns full HTML, but we want to use our styled page
-      // So we check if it contains "Email confirmed" text
-      if (html.includes('Email confirmed')) {
-        showSuccess();
+      if (html.includes('Email confirmed') || html.includes('success')) {
+        showSuccess(email);
       } else {
-        showAlreadyConfirmed();
+        showAlreadyConfirmed(email);
       }
     } else {
-      showError('Confirmation Failed', 'Something went wrong. The link may be expired or invalid.');
+      showError('Confirmation Failed', 'This link may be expired or invalid. Please request a new confirmation email.');
     }
   } catch (err) {
     console.error(err);
@@ -114,21 +191,23 @@ async function confirmEmail(email, token) {
   }
 }
 
-function showSuccess() {
+function showSuccess(email) {
   content.innerHTML = `
     <div class="status-icon success">✓</div>
     <h1>Email Confirmed!</h1>
-    <p>You're now subscribed to RemoteNG job alerts. You'll start receiving remote jobs in your inbox at 6PM WAT daily.</p>
-  <a href="https://remoteng.com.ng/role-quiz.html" class="btn">Take Role Quiz →</a>
+    <p>You're all set. Next, take the 2-minute role quiz so we can match you with the right remote jobs.</p>
+    <a href="/role-quiz.html?email=${encodeURIComponent(email)}" class="btn">Take Role Quiz →</a>
+    <a href="/remote-jobs.html" class="secondary-link">Skip to jobs</a>
   `;
 }
 
-function showAlreadyConfirmed() {
+function showAlreadyConfirmed(email) {
   content.innerHTML = `
     <div class="status-icon success">✓</div>
     <h1>Already Confirmed</h1>
-    <p>This email is already verified and subscribed to job alerts.</p>
-   <a href="https://remoteng.com.ng/role-quiz.html" class="btn">Take Role Quiz →</a>
+    <p>This email is already verified. You can continue to the role quiz or browse jobs.</p>
+    <a href="/role-quiz.html?email=${encodeURIComponent(email)}" class="btn">Take Role Quiz →</a>
+    <a href="/remote-jobs.html" class="secondary-link">Browse jobs</a>
   `;
 }
 
@@ -137,7 +216,7 @@ function showError(title, message) {
     <div class="status-icon error">✗</div>
     <h1>${title}</h1>
     <p>${message}</p>
-    <a href="${SITE_URL}" class="btn">Go to Homepage</a>
+    <a href="/signup.html" class="btn">Back to Signup</a>
   `;
 }
 </script>
