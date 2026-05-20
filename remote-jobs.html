@@ -102,14 +102,14 @@
  .jobs-count { font-size: 15px; color: var(--gray-700); font-weight: 500; }
  .sort-select { padding: 10px 16px; border: 1px solid var(--gray-300); border-radius: 10px; font-size: 15px; outline: none; cursor: pointer; background: var(--white); }
 
-  /* Changed to single column job board layout */
+  /* Single column job board layout */
  .job-list { display: flex; flex-direction: column; gap: 16px; }
  .job-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 16px; padding: 24px; position: relative; transition: all 0.25s; }
  .job-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); border-color: var(--blue-cloud); transform: translateY(-2px); }
  .job-card.featured { border: 2px solid var(--green); background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
 
  .job-header { display: flex; gap: 16px; align-items: flex-start; }
- .job-logo { width: 56px; height: 56px; background: var(--gray-100); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--blue-dark); flex-shrink: 0; }
+ .job-logo { width: 56px; height: 56px; background: var(--gray-100); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--blue-dark); flex-shrink: 0; font-size: 18px; }
  .job-content { flex: 1; min-width: 0; }
  .tag { display: inline-block; background: var(--gray-100); padding: 6px 14px; border-radius: 20px; font-size: 12px; margin-bottom: 10px; font-weight: 600; margin-right: 8px; width: fit-content; }
  .tag.featured { background: var(--green); color: var(--gray-900); }
@@ -144,9 +144,6 @@
  .empty-state h3 { font-size: 22px; color: var(--gray-700); margin-bottom: 12px; }
  .error-state { text-align: center; padding: 60px 20px; color: var(--red); }
 
- .mobile-cta { position: fixed; bottom: 0; left: 0; right: 0; padding: 12px 16px; background: var(--white); box-shadow: 0 -2px 12px rgba(0,0,0,0.1); display: none; z-index: 99; border-top: 1px solid #e5e7eb; }
- .mobile-cta.btn { width: 100%; text-align: center; }
-
   @media (max-width: 768px) {
     nav { display: none; }
    .container { padding: 0 16px; }
@@ -155,13 +152,11 @@
    .search-bar { flex-direction: column; }
    .jobs-header { flex-direction: column; align-items: flex-start; }
    .job-header { gap: 12px; }
-   .job-logo { width: 48px; height: 48px; font-size: 14px; }
+   .job-logo { width: 48px; height: 48px; font-size: 16px; }
    .job-title { font-size: 18px; }
    .job-footer { flex-direction: column; align-items: stretch; }
    .job-actions { width: 100%; }
    .job-actions.btn { flex: 1; text-align: center; }
-   .mobile-cta { display: block; }
-    body { padding-bottom: 70px; }
   }
   </style>
 </head>
@@ -279,10 +274,6 @@
 </div>
 </footer>
 
-<div class="mobile-cta">
-  <a href="https://selar.com/17671617c4" class="btn btn-green">Get Daily VIP Alerts</a>
-</div>
-
 <script>
 const API_URL = 'https://remoteng-api.onrender.com';
 let allJobs = [];
@@ -341,31 +332,37 @@ function clearAllFilters() {
   toggleClearButton();
 }
 
+// Load ads after jobs render so they never block content
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    try {
+      loadAdScript('ad-1');
+      loadAdScript('ad-2');
+    } catch(e) {
+      console.log('Ad load failed:', e);
+    }
+  }, 1500);
+});
+
 function loadAdScript(containerId) {
   const container = document.getElementById(containerId);
   if (!container || container.dataset.loaded) return;
 
-  const script1 = document.createElement('script');
-  script1.textContent = `atOptions = { 'key' : '60fd2652d0e23a02a61b30ff30ef9fe8', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };`;
+  try {
+    const script1 = document.createElement('script');
+    script1.textContent = `atOptions = { 'key' : '60fd2652d0e23a02a61b30ff30ef9fe8', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };`;
 
-  const script2 = document.createElement('script');
-  script2.src = 'https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js';
+    const script2 = document.createElement('script');
+    script2.src = 'https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js';
+    script2.async = true;
 
-  container.appendChild(script1);
-  container.appendChild(script2);
-  container.dataset.loaded = 'true';
+    container.appendChild(script1);
+    container.appendChild(script2);
+    container.dataset.loaded = 'true';
+  } catch(e) {
+    console.log('Ad script error:', e);
+  }
 }
-
-const adObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      loadAdScript(entry.target.id);
-      adObserver.unobserve(entry.target);
-    }
-  });
-});
-adObserver.observe(document.getElementById('ad-1'));
-adObserver.observe(document.getElementById('ad-2'));
 
 async function loadJobs(retryCount = 0) {
   try {
@@ -486,11 +483,11 @@ function renderJobs() {
           <div class="job-title"><a href="${jobUrl}">${escapeHtml(job.title || 'Untitled Job')}</a></div>
           <div class="job-meta">
             <span>${escapeHtml(job.company || 'Unknown Company')}</span>
-            <span>🌍 ${job.location || 'Remote'}</span>
-            <span>${job.type || 'Full-time'}</span>
+            <span>🌍 ${escapeHtml(job.location || 'Remote')}</span>
+            <span>${escapeHtml(job.type || 'Full-time')}</span>
           </div>
           <div class="job-desc">${escapeHtml(desc)}</div>
-          <div class="job-salary">${job.salary || 'Competitive Package'}</div>
+          <div class="job-salary">${escapeHtml(job.salary || 'Competitive Package')}</div>
           <div class="job-footer">
             <span class="job-date">${timeAgo(job.posted_at)}</span>
             <div class="job-actions">
