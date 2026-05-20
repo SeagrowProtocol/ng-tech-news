@@ -39,7 +39,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: var(--white); overflow-x: hidden; }
-.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.97); }
 .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -73,10 +73,7 @@ nav a:hover, nav a.active { color: var(--blue); }
 .jobs-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 16px; }
 .jobs-count { font-size: 16px; color: var(--gray-700); font-weight: 500; }
 .sort-select { padding: 10px 16px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 15px; outline: none; cursor: pointer; background: var(--white); }
-
-/* Changed to single column layout */
-.grid { display: flex; flex-direction: column; gap: 20px; }
-
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
 .job-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; padding: 30px; position: relative; transition: all 0.3s; display: flex; flex-direction: column; }
 .job-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: var(--blue-cloud); }
 .job-card.featured { border: 2px solid var(--green); background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
@@ -105,14 +102,15 @@ footer a:hover { color: var(--blue-cloud); }
 .footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
 .ad-wrap { min-height: 250px; margin: 50px 0; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
-.empty-state { text-align: center; padding: 80px 20px; color: var(--gray-500); }
+.empty-state { text-align: center; padding: 80px 20px; color: var(--gray-500); grid-column: 1/-1; }
 .empty-state h3 { font-size: 24px; color: var(--gray-700); margin-bottom: 12px; }
-.error-state { text-align: center; padding: 80px 20px; color: var(--red); }
+.error-state { text-align: center; padding: 80px 20px; color: var(--red); grid-column: 1/-1; }
 @media (max-width: 768px) {
   nav { display: none; }
 .page-header h1 { font-size: 32px; }
 .search-bar { flex-direction: column; }
 .jobs-header { flex-direction: column; align-items: flex-start; }
+.grid { grid-template-columns: 1fr; }
 .job-footer { flex-direction: column; align-items: stretch; }
 .job-actions { width: 100%; }
 .job-actions.btn { flex: 1; text-align: center; }
@@ -482,7 +480,7 @@ function timeAgo(date) {
   const intervals = {year: 31536000, month: 2592000, week: 604800, day: 86400, hour: 3600, minute: 60};
   for (let i in intervals) {
     const c = Math.floor(seconds / intervals[i]);
-    if (c > 0) return c + ' + i + (c > 1? 's' : '') + ' ago';
+    if (c > 0) return c + ' ' + i + (c > 1? 's' : '') + ' ago';
   }
   return 'Just now';
 }
