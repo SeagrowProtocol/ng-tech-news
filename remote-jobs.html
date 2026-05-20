@@ -15,7 +15,6 @@
   <link rel="icon" href="https://remoteng.com.ng/logo.png">
   <link rel="canonical" href="https://remoteng.com.ng/remote-jobs.html">
   <link rel="preconnect" href="https://remoteng-api.onrender.com">
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
 
   <script type="application/ld+json">
   {
@@ -102,7 +101,6 @@
  .jobs-count { font-size: 15px; color: var(--gray-700); font-weight: 500; }
  .sort-select { padding: 10px 16px; border: 1px solid var(--gray-300); border-radius: 10px; font-size: 15px; outline: none; cursor: pointer; background: var(--white); }
 
-  /* Single column job board layout */
  .job-list { display: flex; flex-direction: column; gap: 16px; }
  .job-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 16px; padding: 24px; position: relative; transition: all 0.25s; }
  .job-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); border-color: var(--blue-cloud); transform: translateY(-2px); }
@@ -156,7 +154,6 @@
    .job-title { font-size: 18px; }
    .job-footer { flex-direction: column; align-items: stretch; }
    .job-actions { width: 100%; }
-   .job-actions.btn { flex: 1; text-align: center; }
   }
   </style>
 </head>
@@ -210,8 +207,20 @@
 </div>
 </section>
 
-<div class="ad-wrap" id="ad-1">
+<!-- Adsterra Ad 1: After Search Bar -->
+<div class="ad-wrap">
 <small>Advertisement</small>
+<script defer>
+window.addEventListener('load', () => {
+  const script1 = document.createElement('script');
+  script1.textContent = `atOptions = { 'key' : '60fd2652d0e23a02a61b30ff30ef9fe8', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };`;
+  const script2 = document.createElement('script');
+  script2.src = 'https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js';
+  script2.defer = true;
+  document.currentScript.parentNode.appendChild(script1);
+  document.currentScript.parentNode.appendChild(script2);
+});
+</script>
 </div>
 
 <section class="section">
@@ -234,8 +243,20 @@
 </div>
 </section>
 
-<div class="ad-wrap" id="ad-2">
+<!-- Adsterra Ad 2: Before Footer -->
+<div class="ad-wrap">
 <small>Advertisement</small>
+<script defer>
+window.addEventListener('load', () => {
+  const script1 = document.createElement('script');
+  script1.textContent = `atOptions = { 'key' : '60fd2652d0e23a02a61b30ff30ef9fe8', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };`;
+  const script2 = document.createElement('script');
+  script2.src = 'https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js';
+  script2.defer = true;
+  document.currentScript.parentNode.appendChild(script1);
+  document.currentScript.parentNode.appendChild(script2);
+});
+</script>
 </div>
 
 <footer>
@@ -330,38 +351,6 @@ function clearAllFilters() {
   currentPage = 1;
   applyFilters();
   toggleClearButton();
-}
-
-// Load ads after jobs render so they never block content
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    try {
-      loadAdScript('ad-1');
-      loadAdScript('ad-2');
-    } catch(e) {
-      console.log('Ad load failed:', e);
-    }
-  }, 1500);
-});
-
-function loadAdScript(containerId) {
-  const container = document.getElementById(containerId);
-  if (!container || container.dataset.loaded) return;
-
-  try {
-    const script1 = document.createElement('script');
-    script1.textContent = `atOptions = { 'key' : '60fd2652d0e23a02a61b30ff30ef9fe8', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };`;
-
-    const script2 = document.createElement('script');
-    script2.src = 'https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js';
-    script2.async = true;
-
-    container.appendChild(script1);
-    container.appendChild(script2);
-    container.dataset.loaded = 'true';
-  } catch(e) {
-    console.log('Ad script error:', e);
-  }
 }
 
 async function loadJobs(retryCount = 0) {
