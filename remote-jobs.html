@@ -66,7 +66,7 @@ nav a:hover, nav a.active { color: var(--blue); }
 .search-bar input { flex: 1; padding: 16px 22px; border: 1px solid #d1d5db; border-radius: 12px; font-size: 16px; outline: none; background: var(--white); }
 .search-bar input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
 .filters { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-.filter-btn { padding: 10px 20px; background: var(--white); border: 2px solid #e5e7eb; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-size: 14px; }
+.filter-btn { padding: 10px 20px; background: var(--white); border: 2px solid #e5e7eb; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-size: 14px; white-space: nowrap; }
 .filter-btn:hover { border-color: var(--blue); color: var(--blue); }
 .filter-btn.active { background: var(--blue-dark); color: var(--white); border-color: var(--blue-dark); }
 .section { padding: 60px 0; }
@@ -105,15 +105,41 @@ footer a:hover { color: var(--blue-cloud); }
 .empty-state { text-align: center; padding: 80px 20px; color: var(--gray-500); grid-column: 1/-1; }
 .empty-state h3 { font-size: 24px; color: var(--gray-700); margin-bottom: 12px; }
 .error-state { text-align: center; padding: 80px 20px; color: var(--red); grid-column: 1/-1; }
+
+/* Mobile fixes */
 @media (max-width: 768px) {
   nav { display: none; }
-.page-header h1 { font-size: 32px; }
-.search-bar { flex-direction: column; }
-.jobs-header { flex-direction: column; align-items: flex-start; }
-.grid { grid-template-columns: 1fr; }
-.job-footer { flex-direction: column; align-items: stretch; }
-.job-actions { width: 100%; }
-.job-actions.btn { flex: 1; text-align: center; }
+ .page-header h1 { font-size: 32px; }
+ .search-bar { flex-direction: column; }
+
+  /* Unstick filter on mobile so it doesn't block scrolling */
+ .search-section {
+    position: relative;
+    top: 0;
+    padding: 20px 0;
+  }
+
+  /* Horizontal scroll for filters */
+ .filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+ .filters::-webkit-scrollbar {
+    display: none;
+  }
+ .filter-btn {
+    flex: 0 0 auto;
+  }
+
+ .jobs-header { flex-direction: column; align-items: flex-start; }
+ .grid { grid-template-columns: 1fr; }
+ .job-footer { flex-direction: column; align-items: stretch; }
+ .job-actions { width: 100%; }
+ .job-actions.btn { flex: 1; text-align: center; }
 }
 </style>
 </head>
@@ -480,7 +506,7 @@ function timeAgo(date) {
   const intervals = {year: 31536000, month: 2592000, week: 604800, day: 86400, hour: 3600, minute: 60};
   for (let i in intervals) {
     const c = Math.floor(seconds / intervals[i]);
-    if (c > 0) return c + ' ' + i + (c > 1? 's' : '') + ' ago';
+    if (c > 0) return c + ' + i + (c > 1? 's' : '') + ' ago';
   }
   return 'Just now';
 }
