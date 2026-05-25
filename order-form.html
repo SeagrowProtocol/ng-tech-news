@@ -81,7 +81,42 @@ footer a { color: var(--blue-cloud); text-decoration: none; }
 </div>
 </div>
 </header>
+<script>
+(function() {
+  const KEY = 'remoteng_cv_submit_viewed';
+  const params = new URLSearchParams(window.location.search);
+  const txRef = params.get('tx_ref');
 
+  // Use tx_ref if available so each order can be used once. Fallback to page-only lock.
+  const storageKey = txRef ? `${KEY}_${txRef}` : KEY;
+
+  // If already submitted/viewed, block the page
+  if (localStorage.getItem(storageKey) === 'true') {
+    document.body.innerHTML = `
+      <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+        <div>
+          <h1 style="font-size:32px;color:#1e3a8a;margin-bottom:16px;">This form has already been used</h1>
+          <p style="font-size:18px;color:#374151;margin-bottom:24px;">Each payment link can only be used once. If you need to resubmit, contact support.</p>
+          <a href="/service.html" style="background:#3b82f6;color:white;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:600;">Back to Services</a>
+          <p style="margin-top:20px;font-size:14px;color:#6b7280;">Need help? Email <a href="mailto:support@remoteng.com.ng" style="color:#3b82f6;">support@remoteng.com.ng</a></p>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // Mark as used when form submits successfully
+  const form = document.getElementById('cv-form');
+  if (form) {
+    form.addEventListener('submit', function() {
+      // Wait a tick so it only sets if submission starts
+      setTimeout(() => {
+        localStorage.setItem(storageKey, 'true');
+      }, 100);
+    });
+  }
+})();
+</script>
 <section class="page-header">
 <div class="container">
 <h1>Payment Confirmed!</h1>
