@@ -1,335 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "url": "__PAGE_URL__",
-  "dateModified": "__BUILD_DATE__"
+<script type="application/ld+json">
+{ 
+"@context": "https://schema.org", 
+"@type": "WebPage", 
+"url": "__PAGE_URL__", 
+"dateModified": "__BUILD_DATE__" 
 }
 </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tech News & Career Insights - RemoteNG</title>
-  <meta name="description" content="Latest tech news, remote work trends, and career insights for global professionals. Stay updated with industry news from TechCrunch and more.">
-  <meta property="og:title" content="Tech News & Career Insights - RemotENG">
-  <meta property="og:description" content="Latest tech news, remote work trends, and career insights for global professionals.">
-  <meta property="og:url" content="https://remoteng.com.ng/tech-news.html">
-  <meta property="og:type" content="website">
-  <link rel="icon" href="https://remoteng.com.ng/logo.png">
-
-  <!-- Popunder: 1 per 24h -->
-  <script>
-    (function() {
-      const lastPop = localStorage.getItem('remoteng_popunder');
-      const now = Date.now();
-      if (!lastPop || now - parseInt(lastPop) > 86400000) {
-        const s = document.createElement('script');
-        s.src = 'https://fixesconsessionconsession.com/b2/eb/21/b2eb219f942f6c23d7033c13ae15eb7d.js';
-        s.async = true;
-        document.head.appendChild(s);
-        localStorage.setItem('remoteng_popunder', now);
-      }
-    })();
-  </script>
-
-  <style>
-    :root {
-      --blue-dark: #1e3a8a;
-      --blue: #3b82f6;
-      --blue-cloud: #60a5fa;
-      --green: #84cc16;
-      --gray-900: #111827;
-      --gray-700: #374151;
-      --gray-500: #6b7280;
-      --gray-100: #f3f4f6;
-      --white: #ffffff;
-      --radius: 16px;
-      --shadow: 0 4px 20px rgba(0,0,0,0.08);
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-900); background: #fafafa; line-height: 1.6; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
-  .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
-  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .logo img { width: 48px; height: 48px; border-radius: 12px; }
-  .logo-text { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; line-height: 1; }
-  .logo-text.remot { color: var(--blue-dark); }
-  .logo-text.eng { color: var(--blue); }
-  .logo-text.com { color: var(--green); font-size: 14px; display: block; margin-top: -4px; font-weight: 600; }
-    nav { display: flex; gap: 28px; align-items: center; }
-    nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; transition: color 0.2s; font-size: 15px; }
-    nav a:hover, nav a.active { color: var(--blue); }
-  .btn { background: var(--blue-dark); color: var(--white); padding: 12px 24px; border-radius: 12px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-block; transition: all 0.2s; font-size: 15px; }
-  .btn:hover { background: var(--blue); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(59,130,246,0.25); }
-  .btn-outline { background: var(--white); color: var(--blue-dark); border: 2px solid var(--blue-dark); }
-  .btn-outline:hover { background: var(--blue-dark); color: var(--white); }
-  .page-header { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%); color: var(--white); padding: 80px 0 60px; text-align: center; }
-  .page-header h1 { font-size: 48px; margin-bottom: 16px; font-weight: 800; letter-spacing: -1px; }
-  .page-header p { font-size: 18px; opacity: 0.95; max-width: 600px; margin: 0 auto; }
-  .section { padding: 64px 0; }
-  .search-bar { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
-  .search-input { flex: 1; min-width: 250px; padding: 14px 20px; border: 2px solid #e5e7eb; border-radius: 12px; font-size: 16px; outline: none; transition: all 0.2s; background: var(--white); }
-  .search-input:focus { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(59,130,246,0.1); }
-  .filter-select { padding: 14px 18px; border: 2px solid #e5e7eb; border-radius: 12px; font-size: 15px; outline: none; cursor: pointer; background: var(--white); }
-  .news-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
-  .news-count { font-size: 16px; color: var(--gray-700); font-weight: 600; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; }
-  .news-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: var(--radius); overflow: hidden; transition: all 0.3s; display: flex; flex-direction: column; box-shadow: var(--shadow); }
-  .news-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,0.12); transform: translateY(-4px); border-color: var(--blue-cloud); }
-  .news-card img { width: 100%; height: 210px; object-fit: cover; background: var(--gray-100); }
-  .news-content { padding: 24px; flex: 1; display: flex; flex-direction: column; }
-  .news-tag { display: inline-block; background: #e0f2fe; padding: 6px 14px; border-radius: 20px; font-size: 12px; margin-bottom: 12px; font-weight: 600; color: var(--blue-dark); width: fit-content; }
-  .news-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--gray-900); line-height: 1.35; }
-  .news-excerpt { color: var(--gray-700); font-size: 15px; line-height: 1.6; margin-bottom: 18px; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  .news-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 18px; border-top: 1px solid #f0f0f0; }
-  .news-date { color: var(--gray-500); font-size: 13px; }
-  .load-more { text-align: center; margin-top: 56px; }
-    footer { background: var(--gray-900); color: var(--gray-100); padding: 90px 0 35px; margin-top: 90px; }
-  .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 55px; margin-bottom: 55px; }
-    footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
-    footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s; font-size: 15px; }
-    footer a:hover { color: var(--blue-cloud); }
-  .footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
-  .ad-wrap { min-height: 280px; margin: 40px 0; text-align: center; display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%; }
-  .ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .empty-state { text-align: center; padding: 80px 20px; color: var(--gray-500); }
-  .empty-state h3 { font-size: 24px; color: var(--gray-700); margin-bottom: 12px; }
-  .social-links { display: flex; gap: 16px; margin-top: 16px; }
-  .social-icon svg { transition: transform 0.2s ease, opacity 0.2s ease; opacity: 0.85; }
-  .social-icon:hover svg { transform: scale(1.1); opacity: 1; }
-  .social-icon.instagram svg { fill: #E1306C; }
-  .social-icon.facebook svg { fill: #1877F2; }
-  .social-icon.telegram svg { fill: #0088cc; }
-  .social-icon.whatsapp svg { fill: #25D366; }
-    @media (max-width: 768px) {
-      nav { display: none; }
-    .page-header h1 { font-size: 34px; }
-    .grid { grid-template-columns: 1fr; }
-    .search-bar { flex-direction: column; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech News & Career Insights - RemotENG</title>
+<meta name="description" content="Latest tech news, remote work trends, and career insights for global professionals. Stay updated with industry news from TechCrunch and more.">
+<meta property="og:title" content="Tech News & Career Insights - RemotENG">
+<meta property="og:description" content="Latest tech news, remote work trends, and career insights for global professionals.">
+<meta property="og:url" content="https://remoteng.com.ng/tech-news.html">
+<meta property="og:type" content="website">
+<link rel="icon" href="https://remoteng.com.ng/logo.png">
+<style>
+:root {
+  --blue-dark: #1e3a8a;
+  --blue: #3b82f6;
+  --blue-cloud: #60a5fa;
+  --green: #84cc16;
+  --gray-900: #111827;
+  --gray-700: #374151;
+  --gray-500: #6b7280;
+  --gray-100: #f3f4f6;
+  --gray-50: #f9fafb;
+  --white: #ffffff;
+  --red: #ef4444;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-hover: 0 12px 35px rgba(0,0,0,0.12);
+  --radius: 16px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+  color: var(--gray-900);
+  background: var(--gray-50);
+  line-height: 1.6;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+header {
+  background: rgba(255,255,255,0.85);
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo img { width: 48px; height: 48px; border-radius: 12px; }
+.logo-text { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; line-height: 1; }
+.logo-text.remot { color: var(--blue-dark); }
+.logo-text.eng { color: var(--blue); }
+.logo-text.com { color: var(--green); font-size: 14px; display: block; margin-top: -4px; font-weight: 600; }
+nav { display: flex; gap: 28px; align-items: center; }
+nav a { color: var(--gray-700); text-decoration: none; font-weight: 500; transition: 0.2s; font-size: 15px; }
+nav a:hover, nav a.active { color: var(--blue); }
+.btn {
+  background: var(--blue-dark);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.25s ease;
+  font-size: 15px;
+}
+.btn:hover {
+  background: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59,130,246,0.35);
+}
+.btn-green { background: var(--green); color: var(--gray-900); }
+.btn-green:hover { background: #65a30d; }
+.btn-outline {
+  background: var(--white);
+  color: var(--blue-dark);
+  border: 2px solid var(--blue-dark);
+}
+.btn-outline:hover { background: var(--blue-dark); color: var(--white); }
+.page-header {
+  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-cloud) 100%);
+  color: var(--white);
+  padding: 80px 0 60px;
+  text-align: center;
+}
+.page-header h1 { font-size: 46px; margin-bottom: 16px; font-weight: 800; }
+.page-header p { font-size: 18px; opacity: 0.95; }
+.section { padding: 70px 0; }
+.search-bar {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 35px;
+  flex-wrap: wrap;
+}
+.search-input {
+  flex: 1;
+  min-width: 250px;
+  padding: 14px 18px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+  transition: 0.2s;
+  background: var(--white);
+}
+.search-input:focus { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(59,130,246,0.15); }
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.news-count { font-size: 16px; color: var(--gray-700); font-weight: 500; }
+.filter-select {
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+  background: var(--white);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 32px;
+}
+.news-card {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+}
+.news-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-5px);
+  border-color: var(--blue-cloud);
+}
+.news-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  background: var(--gray-100);
+}
+.news-content { padding: 26px; flex: 1; display: flex; flex-direction: column; }
+.news-tag {
+  display: inline-block;
+  background: var(--gray-100);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--blue-dark);
+  width: fit-content;
+}
+.news-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--blue-dark);
+  line-height: 1.35;
+}
+.news-excerpt {
+  color: var(--gray-700);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.news-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid #e5e7eb;
+}
+.news-date { color: var(--gray-500); font-size: 13px; }
+.load-more { text-align: center; margin-top: 50px; }
+footer {
+  background: var(--gray-900);
+  color: var(--gray-100);
+  padding: 90px 0 35px;
+  margin-top: 90px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 55px;
+  margin-bottom: 55px;
+}
+footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
+footer a {
+  color: var(--gray-500);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 12px;
+  transition: color 0.2s;
+  font-size: 15px;
+}
+footer a:hover { color: var(--blue-cloud); }
+.footer-bottom {
+  border-top: 1px solid var(--gray-700);
+  padding-top: 35px;
+  text-align: center;
+  color: var(--gray-500);
+}
+.ad-wrap {
+  min-height: 280px;
+  margin: 40px 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid #e5e7eb;
+  padding: 20px;
+}
+.ad-wrap small {
+  display: block;
+  color: var(--gray-500);
+  font-size: 11px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.ad-native {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #bae6fd;
+}
+.empty-state { text-align: center; padding: 80px 20px; color: var(--gray-500); }
+.empty-state h3 { font-size: 24px; color: var(--gray-700); margin-bottom: 12px; }
+.ad-bottom { margin-bottom: 0; }
+@media (max-width: 768px) {
+  nav { display: none; }
+  .page-header h1 { font-size: 34px; }
+  .news-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .grid { grid-template-columns: 1fr; }
+  .search-bar { flex-direction: column; }
+  .ad-bottom { display: none; }
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="header-inner">
-        <a href="index.html" class="logo">
-          <img src="https://remoteng.com.ng/logo.png" alt="RemotENG Logo">
-          <div class="logo-text">
-            <span class="remot">Remot</span><span class="eng">eng</span>
-            <span class="com">.com.ng</span>
-          </div>
-        </a>
-        <nav>
-          <a href="remote-jobs.html">Jobs</a>
-          <a href="tech-news.html" class="active">News</a>
-          <a href="service.html">Services</a>
-          <a href="vip.html">VIP Alerts</a>
-          <a href="post-job.html">Post Job</a>
-          <a href="https://selar.com/17671617c4" class="btn">Get VIP</a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <section class="page-header">
-    <div class="container">
-      <h1>Tech News & Career Insights</h1>
-      <p>Latest trends in tech, remote work, and professional development from trusted sources</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="search-bar">
-        <input type="text" class="search-input" id="search-input" placeholder="Search news by title or keyword...">
-        <select class="filter-select" id="source-filter">
-          <option value="all">All Sources</option>
-          <option value="TechCrunch">TechCrunch</option>
-        </select>
-      </div>
-
-      <div class="ad-wrap">
-        <small>Sponsored</small>
-        <div id="container-67abc4f6c4779907d9aa956165783490"></div>
-        <script async data-cfasync="false" src="https://fixesconsessionconsession.com/67abc4f6c4779907d9aa956165783490/invoke.js"></script>
-      </div>
-
-      <div class="news-header">
-        <div class="news-count" id="news-count">Loading news...</div>
-      </div>
-
-      <div class="grid" id="news-grid"></div>
-
-      <div class="load-more" id="load-more-wrap" style="display:none;">
-        <button class="btn btn-outline" onclick="loadMore()">Load More News</button>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4>RemoteNG</h4>
-          <p style="color:var(--gray-500); margin-bottom:20px;">Connecting professionals with global remote opportunities.</p>
-          <p>Email: support@remoteng.com.ng</p>
-          <p>WhatsApp: +234 912 565 1147</p>
-          <div class="social-links">
-            <a href="https://www.instagram.com/officialremoteng" target="_blank" class="social-icon instagram">
-              <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-            <a href="https://www.facebook.com/share/197Z3F33WC/?mibextid=wwXIfr" target="_blank" class="social-icon facebook">
-              <svg viewBox="0 0 24 24" width="24" height="24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
-            </a>
-            <a href="https://t.me/latest_ng" target="_blank" class="social-icon telegram">
-              <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.342-1.446 1.394c-.14.18-.26.342-.533.342l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128 1.006.883z"/></svg>
-            </a>
-            <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank" class="social-icon whatsapp">
-              <svg viewBox="0 0 24 24" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.672-1.612-.921-2.206-.242-.579-.487-.5-.672-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0.16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488z"/></svg>
-            </a>
-          </div>
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="https://remoteng.com.ng/logo.png" alt="RemotENG Logo">
+        <div class="logo-text">
+          <span class="remot">Remot</span><span class="eng">eng</span>
+          <span class="com">.com.ng</span>
         </div>
-        <div>
-          <h4>Quick Links</h4>
-          <a href="remote-jobs.html">Browse Jobs</a>
-          <a href="tech-news.html">Tech News</a>
-          <a href="service.html">Services</a>
-          <a href="post-job.html">Post a Job</a>
-          <a href="save-job.html">Saved Jobs</a>
-        </div>
-        <div>
-          <h4>Legal</h4>
-          <a href="legal.html">About Us</a>
-          <a href="legal.html#privacy">Privacy Policy</a>
-          <a href="legal.html#terms">Terms of Service</a>
-        </div>
-        <div>
-          <h4>Connect</h4>
-          <a href="https://www.instagram.com/officialremoteng" target="_blank">Instagram</a>
-          <a href="https://www.facebook.com/share/197Z3F33WC/?mibextid=wwXIfr" target="_blank">Facebook</a>
-          <a href="https://t.me/latest_ng" target="_blank">Telegram</a>
-          <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 RemoteNG. All rights reserved. Remote opportunities worldwide.</p>
-      </div>
+      </a>
+      <nav>
+        <a href="remote-jobs.html">Jobs</a>
+        <a href="tech-news.html" class="active">News</a>
+        <a href="service.html">Services</a>
+        <a href="vip.html">VIP Alerts</a>
+        <a href="post-job.html">Post Job</a>
+        <a href="https://selar.com/17671617c4" class="btn">Get VIP</a>
+      </nav>
     </div>
-  </footer>
+  </div>
+</header>
 
+<section class="page-header">
+  <div class="container">
+    <h1>Tech News & Career Insights</h1>
+    <p>Latest trends in tech, remote work, and professional development</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" class="search-input" id="search-input" placeholder="Search news by title or keyword..." onkeyup="handleSearch()">
+      <select class="filter-select" id="source-filter" onchange="filterNews()">
+        <option value="all">All Sources</option>
+        <option value="TechCrunch">TechCrunch</option>
+      </select>
+    </div>
+
+    <!-- Native Ad: Top after search bar -->
+    <div class="ad-wrap ad-native">
+      <small>Sponsored</small>
+      <div id="container-67abc4f6c4779907d9aa956165783490"></div>
+      <script async="async" data-cfasync="false" src="https://fixesconsessionconsession.com/67abc4f6c4779907d9aa956165783490/invoke.js"></script>
+    </div>
+
+    <div class="news-header">
+      <div class="news-count" id="news-count">Loading news...</div>
+    </div>
+
+    <div class="grid" id="news-grid"></div>
+    <div id="mid-ad-container"></div>
+
+    <div class="load-more" id="load-more-wrap" style="display:none;">
+      <button class="btn btn-outline" onclick="loadMore()">Load More News</button>
+    </div>
+  </div>
+</section>
+
+<!-- Bottom 300x250 Banner -->
+<div class="ad-wrap ad-bottom">
+  <small>Advertisement</small>
   <script>
-    const API_URL = 'https://remoteng-api.onrender.com';
-    const SMART_LINK = 'https://fixesconsessionconsession.com/qcp9zpg9d8?key=918f49f2f9a974f644034a8696d37a0e';
-    let allNews = [];
-    let filteredNews = [];
-    let displayedCount = 0;
-    const NEWS_PER_PAGE = 12;
-    let searchTimeout;
-
-    document.getElementById('search-input').addEventListener('keyup', handleSearch);
-    document.getElementById('source-filter').addEventListener('change', filterNews);
-
-    async function loadNews() {
-      try {
-        const res = await fetch(`${API_URL}/api/news`);
-        allNews = await res.json();
-        filterNews();
-      } catch (err) {
-        console.error('Failed to load news:', err);
-        document.getElementById('news-grid').innerHTML = '<div class="empty-state"><h3>Unable to load news</h3><p>Please refresh the page or try again later.</p></div>';
-      }
-    }
-
-    function handleSearch() {
-      clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(() => {
-        filterNews();
-      }, 300);
-    }
-
-    function filterNews() {
-      const sourceFilter = document.getElementById('source-filter').value;
-      const searchTerm = document.getElementById('search-input').value.toLowerCase();
-      filteredNews = allNews.filter(item => {
-        const matchesSource = sourceFilter === 'all' || (item.source || 'TechCrunch').toLowerCase().includes(sourceFilter.toLowerCase());
-        const matchesSearch =!searchTerm || item.title.toLowerCase().includes(searchTerm) || (item.content && item.content.toLowerCase().includes(searchTerm));
-        return matchesSource && matchesSearch;
-      });
-      filteredNews.sort((a, b) => new Date(b.posted_at) - new Date(a.posted_at));
-      displayedCount = 0;
-      document.getElementById('news-grid').innerHTML = '';
-      document.getElementById('news-count').textContent = `${filteredNews.length} articles found`;
-      renderNews();
-    }
-
-    function renderNews() {
-      const grid = document.getElementById('news-grid');
-      const newsToShow = filteredNews.slice(displayedCount, displayedCount + NEWS_PER_PAGE);
-
-      if (displayedCount === 0 && newsToShow.length === 0) {
-        grid.innerHTML = '<div class="empty-state"><h3>No news found</h3><p>Try a different search or check back later.</p></div>';
-        document.getElementById('load-more-wrap').style.display = 'none';
-        return;
-      }
-
-      newsToShow.forEach((item, index) => {
-        const card = document.createElement('div');
-        card.className = 'news-card';
-        card.innerHTML = `
-          <img src="${item.image_url || 'https://via.placeholder.com/400x210?text=RemotENG+News'}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x210?text=RemotENG+News'">
-          <div class="news-content">
-            <span class="news-tag">${item.source || 'Tech News'}</span>
-            <div class="news-title">${item.title}</div>
-            <div class="news-excerpt">${item.content?.substring(0, 180)}...</div>
-            <div class="news-meta">
-              <span class="news-date">${timeAgo(item.posted_at)}</span>
-              <a href="${item.url}" target="_blank" rel="noopener" class="btn" onclick="window.open('${SMART_LINK}', '_blank');">Read Full Article</a>
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
-
-        const totalIndex = displayedCount + index + 1;
-        if (totalIndex % 5 === 0 && totalIndex < filteredNews.length) {
-          const adDiv = document.createElement('div');
-          adDiv.className = 'ad-wrap';
-
-          // FIX: Escape </script> to prevent HTML parser from closing the main script
-          adDiv.innerHTML = `
-            <small>Advertisement</small>
-            ` + '<script>' + `
-              atOptions = { 'key': '60fd2652d0e23a02a61b30ff30ef9fe8', 'format': 'iframe', 'height': 250, 'width': 300, 'params': {} };
-            ` + '<\/script>' + `
-            ` + '<script src="https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js"><\/script>' + `
-          `;
-          grid.appendChild(adDiv);
-        }
-      });
-
-      displayedCount += newsToShow.length;
-      document.getElementById('load-more-wrap').style.display = displayedCount < filteredNews.length? 'block' : 'none';
-    }
-
-    function loadMore() {
-      renderNews();
-    }
-
-    function timeAgo(date) {
-      if (!date) return 'Some time ago';
-      const seconds = Math.floor((new Date() - new Date(date)) / 1000);
-      const intervals = { year: 31536000, month: 2592000, week: 604800, day: 86400, hour: 3600, minute: 60 };
-      for (let i in intervals) {
-        const c = Math.floor(seconds / intervals[i]);
-        if (c > 0) return c + ' + i + (c > 1? 's' : '') + ' ago';
-      }
-      return 'Just now';
-    }
-
-    loadNews();
+    atOptions = {
+      'key' : '60fd2652d0e23a02a61b30ff30ef9fe8',
+      'format' : 'iframe',
+      'height' : 250,
+      'width' : 300,
+      'params' : {}
+    };
   </script>
+  <script src="https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js"></script>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>RemoteNG</h4>
+        <p style="color:var(--gray-500); margin-bottom:20px;">Connecting professionals with global remote opportunities.</p>
+        <p>Email: support@remoteng.com.ng</p>
+        <p>WhatsApp: +234 912 565 1147</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/officialremoteng" target="_blank" class="social-icon instagram">
+            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/share/197Z3F33WC/?mibextid=wwXIfr" target="_blank" class="social-icon facebook">
+            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+          </a>
+          <a href="https://t.me/latest_ng" target="_blank" class="social-icon telegram">
+            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.342-1.446 1.394c-.14.18-.26.342-.533.342l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128 1.006.883z"/></svg>
+          </a>
+          <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank" class="social-icon whatsapp">
+            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.672-1.612-.921-2.206-.242-.579-.487-.5-.672-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="remote-jobs.html">Browse Jobs</a>
+        <a href="tech-news.html">Tech News</a>
+        <a href="service.html">Services</a>
+        <a href="post-job.html">Post a Job</a>
+        <a href="save-job.html">Saved Jobs</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="legal.html">About Us</a>
+        <a href="legal.html#privacy">Privacy Policy</a>
+        <a href="legal.html#terms">Terms of Service</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="https://www.instagram.com/officialremoteng" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/share/197Z3F33WC/?mibextid=wwXIfr" target="_blank">Facebook</a>
+        <a href="https://t.me/latest_ng" target="_blank">Telegram</a>
+        <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank">WhatsApp Channel</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 RemoteNG. All rights reserved. Remote opportunities worldwide.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+.social-links { display: flex; gap: 16px; margin-top: 16px; }
+.social-icon svg { transition: transform 0.2s ease, opacity 0.2s ease; opacity: 0.85; }
+.social-icon:hover svg { transform: scale(1.1); opacity: 1; }
+.social-icon.instagram svg { fill: #E1306C; }
+.social-icon.facebook svg { fill: #1877F2; }
+.social-icon.telegram svg { fill: #0088cc; }
+.social-icon.whatsapp svg { fill: #25D366; }
+</style>
+
+<script>
+const API_URL = 'https://remoteng-api.onrender.com';
+const SMART_LINK = 'https://fixesconsessionconsession.com/qcp9zpg9d8?key=918f49f2f9a974f644034a8696d37a0e';
+const POPUNDER_SCRIPT = 'https://fixesconsessionconsession.com/b2/eb/21/b2eb219f942f6c23d7033c13ae15eb7d.js';
+const POPUNDER_COOLDOWN = 24 * 60 * 60 * 1000; // 24 hours
+
+let allNews = [];
+let filteredNews = [];
+let displayedCount = 0;
+const NEWS_PER_PAGE = 12;
+let searchTimeout;
+
+// Popunder once per 24h
+(function initPopunder() {
+  const lastPop = localStorage.getItem('popunder_last');
+  const now = Date.now();
+  if (!lastPop || now - parseInt(lastPop) > POPUNDER_COOLDOWN) {
+    const s = document.createElement('script');
+    s.src = POPUNDER_SCRIPT;
+    s.async = true;
+    document.head.appendChild(s);
+    localStorage.setItem('popunder_last', now);
+  }
+})();
+
+async function loadNews() {
+  try {
+    const res = await fetch(`${API_URL}/api/news`);
+    allNews = await res.json();
+    filterNews();
+  } catch (err) {
+    console.error('Failed to load news:', err);
+    document.getElementById('news-grid').innerHTML = '<div class="empty-state"><h3>Unable to load news</h3><p>Please refresh the page or try again later.</p></div>';
+  }
+}
+
+function handleSearch() {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => { filterNews(); }, 300);
+}
+
+function filterNews() {
+  const sourceFilter = document.getElementById('source-filter').value;
+  const searchTerm = document.getElementById('search-input').value.toLowerCase();
+  
+  filteredNews = allNews.filter(item => {
+    const matchesSource = sourceFilter === 'all' || (item.source || 'TechCrunch').toLowerCase().includes(sourceFilter.toLowerCase());
+    const matchesSearch = !searchTerm || item.title.toLowerCase().includes(searchTerm) || (item.content && item.content.toLowerCase().includes(searchTerm));
+    return matchesSource && matchesSearch;
+  });
+  
+  filteredNews.sort((a, b) => new Date(b.posted_at) - new Date(a.posted_at));
+  displayedCount = 0;
+  document.getElementById('news-grid').innerHTML = '';
+  document.getElementById('mid-ad-container').innerHTML = '';
+  document.getElementById('news-count').textContent = `${filteredNews.length} articles found`;
+  renderNews();
+}
+
+function renderNews() {
+  const grid = document.getElementById('news-grid');
+  const newsToShow = filteredNews.slice(displayedCount, displayedCount + NEWS_PER_PAGE);
+  
+  if (displayedCount === 0 && newsToShow.length === 0) {
+    grid.innerHTML = '<div class="empty-state"><h3>No news found</h3><p>Try a different search or check back later.</p></div>';
+    document.getElementById('load-more-wrap').style.display = 'none';
+    return;
+  }
+  
+  newsToShow.forEach((item, index) => {
+    const card = document.createElement('div');
+    card.className = 'news-card';
+    card.innerHTML = `
+      <img src="${item.image_url || 'https://via.placeholder.com/400x210?text=RemotENG+News'}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x210?text=RemotENG+News'">
+      <div class="news-content">
+        <span class="news-tag">${item.source || 'Tech News'}</span>
+        <div class="news-title">${item.title}</div>
+        <div class="news-excerpt">${item.content?.substring(0, 180)}...</div>
+        <div class="news-meta">
+          <span class="news-date">${.timeAgo(item.posted_at)}</span>
+            <a href="#" class="btn btn-outline" onclick="openNews('${item.url}', event)">Read More</a>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+
+      // Insert mid-page ad after 6th card on first load
+      if (displayedCount === 0 && index === 5) {
+        const midAd = document.createElement('div');
+        midAd.className = 'ad-wrap';
+        midAd.innerHTML = `
+          <small>Sponsored</small>
+          <div id="container-67abc4f6c4779907d9aa956165783490-mid"></div>
+          <script async="async" data-cfasync="false" src="https://fixesconsessionconsession.com/67abc4f6c4779907d9aa956165783490/invoke.js"></script>
+        `;
+        document.getElementById('mid-ad-container').appendChild(midAd);
+      }
+    });
+
+    displayedCount += newsToShow.length;
+
+    // Show/hide load more button
+    document.getElementById('load-more-wrap').style.display = 
+      displayedCount < filteredNews.length ? 'block' : 'none';
+  }
+
+  function loadMore() {
+    renderNews();
+  }
+
+  function openNews(url, event) {
+    event.preventDefault();
+    window.open(url, '_blank');
+    // Redirect via smartlink for monetization
+    setTimeout(() => {
+      window.location.href = SMART_LINK;
+    }, 500);
+  }
+
+  function timeAgo(dateString) {
+    const date = new Date(dateString);
+    const now = new Date();
+    const seconds = Math.floor((now - date) / 1000);
+    
+    if (seconds < 60) return 'Just now';
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return `${minutes}m ago`;
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${hours}h ago`;
+    const days = Math.floor(hours / 24);
+    if (days < 7) return `${days}d ago`;
+    return date.toLocaleDateString();
+  }
+
+  // Load news on page load
+  document.addEventListener('DOMContentLoaded', loadNews);
+</script>
 </body>
 </html>
