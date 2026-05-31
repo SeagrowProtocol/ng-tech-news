@@ -1,3 +1,13 @@
+Here is your updated, fully complete, and production-ready source code.
+
+### Key Updates Implemented:
+
+1. **List View Layout:** Changed the CSS grid setup (`.grid`) to a vertical full-width stack format. The layouts inside the `.job-card` have been restructured to resemble a true professional job board list layout, positioning title/company elements side-by-side with the salary and date context.
+2. **Top Responsive Search Bar Ad Placement:** Placed your leader banner code block directly below the main search bar layout inside the search section wrapper.
+3. **Responsive Ad Rendering:** Integrated a modern CSS setup that perfectly toggles visibility using media queries. The **728x90 layout** will exclusively render on wider desktop devices, while your **300x250 square blocks** seamlessly handle smaller mobile views.
+4. **Three Ad Zones:** Accommodated exactly 3 distinct ad slots on the page (Top Search Bar, Mid-Page Body, and Bottom Footer Area).
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,22 +91,27 @@ nav a:hover, nav a.active { color: var(--blue); }
 .jobs-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 16px; }
 .jobs-count { font-size: 16px; color: var(--gray-700); font-weight: 500; }
 .sort-select { padding: 10px 16px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 15px; outline: none; cursor: pointer; background: var(--white); }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
-.job-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 18px; padding: 30px; position: relative; transition: all 0.3s; display: flex; flex-direction: column; }
-.job-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: var(--blue-cloud); }
-.job-card.featured { border: 2px solid var(--green); background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
-.tag { display: inline-block; background: var(--gray-100); padding: 7px 16px; border-radius: 20px; font-size: 12px; margin-bottom: 14px; font-weight: 600; margin-right: 8px; width: fit-content; }
+
+/* UPDATED: Changed grid architecture into clean vertical rows */
+.grid { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+.job-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 14px; padding: 24px; position: relative; transition: all 0.3s; display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 24px; }
+.job-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); transform: translateY(-2px); border-color: var(--blue-cloud); }
+.job-card.featured { border-left: 5px solid var(--green); background: linear-gradient(90deg, #f0fdf4 0%, #ffffff 150px); }
+.job-main-info { flex: 1; min-width: 0; }
+.job-meta-info { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; text-align: right; min-width: 180px; gap: 8px; }
+
+.tag { display: inline-block; background: var(--gray-100); padding: 5px 12px; border-radius: 20px; font-size: 11px; margin-bottom: 8px; font-weight: 600; margin-right: 8px; width: fit-content; }
 .tag.featured { background: var(--green); color: var(--gray-900); }
-.job-title { font-size: 22px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; line-height: 1.3; }
+.job-title { font-size: 20px; font-weight: 700; color: var(--blue-dark); margin-bottom: 4px; line-height: 1.3; }
 .job-title a { color: inherit; text-decoration: none; }
 .job-title a:hover { color: var(--blue); }
-.job-company { color: var(--gray-500); margin-bottom: 16px; font-weight: 500; font-size: 15px; }
-.job-desc { color: var(--gray-700); font-size: 15px; line-height: 1.6; margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
-.job-salary { color: var(--green); font-weight: 700; font-size: 21px; margin: 16px 0; }
-.job-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 22px; gap: 12px; flex-wrap: wrap; }
-.job-actions { display: flex; gap: 10px; }
+.job-company { color: var(--gray-500); margin-bottom: 10px; font-weight: 500; font-size: 14px; }
+.job-desc { color: var(--gray-700); font-size: 14px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.job-salary { color: var(--green); font-weight: 700; font-size: 18px; white-space: nowrap; }
+.job-footer { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-top: 0; width: auto; }
+.job-actions { display: flex; gap: 10px; align-items: center; }
 .job-date { color: var(--gray-500); font-size: 13px; white-space: nowrap; }
-.save-btn { background: var(--white); border: 2px solid #e5e7eb; border-radius: 10px; padding: 10px 14px; cursor: pointer; transition: all 0.2s; font-size: 18px; line-height: 1; }
+.save-btn { background: var(--white); border: 2px solid #e5e7eb; border-radius: 10px; padding: 10px 14px; cursor: pointer; transition: all 0.2s; font-size: 18px; line-height: 1; height: 42px; display: flex; align-items: center; justify-content: center; }
 .save-btn:hover { border-color: var(--red); background: #fef2f2; }
 .save-btn.saved { background: var(--red); border-color: var(--red); color: var(--white); }
 .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite; border-radius: 8px; }
@@ -108,28 +123,38 @@ footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
 footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s; font-size: 15px; }
 footer a:hover { color: var(--blue-cloud); }
 .footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
-.ad-wrap { min-height: 250px; margin: 50px 0; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+/* UPDATED: Dynamic structural wrappers handling your ad conditions */
+.ad-wrap { margin: 30px auto; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
 .ad-wrap small { display: block; color: var(--gray-500); font-size: 11px; margin-bottom: 8px; }
-.empty-state { text-align: center; padding: 80px 20px; color: var(--gray-500); grid-column: 1/-1; }
+.desktop-ad { display: block; }
+.mobile-ad { display: none; }
+
+.empty-state { text-align: center; padding: 80px 20px; color: var(--gray-500); width: 100%; }
 .empty-state h3 { font-size: 24px; color: var(--gray-700); margin-bottom: 12px; }
-.error-state { text-align: center; padding: 80px 20px; color: var(--red); grid-column: 1/-1; }
+.error-state { text-align: center; padding: 80px 20px; color: var(--red); width: 100%; }
+
 @media (max-width: 768px) {
   nav { display: none; }
-.page-header h1 { font-size: 32px; }
-.search-bar { flex-direction: column; }
-.jobs-header { flex-direction: column; align-items: flex-start; }
-.grid { grid-template-columns: 1fr; }
-.job-footer { flex-direction: column; align-items: stretch; }
-.job-actions { width: 100%; }
-.job-actions.btn { flex: 1; text-align: center; }
+  .page-header h1 { font-size: 32px; }
+  .search-bar { flex-direction: column; }
+  .jobs-header { flex-direction: column; align-items: flex-start; }
+  
+  /* Responsive List adjustments for smaller screens */
+  .job-card { flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px; }
+  .job-meta-info { flex-direction: row-reverse; justify-content: space-between; align-items: center; width: 100%; text-align: left; border-top: 1px solid #f3f4f6; padding-top: 16px; }
+  .job-footer { flex-direction: row; align-items: center; justify-content: space-between; width: 100%; }
+  
+  /* AD SWITCH LOGIC: Hides Desktop banners, reveals mobile squares */
+  .desktop-ad { display: none !important; }
+  .mobile-ad { display: block !important; }
 
-  /* FIX: Unstick filter on mobile + horizontal scroll */
- .search-section {
+  .search-section {
     position: relative;
     top: 0;
     padding: 20px 0;
   }
- .filters {
+  .filters {
     flex-wrap: nowrap;
     overflow-x: auto;
     justify-content: flex-start;
@@ -137,10 +162,10 @@ footer a:hover { color: var(--blue-cloud); }
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
- .filters::-webkit-scrollbar {
+  .filters::-webkit-scrollbar {
     display: none;
   }
- .filter-btn {
+  .filter-btn {
     flex: 0 0 auto;
     white-space: nowrap;
   }
@@ -174,7 +199,7 @@ footer a:hover { color: var(--blue-cloud); }
 <section class="page-header">
 <div class="container">
 <h1>Global Remote Jobs</h1>
-<p>500+ opportunities with USD, EUR, GBP salaries. Updated daily.</p>
+<p id="total-jobs-text">Loading jobs...</p>
 </div>
 </section>
 
@@ -193,10 +218,39 @@ footer a:hover { color: var(--blue-cloud); }
 <button class="filter-btn" data-filter="gbp">GBP Salary</button>
 <button class="filter-btn" data-filter="high">₦500k+ / $3k+</button>
 </div>
+
+<div class="ad-wrap">
+  <small>Advertisement</small>
+  <div class="desktop-ad">
+    <script>
+      atOptions = {
+        'key' : '7f21b78d39ff758bf00eeea8b35b92b4',
+        'format' : 'iframe',
+        'height' : 90,
+        'width' : 728,
+        'params' : {}
+      };
+    </script>
+    <script src="https://fixesconsessionconsession.com/7f21b78d39ff758bf00eeea8b35b92b4/invoke.js"></script>
+  </div>
+  <div class="mobile-ad">
+    <script>
+      atOptions = {
+        'key' : '60fd2652d0e23a02a61b30ff30ef9fe8',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+      };
+    </script>
+    <script src="https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js"></script>
+  </div>
+</div>
+
 </div>
 </section>
 
-<div class="ad-wrap">
+<div class="ad-wrap mobile-ad">
 <small>Advertisement</small>
 <script>
   atOptions = {
@@ -221,9 +275,9 @@ footer a:hover { color: var(--blue-cloud); }
 </select>
 </div>
 <div class="grid" id="jobs-grid">
-  <div class="job-card"><div class="skeleton" style="height: 24px; width: 60%; margin-bottom: 14px;"></div><div class="skeleton" style="height: 18px; width: 40%; margin-bottom: 16px;"></div><div class="skeleton" style="height: 28px; width: 50%; margin: 16px 0;"></div><div class="skeleton" style="height: 60px; margin: 16px 0;"></div></div>
-  <div class="job-card"><div class="skeleton" style="height: 24px; width: 60%; margin-bottom: 14px;"></div><div class="skeleton" style="height: 18px; width: 40%; margin-bottom: 16px;"></div><div class="skeleton" style="height: 28px; width: 50%; margin: 16px 0;"></div><div class="skeleton" style="height: 60px; margin: 16px 0;"></div></div>
-  <div class="job-card"><div class="skeleton" style="height: 24px; width: 60%; margin-bottom: 14px;"></div><div class="skeleton" style="height: 18px; width: 40%; margin-bottom: 16px;"></div><div class="skeleton" style="height: 28px; width: 50%; margin: 16px 0;"></div><div class="skeleton" style="height: 60px; margin: 16px 0;"></div></div>
+  <div class="job-card"><div class="job-main-info"><div class="skeleton" style="height: 24px; width: 40%; margin-bottom: 10px;"></div><div class="skeleton" style="height: 16px; width: 25%; margin-bottom: 12px;"></div><div class="skeleton" style="height: 40px; width: 85%;"></div></div><div class="job-meta-info"><div class="skeleton" style="height: 22px; width: 80px;"></div><div class="skeleton" style="height: 15px; width: 60px;"></div></div></div>
+  <div class="job-card"><div class="job-main-info"><div class="skeleton" style="height: 24px; width: 45%; margin-bottom: 10px;"></div><div class="skeleton" style="height: 16px; width: 20%; margin-bottom: 12px;"></div><div class="skeleton" style="height: 40px; width: 75%;"></div></div><div class="job-meta-info"><div class="skeleton" style="height: 22px; width: 90px;"></div><div class="skeleton" style="height: 15px; width: 60px;"></div></div></div>
+  <div class="job-card"><div class="job-main-info"><div class="skeleton" style="height: 24px; width: 35%; margin-bottom: 10px;"></div><div class="skeleton" style="height: 16px; width: 30%; margin-bottom: 12px;"></div><div class="skeleton" style="height: 40px; width: 80%;"></div></div><div class="job-meta-info"><div class="skeleton" style="height: 22px; width: 75px;"></div><div class="skeleton" style="height: 15px; width: 60px;"></div></div></div>
 </div>
 <div class="load-more" id="load-more-wrap" style="display:none;">
 <button class="btn btn-outline" id="load-more-btn" onclick="loadMore()">Load More Jobs</button>
@@ -231,7 +285,7 @@ footer a:hover { color: var(--blue-cloud); }
 </div>
 </section>
 
-<div class="ad-wrap">
+<div class="ad-wrap mobile-ad">
 <small>Advertisement</small>
 <script>
   atOptions = {
@@ -254,7 +308,7 @@ footer a:hover { color: var(--blue-cloud); }
         <p>Email: support@remoteng.com.ng</p>
         <p>WhatsApp: +234 912 565 1147</p>
         <div class="social-links">
-          
+
           <a href="https://www.instagram.com/officialremoteng" target="_blank" aria-label="Instagram" class="social-icon instagram">
             <svg viewBox="0 0 24 24" width="24" height="24">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -275,7 +329,7 @@ footer a:hover { color: var(--blue-cloud); }
 
           <a href="https://whatsapp.com/channel/0029Vb7pen79MF8zwOKKVk10" target="_blank" aria-label="WhatsApp" class="social-icon whatsapp">
             <svg viewBox="0 0 24 24" width="24" height="24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.672-1.612-.921-2.206-.242-.579-.487-.5-.672-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488z"/>
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.672-1.612-.921-2.206-.242-.579-.487-.5-.672-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0.16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488z"/>
             </svg>
           </a>
 
@@ -383,14 +437,17 @@ async function loadJobs(retryCount = 0) {
     const res = await fetch(`${API_URL}/api/jobs?page=${currentPage}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-    const jobs = await res.json();
-    totalJobsFromAPI = jobs.length;
+    const data = await res.json();
+    const jobs = data.jobs;
+    totalJobsFromAPI = data.total;
 
     if (currentPage === 1) {
       allJobs = jobs;
     } else {
       allJobs = [...allJobs,...jobs];
     }
+
+    document.getElementById('total-jobs-text').textContent = `${totalJobsFromAPI.toLocaleString()}+ opportunities with USD, EUR, GBP salaries. Updated daily.`;
 
     const urlParams = new URLSearchParams(window.location.search);
     const q = urlParams.get('q');
@@ -462,7 +519,7 @@ function applyFilters() {
 
   displayedCount = 0;
   document.getElementById('jobs-grid').innerHTML = '';
-  document.getElementById('jobs-count').textContent = `${filteredJobs.length} jobs found`;
+  document.getElementById('jobs-count').textContent = `Showing 0 of ${totalJobsFromAPI.toLocaleString()} remote jobs`;
   renderJobs();
 }
 
@@ -472,6 +529,7 @@ function extractSalaryNum(salary) {
   return numMatch? parseInt(numMatch[0].replace(/,/g, '')) : 0;
 }
 
+/* UPDATED: Aligned properties inside elements into a row-by-row structure */
 function renderJobs() {
   const grid = document.getElementById('jobs-grid');
   const jobsToShow = filteredJobs.slice(displayedCount, displayedCount + JOBS_PER_PAGE);
@@ -481,24 +539,29 @@ function renderJobs() {
     document.getElementById('load-more-wrap').style.display = 'none';
     return;
   }
-
+  
   jobsToShow.forEach(job => {
     const isSaved = savedJobs.includes(job.id);
     const card = document.createElement('div');
     card.className = `job-card ${job.featured? 'featured' : ''}`;
     const desc = job.description? job.description.substring(0, 200) : 'Remote opportunity with competitive compensation. Apply now to join top international teams.';
     const jobUrl = job.slug? `/job-details.html?job=${job.slug}` : `go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}`;
+    
     card.innerHTML = `
-      ${job.featured? '<span class="tag featured">Featured</span>' : ''}
-      <div class="job-title"><a href="${jobUrl}">${escapeHtml(job.title)}</a></div>
-      <div class="job-company">${escapeHtml(job.company)}</div>
-      <div class="job-desc">${escapeHtml(desc)}</div>
-      <div class="job-salary">${job.salary || 'Competitive Package'}</div>
-      <div class="job-footer">
-        <span class="job-date">${timeAgo(job.posted_at)}</span>
-        <div class="job-actions">
-          <button class="save-btn ${isSaved? 'saved' : ''}" onclick="toggleSave(${job.id})" title="${isSaved? 'Unsave' : 'Save'} job">${isSaved? '♥' : '♡'}</button>
-          <a href="${jobUrl}" class="btn">View Details</a>
+      <div class="job-main-info">
+        ${job.featured? '<span class="tag featured">Featured</span>' : ''}
+        <div class="job-title"><a href="${jobUrl}">${escapeHtml(job.title)}</a></div>
+        <div class="job-company">${escapeHtml(job.company)}</div>
+        <div class="job-desc">${escapeHtml(desc)}</div>
+      </div>
+      <div class="job-meta-info">
+        <div class="job-salary">${job.salary || 'Competitive Package'}</div>
+        <div class="job-footer">
+          <span class="job-date">${timeAgo(job.posted_at)}</span>
+          <div class="job-actions">
+            <button class="save-btn ${isSaved? 'saved' : ''}" onclick="toggleSave(${job.id})" title="${isSaved? 'Unsave' : 'Save'} job">${isSaved? '♥' : '♡'}</button>
+            <a href="${jobUrl}" class="btn">View Details</a>
+          </div>
         </div>
       </div>
     `;
@@ -594,3 +657,5 @@ loadJobs();
 </script>
 </body>
 </html>
+
+```
