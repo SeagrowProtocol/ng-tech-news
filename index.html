@@ -157,266 +157,6 @@
     .companies-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   }
   </style>
-  <!-- RemoteNG Chatbot Widget by Kian - Updated with WhatsApp + Email Handoff -->
-<style>
- #remotecg-chat-btn { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: #1e3a8a; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.2); z-index: 9999; transition: transform 0.2s; }
- #remotecg-chat-btn:hover { transform: scale(1.05); }
- #remotecg-chat-btn svg { width: 30px; height: 30px; fill: white; }
- #remotecg-chat-box { position: fixed; bottom: 100px; right: 20px; width: 360px; max-width: 90vw; height: 500px; background: white; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); display: none; flex-direction: column; overflow: hidden; z-index: 9999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
- #remotecg-chat-header { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: white; padding: 16px; display: flex; justify-content: space-between; align-items: center; }
- #remotecg-chat-header h3 { margin: 0; font-size: 16px; font-weight: 600; }
- #remotecg-chat-close { background: none; border: none; color: white; cursor: pointer; font-size: 24px; line-height: 1; }
- #remotecg-chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
- .msg { max-width: 80%; padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.5; }
- .msg.bot { background: #f3f4f6; color: #111827; align-self: flex-start; }
- .msg.user { background: #3b82f6; color: white; align-self: flex-end; }
- .typing { display: flex; gap: 4px; padding: 12px 16px; align-self: flex-start; }
- .typing span { width: 8px; height: 8px; background: #9ca3af; border-radius: 50%; animation: bounce 1.4s infinite; }
- .typing span:nth-child(2) { animation-delay: 0.2s; }
- .typing span:nth-child(3) { animation-delay: 0.4s; }
- @keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-10px); } }
- #remotecg-chat-input { display: flex; padding: 12px; border-top: 1px solid #e5e7eb; gap: 8px; background: white; }
- #remotecg-chat-input input { flex: 1; padding: 12px; border: 1px solid #d1d5db; border-radius: 12px; outline: none; font-size: 14px; }
- #remotecg-chat-input button { background: #1e3a8a; color: white; border: none; padding: 0 20px; border-radius: 12px; cursor: pointer; font-weight: 600; transition: background 0.2s; }
- #remotecg-chat-input button:hover { background: #1d4ed8; }
- .quick-replies { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; margin-bottom: 8px; }
- .quick-reply { background: white; border: 1px solid #3b82f6; color: #3b82f6; padding: 8px 14px; border-radius: 20px; font-size: 13px; cursor: pointer; transition: all 0.2s; }
- .quick-reply:hover { background: #3b82f6; color: white; }
- @media (max-width: 768px) { #remotecg-chat-box { bottom: 0; right: 0; width: 100vw; height: 100vh; border-radius: 0; } }
-</style>
-
-<div id="remotecg-chat-btn">
- <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-</div>
-
-<div id="remotecg-chat-box">
- <div id="remotecg-chat-header">
-   <h3>Kian 👋 RemoteNG Assistant</h3>
-   <button id="remotecg-chat-close">&times;</button>
- </div>
- <div id="remotecg-chat-messages"></div>
- <div id="remotecg-chat-input">
-   <input type="text" id="remotecg-user-input" placeholder="Ask me anything...">
-   <button id="remotecg-send-btn">Send</button>
- </div>
-</div>
-
-<script>
-const chatBtn = document.getElementById('remotecg-chat-btn');
-const chatBox = document.getElementById('remotecg-chat-box');
-const chatClose = document.getElementById('remotecg-chat-close');
-const messagesDiv = document.getElementById('remotecg-chat-messages');
-const userInput = document.getElementById('remotecg-user-input');
-const sendBtn = document.getElementById('remotecg-send-btn');
-
-let hasGreeted = false;
-let waitingForHumanQuestion = false;
-const WHATSAPP_NUMBER = '+2349125651147';
-const SUPPORT_EMAIL = 'support@remoteng.com.ng';
-
-function openChat() { 
- localStorage.setItem('remotecg_chat_opened', 'true'); 
- chatBox.style.display = 'flex'; 
- chatBtn.style.display = 'none'; 
-}
-
-function closeChat() { 
- chatBox.style.display = 'none'; 
- chatBtn.style.display = 'flex'; 
-}
-
-window.addEventListener('load', () => {
- const hasOpened = localStorage.getItem('remotecg_chat_opened');
- if (!hasOpened) {
-   setTimeout(() => {
-     if (chatBox.style.display !== 'flex') {
-       openChat();
-       if (!hasGreeted) {
-         showTyping();
-         setTimeout(() => botReply("Hi! I'm Kian 👋 I see you're new here. Want me to show you the fastest way to land a remote job?"), 1000);
-         hasGreeted = true;
-       }
-     }
-   }, 15000);
- }
-});
-
-chatBtn.addEventListener('click', () => {
- openChat();
- if (!hasGreeted) {
-   showTyping();
-   setTimeout(() => {
-     botReply("Hi! I'm Kian 👋 I know everything about RemoteNG and remote careers. How can I help you today?");
-     quickReplies([
-       {text: "Browse Jobs 💼", value: "job"},
-       {text: "VIP Alerts ⚡", value: "vip"},
-       {text: "CV Writing 📝", value: "cv"},
-       {text: "Talk to Human 💬", value: "human"}
-     ]);
-   }, 800);
-   hasGreeted = true;
- }
-});
-
-chatClose.addEventListener('click', closeChat);
-sendBtn.addEventListener('click', sendMessage);
-userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
-
-function sendMessage() {
- const text = userInput.value.trim();
- if (!text) return;
- addMessage(text, 'user');
- userInput.value = '';
- 
- if (waitingForHumanQuestion) {
-   openSupportChannel(text);
-   waitingForHumanQuestion = false;
-   userInput.placeholder = "Ask me anything...";
-   return;
- }
- 
- showTyping();
- setTimeout(() => handleBotResponse(text), 600 + Math.random() * 600);
-}
-
-function addMessage(text, sender) {
- const msg = document.createElement('div');
- msg.className = `msg ${sender}`;
- msg.innerHTML = text;
- messagesDiv.appendChild(msg);
- messagesDiv.scrollTop = messagesDiv.scrollHeight;
-}
-
-function showTyping() {
- removeTyping();
- const typing = document.createElement('div');
- typing.className = 'typing';
- typing.id = 'typing-indicator';
- typing.innerHTML = '<span></span><span></span><span></span>';
- messagesDiv.appendChild(typing);
- messagesDiv.scrollTop = messagesDiv.scrollHeight;
-}
-
-function removeTyping() {
- const typing = document.getElementById('typing-indicator');
- if (typing) typing.remove();
-}
-
-function botReply(text) {
- removeTyping();
- addMessage(text, 'bot');
-}
-
-function quickReplies(buttons) {
- const div = document.createElement('div');
- div.className = 'quick-replies';
- buttons.forEach(btn => {
-   const b = document.createElement('button');
-   b.className = 'quick-reply';
-   b.textContent = btn.text;
-   b.addEventListener('click', () => {
-     addMessage(btn.text, 'user');
-     showTyping();
-     setTimeout(() => handleBotResponse(btn.value), 600);
-   });
-   div.appendChild(b);
- });
- messagesDiv.appendChild(div);
- messagesDiv.scrollTop = messagesDiv.scrollHeight;
-}
-
-// NEW: Detect mobile vs desktop + open WhatsApp or Email
-function openSupportChannel(question) {
- const encoded = encodeURIComponent(question);
- const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
- 
- if (isMobile) {
-   // Mobile: Open WhatsApp
-   const waUrl = `https://wa.me/${WHATSAPP_NUMBER.replace('+','')}?text=${encoded}`;
-   window.open(waUrl, '_blank');
-   botReply(`Perfect! I’ve opened WhatsApp for you with your question: <i>"${question}"</i> <br><br>Our support team will reply you directly there 💬`);
- } else {
-   // Desktop: Open default email app
-   const subject = encodeURIComponent('Support Request from RemoteNG Chatbot');
-   const body = encodeURIComponent(`Hello Support Team,\n\nMy question: ${question}\n\n-- Sent from RemoteNG Chatbot`);
-   const mailtoUrl = `mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
-   window.open(mailtoUrl, '_blank');
-   botReply(`Got it! I’ve opened your email app with your question: <i>"${question}"</i> <br><br>Our support team at ${SUPPORT_EMAIL} will reply you ASAP 📧`);
- }
-}
-
-const KB = {
- "hello|hi|hey|yo|sup": { 
-   reply: "Hey there! 👋 I'm Kian, your RemoteNG assistant. I can help you find jobs, explain VIP access, CV optimization, and more.", 
-   replies: [{text:"Beginner jobs", value:"beginner jobs"}, {text:"VIP alerts", value:"vip"}, {text:"CV service", value:"cv"}, {text:"Talk to Human 💬", value:"human"}] 
- },
- "job|apply|hiring|vacancy|position|work from home|remote job": { 
-   reply: "We post 1543+ verified remote jobs daily with salaries in USD, EUR, GBP. <br><br>Use filters to narrow by role, salary, and experience: <a href='/remote-jobs.html' target='_blank'><b>Browse All Jobs Here</b></a>" 
- },
- "beginner|no experience|entry level|fresher|starter": { 
-   reply: "We have 'No Experience' roles listed daily: Customer Support, Data Entry, Virtual Assistant, and Moderation. <br><br><a href='/remote-jobs.html' target='_blank'><b>See Beginner Jobs</b></a>" 
- },
- "senior|experienced|mid level|lead|manager|director": { 
-   reply: "Senior roles are tagged 'Featured' and posted daily. Filter by salary $5k+ or use the search bar for 'senior', 'lead', or 'manager'." 
- },
- "tech jobs|developer|engineer|programmer|coding|software|devops|frontend|backend|fullstack": { 
-   reply: "Tech roles are updated daily: Frontend, Backend, Fullstack, DevOps, Data, and QA. <br><br><a href='/remote-jobs.html' target='_blank'><b>Explore Tech Jobs</b></a>" 
- },
- "non tech|non-tech|admin|support|sales|marketing|design|writing|customer service|va": { 
-   reply: "Non-tech roles: Customer Support, Admin, Sales, Marketing, Design, Writing, and Virtual Assistance. <br><br><a href='/remote-jobs.html' target='_blank'><b>Browse Non-Tech Jobs</b></a>" 
- },
- "salary|pay|usd|eur|gbp|dollar|euro|pound|how much": { 
-   reply: "Salaries are listed explicitly on each job post. Most pay $1k-$10k/month in USD, EUR, or GBP, sent directly via Wise, PayPal, Crypto, or Bank Transfer." 
- },
- "vip|vip alert|early access|premium": { 
-   reply: "VIP Alerts send hand-picked jobs straight to you 12 hours before public posting + exclusive hidden roles for just ₦2,000/month. <br><br><a href='https://selar.com/17671617c4' target='_blank'><b>Join VIP Channel</b></a>" 
- },
- "cv|resume|cover letter|cv writing|resume writing": { 
-   reply: "Get an ATS-optimized CV built for global companies for ₦3,000, or a custom Cover Letter for ₦2,500. <br><br><a href='/cv-resume.html' target='_blank'><b>Order Your CV Upgrade</b></a>" 
- },
- "legit|real|scam|fake|trusted|safe": { 
-   reply: "100% legitimate. Every single job is manually verified by our team. We strictly never post listings asking for upfront application payments. Check @remoteng_official on social media for verified success proofs." 
- },
- "contact|support|whatsapp|email|human|agent|person": { 
-   reply: "Want to chat with a real human? Type your question below and I’ll open WhatsApp or Email for you instantly 👇 <br><br>📩 Email: support@remoteng.com.ng<br>💬 WhatsApp: +234 912 565 1147" 
- },
- "human": { 
-   reply: "No problem! Type your question below and I’ll open WhatsApp on mobile or Email on desktop so our support team can help you directly 👇" 
- }
-};
-
-function matchIntent(input) {
- const cleanInput = input.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g,"").trim();
- for (let key in KB) {
-   const keywords = key.split('|');
-   for (let keyword of keywords) {
-     const regex = new RegExp("(^|\\s)" + keyword + "(\\s|$)", "i");
-     if (regex.test(cleanInput)) {
-       if (keyword === 'human') waitingForHumanQuestion = true;
-       return KB[key];
-     }
-   }
- return null;
-}
-
-function handleBotResponse(input) {
- const match = matchIntent(input);
- if (match) {
-   botReply(match.reply);
-   if (match.replies) quickReplies(match.replies);
-   return;
- }
- 
- waitingForHumanQuestion = true;
- userInput.placeholder = "Type your question for human support...";
- botReply("I didn't quite catch that. No worries - type your question below and I’ll open WhatsApp or Email directly to our support team so they can help you 1-on-1 💬");
- quickReplies([
-   {text: "Browse Jobs 💼", value: "job"},
-   {text: "VIP Alerts ⚡", value: "vip"},
-   {text: "CV Writing 📝", value: "cv"}
- ]);
-}
-</script>
 
   <script type="application/ld+json">
   {
@@ -555,6 +295,279 @@ function handleBotResponse(input) {
       </div>
     </div>
   </div></section>
+
+<!-- RemoteNG Chatbot Widget by Kian - Updated with WhatsApp + Email Handoff -->
+<style>
+#remotecg-chat-btn { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: #1e3a8a; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.2); z-index: 9999; transition: transform 0.2s; }
+#remotecg-chat-btn:hover { transform: scale(1.05); }
+#remotecg-chat-btn svg { width: 30px; height: 30px; fill: white; }
+#remotecg-chat-box { position: fixed; bottom: 100px; right: 20px; width: 360px; max-width: 90vw; height: 500px; background: white; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); display: none; flex-direction: column; overflow: hidden; z-index: 9999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+#remotecg-chat-header { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: white; padding: 16px; display: flex; justify-content: space-between; align-items: center; }
+#remotecg-chat-header h3 { margin: 0; font-size: 16px; font-weight: 600; }
+#remotecg-chat-close { background: none; border: none; color: white; cursor: pointer; font-size: 24px; line-height: 1; }
+#remotecg-chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.msg { max-width: 80%; padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.5; }
+.msg.bot { background: #f3f4f6; color: #111827; align-self: flex-start; }
+.msg.user { background: #3b82f6; color: white; align-self: flex-end; }
+.typing { display: flex; gap: 4px; padding: 12px 16px; align-self: flex-start; }
+.typing span { width: 8px; height: 8px; background: #9ca3af; border-radius: 50%; animation: bounce 1.4s infinite; }
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-10px); } }
+#remotecg-chat-input { display: flex; padding: 12px; border-top: 1px solid #e5e7eb; gap: 8px; background: white; }
+#remotecg-chat-input input { flex: 1; padding: 12px; border: 1px solid #d1d5db; border-radius: 12px; outline: none; font-size: 14px; }
+#remotecg-chat-input button { background: #1e3a8a; color: white; border: none; padding: 0 20px; border-radius: 12px; cursor: pointer; font-weight: 600; transition: background 0.2s; }
+#remotecg-chat-input button:hover { background: #1d4ed8; }
+.quick-replies { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; margin-bottom: 8px; }
+.quick-reply { background: white; border: 1px solid #3b82f6; color: #3b82f6; padding: 8px 14px; border-radius: 20px; font-size: 13px; cursor: pointer; transition: all 0.2s; }
+.quick-reply:hover { background: #3b82f6; color: white; }
+@media (max-width: 768px) { #remotecg-chat-box { bottom: 0; right: 0; width: 100vw; height: 100vh; border-radius: 0; } }
+</style>
+
+<div id="remotecg-chat-btn">
+<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+</div>
+
+<div id="remotecg-chat-box">
+<div id="remotecg-chat-header">
+  <h3>Kian 👋 RemoteNG Assistant</h3>
+  <button id="remotecg-chat-close">&times;</button>
+</div>
+<div id="remotecg-chat-messages"></div>
+<div id="remotecg-chat-input">
+  <input type="text" id="remotecg-user-input" placeholder="Ask me anything...">
+  <button id="remotecg-send-btn">Send</button>
+</div>
+</div>
+
+<script>
+const chatBtn = document.getElementById('remotecg-chat-btn');
+const chatBox = document.getElementById('remotecg-chat-box');
+const chatClose = document.getElementById('remotecg-chat-close');
+const messagesDiv = document.getElementById('remotecg-chat-messages');
+const userInput = document.getElementById('remotecg-user-input');
+const sendBtn = document.getElementById('remotecg-send-btn');
+
+let hasGreeted = false;
+let waitingForHumanQuestion = false;
+const WHATSAPP_NUMBER = '+2349125651147';
+const SUPPORT_EMAIL = 'support@remoteng.com.ng';
+
+function openChat() { 
+localStorage.setItem('remotecg_chat_opened', 'true'); 
+chatBox.style.display = 'flex'; 
+chatBtn.style.display = 'none'; 
+}
+
+function closeChat() { 
+chatBox.style.display = 'none'; 
+chatBtn.style.display = 'flex'; 
+}
+
+window.addEventListener('load', () => {
+const hasOpened = localStorage.getItem('remotecg_chat_opened');
+if (!hasOpened) {
+  setTimeout(() => {
+    if (chatBox.style.display !== 'flex') {
+      openChat();
+      if (!hasGreeted) {
+        showTyping();
+        setTimeout(() => botReply("Hi! I'm Kian 👋 I see you're new here. Want me to show you the fastest way to land a remote job?"), 1000);
+        hasGreeted = true;
+      }
+    }
+  }, 15000);
+}
+});
+
+chatBtn.addEventListener('click', () => {
+openChat();
+if (!hasGreeted) {
+  showTyping();
+  setTimeout(() => {
+    botReply("Hi! I'm Kian 👋 I know everything about RemoteNG and remote careers. How can I help you today?");
+    quickReplies([
+      {text: "Browse Jobs 💼", value: "job"},
+      {text: "VIP Alerts ⚡", value: "vip"},
+      {text: "CV Writing 📝", value: "cv"},
+      {text: "Talk to Human 💬", value: "human"}
+    ]);
+  }, 800);
+  hasGreeted = true;
+}
+});
+
+chatClose.addEventListener('click', closeChat);
+sendBtn.addEventListener('click', sendMessage);
+userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+function sendMessage() {
+const text = userInput.value.trim();
+if (!text) return;
+addMessage(text, 'user');
+userInput.value = '';
+
+if (waitingForHumanQuestion) {
+  openSupportChannel(text);
+  waitingForHumanQuestion = false;
+  userInput.placeholder = "Ask me anything...";
+  return;
+}
+
+showTyping();
+setTimeout(() => handleBotResponse(text), 600 + Math.random() * 600);
+}
+
+function addMessage(text, sender) {
+const msg = document.createElement('div');
+msg.className = `msg ${sender}`;
+msg.innerHTML = text;
+messagesDiv.appendChild(msg);
+messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function showTyping() {
+removeTyping();
+const typing = document.createElement('div');
+typing.className = 'typing';
+typing.id = 'typing-indicator';
+typing.innerHTML = '<span></span><span></span><span></span>';
+messagesDiv.appendChild(typing);
+messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function removeTyping() {
+const typing = document.getElementById('typing-indicator');
+if (typing) typing.remove();
+}
+
+function botReply(text) {
+removeTyping();
+addMessage(text, 'bot');
+}
+
+function quickReplies(buttons) {
+const div = document.createElement('div');
+div.className = 'quick-replies';
+buttons.forEach(btn => {
+  const b = document.createElement('button');
+  b.className = 'quick-reply';
+  b.textContent = btn.text;
+  b.addEventListener('click', () => {
+    addMessage(btn.text, 'user');
+    showTyping();
+    setTimeout(() => handleBotResponse(btn.value), 600);
+  });
+  div.appendChild(b);
+});
+messagesDiv.appendChild(div);
+messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+// Detect mobile vs desktop + open WhatsApp or Email
+function openSupportChannel(question) {
+const encoded = encodeURIComponent(question);
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+if (isMobile) {
+  const waUrl = `https://wa.me/${WHATSAPP_NUMBER.replace('+','')}?text=${encoded}`;
+  window.open(waUrl, '_blank');
+  botReply(`Perfect! I’ve opened WhatsApp for you with your question: <i>"${question}"</i> <br><br>Our support team will reply you directly there 💬`);
+} else {
+  const subject = encodeURIComponent('Support Request from RemoteNG Chatbot');
+  const body = encodeURIComponent(`Hello Support Team,\n\nMy question: ${question}\n\n-- Sent from RemoteNG Chatbot`);
+  const mailtoUrl = `mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
+  window.open(mailtoUrl, '_blank');
+  botReply(`Got it! I’ve opened your email app with your question: <i>"${question}"</i> <br><br>Our support team at ${SUPPORT_EMAIL} will reply you ASAP 📧`);
+}
+}
+
+const KB = {
+"hello|hi|hey|yo|sup": { 
+  reply: "Hey there! 👋 I'm Kian, your RemoteNG assistant. I can help you find jobs, explain VIP access, CV optimization, and more.", 
+  replies: [{text:"Beginner jobs", value:"beginner jobs"}, {text:"VIP alerts", value:"vip"}, {text:"CV service", value:"cv"}, {text:"Talk to Human 💬", value:"human"}] 
+},
+"job|apply|hiring|vacancy|position|work from home|remote job": { 
+  reply: "We post 1543+ verified remote jobs daily with salaries in USD, EUR, GBP. <br><br>Use filters to narrow by role, salary, and experience: <a href='/remote-jobs.html' target='_blank'><b>Browse All Jobs Here</b></a>" 
+},
+"beginner|no experience|entry level|fresher|starter": { 
+  reply: "We have 'No Experience' roles listed daily: Customer Support, Data Entry, Virtual Assistant, and Moderation. <br><br><a href='/remote-jobs.html' target='_blank'><b>See Beginner Jobs</b></a>" 
+},
+"senior|experienced|mid level|lead|manager|director": { 
+  reply: "Senior roles are tagged 'Featured' and posted daily. Filter by salary $5k+ or use the search bar for 'senior', 'lead', or 'manager'." 
+},
+"tech jobs|developer|engineer|programmer|coding|software|devops|frontend|backend|fullstack": { 
+  reply: "Tech roles are updated daily: Frontend, Backend, Fullstack, DevOps, Data, and QA. <br><br><a href='/remote-jobs.html' target='_blank'><b>Explore Tech Jobs</b></a>" 
+},
+"non tech|non-tech|admin|support|sales|marketing|design|writing|customer service|va": { 
+  reply: "Non-tech roles: Customer Support, Admin, Sales, Marketing, Design, Writing, and Virtual Assistance. <br><br><a href='/remote-jobs.html' target='_blank'><b>Browse Non-Tech Jobs</b></a>" 
+},
+"salary|pay|usd|eur|gbp|dollar|euro|pound|how much": { 
+  reply: "Salaries are listed explicitly on each job post. Most pay $1k-$10k/month in USD, EUR, or GBP, sent directly via Wise, PayPal, Crypto, or Bank Transfer." 
+},
+"vip|vip alert|early access|premium": { 
+  reply: "VIP Alerts send hand-picked jobs straight to you 12 hours before public posting + exclusive hidden roles for just ₦2,000/month. <br><br><a href='https://selar.com/17671617c4' target='_blank'><b>Join VIP Channel</b></a>" 
+},
+"cv|resume|cover letter|cv writing|resume writing": { 
+  reply: "Get an ATS-optimized CV built for global companies for ₦3,000, or a custom Cover Letter for ₦2,500. <br><br><a href='/cv-resume.html' target='_blank'><b>Order Your CV Upgrade</b></a>" 
+},
+"legit|real|scam|fake|trusted|safe": { 
+  reply: "100% legitimate. Every single job is manually verified by our team. We strictly never post listings asking for upfront application payments. Check @remoteng_official on social media for verified success proofs." 
+},
+"contact|support|whatsapp|email|human|agent|person": { 
+  reply: "Want to chat with a real human? Type your question below and I’ll open WhatsApp or Email for you instantly 👇 <br><br>📩 Email: support@remoteng.com.ng<br>💬 WhatsApp: +234 912 565 1147" 
+},
+"human": { 
+  reply: "No problem! Type your question below and I’ll open WhatsApp on mobile or Email on desktop so our support team can help you directly 👇" 
+}
+};
+
+function matchIntent(input) {
+const cleanInput = input.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g,"").trim();
+for (let key in KB) {
+  const keywords = key.split('|');
+  for (let keyword of keywords) {
+    const regex = new RegExp("(^|\\s)" + keyword + "(\\s|$)", "i");
+    if (regex.test(cleanInput)) {
+      if (keyword === 'human') waitingForHumanQuestion = true;
+      return KB[key];
+    }
+  }
+}
+return null;
+}
+
+function timeAgo(date) {
+if (!date) return 'Just now';
+const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+if (seconds < 60) return 'Just now';
+
+const intervals = {year: 31536000, month: 2592000, week: 604800, day: 86400, hour: 3600, minute: 60};
+for (let i in intervals) {
+  const c = Math.floor(seconds / intervals[i]);
+  if (c > 0) return `${c} ${i}${c > 1? 's' : ''} ago`;
+}
+return 'Just now';
+}
+
+function handleBotResponse(input) {
+const match = matchIntent(input);
+if (match) {
+  botReply(match.reply);
+  if (match.replies) quickReplies(match.replies);
+  return;
+}
+
+waitingForHumanQuestion = true;
+userInput.placeholder = "Type your question for human support...";
+botReply("I didn't quite catch that. No worries - type your question below and I’ll open WhatsApp or Email directly to our support team so they can help you 1-on-1 💬");
+quickReplies([
+  {text: "Browse Jobs 💼", value: "job"},
+  {text: "VIP Alerts ⚡", value: "vip"},
+  {text: "CV Writing 📝", value: "cv"}
+]);
+}
+</script>
 
   <!-- Success Stories & Trust Section -->
   <section class="reviews-section">
