@@ -302,7 +302,7 @@ nav a:hover { color: var(--accent); }
   text-align: center;
 }
 
-/* Social Proof */
+/* Social Proof with Initials */
 .social-proof {
   margin-top: 40px;
   padding-top: 32px;
@@ -319,7 +319,7 @@ nav a:hover { color: var(--accent); }
 .avatars {
   display: flex;
   justify-content: center;
-  gap: -8px;
+  align-items: center;
 }
 
 .avatar {
@@ -329,6 +329,17 @@ nav a:hover { color: var(--accent); }
   background: linear-gradient(135deg, var(--accent) 0%, #60a5fa 100%);
   border: 2px solid white;
   margin-left: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+}
+
+.avatar:last-child {
+  background: var(--bg-alt);
+  font-size: 11px;
 }
 
 /* Info Section */
@@ -392,16 +403,16 @@ footer a:hover {
 
 /* Responsive */
 @media (max-width: 968px) {
- .hero-grid {
+.hero-grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
- .hero-content h1 {
+.hero-content h1 {
     font-size: 36px;
   }
 
- .info-grid {
+.info-grid {
     grid-template-columns: 1fr;
     gap: 24px;
   }
@@ -410,11 +421,11 @@ footer a:hover {
 @media (max-width: 640px) {
   nav { display: none; }
 
- .signup-card {
+.signup-card {
     padding: 28px 24px;
   }
 
- .hero {
+.hero {
     padding: 60px 0 40px;
   }
 }
@@ -521,10 +532,10 @@ footer a:hover {
         <div class="social-proof">
           <p>Trusted by professionals worldwide</p>
           <div class="avatars">
-            <div class="avatar"></div>
-            <div class="avatar"></div>
-            <div class="avatar"></div>
-            <div class="avatar"></div>
+            <div class="avatar">AM</div>
+            <div class="avatar">KT</div>
+            <div class="avatar">JO</div>
+            <div class="avatar">5k+</div>
           </div>
         </div>
       </div>
