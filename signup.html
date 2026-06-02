@@ -24,7 +24,7 @@
 
 <link rel="icon" type="image/png" href="/logo.png">
 
-<!-- Meta Pixel - Replace YOUR_PIXEL_ID -->
+<!-- Meta Pixel - REPLACE WITH YOUR PIXEL ID -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -200,6 +200,18 @@ nav a:hover { color: var(--accent); }
   margin-bottom: 28px;
 }
 
+.referral-badge {
+  display: none;
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border: 1px solid var(--accent);
+}
+
 .form-group {
   margin-bottom: 20px;
 }
@@ -281,6 +293,13 @@ nav a:hover { color: var(--accent); }
   font-size: 13px;
   color: var(--text-muted);
   margin-top: 16px;
+}
+
+.ref-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 12px;
+  text-align: center;
 }
 
 /* Social Proof */
@@ -473,7 +492,11 @@ footer a:hover {
 
       <div class="signup-card">
         <h2>Get Started for Free</h2>
-        <p class="sub">Join thousands getting remote opportunities weekly</p>
+        <p class="sub" id="sub-text">Join thousands getting remote opportunities weekly</p>
+
+        <div class="referral-badge" id="referral-badge">
+          🎉 You were invited by a friend! They'll earn a reward when you upgrade to VIP
+        </div>
 
         <form id="signup-form">
           <div class="form-group">
@@ -493,6 +516,7 @@ footer a:hover {
         </form>
 
         <p class="trust-note">No credit card required. Takes 30 seconds.</p>
+        <p class="ref-hint">Have a referral code? Add?ref=CODE to the URL</p>
 
         <div class="social-proof">
           <p>Trusted by professionals worldwide</p>
@@ -555,6 +579,19 @@ const emailInput = document.getElementById('email');
 const termsCheckbox = document.getElementById('terms');
 const submitBtn = document.getElementById('submit-btn');
 const form = document.getElementById('signup-form');
+const referralBadge = document.getElementById('referral-badge');
+
+// Get ref code from URL
+function getRefCode() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('ref');
+}
+
+// Show referral badge if ref exists
+const refCode = getRefCode();
+if (refCode) {
+  referralBadge.style.display = 'block';
+}
 
 function validateForm() {
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
@@ -568,12 +605,18 @@ termsCheckbox.addEventListener('change', validateForm);
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const email = emailInput.value.trim();
+  const refCode = getRefCode();
 
   submitBtn.disabled = true;
   submitBtn.textContent = 'Creating account...';
 
   try {
-    const res = await fetch(`${API_URL}/api/subscribe`, {
+    // Add ref to API URL if exists
+    const subscribeUrl = refCode
+     ? `${API_URL}/api/subscribe?ref=${refCode}`
+      : `${API_URL}/api/subscribe`;
+
+    const res = await fetch(subscribeUrl, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ email })
@@ -582,7 +625,8 @@ form.addEventListener('submit', async (e) => {
     if (res.ok) {
       if (typeof fbq!== 'undefined') {
         fbq('track', 'Lead');
-      }window.location.href = `/confirm-pending.html?email=${encodeURIComponent(email)}`;
+      }
+      window.location.href = `/confirm-pending.html?email=${encodeURIComponent(email)}`;
     } else {
       alert('Something went wrong. Please try again.');
       submitBtn.disabled = false;
