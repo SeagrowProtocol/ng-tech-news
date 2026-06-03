@@ -121,9 +121,10 @@
   .job-actions { display: flex; gap: 8px; align-items: center; }
   .job-date { color: var(--gray-500); font-size: 13px; font-weight: 500; }
   
-  .save-btn { background: var(--white); border: 1px solid #d1d5db; border-radius: 10px; padding: 10px 14px; cursor: pointer; transition: all 0.2s; font-size: 16px; color: var(--gray-500); }
-  .save-btn:hover { border-color: var(--red); background: #fef2f2; color: var(--red); }
-  .save-btn.saved { background: var(--red); border-color: var(--red); color: var(--white); }
+  /* Redesigned Save Button styling */
+  .save-btn { background: var(--white); border: 1px solid #d1d5db; border-radius: 10px; padding: 10px 14px; cursor: pointer; transition: all 0.2s; font-size: 18px; opacity: 0.6; }
+  .save-btn:hover { border-color: var(--red); background: #fef2f2; opacity: 1; }
+  .save-btn.saved { background: #fef2f2; border-color: var(--red); opacity: 1; }
   
   .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite; border-radius: 8px; }
   @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
@@ -453,14 +454,14 @@ function applyFilters() {
     } else if (currentFilter === 'usd') {
       matchesFilter = salary.includes('$') || salary.includes('usd');
     } else if (currentFilter === 'eur') {
-      matchesFilter = salary.includes('') || salary.includes('eur');
+      matchesFilter = salary.includes('€') || salary.includes('eur');
     } else if (currentFilter === 'gbp') {
-      matchesFilter = salary.includes('') || salary.includes('gbp');
+      matchesFilter = salary.includes('£') || salary.includes('gbp');
     } else if (currentFilter === 'high') {
       const numMatch = salary.match(/[\d,]+/);
       if (numMatch) {
         const num = parseInt(numMatch[0].replace(/,/g, ''));
-        matchesFilter = (salary.includes('$') && num >= 3000) || (salary.includes('') && num >= 3000) || (salary.includes('') && num >= 2500) || (salary.includes('') && num >= 500000);
+        matchesFilter = (salary.includes('$') && num >= 3000) || (salary.includes('€') && num >= 3000) || (salary.includes('£') && num >= 2500) || (salary.includes('₦') && num >= 500000);
       } else {
         matchesFilter = false;
       }
@@ -511,6 +512,7 @@ function renderJobs() {
     card.className = `job-card ${job.featured ? 'featured' : ''}`;
     const desc = job.description ? job.description.substring(0, 200) : 'Remote opportunity with competitive compensation. Apply now to join top international teams.';
     const jobUrl = job.slug ? `/job-details.html?job=${job.slug}` : `go.html?url=${encodeURIComponent(job.url)}&job_id=${job.id}`;
+    
     card.innerHTML = `
       ${job.featured ? '<span class="tag featured">Featured</span>' : ''}
       <div class="job-title"><a href="${jobUrl}">${escapeHtml(job.title)}</a></div>
@@ -520,7 +522,9 @@ function renderJobs() {
       <div class="job-footer">
         <span class="job-date">${timeAgo(job.posted_at)}</span>
         <div class="job-actions">
-          <button class="save-btn ${isSaved ? 'saved' : ''}" onclick="toggleSave(${job.id})" title="${isSaved ? 'Unsave' : 'Save'} job">${isSaved ? '' : ''}</button>
+          <button class="save-btn ${isSaved ? 'saved' : ''}" onclick="toggleSave(${job.id})" title="${isSaved ? 'Unsave' : 'Save'} job">
+            ${isSaved ? '❤️' : '🤍'}
+          </button>
           <a href="${jobUrl}" class="btn">View Details</a>
         </div>
       </div>
