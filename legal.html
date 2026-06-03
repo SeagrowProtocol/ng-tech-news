@@ -100,6 +100,39 @@ nav a:hover, nav a.active { color: var(--blue); }
 .stat-card { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius: 14px; padding: 28px; text-align: center; border: 1px solid #bfdbfe; }
 .stat-number { font-size: 36px; font-weight: 800; color: var(--blue-dark); display: block; }
 .stat-label { color: var(--gray-700); font-size: 14px; margin-top: 8px; font-weight: 600; }
+footer { background: var(--gray-900); color: var(--gray-100); padding: 90px 0 35px; margin-top: 90px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 55px; margin-bottom: 55px; }
+footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
+footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s; font-size: 15px; }
+footer a:hover { color: var(--blue-cloud); }
+.social-links { display: flex; gap: 16px; margin-top: 20px; }
+.social-links a { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 42px; 
+  height: 42px; 
+  background: #1f2937; 
+  border-radius: 10px; 
+  transition: all 0.3s ease; 
+}
+.social-links a:hover { 
+  transform: translateY(-3px); 
+  background: var(--blue); 
+}
+.social-links svg { 
+  width: 22px; 
+  height: 22px; 
+  fill: var(--gray-100); 
+}
+.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
+.social-links { display: flex; gap: 16px; margin-top: 16px; }
+.social-icon svg { transition: transform 0.2s ease, opacity 0.2s ease; opacity: 0.85; }
+.social-icon:hover svg { transform: scale(1.1); opacity: 1; }
+.social-icon.instagram svg { fill: #E1306C; }
+.social-icon.facebook svg { fill: #1877F2; }
+.social-icon.telegram svg { fill: #0088cc; }
+.social-icon.whatsapp svg { fill: #25D366; }
 @media (max-width: 768px) {
   nav { display: none; }
   .page-header h1 { font-size: 32px; }
@@ -107,6 +140,7 @@ nav a:hover, nav a.active { color: var(--blue); }
   .tabs { gap: 8px; }
   .tab-btn { padding: 10px 20px; font-size: 14px; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
+  .social-links { justify-content: center; }
 }
 </style>
 </head>
@@ -154,10 +188,10 @@ nav a:hover, nav a.active { color: var(--blue); }
 
 <h2>About RemoteNG</h2>
 <p>RemoteNG was founded in 2026 with a simple mission: make high-paying remote work accessible to every talented professional, regardless of location. We believe your skills should determine your salary, not your passport.</p>
-<p>Every day, we aggregate, verify, and deliver remote job opportunities paying in USD, EUR, and GBP from companies worldwide. Our platform serves professionals across 150+ countries, with a focus on tech, marketing, design, and business roles.</p>
+<p>Every day, we aggregate, verify, and deliver remote job opportunities paying in USD, EUR, and GBP from companies in the US, EU, and worldwide. Our platform serves professionals across 150+ countries, with a focus on tech, marketing, design, and business roles.</p>
 
 <h3>Our Mission</h3>
-<p>To democratize access to global remote work by connecting talented professionals with forward-thinking companies. We remove geographic barriers and ensure compensation reflects skill, not location. Talent is global. Opportunity should be too.</p>
+<p>To democratize access to global remote work by connecting talented professionals with forward-thinking companies in the US, EU, and beyond. We remove geographic barriers and ensure compensation reflects skill, not location. Talent is global. Opportunity should be too.</p>
 
 <h3>Our Global Impact</h3>
 <div class="stats-grid">
@@ -181,9 +215,9 @@ nav a:hover, nav a.active { color: var(--blue); }
 
 <h3>What Makes Us Different</h3>
 <ul>
-<li><strong>Daily Curation:</strong> Our system scrapes and filters 1,000+ remote jobs daily. Only verified, salary-transparent roles paying USD/EUR/GBP make it to our platform.</li>
-<li><strong>VIP Early Access:</strong> VIP subscribers receive curated job alerts 12 hours before public release. In competitive markets, 12 hours is the difference between landing an interview and missing out.</li>
-<li><strong>Career Acceleration:</strong> ATS-optimized CV writing, cover letters, and CV reviews crafted by hiring managers who know what global companies actually look for. Average interview rate for our clients: 73%.</li>
+<li><strong>Daily Curation:</strong> Our system scrapes and filters 1,000+ remote jobs daily. Only verified, salary-transparent roles paying USD/EUR/GBP from US, EU, and global companies make it to our platform.</li>
+<li><strong>VIP Early Access:</strong> VIP subscribers receive curated job alerts 12 hours before public release. In competitive US/EU markets, 12 hours is the difference between landing an interview and missing out.</li>
+<li><strong>Career Acceleration:</strong> ATS-optimized CV writing, cover letters, and CV reviews crafted by hiring managers who know what US, EU, and global companies actually look for. Average interview rate for our clients: 73%.</li>
 <li><strong>Tech News Digest:</strong> Daily industry insights from TechCrunch, keeping you ahead of remote work trends, salary benchmarks, and hiring patterns.</li>
 <li><strong>Zero Tolerance for Scams:</strong> Every job is manually reviewed. We reject pyramid schemes, unpaid internships, commission-only roles, and fake listings. If it looks suspicious, it doesn't get posted.</li>
 </ul>
@@ -196,14 +230,14 @@ nav a:hover, nav a.active { color: var(--blue); }
 <li>When your referral upgrades to VIP → You earn #500 or $0.37 cash payout per upgrade</li>
 <li>Access your dashboard with email + 8-digit ref token to track referrals and earnings</li>
 <li>Payout minimum: #500 or $0.37</li>
-<li>Payout account: # account or $ account</li>
-<li>Processing time: 30 minutes to 24 hours</li>
+<li>Payout account: Provide your # account or $ account to receive payment</li>
+<li>Processing time: 30 minutes to 24 hours after request submission</li>
 </ul>
 
 <h4>Strict Anti-Fraud Rules</h4>
 <ul>
 <li><strong>No Multiple Accounts:</strong> Creating multiple accounts from the same IP address to fake referrals is prohibited</li>
-<li><strong>Automatic Detection:</strong> Our system detects IP duplicates and fake signups silently</li>
+<li><strong>Automatic Detection:</strong> Our system detects IP duplicates and fake signups silently across US, EU, and all regions</li>
 <li><strong>Instant Ban:</strong> If fraud is detected, all related accounts get banned and disabled automatically without warning</li>
 <li><strong>No Appeals:</strong> Banned accounts cannot be reactivated. Rewards are forfeited immediately</li>
 </ul>
@@ -212,7 +246,7 @@ nav a:hover, nav a.active { color: var(--blue); }
 <h3>Our Values</h3>
 <p><strong>Transparency:</strong> All jobs display salary ranges. No "competitive" or "DOE" listings. You deserve to know what you're applying for.</p>
 <p><strong>Quality Over Quantity:</strong> We'd rather post 20 verified, high-paying jobs than 200 low-quality gigs. Your time is valuable.</p>
-<p><strong>Global Mindset:</strong> We don't discriminate by location. If you have the skills, you deserve the opportunity, whether you're in the US, EU, or anywhere else.</p>
+<p><strong>Global Mindset:</strong> We don't discriminate by location. If you have the skills, you deserve the opportunity, whether you're in the US, EU, or anywhere else in the world.</p>
 <p><strong>User First:</strong> We're professionals who got tired of job boards filled with scams and outdated listings. We built the platform we wished existed.</p>
 
 <div class="contact-box">
@@ -238,21 +272,27 @@ nav a:hover, nav a.active { color: var(--blue); }
 <p><strong>Automatically Collected Data:</strong> IP address, browser type, device information, pages visited, time spent on pages, and click data via our go.html redirect for job tracking. IP data is used for fraud detection in referral program.</p>
 <p><strong>Cookies & Local Storage:</strong> We use browser localStorage to remember your email and saved jobs. We do not use third-party advertising cookies.</p>
 
+<h3>1b. Information We Collect from Employers</h3>
+<p><strong>Employer Account Data:</strong> When you post a job via <a href="post-job.html">Post Job</a>, we collect company name, contact person name, work email, phone number, company website, billing details via Selar, and payment history.</p>
+<p><strong>Job Post Data:</strong> We store job title, description, salary range in USD/EUR/GBP, location/timezone requirements, application URL, and posting dates to deliver the service and show analytics.</p>
+<p><strong>Use of Employer Data:</strong> We use this data to publish your job listing, send performance analytics, process payments, verify company legitimacy, and prevent fraud. We do not share employer contact info with job seekers except the application link you provide.</p>
+
 <h3>2. How We Use Your Information</h3>
 <ul>
 <li><strong>Service Delivery:</strong> Send VIP job alerts to your email, deliver CV/Resume orders, process job saves and clicks</li>
+<li><strong>Employer Services:</strong> Publish job listings, deliver analytics, process payments for job posts</li>
 <li><strong>Referral Program:</strong> Track referrals, calculate earnings, detect fraud using IP addresses</li>
 <li><strong>Communication:</strong> Respond to support inquiries, send transactional emails for orders</li>
-<li><strong>Improvement:</strong> Analyze which jobs get the most clicks to improve curation for global users</li>
+<li><strong>Improvement:</strong> Analyze which jobs get the most clicks to improve curation for global users across US, EU, and worldwide</li>
 <li><strong>Legal Compliance:</strong> Comply with applicable laws, prevent fraud, enforce Terms of Service</li>
 </ul>
 
 <h3>3. Data Sharing & Disclosure</h3>
 <p><strong>We do NOT sell your personal data.</strong> We share data only with trusted service providers:</p>
 <ul>
-<li><strong>Selar:</strong> Processes all payments for VIP subscriptions and CV services. They handle card details; we never see them.</li>
+<li><strong>Selar:</strong> Processes all payments for VIP subscriptions, CV services, and employer job posts. They handle card details; we never see them.</li>
 <li><strong>Brevo:</strong> Delivers all emails including VIP alerts and CV orders.</li>
-<li><strong>Neon:</strong> Hosts our PostgreSQL database containing jobs, subscribers, and referrals. Data is encrypted at rest.</li>
+<li><strong>Neon:</strong> Hosts our PostgreSQL database containing jobs, subscribers, referrals, and employer data. Data is encrypted at rest.</li>
 <li><strong>Legal Authorities:</strong> If required by law, court order, or to prevent fraud.</li>
 </ul>
 
@@ -261,6 +301,7 @@ nav a:hover, nav a.active { color: var(--blue); }
 
 <h3>5. Data Retention</h3>
 <p><strong>Email & Profile:</strong> Retained until you request deletion. VIP subscribers: retained for 30 days after expiry.</p>
+<p><strong>Employer Data:</strong> Job post data retained for 2 years for analytics and legal records, then anonymized.</p>
 <p><strong>Referral & IP Data:</strong> Retained 180 days for fraud prevention, then anonymized.</p>
 <p><strong>CV Data:</strong> Deleted 30 days after delivery unless you request earlier deletion.</p>
 <p><strong>Right to Deletion:</strong> Email support@remoteng.com.ng with subject "Delete My Data" and we will remove all your information within 7 days.</p>
@@ -293,7 +334,13 @@ nav a:hover, nav a.active { color: var(--blue); }
 <p>By accessing or using remoteng.com.ng, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, do not use our Service.</p>
 
 <h3>1. Service Description</h3>
-<p>RemoteNG provides: (a) Verified remote job listings with USD, EUR, GBP salaries, (b) VIP email alerts with 12-hour early access, (c) Professional CV/Resume writing services, (d) Cover letter writing services, (e) Referral rewards program with cash payouts.</p>
+<p>RemoteNG provides: (a) Verified remote job listings with USD, EUR, GBP salaries from US, EU, and global companies, (b) VIP email alerts with 12-hour early access, (c) Professional CV/Resume writing services, (d) Cover letter writing services, (e) Referral rewards program with cash payouts, (f) Employer job posting services.</p>
+
+<h3>Employer Job Posting & Pricing</h3>
+<p><strong>How to Post:</strong> Employers and recruiters post jobs by visiting the <a href="post-job.html">Post Job</a> page. Submit job title, company name, role description, location/timezone, salary range in USD/EUR/GBP, job type, and application link.</p>
+<p><strong>Review & Approval:</strong> Every job is manually reviewed before publishing. We reject unpaid internships, commission-only roles, MLM, "pay to apply" scams, and listings without transparent salary ranges. Approved jobs are published immediately and sent to VIP members 12 hours before public release.</p>
+<p><strong>Pricing:</strong> We charge $5 per single job post. Bulk packages range from $15 to $25 depending on number of posts and duration. Current rates and packages are displayed on the Post Job page. All payments are processed securely via Selar. Jobs only go live after payment confirmation. No refunds after posting goes live.</p>
+<p><strong>Employer Responsibility:</strong> You must provide accurate, truthful information. RemoteNG is not the employer and does not guarantee hires. Fake, misleading, or scam listings will be removed immediately and the employer account may be banned without refund.</p>
 
 <h3>2. User Eligibility</h3>
 <p>You must be 18 years or older to use paid services and join the referral program. You are responsible for maintaining the confidentiality of your email and ref token. One person, one account.</p>
@@ -311,14 +358,14 @@ nav a:hover, nav a.active { color: var(--blue); }
 <li><strong>VIP Upgrade Payout:</strong> When referral upgrades to VIP, you earn #500 or $0.37 per upgrade</li>
 <li><strong>Dashboard Access:</strong> Use email + 8-digit ref token to access referral dashboard</li>
 <li><strong>Payout Minimum:</strong> #500 or $0.37 minimum to withdraw</li>
-<li><strong>Payout Account:</strong> Must provide # account or $ account to receive payment</li>
+<li><strong>Payout Account:</strong> Must provide your # account or $ account to receive payment</li>
 <li><strong>Processing Time:</strong> 30 minutes to 24 hours after request submission</li>
 </ul>
 
 <h4>Anti-Fraud Policy - Read Carefully</h4>
 <ul>
 <li><strong>One Account Per Person:</strong> Creating multiple accounts from the same IP address, device, or network to fake referrals is strictly prohibited</li>
-<li><strong>Automatic Detection:</strong> Our system monitors IP addresses, device fingerprints, and signup patterns 24/7</li>
+<li><strong>Automatic Detection:</strong> Our system monitors IP addresses, device fingerprints, and signup patterns 24/7 across US, EU, and all regions</li>
 <li><strong>Silent Ban:</strong> If fraud is detected, all related accounts are banned and disabled automatically by our system without prior warning or notification</li>
 <li><strong>Forfeiture:</strong> All pending rewards and earnings from banned accounts are forfeited immediately</li>
 <li><strong>No Appeals:</strong> Decisions on fraud detection are final and non-negotiable</li>
@@ -331,7 +378,7 @@ nav a:hover, nav a.active { color: var(--blue); }
 <p><strong>Refund Policy:</strong> Full refund if we fail to deliver within 72 hours. No refunds after delivery or once revisions begin.</p>
 
 <h3>6. Job Listings</h3>
-<p><strong>No Employment Guarantee:</strong> We aggregate jobs from third-party companies worldwide. We do not employ you or guarantee hiring. Application success depends on your qualifications.</p>
+<p><strong>No Employment Guarantee:</strong> We aggregate jobs from third-party companies in the US, EU, and worldwide. We do not employ you or guarantee hiring. Application success depends on your qualifications.</p>
 <p><strong>Scam Warning:</strong> Legitimate employers NEVER ask for money to apply. Report suspicious listings to support@remoteng.com.ng immediately.</p>
 
 <h3>7. Prohibited Conduct</h3>
@@ -356,7 +403,6 @@ nav a:hover, nav a.active { color: var(--blue); }
 
 </div>
 </section>
-
 <footer>
   <div class="container">
     <div class="footer-grid">
