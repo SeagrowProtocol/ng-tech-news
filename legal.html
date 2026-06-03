@@ -19,7 +19,6 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="https://remoteng.com.ng/logo.png">
 
-<!-- Updated JSON-LD with correct social links -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -94,42 +93,20 @@ nav a:hover, nav a.active { color: var(--blue); }
 .contact-box { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid var(--green); border-radius: 14px; padding: 30px; margin: 40px 0; text-align: center; }
 .contact-box h3 { font-size: 20px; color: var(--blue-dark); margin-bottom: 12px; }
 .contact-box p { color: var(--gray-700); margin-bottom: 20px; }
-footer { background: var(--gray-900); color: var(--gray-100); padding: 90px 0 35px; margin-top: 90px; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 55px; margin-bottom: 55px; }
-footer h4 { color: var(--white); margin-bottom: 20px; font-size: 18px; }
-footer a { color: var(--gray-500); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s; font-size: 15px; }
-footer a:hover { color: var(--blue-cloud); }
-
-/* Social Icons */
-.social-links { display: flex; gap: 16px; margin-top: 20px; }
-.social-links a { 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  width: 42px; 
-  height: 42px; 
-  background: #1f2937; 
-  border-radius: 10px; 
-  transition: all 0.3s ease; 
-}
-.social-links a:hover { 
-  transform: translateY(-3px); 
-  background: var(--blue); 
-}
-.social-links svg { 
-  width: 22px; 
-  height: 22px; 
-  fill: var(--gray-100); 
-}
-
-.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 35px; text-align: center; color: var(--gray-500); }
+.highlight-box { background: #fef3c7; border-left: 4px solid #f59e0b; border-radius: 10px; padding: 24px; margin: 28px 0; }
+.highlight-box h4 { color: #92400e; margin-bottom: 12px; font-size: 18px; }
+.highlight-box p, .highlight-box li { color: #78350f; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 32px 0; }
+.stat-card { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius: 14px; padding: 28px; text-align: center; border: 1px solid #bfdbfe; }
+.stat-number { font-size: 36px; font-weight: 800; color: var(--blue-dark); display: block; }
+.stat-label { color: var(--gray-700); font-size: 14px; margin-top: 8px; font-weight: 600; }
 @media (max-width: 768px) {
   nav { display: none; }
-.page-header h1 { font-size: 32px; }
-.content-box { padding: 35px 25px; }
-.tabs { gap: 8px; }
-.tab-btn { padding: 10px 20px; font-size: 14px; }
-.social-links { justify-content: center; }
+  .page-header h1 { font-size: 32px; }
+  .content-box { padding: 35px 25px; }
+  .tabs { gap: 8px; }
+  .tab-btn { padding: 10px 20px; font-size: 14px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
@@ -177,36 +154,65 @@ footer a:hover { color: var(--blue-cloud); }
 
 <h2>About RemoteNG</h2>
 <p>RemoteNG was founded in 2026 with a simple mission: make high-paying remote work accessible to every talented professional, regardless of location. We believe your skills should determine your salary, not your passport.</p>
-<p>Every day, we aggregate, verify, and deliver remote job opportunities paying in USD, EUR, and GBP from companies worldwide. Our platform serves 50,000+ professionals across 150+ countries, with a focus on tech, marketing, design, and business roles.</p>
+<p>Every day, we aggregate, verify, and deliver remote job opportunities paying in USD, EUR, and GBP from companies worldwide. Our platform serves professionals across 150+ countries, with a focus on tech, marketing, design, and business roles.</p>
 
 <h3>Our Mission</h3>
 <p>To democratize access to global remote work by connecting talented professionals with forward-thinking companies. We remove geographic barriers and ensure compensation reflects skill, not location. Talent is global. Opportunity should be too.</p>
 
+<h3>Our Global Impact</h3>
+<div class="stats-grid">
+<div class="stat-card">
+<span class="stat-number">109,000+</span>
+<span class="stat-label">Monthly Active Users</span>
+</div>
+<div class="stat-card">
+<span class="stat-number">47,000+</span>
+<span class="stat-label">VIP Subscribers</span>
+</div>
+<div class="stat-card">
+<span class="stat-number">7,300+</span>
+<span class="stat-label">Jobs Added Monthly</span>
+</div>
+<div class="stat-card">
+<span class="stat-number">73%</span>
+<span class="stat-label">Interview Rate</span>
+</div>
+</div>
+
 <h3>What Makes Us Different</h3>
 <ul>
-<li><strong>Daily Curation:</strong> Our system scrapes and filters 1,000+ remote jobs daily. Only verified, salary-transparent roles paying USD/EUR/GBP make it to our platform. Updated at 11:50 AM WAT every day.</li>
-<li><strong>VIP Early Access:</strong> VIP subscribers receive curated job alerts at 7AM WAT, exactly 12 hours before free users see them at 6PM WAT. In competitive markets, 12 hours is the difference between landing an interview and missing out.</li>
+<li><strong>Daily Curation:</strong> Our system scrapes and filters 1,000+ remote jobs daily. Only verified, salary-transparent roles paying USD/EUR/GBP make it to our platform.</li>
+<li><strong>VIP Early Access:</strong> VIP subscribers receive curated job alerts 12 hours before public release. In competitive markets, 12 hours is the difference between landing an interview and missing out.</li>
 <li><strong>Career Acceleration:</strong> ATS-optimized CV writing, cover letters, and CV reviews crafted by hiring managers who know what global companies actually look for. Average interview rate for our clients: 73%.</li>
 <li><strong>Tech News Digest:</strong> Daily industry insights from TechCrunch, keeping you ahead of remote work trends, salary benchmarks, and hiring patterns.</li>
 <li><strong>Zero Tolerance for Scams:</strong> Every job is manually reviewed. We reject pyramid schemes, unpaid internships, commission-only roles, and fake listings. If it looks suspicious, it doesn't get posted.</li>
 </ul>
 
-<h3>Career Talk & Resources</h3>
-<p>RemoteNG isn’t just a job board. We share weekly career talk on interview prep, salary negotiation, ATS optimization, and remote work productivity. Check our <a href="tech-news.html">Tech News</a> section for the latest guides to land your next role faster.</p>
-
-<h3>Our Impact</h3>
+<h3>Referral Rewards Program</h3>
+<div class="highlight-box">
+<h4>How You Earn</h4>
 <ul>
-<li><strong>50,000+</strong> monthly active professionals using RemotENG</li>
-<li><strong>2,000+</strong> VIP subscribers receiving daily alerts</li>
-<li><strong>500+</strong> new verified jobs added monthly</li>
-<li><strong>73%</strong> interview rate for CV service clients</li>
-<li><strong>₦500M+</strong> in total salaries secured by our community in 2026</li>
+<li>Get 5 confirmed referrals → Claim 30 days FREE VIP automatically</li>
+<li>When your referral upgrades to VIP → You earn #500 or $0.37 cash payout per upgrade</li>
+<li>Access your dashboard with email + 8-digit ref token to track referrals and earnings</li>
+<li>Payout minimum: #500 or $0.37</li>
+<li>Payout account: # account or $ account</li>
+<li>Processing time: 30 minutes to 24 hours</li>
 </ul>
+
+<h4>Strict Anti-Fraud Rules</h4>
+<ul>
+<li><strong>No Multiple Accounts:</strong> Creating multiple accounts from the same IP address to fake referrals is prohibited</li>
+<li><strong>Automatic Detection:</strong> Our system detects IP duplicates and fake signups silently</li>
+<li><strong>Instant Ban:</strong> If fraud is detected, all related accounts get banned and disabled automatically without warning</li>
+<li><strong>No Appeals:</strong> Banned accounts cannot be reactivated. Rewards are forfeited immediately</li>
+</ul>
+</div>
 
 <h3>Our Values</h3>
 <p><strong>Transparency:</strong> All jobs display salary ranges. No "competitive" or "DOE" listings. You deserve to know what you're applying for.</p>
-<p><strong>Quality Over Quantity:</strong> We'd rather post 10 verified, high-paying jobs than 100 low-quality gigs. Your time is valuable.</p>
-<p><strong>Global Mindset:</strong> We don't discriminate by location. If you have the skills, you deserve the opportunity, whether you're in Lagos, London, or Lahore.</p>
+<p><strong>Quality Over Quantity:</strong> We'd rather post 20 verified, high-paying jobs than 200 low-quality gigs. Your time is valuable.</p>
+<p><strong>Global Mindset:</strong> We don't discriminate by location. If you have the skills, you deserve the opportunity, whether you're in the US, EU, or anywhere else.</p>
 <p><strong>User First:</strong> We're professionals who got tired of job boards filled with scams and outdated listings. We built the platform we wished existed.</p>
 
 <div class="contact-box">
@@ -215,7 +221,6 @@ footer a:hover { color: var(--blue-cloud); }
 <p><strong>Email:</strong> <a href="mailto:support@remoteng.com.ng">support@remoteng.com.ng</a></p>
 <p><strong>WhatsApp:</strong> <a href="https://wa.me/2349125651147" target="_blank">+234 912 565 1147</a></p>
 <p><strong>Instagram:</strong> <a href="https://www.instagram.com/officialremoteng" target="_blank">@officialremoteng</a></p>
-<p><strong>Facebook:</strong> <a href="https://www.facebook.com/share/197Z3F33WC/?mibextid=wwXIfr" target="_blank">RemoteNG on Facebook</a></p>
 <p><strong>Telegram:</strong> <a href="https://t.me/latest_ng" target="_blank">@latest_ng</a></p>
 </div>
 </div>
@@ -229,51 +234,51 @@ footer a:hover { color: var(--blue-cloud); }
 <p>RemoteNG ("we," "us," or "our") operates remoteng.com.ng. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Service. We are committed to protecting your privacy and handling your data transparently.</p>
 
 <h3>1. Information We Collect</h3>
-<p><strong>Personal Information You Provide:</strong> When you subscribe to VIP alerts, save jobs, order CV services, or contact us, we collect your email address, full name, and payment information via Selar. For CV services, we collect your career details, work history, and skills to craft your documents.</p>
-<p><strong>Automatically Collected Data:</strong> IP address, browser type, device information, pages visited, time spent on pages, and click data via our go.html redirect for affiliate tracking. This helps us understand which jobs perform best.</p>
-<p><strong>Cookies & Local Storage:</strong> We use browser localStorage to remember your email and saved jobs. We do not use third-party tracking cookies or advertising pixels. You can clear localStorage anytime via your browser settings.</p>
+<p><strong>Personal Information You Provide:</strong> When you subscribe to VIP alerts, save jobs, order CV services, join referral program, or contact us, we collect your email address, full name, ref token, IP address, and payment information via Selar. For CV services, we collect your career details, work history, and skills.</p>
+<p><strong>Automatically Collected Data:</strong> IP address, browser type, device information, pages visited, time spent on pages, and click data via our go.html redirect for job tracking. IP data is used for fraud detection in referral program.</p>
+<p><strong>Cookies & Local Storage:</strong> We use browser localStorage to remember your email and saved jobs. We do not use third-party advertising cookies.</p>
 
 <h3>2. How We Use Your Information</h3>
 <ul>
-<li><strong>Service Delivery:</strong> Send VIP job alerts to your email at 7AM WAT daily, deliver CV/Resume orders within 48 hours, process job saves and clicks</li>
-<li><strong>Communication:</strong> Respond to support inquiries, send transactional emails for orders, notify you of policy changes</li>
-<li><strong>Improvement:</strong> Analyze which jobs get the most clicks to improve curation, monitor site performance and uptime</li>
-<li><strong>Legal Compliance:</strong> Comply with tax laws, prevent fraud, enforce our Terms of Service</li>
+<li><strong>Service Delivery:</strong> Send VIP job alerts to your email, deliver CV/Resume orders, process job saves and clicks</li>
+<li><strong>Referral Program:</strong> Track referrals, calculate earnings, detect fraud using IP addresses</li>
+<li><strong>Communication:</strong> Respond to support inquiries, send transactional emails for orders</li>
+<li><strong>Improvement:</strong> Analyze which jobs get the most clicks to improve curation for global users</li>
+<li><strong>Legal Compliance:</strong> Comply with applicable laws, prevent fraud, enforce Terms of Service</li>
 </ul>
 
 <h3>3. Data Sharing & Disclosure</h3>
-<p><strong>We do NOT sell your personal data.</strong> Ever. We share data only with these trusted service providers:</p>
+<p><strong>We do NOT sell your personal data.</strong> We share data only with trusted service providers:</p>
 <ul>
 <li><strong>Selar:</strong> Processes all payments for VIP subscriptions and CV services. They handle card details; we never see them.</li>
-<li><strong>Brevo:</strong> Delivers all emails including VIP alerts and CV orders. Your email is stored in their system.</li>
-<li><strong>Neon:</strong> Hosts our PostgreSQL database containing jobs, subscribers, and clicks. Data is encrypted at rest.</li>
-<li><strong>Render:</strong> Hosts our backend API. Processes requests but does not store personal data long-term.</li>
-<li><strong>Legal Authorities:</strong> If required by Nigerian law, court order, or to protect our rights and users from fraud.</li>
+<li><strong>Brevo:</strong> Delivers all emails including VIP alerts and CV orders.</li>
+<li><strong>Neon:</strong> Hosts our PostgreSQL database containing jobs, subscribers, and referrals. Data is encrypted at rest.</li>
+<li><strong>Legal Authorities:</strong> If required by law, court order, or to prevent fraud.</li>
 </ul>
 
-<h3>4. Data Retention</h3>
-<p><strong>Email Addresses:</strong> Retained until you unsubscribe or request deletion. VIP subscribers: retained for 30 days after expiry for win-back campaigns.</p>
-<p><strong>Job Click Data:</strong> Anonymized after 90 days. Used only for aggregate analytics.</p>
-<p><strong>CV/Resume Data:</strong> Deleted 30 days after delivery unless you request earlier deletion.</p>
+<h3>4. Referral Data & IP Tracking</h3>
+<p>For fraud prevention, we log IP addresses when you sign up or refer someone. If multiple accounts are detected from the same IP attempting to claim rewards, all accounts are flagged and banned automatically. This data is retained for 180 days for fraud investigation.</p>
+
+<h3>5. Data Retention</h3>
+<p><strong>Email & Profile:</strong> Retained until you request deletion. VIP subscribers: retained for 30 days after expiry.</p>
+<p><strong>Referral & IP Data:</strong> Retained 180 days for fraud prevention, then anonymized.</p>
+<p><strong>CV Data:</strong> Deleted 30 days after delivery unless you request earlier deletion.</p>
 <p><strong>Right to Deletion:</strong> Email support@remoteng.com.ng with subject "Delete My Data" and we will remove all your information within 7 days.</p>
 
-<h3>5. Your Privacy Rights</h3>
-<p>You have the right to: Access all data we hold about you, correct any inaccuracies, delete your account and data, opt-out of marketing emails via unsubscribe links, export your data in CSV format, and lodge complaints with data protection authorities. Contact support@remoteng.com.ng to exercise these rights.</p>
+<h3>6. Your Privacy Rights</h3>
+<p>You have the right to: Access all data we hold about you, correct inaccuracies, delete your account and data, opt-out of marketing emails, export your data in CSV format. Contact support@remoteng.com.ng to exercise these rights.</p>
 
-<h3>6. Security Measures</h3>
-<p>All data transmitted between your browser and our servers uses HTTPS/TLS encryption. Passwords are never stored. Payment details are handled exclusively by Selar using PCI-DSS compliant systems. Our database is hosted on Neon with encryption at rest and automated backups. However, no internet transmission is 100% secure, and we cannot guarantee absolute security.</p>
+<h3>7. Security Measures</h3>
+<p>All data uses HTTPS/TLS encryption. Payment details are handled by Selar with PCI-DSS compliance. Our database uses encryption at rest and automated backups. However, no internet transmission is 100% secure.</p>
 
-<h3>7. Children's Privacy</h3>
-<p>RemotENG is not intended for individuals under 18 years old. We do not knowingly collect personal information from children. If you believe we have collected data from a minor, contact us immediately for deletion.</p>
+<h3>8. Children's Privacy</h3>
+<p>RemoteNG is not intended for individuals under 18 years old. We do not knowingly collect personal information from children.</p>
 
-<h3>8. International Data Transfers</h3>
-<p>RemotENG is based in Nigeria. By using our Service, you consent to your data being transferred to and processed in Nigeria, the United States (Render, Neon), and the European Union (Brevo). All transfers comply with applicable data protection laws.</p>
-
-<h3>9. Third-Party Links</h3>
-<p>Our job listings link to external company career pages via go.html redirects. We are not responsible for the privacy practices of those third-party sites. Review their privacy policies before submitting applications.</p>
+<h3>9. International Data Transfers</h3>
+<p>By using our Service, you consent to your data being processed globally including US, EU, and other regions. All transfers comply with applicable data protection laws.</p>
 
 <h3>10. Changes to This Policy</h3>
-<p>We may update this Privacy Policy to reflect changes in our practices or legal requirements. Material changes will be announced via email to subscribers. The "Last Updated" date at the top indicates the latest revision. Continued use after changes constitutes acceptance.</p>
+<p>We may update this Privacy Policy to reflect changes in our practices or legal requirements. Material changes will be announced via email to subscribers. The "Last Updated" date indicates the latest revision.</p>
 
 <h3>11. Contact Us</h3>
 <p>For privacy questions, data requests, or complaints: Email <a href="mailto:support@remoteng.com.ng">support@remoteng.com.ng</a> or WhatsApp <a href="https://wa.me/2349125651147">+234 912 565 1147</a>. We respond within 48 hours.</p>
@@ -288,58 +293,64 @@ footer a:hover { color: var(--blue-cloud); }
 <p>By accessing or using remoteng.com.ng, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, do not use our Service.</p>
 
 <h3>1. Service Description</h3>
-<p>RemotENG provides: (a) Aggregated remote job listings with salary transparency, (b) VIP email alerts with 12-hour early access to new jobs, (c) Professional CV/Resume writing services, (d) Cover letter writing services, (e) CV review and optimization, (f) Daily tech news aggregation from TechCrunch.</p>
+<p>RemoteNG provides: (a) Verified remote job listings with USD, EUR, GBP salaries, (b) VIP email alerts with 12-hour early access, (c) Professional CV/Resume writing services, (d) Cover letter writing services, (e) Referral rewards program with cash payouts.</p>
 
-<h3>2. User Eligibility & Accounts</h3>
-<p>No account registration is required to browse jobs. VIP subscriptions and CV services require a valid email address. You must be 18 years or older to purchase paid services. You are responsible for maintaining the confidentiality of your email and for all activities under your email address.</p>
+<h3>2. User Eligibility</h3>
+<p>You must be 18 years or older to use paid services and join the referral program. You are responsible for maintaining the confidentiality of your email and ref token. One person, one account.</p>
 
 <h3>3. VIP Subscription Terms</h3>
-<p><strong>Billing:</strong> ₦2,000 NGN or $2 USD per month, billed monthly via Selar. Subscription auto-renews unless cancelled before the next billing date.</p>
-<p><strong>Cancellation:</strong> Cancel anytime by clicking "Unsubscribe" in any VIP email. Access continues until the end of your current billing period. No refunds for partial months or unused time.</p>
-<p><strong>Early Access Benefit:</strong> VIP members receive job alerts at 7:00 AM WAT daily. Free users see the same jobs at 6:00 PM WAT. We do not guarantee job availability, interview invitations, or hiring outcomes. Early access improves odds but does not guarantee results.</p>
-<p><strong>Fair Use:</strong> VIP is for individual use only. Sharing your subscription or forwarding emails to non-subscribers violates these Terms and may result in termination without refund.</p>
+<p><strong>Billing:</strong> $2 USD or equivalent per month, billed monthly via Selar. Subscription auto-renews unless cancelled.</p>
+<p><strong>Cancellation:</strong> Cancel anytime by clicking "Unsubscribe" in any VIP email. Access continues until the end of your current billing period. No refunds for partial months.</p>
+<p><strong>Early Access:</strong> VIP members receive job alerts 12 hours before public release. We do not guarantee interviews or hiring outcomes.</p>
 
-<h3>4. CV/Resume & Career Services</h3>
-<p><strong>Delivery Timeline:</strong> CV Writing: 48 hours. Cover Letter: 24 hours. CV Review: 24 hours. All delivered via email in PDF and editable Word formats.</p>
-<p><strong>Revisions Policy:</strong> CV Writing and Cover Letter services include 2 rounds of revisions within 7 calendar days of initial delivery. CV Review includes 1 round of feedback implementation. Additional revisions billed at ₦1,500 per round.</p>
-<p><strong>Refund Policy:</strong> Full refund if we fail to deliver within 72 hours of order confirmation without communication. No refunds after delivery or once revisions have begun. Dissatisfaction with subjective quality (e.g., "I don't like the design") is not grounds for refund if the deliverable meets professional standards.</p>
-<p><strong>Client Responsibility:</strong> You must provide accurate, truthful information. We are not liable for consequences of false information in your CV. You retain full ownership of final documents.</p>
+<h3>4. Referral Rewards Program</h3>
+<div class="highlight-box">
+<h4>Rules & Eligibility</h4>
+<ul>
+<li><strong>5 Confirmed Referrals = 30 Days Free VIP:</strong> Referred user must confirm email to count</li>
+<li><strong>VIP Upgrade Payout:</strong> When referral upgrades to VIP, you earn #500 or $0.37 per upgrade</li>
+<li><strong>Dashboard Access:</strong> Use email + 8-digit ref token to access referral dashboard</li>
+<li><strong>Payout Minimum:</strong> #500 or $0.37 minimum to withdraw</li>
+<li><strong>Payout Account:</strong> Must provide # account or $ account to receive payment</li>
+<li><strong>Processing Time:</strong> 30 minutes to 24 hours after request submission</li>
+</ul>
 
-<h3>5. Job Listings & Applications</h3>
-<p><strong>No Employment Guarantee:</strong> RemotENG aggregates jobs from third-party companies. We do not employ you, guarantee interviews, or guarantee hiring. Application success depends on your qualifications and the employer's decisions.</p>
-<p><strong>Third-Party Links:</strong> Job "Apply Now" buttons redirect to external company sites via our go.html tracking. We are not responsible for third-party application processes, hiring decisions, or website content.</p>
-<p><strong>Scam Warning:</strong> Legitimate employers NEVER ask for money to apply or for training. Never pay to get a job. Report suspicious listings to support@remoteng.com.ng immediately. While we screen listings, we cannot guarantee all jobs are legitimate.</p>
-<p><strong>Accuracy:</strong> Job details including salary, location, and requirements are provided by third parties. We strive for accuracy but cannot verify every detail. Always confirm details on the employer's official site.</p>
+<h4>Anti-Fraud Policy - Read Carefully</h4>
+<ul>
+<li><strong>One Account Per Person:</strong> Creating multiple accounts from the same IP address, device, or network to fake referrals is strictly prohibited</li>
+<li><strong>Automatic Detection:</strong> Our system monitors IP addresses, device fingerprints, and signup patterns 24/7</li>
+<li><strong>Silent Ban:</strong> If fraud is detected, all related accounts are banned and disabled automatically by our system without prior warning or notification</li>
+<li><strong>Forfeiture:</strong> All pending rewards and earnings from banned accounts are forfeited immediately</li>
+<li><strong>No Appeals:</strong> Decisions on fraud detection are final and non-negotiable</li>
+</ul>
+</div>
 
-<h3>6. Prohibited Conduct</h3>
-<p>You agree NOT to: (a) Scrape, data mine, or use bots to access our Service, (b) Impersonate any person or entity, (c) Post spam, malware, or illegal content, (d) Attempt to hack, disrupt, or overload our servers, (e) Reverse engineer our API or database, (f) Resell or redistribute our job data, (g) Use our Service for any illegal purpose.</p>
+<h3>5. CV/Resume & Career Services</h3>
+<p><strong>Delivery:</strong> CV Writing: 48 hours. Cover Letter: 24 hours. CV Review: 24 hours. Delivered via email in PDF and Word formats.</p>
+<p><strong>Revisions:</strong> CV Writing includes 2 rounds of revisions within 7 days. Additional revisions billed at $1.50 per round.</p>
+<p><strong>Refund Policy:</strong> Full refund if we fail to deliver within 72 hours. No refunds after delivery or once revisions begin.</p>
 
-<h3>7. Intellectual Property</h3>
-<p><strong>Our Content:</strong> RemotENG logo, website design, original content, and compilation of job listings are owned by us and protected by copyright. You may not copy, reproduce, or distribute without written permission.</p>
-<p><strong>Third-Party Content:</strong> Job descriptions, company logos, and news articles are owned by respective third parties. Used under fair use for informational purposes.</p>
-<p><strong>User Content:</strong> By submitting your CV details to us for services, you grant us license to use that information solely to create your documents. We do not claim ownership of your career data.</p>
+<h3>6. Job Listings</h3>
+<p><strong>No Employment Guarantee:</strong> We aggregate jobs from third-party companies worldwide. We do not employ you or guarantee hiring. Application success depends on your qualifications.</p>
+<p><strong>Scam Warning:</strong> Legitimate employers NEVER ask for money to apply. Report suspicious listings to support@remoteng.com.ng immediately.</p>
+
+<h3>7. Prohibited Conduct</h3>
+<p>You agree NOT to: (a) Create multiple accounts to fake referrals, (b) Scrape or use bots to access our Service, (c) Impersonate any person, (d) Attempt to hack or disrupt our servers, (e) Resell our job data, (f) Use Service for illegal purposes.</p>
 
 <h3>8. Limitation of Liability</h3>
-<p>RemotENG is provided "AS IS" without warranties of any kind. To the fullest extent permitted by law, we are NOT liable for: (a) Job application rejections or hiring outcomes, (b) Lost profits, missed opportunities, or career damages, (c) Third-party employer actions or website issues, (d) Service interruptions, bugs, or data loss, (e) Any indirect, incidental, or consequential damages.</p>
-<p><strong>Maximum Liability:</strong> Our total liability to you for any claims shall not exceed the amount you paid us in the 12 months preceding the claim, or ₦2,000, whichever is greater.</p>
+<p>RemoteNG is provided "AS IS" without warranties. We are NOT liable for: job application rejections, lost opportunities, third-party employer actions, or service interruptions. Maximum liability shall not exceed $2 USD.</p>
 
-<h3>9. Indemnification</h3>
-<p>You agree to indemnify and hold harmless RemotENG, its owners, and employees from any claims, damages, or expenses arising from: (a) Your use of the Service, (b) Your violation of these Terms, (c) Your violation of any law or third-party rights, (d) Content you submit to us.</p>
+<h3>9. Termination</h3>
+<p>We reserve the right to terminate or suspend your access immediately for: violation of these Terms, fraud, abusive behavior, or at our sole discretion. Upon termination, your right to use the Service ceases immediately.</p>
 
-<h3>10. Termination</h3>
-<p>We reserve the right to terminate or suspend your access immediately, without notice or liability, for: violation of these Terms, fraudulent activity, abusive behavior toward staff, or at our sole discretion. Upon termination, your right to use the Service ceases immediately.</p>
+<h3>10. Governing Law</h3>
+<p>These Terms are governed by applicable international law. Any disputes shall be resolved through arbitration before pursuing legal action.</p>
 
-<h3>11. Governing Law & Disputes</h3>
-<p>These Terms are governed by the laws of the Federal Republic of Nigeria. Any disputes shall be resolved exclusively in the courts of Katsina State, Nigeria. You agree to attempt resolution via email support before pursuing legal action.</p>
+<h3>11. Changes to Terms</h3>
+<p>We may modify these Terms at any time. Material changes will be emailed to subscribers. Continued use after changes constitutes acceptance.</p>
 
-<h3>12. Changes to Terms</h3>
-<p>We may modify these Terms at any time. Material changes will be emailed to subscribers and posted on this page with an updated "Last Updated" date. Continued use after changes constitutes acceptance. If you disagree with changes, stop using the Service.</p>
-
-<h3>13. Entire Agreement</h3>
-<p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and RemotENG regarding the Service, superseding any prior agreements.</p>
-
-<h3>14. Contact Information</h3>
-<p>Questions about these Terms? Contact us: Email <a href="mailto:support@remoteng.com.ng">support@remoteng.com.ng</a> or WhatsApp <a href="https://wa.me/2349125651147">+234 912 565 1147</a>. Business hours: Monday-Friday, 9AM-6PM WAT. We respond within 48 hours.</p>
+<h3>12. Contact Information</h3>
+<p>Questions about these Terms? Contact us: Email <a href="mailto:support@remoteng.com.ng">support@remoteng.com.ng</a> or WhatsApp <a href="https://wa.me/2349125651147">+234 912 565 1147</a>. Business hours: Monday-Friday, 9AM-6PM UTC.</p>
 </div>
 </div>
 
@@ -437,8 +448,9 @@ footer a:hover { color: var(--blue-cloud); }
 .social-icon.telegram svg { fill: #0088cc; }
 .social-icon.whatsapp svg { fill: #25D366; }
 </style>
+
 <script>
-function showTab(tabName, btn) {
+function showTab(tabName) {
   document.querySelectorAll('.content-section').forEach(section => {
     section.classList.remove('active');
   });
@@ -446,7 +458,7 @@ function showTab(tabName, btn) {
     btn.classList.remove('active');
   });
   document.getElementById(tabName).classList.add('active');
-  btn.classList.add('active');
+  event.target.classList.add('active');
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
