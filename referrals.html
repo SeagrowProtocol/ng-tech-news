@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,7 +62,7 @@
     --border-line: #e2e8f0;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
   
   body { 
     font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; 
@@ -75,7 +74,6 @@
 
   .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
   
-  /* Vibrant Header UI with Wrapped Logo Base */
   header { 
     background: rgba(255, 255, 255, 0.96); 
     border-bottom: 2px solid #f1f5f9; 
@@ -108,7 +106,6 @@
   nav a { color: var(--muted-slate); text-decoration: none; font-weight: 600; transition: color 0.2s ease; font-size: 15px; }
   nav a:hover, nav a.active { color: var(--brand-blue); }
   
-  /* High-Converting Visual Buttons */
   .btn { 
     background: linear-gradient(135deg, #1e3a8a 0%, var(--brand-blue) 100%);
     color: var(--white); 
@@ -129,7 +126,6 @@
   .btn-green { background: linear-gradient(135deg, var(--accent-neon) 0%, #65a30d 100%); color: #064e3b; box-shadow: 0 4px 12px rgba(132, 204, 22, 0.2); }
   .btn-green:hover { box-shadow: 0 8px 24px rgba(132, 204, 22, 0.4); }
   
-  /* Bold Gradient Premium Hero Hero Section */
   .hero-section {
     background: radial-gradient(circle at top right, #1e1b4b 0%, #0f172a 100%);
     color: white; 
@@ -147,7 +143,6 @@
   .metric-val { font-size: 30px; font-weight: 900; color: var(--accent-neon); letter-spacing: -0.5px; }
   .metric-lbl { opacity: 0.85; font-size: 14px; margin-top: 6px; font-weight: 600; color: #f1f5f9; }
 
-  /* Premium Content Blocks */
   .card { background: var(--white); border: 1px solid var(--border-line); border-radius: 20px; padding: 40px; margin-bottom: 35px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
   .card:hover { box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); border-color: var(--brand-glow); }
   .card-title { font-size: 24px; font-weight: 800; margin-bottom: 14px; color: #1e293b; display: flex; align-items: center; gap: 10px; }
@@ -169,7 +164,6 @@
   .badge.upgraded { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
   .badge.pending { background: #fff9db; color: #856404; border: 1px solid #ffeeba; }
   
-  /* Tables formatting */
   .table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 15px; border-radius: 12px; border: 1px solid var(--border-line); }
   .table { width: 100%; border-collapse: collapse; text-align: left; min-width: 500px; }
   .table th, .table td { padding: 16px 20px; border-bottom: 1px solid var(--border-line); font-size: 14px; }
@@ -184,7 +178,6 @@
   
   .hidden { display: none !important; }
   
-  /* Elite Footer */
   footer { background: #0b0f19; color: #cbd5e1; padding: 90px 0 45px; font-size: 15px; border-top: 6px solid #1e293b; }
   .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 45px; margin-bottom: 60px; }
   footer h4 { color: var(--white); margin-bottom: 24px; font-size: 17px; font-weight: 700; letter-spacing: 0.5px; }
@@ -193,7 +186,6 @@
   footer a:hover { color: var(--accent-neon); }
   .footer-bottom { border-top: 1px solid #1e293b; padding-top: 35px; text-align: center; color: #64748b; font-size: 13px; font-weight: 500; }
 
-  /* Mobile Layout Adaptations */
   @media (max-width: 992px) {
     .hero-title { font-size: 36px; }
     .hero-subtitle { font-size: 17px; }
@@ -259,7 +251,6 @@
 <section class="section">
   <div class="container" style="max-width: 800px;">
     
-    <!-- Account Authentication Card -->
     <div id="terms-box" class="card">
       <h2 class="card-title">🔐 Secure Partner Gateway</h2>
       <p style="color: var(--muted-slate); margin-bottom: 22px; font-size: 15px;">Authenticate via your registration email profile to retrieve links, configure ledger destinations, and check your processed transactions list.</p>
@@ -284,10 +275,8 @@
       <p id="login-msg" style="color: var(--danger-red); font-size: 14px; margin-top: 14px; text-align: center; font-weight: 600;"></p>
     </div>
 
-    <!-- Active User Dashboard Context -->
     <div id="dashboard" class="hidden">
       
-      <!-- Performance Bonus Pool -->
       <div class="card" style="background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%); border: 2px solid var(--accent-neon);">
         <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 10px;">
           <h3 style="color: #4d7c0f; margin-bottom: 8px; font-weight: 800; display: flex; align-items: center; gap: 8px;">🚀 Active Leaderboard Incentive: $100 Pool</h3>
@@ -296,7 +285,6 @@
         <p style="color: #3f6212; font-size: 14px; line-height: 1.55; margin-top: 8px;">The top 10 generating affiliates within this week's sprint receive an additional $10 reward credit. Active cycle updates finish and settle every Sunday night at 23:59 WAT.</p>
       </div>
 
-      <!-- Affiliate Deployment Toolkit -->
       <div class="card">
         <h3 class="card-title">Tracking URL Matrix</h3>
         <p style="color: var(--muted-slate); font-size: 14px; margin-bottom: 12px;">Distribute this secure reference destination across professional networks to capture user actions:</p>
@@ -310,7 +298,6 @@
         </div>
       </div>
 
-      <!-- Metrics Matrix -->
       <div class="grid-2">
         <div class="stat-box">
           <div class="stat-number" id="count">0</div>
@@ -325,7 +312,6 @@
         </div>
       </div>
 
-      <!-- Milestone Selections -->
       <div class="card">
         <h3 class="card-title">Performance Tier Bonus</h3>
         <p style="color: var(--muted-slate); margin-bottom: 20px; font-size: 14px;">Upon reaching 5 verified network signups, choose an account expansion asset variant:</p>
@@ -336,7 +322,7 @@
         <p id="reward-status" style="font-size: 14px; color: var(--brand-blue); margin-top: 14px; font-weight: 700;"></p>
       </div>
 
-      <!-- Dynamic Local & Foreign Settlement Box -->
+      <!-- UPDATED PAYOUT BOX WITH 3 FIELDS FOR NAIRA -->
       <div id="payout-box" class="card hidden" style="border: 2px solid var(--brand-blue);">
         <h3 class="card-title">💸 Configure Settlement Destination</h3>
         <p style="font-size: 14px; color: var(--muted-slate); margin-bottom: 12px;">Select your preferred currency distribution channel. Withdrawals are automatically verified and cleared within **30 minutes to 24 hours**.</p>
@@ -347,13 +333,28 @@
           <option value="usdt">Digital Asset / Foreign Route (USDT TRC20 Address)</option>
         </select>
         
-        <label id="addressLabel" style="font-size: 13px; font-weight: 700; color: var(--muted-slate); margin-top: 10px; display: block;">Your Account Number / Wallet Address</label>
-        <input type="text" id="address" placeholder="Provide destination value number/hash">
+        <!-- Local Naira Fields -->
+        <div id="localFields" class="hidden">
+          <label style="font-size: 13px; font-weight: 700; color: var(--muted-slate); margin-top: 10px; display: block;">Bank Name</label>
+          <input type="text" id="bankName" placeholder="e.g. GTBank, Access Bank, UBA, Zenith">
+          
+          <label style="font-size: 13px; font-weight: 700; color: var(--muted-slate); margin-top: 10px; display: block;">Account Number</label>
+          <input type="text" id="accountNumber" placeholder="e.g. 0123456789" maxlength="10" inputmode="numeric">
+          
+          <label style="font-size: 13px; font-weight: 700; color: var(--muted-slate); margin-top: 10px; display: block;">Account Name</label>
+          <input type="text" id="accountName" placeholder="e.g. CHINEDU ADEKUNLE" style="text-transform: uppercase;">
+        </div>
+
+        <!-- USDT Fields -->
+        <div id="usdtFields" class="hidden">
+          <label style="font-size: 13px; font-weight: 700; color: var(--muted-slate); margin-top: 10px; display: block;">USDT TRC20 Wallet Address</label>
+          <input type="text" id="usdtAddress" placeholder="e.g. TXxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
+          <p style="font-size: 12px; color: var(--muted-slate); margin-top: 6px;">Only TRC20 USDT supported. Send to wrong network = funds lost.</p>
+        </div>
         
         <button class="btn btn-green" onclick="submitPayout()" style="width: 100%; margin-top: 14px;">Authorize Fast Settlement Delivery</button>
       </div>
 
-      <!-- Ledger Records -->
       <div class="card">
         <h3 class="card-title">Conversion Status Log</h3>
         <div class="table-container">
@@ -362,14 +363,12 @@
               <tr><th>Acquisition Reference</th><th>Verification State</th><th>Activation Date</th></tr>
             </thead>
             <tbody id="referralsTableBody">
-              <!-- Render rows programmatically -->
             </tbody>
           </table>
         </div>
       </div>
     </div>
     
-    <!-- Corporate / Employer Referral Section -->
     <div class="card" style="border: 2px solid var(--electric-purple); background: linear-gradient(135deg, var(--white) 0%, #f5f3ff 100%);">
       <h3 class="card-title" style="color: var(--electric-purple);">
         💼 Corporate Network Bonus: Partner with Employers
@@ -418,16 +417,15 @@
 const BACKEND = 'https://remoteng-api.onrender.com';
 let userEmail = localStorage.getItem('ref_email');
 
-// Persistent Session Initialization Checks
 document.addEventListener("DOMContentLoaded", () => {
   if (userEmail) {
     document.getElementById('email').value = userEmail;
     const sessionKey = localStorage.getItem('ref_session_active');
     if (sessionKey === 'true') {
-      // Execute background handshake sync directly to pull dashboard data
       loadDashboard();
     }
   }
+  toggleAddress(); // Initialize fields on load
 });
 
 async function login() {
@@ -459,7 +457,6 @@ async function login() {
       return;
     }
 
-    // Persist session values in localStorage securely
     localStorage.setItem('ref_email', email);
     localStorage.setItem('ref_session_active', 'true');
     userEmail = email;
@@ -495,7 +492,6 @@ async function loadDashboard() {
     const res = await fetch(`${BACKEND}/api/referrals?email=${userEmail}`);
     
     if (res.status === 401 || res.status === 403) {
-      // Handle expired backend states by dropping storage locks gracefully
       localStorage.removeItem('ref_session_active');
       document.getElementById('terms-box').classList.remove('hidden');
       document.getElementById('dashboard').classList.add('hidden');
@@ -583,30 +579,56 @@ function showPayout() {
   document.getElementById('payout-box').classList.remove('hidden');
 }
 
+// FIXED: Show correct fields based on selected method
 function toggleAddress() {
   const method = document.getElementById('method').value;
-  const label = document.getElementById('addressLabel');
-  const field = document.getElementById('address');
+  const localFields = document.getElementById('localFields');
+  const usdtFields = document.getElementById('usdtFields');
   
   if(method === 'local') {
-    label.textContent = "Your Local Currency Account Number";
-    field.placeholder = "e.g. 1023456789";
+    localFields.classList.remove('hidden');
+    usdtFields.classList.add('hidden');
   } else {
-    label.textContent = "Your Digital Asset Wallet Destination Hash (USDT TRC20)";
-    field.placeholder = "e.g. TXxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+    localFields.classList.add('hidden');
+    usdtFields.classList.remove('hidden');
   }
 }
 
+// FIXED: Send correct payload for Naira vs USDT
 async function submitPayout() {
   const method = document.getElementById('method').value;
-  const address = document.getElementById('address').value.trim();
-  if(!address) return alert('Destination account details/hash values cannot be blank.');
+  let payload = {email: userEmail, method};
+
+  if(method === 'local') {
+    const bankName = document.getElementById('bankName').value.trim();
+    const accountNumber = document.getElementById('accountNumber').value.trim();
+    const accountName = document.getElementById('accountName').value.trim();
+    
+    if(!bankName || !accountNumber || !accountName) {
+      return alert('Fill all bank details: Bank Name, Account Number, Account Name');
+    }
+    if(accountNumber.length !== 10 || isNaN(accountNumber)) {
+      return alert('Account number must be 10 digits');
+    }
+    
+    payload.bank_name = bankName;
+    payload.account_number = accountNumber;
+    payload.account_name = accountName;
+    
+  } else {
+    const usdtAddress = document.getElementById('usdtAddress').value.trim();
+    if(!usdtAddress) return alert('USDT wallet address cannot be blank');
+    if(!usdtAddress.startsWith('T') && !usdtAddress.startsWith('0x')) {
+      return alert('Enter valid USDT TRC20 or ERC20 address');
+    }
+    payload.address = usdtAddress;
+  }
 
   try {
     const res = await fetch(`${BACKEND}/api/submit-payout`, {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({email: userEmail, method, address})
+      body: JSON.stringify(payload)
     });
     const data = await res.json();
     alert(data.message || data.error);
