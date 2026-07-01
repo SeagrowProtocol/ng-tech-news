@@ -256,16 +256,44 @@ footer a:hover { color: var(--blue-cloud); }
   </div>
 </section>
 
+<!-- ADVERTISEMENT CONTROL CSS -->
+<style>
+  /* Ad logic: Toggle based on screen size */
+  .ad-wrap.banner-728 { display: block; }
+  .ad-wrap.banner-300-mobile { display: none; }
+
+  @media (max-width: 768px) {
+    .ad-wrap.banner-728 { display: none !important; }
+    .ad-wrap.banner-300-mobile { display: block !important; text-align: center; margin: 20px 0; }
+  }
+
+  /* Smooth Animations */
+  .job-card, .news-card, .service-card, .company-brand-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  }
+  .job-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+  
+  .hero h1 { animation: fadeInUp 0.8s ease-out; }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<!-- MOBILE AD SLOT -->
+<div class="ad-wrap banner-300-mobile">
+  <small>Advertisement</small>
+  <script>
+    atOptions = { 'key' : '60fd2652d0e23a02a61b30ff30ef9fe8', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+  </script>
+  <script src="https://fixesconsessionconsession.com/60fd2652d0e23a02a61b30ff30ef9fe8/invoke.js"></script>
+</div>
+
+<!-- DESKTOP AD SLOT -->
 <div class="ad-wrap banner-728">
   <small>Advertisement</small>
   <script>
-    atOptions = {
-      'key' : '7f21b78d39ff758bf00eeea8b35b92b4',
-      'format' : 'iframe',
-      'height' : 90,
-      'width' : 728,
-      'params' : {}
-    };
+    atOptions = { 'key' : '7f21b78d39ff758bf00eeea8b35b92b4', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
   </script>
   <script src="https://fixesconsessionconsession.com/7f21b78d39ff758bf00eeea8b35b92b4/invoke.js"></script>
 </div>
