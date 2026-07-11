@@ -330,11 +330,28 @@ function formatDescription(text) {
 }
 
 async function loadJob() {
-  if (!jobSlug) {
-    document.getElementById('job-content').innerHTML = '<div class="error">Job not specified</div>';
+if (!jobSlug) {
+    document.getElementById('job-content').innerHTML = `
+      <section class="section">
+        <div class="container" style="text-align:center; padding: 80px 20px;">
+          <div style="max-width: 600px; margin: 0 auto;">
+            <h1 style="font-size: 36px; color: var(--blue-dark); margin-bottom: 16px;">Oops! No job selected</h1>
+            <p style="font-size: 18px; color: var(--gray-700); margin-bottom: 28px; line-height: 1.7;">
+              Looks like you landed here directly. Please browse our latest remote jobs and pick one to see full details.
+            </p>
+            <a href="https://remoteng.com.ng/remote-jobs.html" class="btn" style="font-size: 17px; padding: 16px 40px;">
+              Browse All Remote Jobs →
+            </a>
+            <div style="margin-top: 40px; padding: 20px; background: var(--blue-light); border-radius: 12px; color: var(--blue-dark); font-size: 14px;">
+              💡 <b>Tip:</b> All our jobs pay in USD, EUR, or GBP and are 100% remote.
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+    document.title = 'Browse Remote Jobs - RemoteNG';
     return;
-  }
-
+}
   try {
     const res = await fetch(`${API_URL}/api/jobs/${jobSlug}`);
     if (!res.ok) throw new Error('Job not found');
