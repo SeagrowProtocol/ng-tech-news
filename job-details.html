@@ -503,9 +503,19 @@ if (!jobSlug) {
 <script type="application/ld+json">${JSON.stringify(jobSchema)}<\/script>
     `;
   } catch (err) {
-    document.getElementById('job-content').innerHTML = '<div class="error">Job not found</div>';
+    document.getElementById('job-content').innerHTML = `
+      <section class="section">
+        <div class="container" style="text-align:center; padding: 80px 20px;">
+          <h1 style="font-size: 36px; color: #dc2626; margin-bottom: 16px;">Job Not Found</h1>
+          <p style="font-size: 18px; color: var(--gray-700); margin-bottom: 28px;">
+            This job may have been filled or removed. But we have 500+ other remote jobs waiting for you.
+          </p>
+          <a href="https://remoteng.com.ng/remote-jobs.html" class="btn">Browse All Jobs →</a>
+        </div>
+      </section>
+    `;
     document.title = 'Job Not Found - RemoteNG';
-  }
+ }
 }
 
 loadJob();
